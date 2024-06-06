@@ -64,20 +64,31 @@ create table origen (
     primary key (id_origen)
 );
 
-create table clientes (
-	pfk_cliente int not null,
+create table productos (
+	id_producto int not null auto_increment,
+	pfk_demandado int not null,
     fk_id_origen int, 
     radicacion varchar(50) not null,
+    fk_id_ley int not null,
     fk_id_embargo int,
-    demandado varchar(80) not null,
     proceso text not null,
     codigo_folio varchar(30),
     
-    primary key (pfk_cliente),
-	foreign key (pfk_cliente) references datos_persona(id_persona),
+    primary key (id_producto, pfk_demandado),
+	foreign key (pfk_demandado) references datos_persona(id_persona),
     foreign key (fk_id_origen) references origen(id_origen),
-    foreign key (fk_id_embargo) references tipo_embargo(id_tipo_embargo)
+    foreign key (fk_id_embargo) references tipo_embargo(id_tipo_embargo),
+    foreign key (fk_id_ley) references ley(id_ley)
+ ); 
+ 
+ create table clientes(
+    pfk_cliente int not null,
+    pfk_producto int not null,
+
+    foreign key (pfk_cliente) references datos_persona(id_persona),
+    foreign key (pfk_producto) references productos(id_producto)
  );
+ 
  
  
  

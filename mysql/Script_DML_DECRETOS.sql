@@ -2,8 +2,9 @@
 INSERT INTO
     tipo_persona (tipo_persona)
 VALUES
+    ("Digitador"),
     ("Cliente"),
-    ("Digitador");
+    ("Demandado");
 
 -- Tipo identificacion
 INSERT INTO
@@ -18,48 +19,49 @@ INSERT INTO datos_persona (fk_tipo_identificacion, n_identificacion, nombre_1, n
 VALUES
 
     -- Usuarios
-    ('CC', '444555666', 'Edwin', null, 'Marín', null, '3114445660', 'Calle 56 # 12 - 06', 'edwin.marin@example.com', '2', 1), 
-    ('CC', '123456789', 'Juan', null, 'Pérez', 'Sabogal', '3001234590', 'Calle 12 # 08 - 10', 'juan.perez@example.com', '2', 1),
-    ('CC', '777888999', 'Ana', 'Maria', 'García', null, '3117778890', 'Avenida 32 # 12 - 06', 'ana.maria@example.com', '2', 1), 
-    ('CC', '999888777', 'Enrique', null, 'Hernández', null, '319998770', 'Carrera 65 # 08 - 10', 'enrique.hernandez@example.com', '2', 1),
-    ('CE', '666777888', 'Laura', null, 'Rodríguez', 'Parrado', '316667880', 'Calle 89 # 12 - 06', 'laura.rodriguez@example.com', '2', 1), 
+    ('CC', '444555666', 'Edwin', null, 'Marín', null, '3114445660', 'Calle 56 # 12 - 06', 'edwin.marin@example.com', 1, 1), 
+    ('CC', '123456789', 'Juan', null, 'Pérez', 'Sabogal', '3001234590', 'Calle 12 # 08 - 10', 'juan.perez@example.com', 1, 1),
+    ('CC', '777888999', 'Ana', 'Maria', 'García', null, '3117778890', 'Avenida 32 # 12 - 06', 'ana.maria@example.com', 1, 1), 
+    ('CC', '999888777', 'Enrique', null, 'Hernández', null, '319998770', 'Carrera 65 # 08 - 10', 'enrique.hernandez@example.com', 1, 1),
+    ('CE', '666777888', 'Laura', null, 'Rodríguez', 'Parrado', '316667880', 'Calle 89 # 12 - 06', 'laura.rodriguez@example.com', 1, 1), 
 
     -- Clientes
-    ('Otro', '987654321', 'María', null, 'Gómez', null, '319876210', 'Carrera 46 # 08 - 10', 'maria.gomez@example.com', '1', 1),
-    ('CE', '111222333', 'Carlos', null, 'López', null, '3111112330', 'Avenida 79 # 12 - 06', 'carlos.lopez@example.com', '1', 1),
-    ('CC', '543216789', 'Sofía', null, 'López', null, '315432890', 'Calle 76 # 08 - 10', 'sofia.lopez@example.com', '1', 1),
-    ('Otro', '222333444', 'Manuel', null, 'Díaz', null, '3001113330', 'Avenida 26 # 12 - 06', 'manuel.diaz@example.com', '1', 1),
+    ('Otro', '987654321', 'María', null, 'Gómez', null, '319876210', 'Carrera 46 # 08 - 10', 'maria.gomez@example.com', 2, 1),
+    ('CE', '111222333', 'Carlos', null, 'López', null, '3111112330', 'Avenida 79 # 12 - 06', 'carlos.lopez@example.com', 2, 1),
+    ('CC', '543216789', 'Sofía', null, 'López', null, '315432890', 'Calle 76 # 08 - 10', 'sofia.lopez@example.com', 2, 1),
+    ('Otro', '222333444', 'Manuel', null, 'Díaz', null, '3001113330', 'Avenida 26 # 12 - 06', 'manuel.diaz@example.com', 2, 1),
 
-    ('Otro', '987654323', 'María', null, 'Gómez', null, '3119876210', 'Carrera 46 # 08 - 10', 'maria.gomez2@example.com', '1', 1),
-    ('CE', '111222336', 'Carlos', null, 'López', null, '311112330', 'Avenida 79 # 12 - 06', 'carlos.lopez2@example.com', '1', 1),
-    ('CC', '543216783', 'Sofía', null, 'López', null, '3115432890', 'Calle 76 # 08 - 10', 'sofia.lopez2@example.com', '1', 1),
-    ('Otro', '222333447', 'Manuel', null, 'Díaz', null, '3001113330', 'Avenida 26 # 12 - 06', 'manuel.diaz2@example.com', '1', 1),
-    ('CC', '444555665', 'Ana', 'Isabel', 'Pérez', null, '3114445566', 'Calle 10 # 20 - 30', 'ana.perez@example.com', '1', 1),
-    ('CE', '777888997', 'Luis', null, 'Ramírez', 'Torres', '7778999', 'Carrera 55 # 22 - 15', 'luis.ramirez@example.com', '1', 1),
-    ('CC', '999888771', 'Claudia', null, 'Martínez', null, '3119998777', 'Avenida 34 # 18 - 25', 'claudia.martinez@example.com', '1', 1),
-    ('Otro', '555444333', 'Miguel', 'Ángel', 'Rodríguez', null, '315554333', 'Calle 65 # 14 - 12', 'miguel.rodriguez@example.com', '1', 1),
-    ('CC', '333444555', 'Elena', null, 'Fernández', 'López', '313334555', 'Carrera 15 # 18 - 19', 'elena.fernandez@example.com', '1', 1),
-    ('CE', '123456788', 'Jorge', 'Luis', 'Vargas', null, '3111234567', 'Avenida 45 # 10 - 20', 'jorge.vargas@example.com', '1', 1),
-    ('CC', '111333555', 'Gloria', null, 'Muñoz', 'Ríos', '3001113555', 'Calle 12 # 13 - 14', 'gloria.munoz@example.com', '1', 1),
-    ('Otro', '222444666', 'Andrés', null, 'Moreno', null, '312224666', 'Carrera 25 # 14 - 10', 'andres.moreno@example.com', '1', 1),
-    ('CC', '333555777', 'Lucía', 'María', 'Gómez', null, '3113335777', 'Avenida 16 # 22 - 30', 'lucia.gomez@example.com', '1', 1),
-    ('CE', '444666888', 'Fernando', null, 'Hernández', null, '314446888', 'Calle 40 # 10 - 12', 'fernando.hernandez@example.com', '1', 1),
-    ('CC', '555777999', 'Paula', null, 'Ortiz', 'Martínez', '3005557999', 'Carrera 18 # 25 - 40', 'paula.ortiz@example.com', '1', 1),
-    ('Otro', '666888000', 'Raúl', 'Emilio', 'Suárez', null, '3116668000', 'Avenida 27 # 14 - 22', 'raul.suarez@example.com', '1', 1),
-    ('CC', '777999111', 'Marta', null, 'Pineda', 'López', '317779111', 'Calle 31 # 18 - 10', 'marta.pineda@example.com', '1', 1),
-    ('CE', '888000222', 'Sergio', 'Andrés', 'Castro', null, '318880222', 'Carrera 52 # 10 - 23', 'sergio.castro@example.com', '1', 1),
-    ('CC', '999111333', 'Natalia', null, 'Ramos', 'García', '3119991133', 'Avenida 29 # 14 - 16', 'natalia.ramos@example.com', '1', 1),
-    ('Otro', '000222444', 'Esteban', null, 'Guzmán', null, '310002444', 'Calle 11 # 15 - 21', 'esteban.guzman@example.com', '1', 1),
-    ('CC', '111333666', 'Verónica', 'Lucía', 'Navarro', null, '3112113666', 'Carrera 41 # 20 - 11', 'veronica.navarro@example.com', '1', 1),
-    ('CE', '222444777', 'Javier', null, 'Vega', null, '312224777', 'Avenida 32 # 18 - 10', 'javier.vega@example.com', '1', 1),
-    ('Otro', '333555888', 'Alejandra', 'María', 'Rubio', null, '3003335888', 'Calle 14 # 15 - 13', 'alejandra.rubio@example.com', '1', 1),
-    ('CC', '444666999', 'David', null, 'Mejía', null, '314446999', 'Carrera 34 # 12 - 11', 'david.mejia@example.com', '1', 1),
-    ('CE', '555777111', 'Inés', null, 'Flores', 'Sánchez', '3115557111', 'Avenida 56 # 19 - 12', 'ines.flores@example.com', '1', 1),
-    ('Otro', '666888222', 'Gonzalo', 'María', 'García', null, '316668222', 'Calle 25 # 14 - 10', 'gonzalo.garcia@example.com', '1', 1),
-    ('CC', '777999333', 'Isabel', null, 'Duarte', 'Vargas', '3007779333', 'Carrera 37 # 18 - 21', 'isabel.duarte@example.com', '1', 1),
-    ('CE', '888000444', 'Felipe', null, 'Montoya', null, '318880444', 'Avenida 50 # 16 - 14', 'felipe.montoya@example.com', '1', 1),
-    ('Otro', '999111555', 'Gabriela', 'Luz', 'Quintero', null, '319991155', 'Calle 22 # 12 - 10', 'gabriela.quintero@example.com', '1', 1),
-    ('CC', '000222666', 'Pablo', null, 'Salazar', null, '3110002666', 'Carrera 33 # 20 - 30', 'pablo.salazar@example.com', '1', 1);
+    -- Demandados
+    ('Otro', '987654323', 'María', null, 'Gómez', null, '3119876210', 'Carrera 46 # 08 - 10', 'maria.gomez2@example.com', 3, 1),
+    ('CE', '111222336', 'Carlos', null, 'López', null, '311112330', 'Avenida 79 # 12 - 06', 'carlos.lopez2@example.com', 3, 1),
+    ('CC', '543216783', 'Sofía', null, 'López', null, '3115432890', 'Calle 76 # 08 - 10', 'sofia.lopez2@example.com', 3, 1),
+    ('Otro', '222333447', 'Manuel', null, 'Díaz', null, '3001113330', 'Avenida 26 # 12 - 06', 'manuel.diaz2@example.com', 3, 1),
+    ('CC', '444555665', 'Ana', 'Isabel', 'Pérez', null, '3114445566', 'Calle 10 # 20 - 30', 'ana.perez@example.com', 3, 1),
+    ('CE', '777888997', 'Luis', null, 'Ramírez', 'Torres', '7778999', 'Carrera 55 # 22 - 15', 'luis.ramirez@example.com', 3, 1),
+    ('CC', '999888771', 'Claudia', null, 'Martínez', null, '3119998777', 'Avenida 34 # 18 - 25', 'claudia.martinez@example.com', 3, 1),
+    ('Otro', '555444333', 'Miguel', 'Ángel', 'Rodríguez', null, '315554333', 'Calle 65 # 14 - 12', 'miguel.rodriguez@example.com', 3, 1),
+    ('CC', '333444555', 'Elena', null, 'Fernández', 'López', '313334555', 'Carrera 15 # 18 - 19', 'elena.fernandez@example.com', 3, 1),
+    ('CE', '123456788', 'Jorge', 'Luis', 'Vargas', null, '3111234567', 'Avenida 45 # 10 - 20', 'jorge.vargas@example.com', 3, 1),
+    ('CC', '111333555', 'Gloria', null, 'Muñoz', 'Ríos', '3001113555', 'Calle 12 # 13 - 14', 'gloria.munoz@example.com', 3, 1),
+    ('Otro', '222444666', 'Andrés', null, 'Moreno', null, '312224666', 'Carrera 25 # 14 - 10', 'andres.moreno@example.com', 3, 1),
+    ('CC', '333555777', 'Lucía', 'María', 'Gómez', null, '3113335777', 'Avenida 16 # 22 - 30', 'lucia.gomez@example.com', 3, 1),
+    ('CE', '444666888', 'Fernando', null, 'Hernández', null, '314446888', 'Calle 40 # 10 - 12', 'fernando.hernandez@example.com', 3, 1),
+    ('CC', '555777999', 'Paula', null, 'Ortiz', 'Martínez', '3005557999', 'Carrera 18 # 25 - 40', 'paula.ortiz@example.com', 3, 1),
+    ('Otro', '666888000', 'Raúl', 'Emilio', 'Suárez', null, '3116668000', 'Avenida 27 # 14 - 22', 'raul.suarez@example.com', 3, 1),
+    ('CC', '777999111', 'Marta', null, 'Pineda', 'López', '317779111', 'Calle 31 # 18 - 10', 'marta.pineda@example.com', 3, 1),
+    ('CE', '888000222', 'Sergio', 'Andrés', 'Castro', null, '318880222', 'Carrera 52 # 10 - 23', 'sergio.castro@example.com', 3, 1),
+    ('CC', '999111333', 'Natalia', null, 'Ramos', 'García', '3119991133', 'Avenida 29 # 14 - 16', 'natalia.ramos@example.com', 3, 1),
+    ('Otro', '000222444', 'Esteban', null, 'Guzmán', null, '310002444', 'Calle 11 # 15 - 21', 'esteban.guzman@example.com', 3, 1),
+    ('CC', '111333666', 'Verónica', 'Lucía', 'Navarro', null, '3112113666', 'Carrera 41 # 20 - 11', 'veronica.navarro@example.com', 3, 1),
+    ('CE', '222444777', 'Javier', null, 'Vega', null, '312224777', 'Avenida 32 # 18 - 10', 'javier.vega@example.com', 3, 1),
+    ('Otro', '333555888', 'Alejandra', 'María', 'Rubio', null, '3003335888', 'Calle 14 # 15 - 13', 'alejandra.rubio@example.com', 3, 1),
+    ('CC', '444666999', 'David', null, 'Mejía', null, '314446999', 'Carrera 34 # 12 - 11', 'david.mejia@example.com', 3, 1),
+    ('CE', '555777111', 'Inés', null, 'Flores', 'Sánchez', '3115557111', 'Avenida 56 # 19 - 12', 'ines.flores@example.com', 3, 1),
+    ('Otro', '666888222', 'Gonzalo', 'María', 'García', null, '316668222', 'Calle 25 # 14 - 10', 'gonzalo.garcia@example.com', 3, 1),
+    ('CC', '777999333', 'Isabel', null, 'Duarte', 'Vargas', '3007779333', 'Carrera 37 # 18 - 21', 'isabel.duarte@example.com', 3, 1),
+    ('CE', '888000444', 'Felipe', null, 'Montoya', null, '318880444', 'Avenida 50 # 16 - 14', 'felipe.montoya@example.com', 3, 1),
+    ('Otro', '999111555', 'Gabriela', 'Luz', 'Quintero', null, '319991155', 'Calle 22 # 12 - 10', 'gabriela.quintero@example.com', 3, 1),
+    ('CC', '000222666', 'Pablo', null, 'Salazar', null, '3110002666', 'Carrera 33 # 20 - 30', 'pablo.salazar@example.com', 3, 1);
 
 -- Usuarios
 INSERT INTO usuarios (pfk_usuario, alias, contraseña, rol)
@@ -98,10 +100,18 @@ INSERT INTO origen (origen)
 VALUES 
     ('Juzgado Sexto de Pequeñas Causas Civiles y Competencia Múltiple de Bogotá DC');
 
--- Clientes
-INSERT INTO  clientes (pfk_cliente, fk_id_origen, radicacion, fk_id_embargo, demandado, proceso, codigo_folio)
+-- Productos
+INSERT INTO  productos (pfk_demandado, fk_id_origen, radicacion, fk_id_ley, fk_id_embargo, proceso, codigo_folio)
 VALUES
-    ( 6, 1, '110014189006 – 2024 - 00349 - 00', 1, 'Juan Gonzales', 'EJECUTIVO SINGULAR DE MÍNIMA CUANTÍA', '123456'),
-    ( 7, 1, '110014189436 – 2024 - 00349 - 00', 2, 'Maria Pinto', 'EJECUTIVO SINGULAR DE MÍNIMA CUANTÍA', '654321'),
-    ( 8, 1, '110014183406 – 2024 - 00349 - 00', 3, 'Pepe Pelaez', 'EJECUTIVO SINGULAR DE MÍNIMA CUANTÍA', '789321'),
-    ( 9, 1, '110014112006 – 2024 - 00349 - 00', 4, 'Jhon Gutierrez', 'EJECUTIVO SINGULAR DE MÍNIMA CUANTÍA', '321987');
+    ( 10, 1, '110014189006 – 2024 - 00349 - 00', 1, 1, 'EJECUTIVO SINGULAR DE MÍNIMA CUANTÍA', '123456'),
+    ( 11, 1, '110014189436 – 2024 - 00349 - 00', 1, 2, 'EJECUTIVO SINGULAR DE MÍNIMA CUANTÍA', '654321'),
+    ( 12, 1, '110014183406 – 2024 - 00349 - 00', 1, 3, 'EJECUTIVO SINGULAR DE MÍNIMA CUANTÍA', '789321'),
+    ( 13, 1, '110014112006 – 2024 - 00349 - 00', 1, 4, 'EJECUTIVO SINGULAR DE MÍNIMA CUANTÍA', '321987');
+
+-- Clientes
+INSERT INTO clientes (pfk_cliente, pfk_producto) 
+VALUES
+    (6, 1),
+    (7, 2),
+    (8, 3),
+    (9, 4);
