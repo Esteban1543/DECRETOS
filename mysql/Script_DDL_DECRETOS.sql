@@ -3,7 +3,7 @@ use decretos_db;
 
 create table tipo_persona (
 	id_tipo_persona int auto_increment,
-    tipo_persona varchar(8) not null,
+    tipo_persona varchar(20) not null,
     
     primary key (id_tipo_persona)
 );
@@ -25,6 +25,7 @@ create table datos_persona (
     direccion varchar(65) not null,
     correo varchar(70) not null,
     fk_tipo_persona int not null,
+    estado_persona tinyint not null,
 	
     primary key (id_persona),
     
@@ -34,7 +35,7 @@ create table datos_persona (
 
 create table usuarios (
 	pfk_usuario int not null,
-    alias varchar(10) not null,
+    alias varchar(15) not null,
 	contraseña TEXT(80) NOT NULL,
     rol tinyint not null,
 		
@@ -43,19 +44,21 @@ create table usuarios (
 );
 
 create table ley ( 
-	id_ley int not null,
-    ley mediumtext not null
+	id_ley int not null auto_increment,
+    ley mediumtext not null,
+    
+	PRIMARY KEY (id_ley)
 );
 
 create table tipo_embargo (
-	id_tipo_embargo int not null,
+	id_tipo_embargo int not null auto_increment,
     tipo varchar(30) not null,
     
     primary key (id_tipo_embargo)
 );
 
 create table origen (
-	id_origen int not null,
+	id_origen int not null auto_increment,
     origen text not null,
     
     primary key (id_origen)
@@ -64,9 +67,9 @@ create table origen (
 create table clientes (
 	pfk_cliente int not null,
     fk_id_origen int, 
-    radicacion varchar(30) not null,
+    radicacion varchar(50) not null,
     fk_id_embargo int,
-    demandado varchar(30) not null,
+    demandado varchar(80) not null,
     proceso text not null,
     codigo_folio varchar(30),
     
