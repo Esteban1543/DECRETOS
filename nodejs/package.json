@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "nodemon index.js",
-    "begin": "nodemon index.js"
+    "dev": "nodemon index.js"
   },
   "keywords": [
     "ES"
