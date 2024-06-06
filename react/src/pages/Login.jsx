@@ -4,7 +4,7 @@ import "primeicons/primeicons.css";
 
 import user from "../assets/icons/user.svg";
 import key from "../assets/icons/key.svg";
-import rubikLogo from "../assets/imgs/rubikLogo.png";
+import Logo from "../../public/favicon.png";
 
 import { useState, useRef } from "react";
 import { Toast } from "primereact/toast";
@@ -131,10 +131,10 @@ function Login() {
         </form>
         <div className="contlogcard contview">
           <div>
-            <img src={rubikLogo} alt="Logo.png" />
+            <img src={Logo} alt="Logo.png" />
           </div>
           <h1> Bienvenido </h1>
-          <h2>Sistema de facturación</h2>
+          <h2>Sistema de gestion documentos</h2>
         </div>
       </div>
     </>
