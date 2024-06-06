@@ -1,7 +1,7 @@
 {
-  "name": "facturacion-nodejs",
+  "name": "decretos-nodejs",
   "version": "1.0.0",
-  "description": "Backend facturacion",
+  "description": "Backend decretos",
   "main": "index.js",
   "scripts": {
     "test": "nodemon index.js",
