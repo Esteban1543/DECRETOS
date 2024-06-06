@@ -1,0 +1,511 @@
+.section_facturacion_container {
+  display: grid;
+  grid-template-rows: 10% 90%;
+  /* justify-content: center; */
+  align-items: center;
+  padding: .5rem 1rem;
+  height: 100%;
+  width: 100%;
+}
+
+.header_facturacion_container {
+  border-bottom: 1px solid #ccc;
+  padding: .5rem;
+  /* width: 96%;
+  margin: auto; */
+}
+
+.header_facturacion_container h2 {
+  color: var(--color-azul-deep1);
+  font-weight: lighter;
+  font-size: 1.4rem;
+}
+
+/* 
+  Estilos Datos Clientes 📌 
+*/
+.container_form_datosCliente {
+  /* outline: 1px solid salmon; */
+  /* width: 99%;
+  margin: auto; */
+  height: 100%;
+}
+
+.form_section_datosClientes {
+  display: grid;
+  grid-template-rows: auto 11.5%;
+  height: 100%;
+  align-items: center;
+}
+
+/* 
+  Estilos añadir Productos a factura 📌 
+*/
+.container_añadir_productos {
+  /* outline: 1px solid salmon; */
+  height: 100%;
+  display: grid;
+  /* grid-template-rows: 20% 68.5% 11.5%; */
+  grid-template-rows: 20% auto 11.5%;
+}
+
+/* .section_añadir_productos div {
+  background-color: var(--color-azul-deep2);
+} */
+
+.section_añadir_productos_botones {
+  height: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 75%;
+  margin: auto;
+}
+
+.añadir_productos_botones {
+  cursor: pointer;
+  width: 250px;
+  height: 3.2rem;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background: white;
+  border: none;
+  outline: 1px solid #5683da;
+  border-radius: .3rem;
+  padding-block: .3rem;
+  font-size: .9rem;
+  font-family: "Poppins", monospace;
+}
+
+.añadir_productos_botones:hover {
+  outline-width: 2px;
+}
+
+.añadir_productos_tabla {
+  /* max-height: 63.5%; */
+  height: 364px;
+  height: 95%;
+  overflow: auto;
+  scrollbar-width: none;
+}
+
+.container_añadiendo_productos {
+  width: 95%;
+  margin: auto;
+  padding-block: 1rem;
+  display: grid;
+  /* grid-template-columns: repeat(4, 1fr); */
+  grid-template-columns: repeat(auto-fill,
+      minmax(156px, 1fr))
+  ;
+  gap: 1rem;
+  justify-items: center;
+  align-items: center;
+  overflow-y: auto;
+}
+
+.container_producto_añadir {
+  /* outline: 1px solid aquamarine;
+  background: #7fffff0d; */
+  background-color: #88a2b229;
+  background-color: var(--color2-cards);
+  width: 98%;
+  height: 25vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: .7rem;
+  border-radius: .8rem;
+  user-select: none;
+}
+
+.container_botones_cantidades {
+  width: 117px;
+  height: 34px;
+}
+
+.section_botones_cantidades {
+  outline: 1px solid #74da9a;
+  width: 100%;
+  border-radius: .4rem;
+  display: flex;
+  justify-content: space-around;
+  height: 100%;
+  align-items: center;
+}
+
+.input_change_quantity {
+  max-width: 40px;
+  text-align: center;
+  /* outline: 1px solid #ccc; */
+  /* border-bottom: 1px solid cornflowerblue; */
+  border: none;
+  padding: 2%;
+  border-radius: .5rem;
+}
+
+.input_change_quantity:hover {
+  background-color: #379fd229;
+}
+
+
+/* 
+  Estilos metodos de pago factura 📌 
+*/
+.container_pagos_factura {
+  display: grid;
+  grid-template-rows: 88.5% 11.5%;
+  height: 100%;
+  /* outline: 1px solid salmon; */
+}
+
+.container_pagos_factura_datos {
+  display: grid;
+  grid-template-columns: 62% auto;
+  height: 100%;
+  width: 92%;
+  margin: auto;
+}
+
+.container_abonos_y_pagos {
+  display: grid;
+  grid-template-rows: 57% auto;
+  gap: 1rem;
+  height: 90%;
+  width: 95%;
+  margin: auto;
+}
+
+.section_metodos_pago {
+  display: grid;
+  grid-template-rows: 17% auto;
+}
+
+.container_metodos_pago {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  /* width: 90%; */
+  /* margin: auto; */
+  height: 100%;
+}
+
+.div_metodo_pago {
+  /* outline: 1px solid coral; */
+  width: 90%;
+  height: 85%;
+  /* margin: auto; */
+  margin-block: auto;
+  border-radius: .5rem;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  font-size: 1.1rem;
+  cursor: pointer;
+  outline-style: double;
+}
+
+.div_metodo_pago:first-child {
+  background-color: rgba(143, 236, 163, 0.32);
+  outline-color: rgb(110, 199, 130);
+}
+
+.div_metodo_pago:nth-child(2) {
+  background-color: #DFE9FF;
+  outline-color: #6AA6DE;
+}
+
+.div_metodo_pago:nth-child(3) {
+  background-color: rgba(253, 232, 116, 0.35);
+  outline-color: rgb(251, 172, 96);
+}
+
+.div_metodo_pago:last-child {
+  background-color: rgb(255, 230, 225);
+  background-color: rgb(240, 236, 228);
+  outline-color: rgb(205, 178, 150);
+}
+
+.container_valores {
+  display: grid;
+  gap: 1.7rem;
+  /* width: 90%; */
+}
+
+.opciones_valores {
+  width: 93%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* outline: 1px solid; */
+}
+
+.container_radios {
+  width: 40%;
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+}
+
+.container_radios section {
+  width: 45%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 100%;
+}
+
+.input_abonos {
+  padding: .4rem;
+  border: none;
+  border-bottom: 2px solid #0885CB;
+  border-top-left-radius: 0.3rem;
+  border-top-right-radius: 0.3rem;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 601;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 40%;
+  height: 100%;
+}
+
+.input_abonos:focus-visible {
+  outline: none;
+  border-bottom-color: #6bc57e;
+}
+
+.input_container {
+  position: relative;
+  width: 80%;
+  /* border-bottom: 2.3px solid #0885CB; */
+  margin: auto;
+}
+
+.input_valor_recibido {
+  width: 100%;
+  padding: .4rem;
+  padding-left: 18%;
+  border-bottom: 2.3px solid #0885CB;
+}
+
+.input_valor_recibido input[type="text"] {
+  color: #64a4df;
+  color: var(--yellow-700);
+  font-weight: 601;
+  font-size: 1.1rem;
+  background: transparent;
+  border: none;
+  padding-bottom: .1rem;
+}
+
+.input_valor_recibido input[type="text"]:focus {
+  box-shadow: none;
+}
+
+.input_container img {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.input_container img:first-child {
+  left: 5%;
+}
+
+.input_container img:last-child {
+  right: 5%;
+}
+
+.input_valor_recibido:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.input_valor_recibido:focus {
+  /* background: rgba(181, 208, 232, 0.09); */
+  /* background: white; */
+  border-bottom-color: #6bc57e;
+}
+
+.section_resumen_factura {
+  /* outline: 1px solid deeppink; */
+  background-color: white;
+  width: 85%;
+  height: 90%;
+  margin: auto;
+  border-radius: .8rem;
+  padding: .5rem;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  /* font-family: monospace; */
+}
+
+.section_resumen_factura section {
+  width: 90%;
+  margin: .5rem auto;
+  min-height: 25%;
+  border-bottom: 2px dashed #ccc;
+  padding-inline: 1rem;
+}
+
+.section_resumen_factura section:last-child {
+  border-bottom: none;
+}
+
+.section_resumen_factura h3 {
+  font-size: 1.3rem;
+  text-align: center;
+  margin: .5rem;
+  /* padding-bottom: .5rem; */
+}
+
+.resumen_factura_datosCliente,
+.resumen_factura_detalle {
+  display: grid;
+  grid-template-columns: 50% auto;
+  /* gap: 1.5rem; */
+  font-size: .8rem;
+  padding-block: 1rem .5rem;
+}
+
+.resumen_factura_datosCliente h4,
+.resumen_factura_detalle h4 {
+  font-size: .9rem;
+}
+
+.resumen_factura_datosCliente div {
+  padding-top: .5rem;
+}
+
+/* .resumen_factura_detalle div {
+  display: grid;
+  grid-template-columns: auto auto;
+  align-items: center;
+} */
+
+.resumen_factura_precios {
+  display: grid;
+  grid-template-columns: 50% auto;
+  grid-template-rows: repeat(3, 3.7vh);
+  align-items: center;
+  padding-left: .5rem;
+  font-size: .9rem;
+}
+
+/* 
+  Estilos previsualizacion de factura 📌 
+*/
+.container_factura_pdf {
+  display: grid;
+  grid-template-columns: 70% auto;
+  height: 100%;
+}
+
+.container_prev_pdf {
+  outline: 1px solid cornflowerblue;
+  overflow-y: auto;
+}
+
+.aside_acciones_pdf {
+  display: grid;
+  grid-template-rows: repeat(2, 1fr) 80px 60px;
+  justify-items: center;
+  align-items: end;
+  text-align: center;
+  padding-block: .5rem;
+}
+
+.aside_acciones_pdf section:first-child h4 {
+  margin-block: .6rem;
+}
+
+.aside_acciones_pdf h4:nth-child(2) {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.section_imprimir {
+  width: 90%;
+  border-bottom: 1px solid #ccc;
+  align-self: end;
+}
+
+.print_button {
+  background: transparent;
+  border: none;
+  outline: 1px solid #74da9a;
+  border-radius: .5rem;
+  padding: .8rem;
+  cursor: pointer;
+}
+
+.print_button:active {
+  box-shadow: 0 0 4px #74da9a;
+}
+
+.section_check_correo {
+  display: flex;
+  width: 65%;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin: auto;
+}
+
+.span_check_prime {
+  margin-top: 2px;
+}
+
+.span_check_prime input[type="checkbox"] {
+  background: #74da9a;
+}
+
+.section_otro_correo {
+  /* align-self: center; */
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 90%;
+  border-bottom: 1.5px solid #ccc;
+  padding-bottom: 1rem;
+}
+/* 
+
+data: {
+  status: true,
+  message: '✅ Se creo el pdf',
+  data: {
+    datos_factura: {
+      cod_factura: 1158,
+      fecha: '2024-05-31T05:00:00.000Z',
+      hora: '04:51:02',
+      cliente: 'Sofía López',
+      n_identificacion: '543216789',
+      telefono: '315432890',
+      direccion: 'Calle 76 # 08 - 10',
+      correo: 'facturasversallesddne@gmail.com',
+      vendedor: 'Enrique Hernández',
+      metodo_pago: 'Efectivo',
+      numero_abonos: 1,
+      subtotal: '18000',
+      total: 20160,
+      pendiente: '0',
+      iva_aplicado: 12
+    },
+    ProductosData: [
+      {
+        cod_producto: 47,
+        nombre_producto: 'Papel de Colores',
+        cantidad: 3,
+        subtotal_producto: 18000,
+        total: 54000
+      }
+    ]
+  }
+},
+loading: false,
+error: null */

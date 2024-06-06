@@ -1,0 +1,74 @@
+.container_cardDesplegable_usuarios {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem 0;
+  justify-items: center;
+  overflow: scroll;
+  scrollbar-width: none;
+  max-height: 63vh;
+}
+
+.container_agregar_usuarios{
+  display: grid;
+  grid-template-columns: 68% auto;
+  width: 90%;
+  margin: auto;
+  gap: 3rem;
+}
+
+.container_formulario_usuario,
+.banner_usuarios {
+  background-color: var(--color3-cards);
+  border-radius: .8rem;
+}
+
+.container_formulario_usuario {
+  padding: .8rem 1rem;
+  padding-top: 1.2rem;
+}
+
+.banner_usuarios {
+  display: grid;
+  grid-template-rows: 35% 30% auto;
+  justify-items: center;
+  align-items: center;
+  text-align: center;
+  width: 95%;
+  margin-inline: auto;
+  padding-block: 1rem;
+
+  & h3 {
+    font-size: 3.2rem;
+    border-bottom: 1.6px solid #ccc;
+    width: 100%;
+    margin-bottom: .4rem;
+  }
+
+  & span {
+    font-size: 1.3rem;
+    font-weight: 501;
+    color: #595656e5;
+  }
+
+  & section {
+    width: 60%;
+    /* outline: 1px solid red; */
+  }
+}
+
+.p-dialog-header {
+  padding-top: 1rem;
+  padding-bottom: 0;
+}
+
+.p-dialog .p-dialog-header .p-dialog-title {
+  font-weight: 700;
+  font-size: 1.8rem;
+  text-align: center;
+  color: var(--color-azul-deep1);
+}
+
+.p-tabview-panel {
+  /* height: 64vh; */
+  padding-bottom: 0;
+}

@@ -1,0 +1,13 @@
+#REACT
+
+./react/node_modules
+./react/dist
+./react/dist-ssr
+./react/.vscode
+
+#NODEJS
+
+./nodejs/node_modules
+./nodejs/dist
+./nodejs/dist-ssr
+./nodejs/.vscode

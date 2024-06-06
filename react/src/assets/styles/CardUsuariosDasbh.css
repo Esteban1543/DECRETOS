@@ -1,0 +1,33 @@
+/* Sección Usuarios 📌*/
+.dasbh_card_usuarios {
+    background: var(--color1-cards);
+    border-radius: .8rem;
+    display: grid;
+    grid-template-columns: 30% auto;
+    /* padding: 1rem 2rem; */
+    padding: 1.5% 3%;
+
+    & span {
+        font-size: 2.1rem;
+        font-weight: 500;
+    }
+}
+
+.section1_usuarios_card {
+    border-right: 1.6px solid #ccc;
+    display: grid;
+    place-content: center;
+
+    & h3 {
+        font-size: 3.2rem;
+        font-weight: 500;
+    }
+}
+
+.section2_usuarios_card {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    /* gap: 3rem; */
+    /* height: 100%; */
+}

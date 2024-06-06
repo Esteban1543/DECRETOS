@@ -1,0 +1,8 @@
+.footer_botones {
+  border-top: 1px solid rgb(204, 204, 204);
+  padding-top: 1rem;
+  display: flex;
+  justify-content: end;
+  gap: 1rem;
+  /* outline: 1px solid red; */
+}

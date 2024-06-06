@@ -1,0 +1,159 @@
+.tablaDetalleFactura {
+  /* border: 1px solid red; */
+  width: 100%;
+  border-collapse: collapse;  
+}
+
+.tablaDetalleFactura tr {
+  border-top: 1px solid #cccccccd;
+  /* border-top: 1px solid #ccc; */
+}
+
+.tablaDetalleFactura tbody tr:last-child {
+  border-bottom: 1px solid #636060cd;
+  /* border-top: 1px solid #ccc; */
+}
+
+.tablaDetalleFactura tr:first-child {
+  border-top: none;
+}
+
+.tablaDetalleFactura thead, 
+.tablaDetalleFactura tbody {
+  text-align: center;
+}
+
+/* .tablaDetalleFactura thead {
+  border-block: 1.5px solid #09425efa;
+} */
+
+.tablaDetalleFactura th {
+  padding-block: .7rem;
+  font-size: .9rem;
+  background: #f8f9fa;
+  color: #374151;
+  font-weight: 601;
+}
+
+.tablaDetalleFactura td {
+  padding-block: .5rem;
+  background: white;
+  color: #4b5563;
+  font-size: .8rem;
+  text-transform: capitalize;
+}
+
+.seccion_cantidad {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  font-weight: 601;
+}
+
+.botones_cantidad,
+.boton_remover {
+  background: transparent;
+  font-size: 1rem;
+  /* font-weight: 501; */
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+}
+
+.botones_cantidad {
+  display: flex;
+  justify-content: center;
+  border: 1px solid #deeaf5;
+}
+
+.botones_cantidad:hover {
+  background: #c7d6ed45;
+}
+
+.boton_remover {
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.boton_remover:hover {
+  background: rgba(246, 47, 47, 0.9);
+}
+
+.boton_remover:hover img{
+  filter: grayscale(100%) invert(100%) brightness(200%);
+}
+
+.footer_section {
+  border-top: 1px solid #808080;
+  height: 60px;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 2.5%;
+  padding-right: 19%;
+  color: #4b5563;
+  font-weight: 601;
+  font-size: .92rem;
+  user-select: none;
+  padding-block: .5rem;
+}
+
+.section_iva {
+  /* outline: 1px solid red; */
+  height: 100%;
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  gap: .7rem;
+  justify-content: center;
+}
+
+.section_iva div:first-child{
+  display: flex;
+  /* justify-content: space-evenly; */
+  /* gap: 1rem; */
+  align-items: flex-end;
+}
+
+.p-checkbox-box {
+  width: 15px;
+  height: 15px;
+  border-radius: 3px;
+  padding: 1px;
+}
+
+.iva_span {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 80%;
+  margin-inline: auto;
+}
+
+.section_valores_totales {
+  width: 23%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.section_valores_totales p{
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+}
+/* Para Chrome, Safari, Edge y Opera */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Para Firefox */
+input[type="number"] {
+    -moz-appearance: textfield;
+}

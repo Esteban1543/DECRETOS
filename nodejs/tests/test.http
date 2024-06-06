@@ -1,0 +1,300 @@
+// SOLICITUD GET PRUEBA
+POST http://localhost:7830/Autentificiacion HTTP/1.1
+Content-Type: application/json
+
+{
+    "user": "Vendedor 2",
+    "password": "ventas123"
+}
+
+###
+
+GET http://localhost:7830/Productos HTTP/1.1
+Content-Type: application/json
+
+###
+
+GET http://localhost:7830/Categorias HTTP/1.1
+Content-Type: application/json
+
+###
+
+GET http://localhost:7830/ZonaVentas HTTP/1.1
+Content-Type: application/json
+
+###
+
+GET http://localhost:7830/TipoIdentificacion HTTP/1.1
+Content-Type: application/json
+
+###
+
+GET http://localhost:7830/Usuarios HTTP/1.1
+Content-Type: application/json
+
+####
+
+GET http://localhost:7830/Clientes HTTP/1.1
+Content-Type: application/json
+
+###
+
+GET http://localhost:7830/Productos HTTP/1.1
+Content-Type: application/json
+
+###
+
+POST http://localhost:7830/CrearUsuario HTTP/1.1
+Content-Type: application/json
+
+{
+    "fk_tipo_identificacion": "CC",
+    "n_identificacion": "4646546465",
+    "nombres": "Jhoan Esteban",
+    "apellidos": "Vargas Parra",
+    "telefono": "5453535",
+    "direccion": "Calle 67",
+    "correo": "example@example.com",
+    "fk_zona_venta": "ZN01",
+    "alias": "Vendedor 7",
+    "contraseña": "asd123"
+}
+
+###
+
+POST http://localhost:7830/CrearCliente HTTP/1.1
+Content-Type: application/json
+
+{
+    "fk_tipo_identificacion": "CE",
+    "n_identificacion": "587585744",
+    "nombres": "Jhoan Esteban",
+    "apellidos": "Vargas PeNa",
+    "telefono": "5453535",
+    "direccion": "Calle 67",
+    "correo": "example@example.com",
+    "fk_zona_venta": "ZN04"
+}
+
+###
+
+POST http://localhost:7830/EditarCliente HTTP/1.1
+Content-Type: application/json
+
+{
+    "fk_tipo_identificacion": "CE",
+    "n_identificacion": "567543356",
+    "nombres": "Hola",
+    "apellidos": "Adios",
+    "telefono": "5453535",
+    "direccion": "Calle 67",
+    "correo": "example@example.com",
+    "fk_zona_venta": "ZN04"
+}
+
+###
+
+POST http://localhost:7830/CrearProducto HTTP/1.1
+Content-Type: application/json
+
+{
+    "fk_categoria": "Manualidades", 
+    "nombre_producto": "Origami", 
+    "descripcion": "dawdx3", 
+    "precio_producto": "5415"
+}
+
+###
+
+POST http://localhost:7830/CrearClienteDevolverFactura HTTP/1.1
+Content-Type: application/json
+
+{
+    "fk_tipo_identificacion": "CE",
+    "n_identificacion": "77777777",
+    "nombres": "Esteban",
+    "apellidos": "López",
+    "telefono": "1112330",
+    "direccion": "Avenida 79 # 12 - 06",
+    "correo": "carlos@example.com",
+    "fk_zona_venta": "ZN02",
+    "fk_vendedor": "2"
+}
+
+###
+
+POST http://localhost:7830/CrearFactura HTTP/1.1
+Content-Type: application/json
+
+{
+  "numFactura": 1015,
+  "productos": [
+    {
+      "cod_producto": 1,
+      "fk_categoria": "Escolar",
+      "nombre_producto": "Boligrafo Negro",
+      "descripcion": "paquete x 6",
+      "precio_producto": 15400,
+      "cantidad": 10
+    },
+    {
+      "cod_producto": 3,
+      "fk_categoria": "Oficina",
+      "nombre_producto": "Agenda 2024",
+      "descripcion": null,
+      "precio_producto": 18500,
+      "cantidad": 3
+    },
+    {
+      "cod_producto": 5,
+      "fk_categoria": "Papeles",
+      "nombre_producto": "Sobre Manila",
+      "descripcion": "paquete x 10",
+      "precio_producto": 6400,
+      "cantidad": 1
+    },
+    {
+      "cod_producto": 6,
+      "fk_categoria": "Papeles",
+      "nombre_producto": "Papel Foami Negro",
+      "descripcion": "paquete x 12",
+      "precio_producto": 11500,
+      "cantidad": 2
+    },
+    {
+      "cod_producto": 7,
+      "fk_categoria": "Papeles",
+      "nombre_producto": "Cartulina Pliego",
+      "descripcion": "unidad",
+      "precio_producto": 780,
+      "cantidad": 4
+    },
+    {
+      "cod_producto": 10,
+      "fk_categoria": "Manualidades",
+      "nombre_producto": "Tijeras",
+      "descripcion": "paquete x 5",
+      "precio_producto": 3400,
+      "cantidad": 5
+    }
+  ]
+}
+
+###
+
+POST http://localhost:7830/IngresarDatosFactura HTTP/1.1
+Content-Type: application/json
+
+{
+  "numFactura": 1014,
+  "iva_aplicado": 19,
+  "subtotal": 320000,
+  "total": 412000,
+  "metodo_pago": "Efectivo",
+  "pago_total": "0",
+  "numero_abonos": "5",
+  "valor_abono": "15000"
+}
+
+###
+
+POST http://localhost:7830/InformeVendedorVentas/2 HTTP/1.1
+Content-Type: application/json
+
+{
+  "fecha_inicio": "2024-01-01",
+  "fecha_fin": "2024-06-01"
+}
+
+###
+
+POST http://localhost:7830/InformeFactura HTTP/1.1
+Content-Type: application/json
+
+{
+  "numFactura": "1069"
+}
+
+### 
+
+POST http://localhost:7830/GenerarAbonoFactura HTTP/1.1
+Content-Type: application/json
+
+{
+  "numFactura": "1142",
+  "metodo_pago": "Efectivo",
+  "valor_abono": "30000"
+}
+
+###
+
+GET http://localhost:7830/VentasPorVendedorFechas/2024-03-01/2024-03-30 HTTP/1.1
+Content-Type: application/json
+
+###
+
+GET http://localhost:7830/InformeFacturaSaldadas/2024-03-01/2024-03-30 HTTP/1.1
+Content-Type: application/json
+
+###
+
+GET http://localhost:7830/InformeVendedores/2024-03-01/2024-03-30 HTTP/1.1
+Content-Type: application/json
+
+###
+
+GET http://localhost:7830/InformeFacturasClientes HTTP/1.1
+Content-Type: application/json
+
+###
+
+POST http://localhost:7830/InformeClientesCompras/8 HTTP/1.1
+Content-Type: application/json
+
+{
+  "fecha_inicio": "2024-01-01",
+  "fecha_fin": "2024-06-01"
+}
+
+###
+
+GET http://localhost:7830/CrearFacturaPdf/1157 HTTP/1.1
+Content-Type: application/json
+
+###
+
+POST http://localhost:7830/EnviarFacturaGmail HTTP/1.1
+Content-Type: application/json
+
+{
+  "numFactura": 1015,
+  "enviar_copia": "false",
+  "segundo_correo": "correo@gmail.com"
+}
+
+###
+
+POST http://localhost:7830/BuscarClienteIdentificacion HTTP/1.1
+Content-Type: application/json
+
+{
+    "id": "000222666"
+}
+
+###
+
+POST http://localhost:7830/BuscarClienteNombre HTTP/1.1
+Content-Type: application/json
+
+{
+    "nombres": "Sofía",
+    "apellidos": "López"
+}
+
+###
+
+GET http://localhost:7830/InformeVentasMes HTTP/1.1
+
+###
+
+DELETE http://localhost:7830/BorrarPersona/14234423243 HTTP/1.1
