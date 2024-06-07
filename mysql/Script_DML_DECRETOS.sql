@@ -3,8 +3,7 @@ INSERT INTO
     tipo_persona (tipo_persona)
 VALUES
     ("Digitador"),
-    ("Cliente"),
-    ("Demandado");
+    ("Cliente");
 
 -- Tipo identificacion
 INSERT INTO
@@ -29,39 +28,7 @@ VALUES
     ('Otro', '987654321', 'María', null, 'Gómez', null, '319876210', 'Carrera 46 # 08 - 10', 'maria.gomez@example.com', 2, 1),
     ('CE', '111222333', 'Carlos', null, 'López', null, '3111112330', 'Avenida 79 # 12 - 06', 'carlos.lopez@example.com', 2, 1),
     ('CC', '543216789', 'Sofía', null, 'López', null, '315432890', 'Calle 76 # 08 - 10', 'sofia.lopez@example.com', 2, 1),
-    ('Otro', '222333444', 'Manuel', null, 'Díaz', null, '3001113330', 'Avenida 26 # 12 - 06', 'manuel.diaz@example.com', 2, 1),
-
-    -- Demandados
-    ('Otro', '987654323', 'María', null, 'Gómez', null, '3119876210', 'Carrera 46 # 08 - 10', 'maria.gomez2@example.com', 3, 1),
-    ('CE', '111222336', 'Carlos', null, 'López', null, '311112330', 'Avenida 79 # 12 - 06', 'carlos.lopez2@example.com', 3, 1),
-    ('CC', '543216783', 'Sofía', null, 'López', null, '3115432890', 'Calle 76 # 08 - 10', 'sofia.lopez2@example.com', 3, 1),
-    ('Otro', '222333447', 'Manuel', null, 'Díaz', null, '3001113330', 'Avenida 26 # 12 - 06', 'manuel.diaz2@example.com', 3, 1),
-    ('CC', '444555665', 'Ana', 'Isabel', 'Pérez', null, '3114445566', 'Calle 10 # 20 - 30', 'ana.perez@example.com', 3, 1),
-    ('CE', '777888997', 'Luis', null, 'Ramírez', 'Torres', '7778999', 'Carrera 55 # 22 - 15', 'luis.ramirez@example.com', 3, 1),
-    ('CC', '999888771', 'Claudia', null, 'Martínez', null, '3119998777', 'Avenida 34 # 18 - 25', 'claudia.martinez@example.com', 3, 1),
-    ('Otro', '555444333', 'Miguel', 'Ángel', 'Rodríguez', null, '315554333', 'Calle 65 # 14 - 12', 'miguel.rodriguez@example.com', 3, 1),
-    ('CC', '333444555', 'Elena', null, 'Fernández', 'López', '313334555', 'Carrera 15 # 18 - 19', 'elena.fernandez@example.com', 3, 1),
-    ('CE', '123456788', 'Jorge', 'Luis', 'Vargas', null, '3111234567', 'Avenida 45 # 10 - 20', 'jorge.vargas@example.com', 3, 1),
-    ('CC', '111333555', 'Gloria', null, 'Muñoz', 'Ríos', '3001113555', 'Calle 12 # 13 - 14', 'gloria.munoz@example.com', 3, 1),
-    ('Otro', '222444666', 'Andrés', null, 'Moreno', null, '312224666', 'Carrera 25 # 14 - 10', 'andres.moreno@example.com', 3, 1),
-    ('CC', '333555777', 'Lucía', 'María', 'Gómez', null, '3113335777', 'Avenida 16 # 22 - 30', 'lucia.gomez@example.com', 3, 1),
-    ('CE', '444666888', 'Fernando', null, 'Hernández', null, '314446888', 'Calle 40 # 10 - 12', 'fernando.hernandez@example.com', 3, 1),
-    ('CC', '555777999', 'Paula', null, 'Ortiz', 'Martínez', '3005557999', 'Carrera 18 # 25 - 40', 'paula.ortiz@example.com', 3, 1),
-    ('Otro', '666888000', 'Raúl', 'Emilio', 'Suárez', null, '3116668000', 'Avenida 27 # 14 - 22', 'raul.suarez@example.com', 3, 1),
-    ('CC', '777999111', 'Marta', null, 'Pineda', 'López', '317779111', 'Calle 31 # 18 - 10', 'marta.pineda@example.com', 3, 1),
-    ('CE', '888000222', 'Sergio', 'Andrés', 'Castro', null, '318880222', 'Carrera 52 # 10 - 23', 'sergio.castro@example.com', 3, 1),
-    ('CC', '999111333', 'Natalia', null, 'Ramos', 'García', '3119991133', 'Avenida 29 # 14 - 16', 'natalia.ramos@example.com', 3, 1),
-    ('Otro', '000222444', 'Esteban', null, 'Guzmán', null, '310002444', 'Calle 11 # 15 - 21', 'esteban.guzman@example.com', 3, 1),
-    ('CC', '111333666', 'Verónica', 'Lucía', 'Navarro', null, '3112113666', 'Carrera 41 # 20 - 11', 'veronica.navarro@example.com', 3, 1),
-    ('CE', '222444777', 'Javier', null, 'Vega', null, '312224777', 'Avenida 32 # 18 - 10', 'javier.vega@example.com', 3, 1),
-    ('Otro', '333555888', 'Alejandra', 'María', 'Rubio', null, '3003335888', 'Calle 14 # 15 - 13', 'alejandra.rubio@example.com', 3, 1),
-    ('CC', '444666999', 'David', null, 'Mejía', null, '314446999', 'Carrera 34 # 12 - 11', 'david.mejia@example.com', 3, 1),
-    ('CE', '555777111', 'Inés', null, 'Flores', 'Sánchez', '3115557111', 'Avenida 56 # 19 - 12', 'ines.flores@example.com', 3, 1),
-    ('Otro', '666888222', 'Gonzalo', 'María', 'García', null, '316668222', 'Calle 25 # 14 - 10', 'gonzalo.garcia@example.com', 3, 1),
-    ('CC', '777999333', 'Isabel', null, 'Duarte', 'Vargas', '3007779333', 'Carrera 37 # 18 - 21', 'isabel.duarte@example.com', 3, 1),
-    ('CE', '888000444', 'Felipe', null, 'Montoya', null, '318880444', 'Avenida 50 # 16 - 14', 'felipe.montoya@example.com', 3, 1),
-    ('Otro', '999111555', 'Gabriela', 'Luz', 'Quintero', null, '319991155', 'Calle 22 # 12 - 10', 'gabriela.quintero@example.com', 3, 1),
-    ('CC', '000222666', 'Pablo', null, 'Salazar', null, '3110002666', 'Carrera 33 # 20 - 30', 'pablo.salazar@example.com', 3, 1);
+    ('Otro', '222333444', 'Manuel', null, 'Díaz', null, '3001113330', 'Avenida 26 # 12 - 06', 'manuel.diaz@example.com', 2, 1);
 
 -- Usuarios
 INSERT INTO usuarios (pfk_usuario, alias, contraseña, rol)
@@ -75,43 +42,50 @@ VALUES
 
 -- Leyes
 INSERT INTO
-    ley (ley)
+    ley (ley, descipcion)
 VALUES
-    (
-        'Para el cumplimiento de la orden anterior, por la vía prevista en el artículo 11 de la Ley 2213 de 2022, remítase oficio a los gerentes de las entidades financieras relacionadas en el escrito de las cautelas, para que las sumas retenidas sean puestas a disposición del juzgado, por intermedio del Banco Agrario de Colombia S.A. dentro del término de tres (3) días, so pena de responder por los perjuicios que su incumplimiento ocasione, del correspondiente pago y de incurrir en multa de dos (2) a cinco (5) salarios mínimos legales mensuales (art. 593, núms. 4 y 10 C.G.P). 
- 
-Adviértasele, en la respectiva comunicación a las entidades financieras, que no podrán desconocer el contenido de los oficios ni su autenticidad habida cuenta de lo dispuesto en el inciso 2 del artículo 11 de la Ley 2213 de 2022, leído en concordancia con el Concepto 2020286687 de la Superintendencia Financiera, so pena de incurrir en desacato y hacerse acreedoras de las sanciones que la ley establece.
- 
-Por Secretaría, procédase de conformidad y déjense las constancias del caso.
-'
-    );
+    ('2213 de 2022','Para el cumplimiento de la orden anterior, por la vía prevista en el artículo 11 de la Ley 2213 de 2022, remítase oficio a los gerentes de las entidades financieras relacionadas en el escrito de las cautelas, para que las sumas retenidas sean puestas a disposición del juzgado, por intermedio del Banco Agrario de Colombia S.A. dentro del término de tres (3) días, so pena de responder por los perjuicios que su incumplimiento ocasione, del correspondiente pago y de incurrir en multa de dos (2) a cinco (5) salarios mínimos legales mensuales (art. 593, núms. 4 y 10 C.G.P). Adviértasele, en la respectiva comunicación a las entidades financieras, que no podrán desconocer el contenido de los oficios ni su autenticidad habida cuenta de lo dispuesto en el inciso 2 del artículo 11 de la Ley 2213 de 2022, leído en concordancia con el Concepto 2020286687 de la Superintendencia Financiera, so pena de incurrir en desacato y hacerse acreedoras de las sanciones que la ley establece. Por Secretaría, procédase de conformidad y déjense las constancias del caso.');
 
 -- Tipo Embargo 
-INSERT INTO tipo_embargo (tipo)
+INSERT INTO tipo_embargo (tipo, descripcion)
 VALUES
-    ('Establecimiento'),
-    ('Banco'),
-    ('Salario'),
-    ('Fondo de Pensiones'),
-    ('Inmueble');
+    ('Establecimiento', 'DECRETAR EL EMBARGO del establecimiento de comercio denominado “°”, identificado con Matrícula No. °, ubicado en °, que se denuncia de propiedad del ejecutado °. Verificada y acreditada la inscripción de dicha medida, se resolverá lo pertinente sobre su secuestro (Art. 601 CGP).'),
+
+    ('Banco', 'DECRETAR EL EMBARGO Y RETENCIÓN, en la cuantía y proporción permitida por la ley, de los saldos bancarios que a cualquier título existan a favor del demandado °, y los depósitos posteriores que se produzcan, hasta completar la suma de ° de pesos.'),
+
+    ('Salario', 'OFICIAR al tesorero y/o pagador del °, para que del salario devengado por °, retenga la proporción del dinero antes determinada y constituya certificado de depósito a órdenes del Juzgado, previniéndole que de lo contrario responderá por dichos valores.'),
+
+    ('Automovil', 'Previo a la orden de secuestro, se ordena la INMOVILIZACIÓN del vehículo de placas ° del que se señala su posesión en cabeza del demandado °.'),
+
+    ('Fondo de Pensiones', 'DECRETAR EL EMBARGO Y RETENCIÓN hasta del ° de la pensión del demandado °, como pensionado del °, de conformidad con lo dispuesto por el artículo 134 de la Ley 100 de 1993, y que le corresponde en calidad pensionada. Se limita la medida en la cantidad de ° de pesos.'),
+
+    ('Inmueble', 'DECRETAR EL EMBARGO del derecho de dominio de que sea titular la demandada °, respecto del bien distinguido con el F. M. I.  ° de la O. R. I. P. del municipio de Tunja, Boyacá. Verificada y acreditada la inscripción de dicha medida, se resolverá lo pertinente sobre su secuestro');
 
 -- Origen
 INSERT INTO origen (origen)
 VALUES 
     ('Juzgado Sexto de Pequeñas Causas Civiles y Competencia Múltiple de Bogotá DC');
 
--- Productos
-INSERT INTO  productos (pfk_demandado, fk_id_origen, radicacion, fk_id_ley, fk_id_embargo, proceso, codigo_folio)
+-- Proceso
+INSERT INTO proceso (proceso)
 VALUES
-    ( 10, 1, '110014189006 – 2024 - 00349 - 00', 1, 1, 'EJECUTIVO SINGULAR DE MÍNIMA CUANTÍA', '123456'),
-    ( 11, 1, '110014189436 – 2024 - 00349 - 00', 1, 2, 'EJECUTIVO SINGULAR DE MÍNIMA CUANTÍA', '654321'),
-    ( 12, 1, '110014183406 – 2024 - 00349 - 00', 1, 3, 'EJECUTIVO SINGULAR DE MÍNIMA CUANTÍA', '789321'),
-    ( 13, 1, '110014112006 – 2024 - 00349 - 00', 1, 4, 'EJECUTIVO SINGULAR DE MÍNIMA CUANTÍA', '321987');
+    ('EJECUTIVO SINGULAR DE MÍNIMA CUANTÍA');
 
--- Clientes
-INSERT INTO clientes (pfk_cliente, pfk_producto) 
+-- Historial decretos
+INSERT INTO historial_decretos (id_historial_decretos, fk_proceso, cod_folio, fk_origen)
 VALUES
-    (6, 1),
-    (7, 2),
-    (8, 3),
-    (9, 4);
+    ('123123', 1, '123132', 1),
+    ('321321', 1, '789987', 1);
+
+-- Acta embargo
+INSERT INTO acta_embargo (fkp_id_acta, fk_id_usuario, fecha_registro)
+VALUES
+    ('123123', 1, '2024-06-06 14:30:00'),
+    ('321321', 2, '2024-05-04 12:00:00');
+
+-- Datos decreto
+INSERT INTO datos_decretos (fkp_id_datos_decreto, fk_ley, fk_embargo, datos_decretos)
+VALUES
+    ('123123', 1, 4, JSON_OBJECT('Demandado', 'Juan perez', 'Marca', 'Mazda', 'Placas', 'ABC-123')),
+    ('321321', 1, 2, JSON_OBJECT('Demandado', 'Pepito Pelaez', 'Valor', '1.000.000'));
+    

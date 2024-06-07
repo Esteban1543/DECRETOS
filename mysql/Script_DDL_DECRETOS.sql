@@ -51,7 +51,9 @@ create table
 create table
     ley (
         id_ley int not null auto_increment,
-        ley mediumtext not null,
+        ley varchar(30) not null,
+        descipcion text,
+
 
         PRIMARY KEY (id_ley)
     );
@@ -60,7 +62,7 @@ create table
     tipo_embargo (
         id_tipo_embargo int not null auto_increment,
         tipo varchar(30) not null,
-        descrpcion text,
+        descripcion text,
 
         primary key (id_tipo_embargo)
     );
@@ -83,7 +85,7 @@ create table
 
 create table
     historial_decretos (
-        id_historial_decretos int not null, -- Radicado
+        id_historial_decretos varchar(50) not null, -- Radicado
         fk_proceso int not null,
         cod_folio varchar(30), 
         fk_origen int not null,
@@ -96,7 +98,7 @@ create table
 
 create table
     acta_embargo (
-        fkp_id_acta int not null auto_increment,
+        fkp_id_acta  varchar(50) not null,
         fk_id_usuario int not null,
         fecha_registro datetime, 
 
@@ -107,7 +109,7 @@ create table
 
 create table
     datos_decretos (
-        fkp_id_datos_decreto int not null auto_increment,
+        fkp_id_datos_decreto  varchar(50) not null,
         fk_ley int not null,
         fk_embargo int not null,
         datos_decretos JSON not null,
