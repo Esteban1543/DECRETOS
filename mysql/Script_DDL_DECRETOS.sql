@@ -84,28 +84,31 @@ create table
     );
 
 create table
+    acta_embargo (
+        id_acta  varchar(50) not null, -- Radicado
+        fk_id_usuario int not null,
+        fecha_registro datetime, 
+
+        primary key (id_acta),
+        foreign key (fk_id_usuario) references usuarios (pfk_usuario)
+    );
+
+create table
     historial_decretos (
-        id_historial_decretos varchar(50) not null, -- Radicado
+        fkp_historial_decretos varchar(50) not null, -- Radicado
         fk_proceso int not null,
+        demandante varchar(50) not null,
+        demandado varchar(50) not null,
         cod_folio varchar(30), 
         fk_origen int not null,
 
         
-        primary key (id_historial_decretos),
+        primary key (fkp_historial_decretos),
+        foreign key (fkp_historial_decretos) references acta_embargo(id_acta),
         foreign key (fk_origen) references origen (id_origen),
         foreign key (fk_proceso) references proceso(id_proceso)
     );
 
-create table
-    acta_embargo (
-        fkp_id_acta  varchar(50) not null,
-        fk_id_usuario int not null,
-        fecha_registro datetime, 
-
-        primary key (fkp_id_acta),
-        foreign key (fkp_id_acta) references historial_decretos(id_historial_decretos),
-        foreign key (fk_id_usuario) references usuarios (pfk_usuario)
-    );
 
 create table
     datos_decretos (
@@ -115,7 +118,7 @@ create table
         datos_decretos JSON not null,
 
         primary key (fkp_id_datos_decreto),
-        foreign key (fkp_id_datos_decreto) references acta_embargo(fkp_id_acta),
+        foreign key (fkp_id_datos_decreto) references acta_embargo(id_acta),
         foreign key (fk_ley) references ley (id_ley),
         foreign key (fk_embargo) references tipo_embargo (id_tipo_embargo)
     );

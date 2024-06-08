@@ -71,21 +71,20 @@ INSERT INTO proceso (proceso)
 VALUES
     ('EJECUTIVO SINGULAR DE MÍNIMA CUANTÍA');
 
--- Historial decretos
-INSERT INTO historial_decretos (id_historial_decretos, fk_proceso, cod_folio, fk_origen)
-VALUES
-    ('123123', 1, '123132', 1),
-    ('321321', 1, '789987', 1);
-
 -- Acta embargo
-INSERT INTO acta_embargo (fkp_id_acta, fk_id_usuario, fecha_registro)
+INSERT INTO acta_embargo (id_acta, fk_id_usuario, fecha_registro)
 VALUES
     ('123123', 1, '2024-06-06 14:30:00'),
     ('321321', 2, '2024-05-04 12:00:00');
+    
+-- Historial decretos
+INSERT INTO historial_decretos (fkp_historial_decretos, fk_proceso, demandante, demandado, cod_folio, fk_origen)
+VALUES
+    ('123123', 1, 'Nutresa S.A.S.', 'Miguel Angel Bonilla Pelaez', '123132', 1),
+    ('321321', 1, '789987', 'Anguie Catalina Romero Pinton', 'Nestle S.A.S', 1);
 
 -- Datos decreto
 INSERT INTO datos_decretos (fkp_id_datos_decreto, fk_ley, fk_embargo, datos_decretos)
 VALUES
     ('123123', 1, 4, JSON_OBJECT('Demandado', 'Juan perez', 'Marca', 'Mazda', 'Placas', 'ABC-123')),
     ('321321', 1, 2, JSON_OBJECT('Demandado', 'Pepito Pelaez', 'Valor', '1.000.000'));
-    
