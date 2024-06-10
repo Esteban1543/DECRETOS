@@ -87,7 +87,7 @@ const Autentificiacion = (req, res) => {
                 });
               }
   
-              res.json({
+              return res.json({
                 status: true,
                 message: "✅ Se verifico correctamente",
                 data: {
@@ -100,7 +100,7 @@ const Autentificiacion = (req, res) => {
         }
       );
     } else
-      res.json({
+      return res.json({
         status: false,
         error: `⛔ Los datos no son validos`,
       });
