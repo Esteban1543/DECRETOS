@@ -118,12 +118,15 @@ router.post('/CrearProducto', CrearProducto)
 
 const { 
     CrearFacturaPdf, 
-    EnviarFacturaGmail 
+    EnviarFacturaGmail,
+    GenerarPDF
     } = require('../controllers/Digital.js');
 
 router.get('/CrearFacturaPdf/:numFactura', CrearFacturaPdf)
 
 router.post('/EnviarFacturaGmail', EnviarFacturaGmail)
+
+router.get('/PDFload', GenerarPDF)
 
 
 
