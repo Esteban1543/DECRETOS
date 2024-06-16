@@ -1,6 +1,7 @@
 const conexion = require("../conection/conexion.js");
 const path = require("path");
 const contruirPDF = require("../assets/libs/pdfkit.js");
+const contruirWORD = require("../assets/libs/pdfkit_2.js")
 const { transporter } = require("../assets/mail/mail.js");
 const { closePath } = require("pdfkit");
 // const { client } = require('../assets/mail/whatsapp.js')
@@ -166,7 +167,20 @@ const EnviarFacturaGmail = async (req, res) => {
 	);
 }
 
+const GenerarPDF = (req, res) => {
+  res.writeHead(200, {
+    "Content-Type": "application/pdf",
+    "Content-Disposition": "inline; filename=prueba.pdf"  // 'inline' to show in the browser
+  });
+
+  contruirWORD(
+    (data) => res.write(data),
+    () => res.end()
+  );
+};
+
 module.exports = {
     CrearFacturaPdf,
-    EnviarFacturaGmail
+    EnviarFacturaGmail,
+	GenerarPDF
 }
