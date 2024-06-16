@@ -1,0 +1,258 @@
+.section_facturacion_container {
+  display: grid;
+  grid-template-rows: 8% auto;
+  align-items: center;
+  padding: .5% 1%;
+  height: 100%;
+  width: 100%;
+  gap: 1.5%;
+}
+
+.header_facturacion_container {
+  border-bottom: 1px solid #ccc;
+  padding: .5%;
+  max-height: 100%;
+
+  & h2 {
+    margin-top: 0;
+  }
+}
+
+.header_facturacion_container h2 {
+  color: var(--color-azul-deep1);
+  font-weight: lighter;
+  font-size: 1.4rem;
+}
+
+.footer_redaccion_container {
+  height: 100%;
+  display: flex;
+  align-items: end;
+  justify-content: end;
+  gap: 2%;
+  border-top: 1px solid #ccc;
+  padding-inline: 0.5%;
+}
+
+/* 
+  Estilos Datos Encabezado Acta 📌
+*/
+
+.section_inputs_encabezados {
+  display: grid;
+  grid-template-columns: 45% auto;
+  height: 90%;
+  gap: 10%;
+  align-items: center;
+  width: 95%;
+  margin: auto;
+  padding: 3% 4%;
+  background: white;
+  border-radius: .8rem;
+}
+
+.form_section_datosEncabezado {
+  height: 100%;
+  display: grid;
+  grid-template-rows: 87% 11%;
+  align-items: center;
+  gap: 2%;
+  padding-inline: 1%;
+  /* outline: 1px solid salmon; */
+}
+
+/* 
+  Estilos añadir Decretos 📌 
+*/
+.container_añadir_decretos {
+  /* outline: 1px solid salmon; */
+  height: 100%;
+  display: grid;
+  grid-template-rows: 87% 11%;
+  align-items: center;
+  gap: 2%;
+  overflow: hidden;
+  padding-inline: 1%;
+}
+
+.article_decretos {
+  display: grid;
+  grid-template-columns: 30% auto;
+  gap: 1%;
+  height: 100%;
+
+  & section {
+    background-color: #ffffff;
+    border-radius: .5rem;
+  }
+}
+
+.container_select_decretos {
+  /* outline: 1px solid; */
+  overflow: scroll;
+  /* scrollbar-width: none; */
+  background-color: #ffffff;
+  border-radius: .5rem;
+  padding: 6%;
+  display: flex;
+  flex-direction: column;
+  gap: 3%;
+}
+
+.container_show_decreto {
+  border-radius: .5rem;
+  outline: 1px solid var(--color-azul-deep1);
+  min-height: 100px;
+  height: 25%;
+  padding-inline: 2%;
+  display: grid;
+  grid-template-columns: 30% 50% 20%;
+  align-items: center;
+  justify-items: center;
+  text-align: center;
+}
+
+.section_botones_decretos {
+  display: flex;
+  flex-direction: column;
+  /* outline: 1px solid; */
+  border-radius: .3rem;
+  background: #cccccc6b;
+  width: 55%;
+  height: 55%;
+
+  & button {
+    border: none;
+    cursor: pointer;
+    height: 50%;
+    background: transparent;
+  }
+
+  & button:first-child {
+    border-bottom: 1px solid darkblue;
+  }
+
+  & button:active {
+    background: #ccc;
+  }
+}
+
+.container_decretos_editar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3%;
+  /* justify-content: center; */
+  overflow: scroll;
+  /* scrollbar-width: none; */
+  padding: 3% 2%;
+}
+
+.container_decreto_inputs {
+  outline: 1px solid var(--color-azul-deep1);
+  border-radius: .8rem;
+  padding: 2%;
+  text-align: justify;
+}
+
+.titulo_card_decreto {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: .5%;
+}
+
+.input_decreto {
+  border: none;
+  background-color: transparent;
+  border-bottom: 2px solid var(--color-azul-deep1);
+  font-weight: 501;
+  max-width: fit-content;
+  min-width: 160px;
+  width: auto;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.input_decreto:focus-visible {
+  outline: none;
+  border-color: #74da9a;
+}
+
+/* .input_decreto::-webkit-inner-spin-button,
+.input_decreto::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  -moz-appearance: none;
+  margin: 0;
+} */
+
+
+/* 
+  Estilos previsualizacion de factura 📌 
+*/
+.container_factura_pdf {
+  display: grid;
+  grid-template-columns: 70% auto;
+  height: 100%;
+}
+
+.container_prev_pdf {
+  outline: 1px solid cornflowerblue;
+  overflow-y: auto;
+}
+
+.aside_acciones_pdf {
+  display: grid;
+  grid-template-rows: repeat(2, 1fr) 80px 60px;
+  justify-items: center;
+  align-items: end;
+  text-align: center;
+  padding-inline: 1%;
+  /* padding-block: .5rem; */
+}
+
+.aside_acciones_pdf section:first-child h4 {
+  margin-block: .6rem;
+}
+
+.section_imprimir {
+  width: 90%;
+  border-bottom: 1px solid #ccc;
+  align-self: end;
+}
+
+.print_button,
+.word_button {
+  background: transparent;
+  border: none;
+  border-radius: .5rem;
+  padding: .8rem;
+  cursor: pointer;
+}
+
+.print_button {
+  outline: 1px solid #74da9a;
+  background-color: #cccccc62;
+  cursor: not-allowed;
+}
+
+.print_button:active {
+  box-shadow: 0 0 4px #74da9a;
+}
+
+.word_button {
+  outline: 1px solid #4881ea;
+}
+
+.word_button:active {
+  box-shadow: 0 0 4px #4881ea;
+}
+
+.word_button:hover {
+  background-color: #4881ea25;
+}
+
+.section_descargar_word h4 {
+  margin-block: .6rem;
+}

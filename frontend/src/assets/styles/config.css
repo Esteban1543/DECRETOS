@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap');
+
+*{
+    box-sizing: border-box;
+    /* font-size: 100%; */
+}
+
+p, span{
+    text-wrap: balance;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 1% 0;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    /* font-family: "Poppins", sans-serif; */
+    font-family: sans-serif;
+}
+
+:root {
+    /* Gama Blancos Azulados 📌 */
+    --color1-cards: #e9eef6;
+    --color2-cards: #EFF3F8;
+
+
+    --color-barras-light: #5683da47;
+    --color-barras-deep: #5683DA;
+
+    --color-azul-light1: #8AB7D7;
+    
+    --color-azul-deep1: #1176D3;
+    --color-azul-deep2: #124272;
+
+    --color-gris-light1: #696969;
+    --color-gris-light2: #808080;
+}
+
+/* Media Queries para ajustar REM al ancho de pantalla 📌*/
+@media (max-width: 600px) {
+    html {
+        font-size: 14px;
+    }
+}
+
+@media (min-width: 601px) and (max-width: 1200px) {
+    html {
+        font-size: 15px;
+    }
+}
+
+@media (min-width: 1201px) {
+    html {
+        font-size: 16px;
+    }
+}

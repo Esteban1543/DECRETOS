@@ -1,0 +1,38 @@
+.header_section_2 {
+  /* background: aquamarine; */
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: .7rem;
+  color: var(--color-gris-light1);
+}
+
+.button_logout {
+  background: #FEC2C2;
+  width: 45px;
+  height: 45px;
+  border-radius: .5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+}
+
+.button_logout:hover {
+  background-color: #ea0707;
+
+  & img {
+      filter: grayscale(100%) invert(100%) brightness(200%);
+  }
+}
+
+.button_logout:active {
+  outline: 1px solid #fe6060;
+  padding: 5%;
+}
+
+.button_logout img {
+  max-width: 60%;
+  max-height: 60%;
+}
