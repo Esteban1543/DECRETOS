@@ -12,7 +12,7 @@ export const decretosDatos = [
     {
         "id_tipo_embargo": 3,
         "tipo": "Salario",
-        "descripcion": "PRIMERO: DECRETAR EL EMBARGO Y RETENCIÓN, hasta del °% del salario, y prestaciones sociales de los demandados °##, de conformidad con lo dispuesto por el artículo 156 y 344 del Código Sustantivo del Trabajo, y que le corresponde en calidad de empleado de °. Se limita la medida en la cantidad de $° de pesos."
+        "descripcion": "DECRETAR EL EMBARGO Y RETENCIÓN, hasta del °% del salario, y prestaciones sociales de los demandados °##, de conformidad con lo dispuesto por el artículo 156 y 344 del Código Sustantivo del Trabajo, y que le corresponde en calidad de empleado de °. Se limita la medida en la cantidad de $° de pesos."
     },
     {
         "id_tipo_embargo": 4,
@@ -22,7 +22,7 @@ export const decretosDatos = [
     {
         "id_tipo_embargo": 5,
         "tipo": "Fondo de Pensiones",
-        "descripcion": "DECRETAR EL EMBARGO Y RETENCIÓN, hasta del 40% de la pensión del demandado °##, como pensionado del Fondo de Pensiones °, de conformidad con lo dispuesto por el artículo 134 de la Ley 100 de 1993, y que le corresponde en calidad pensionada. Se limita la medida en la cantidad de ° de pesos. OFICIAR al tesorero y/o pagador del FOPEP, para que del salario devengado por ##, retenga la proporción del dinero antes determinada y constituya certificado de depósito a órdenes del Juzgado, previniéndole que de lo contrario responderá por dichos valores."
+        "descripcion": "DECRETAR EL EMBARGO Y RETENCIÓN, hasta del 40% de la pensión del demandado °##, como pensionado del Fondo de Pensiones °, de conformidad con lo dispuesto por el artículo 134 de la Ley 100 de 1993, y que le corresponde en calidad pensionada. Se limita la medida en la cantidad de ° de pesos."
     },
     {
         "id_tipo_embargo": 6,
