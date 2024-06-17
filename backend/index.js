@@ -9,10 +9,9 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended:false }))
 app.use(bodyParser.json())
 
-const router = require('./routes/router.js')
+const AutenticacionRouter = require('./routes/AutenticacionRouter')
 
-app.use('/', router)
-
+app.use('/', AutenticacionRouter)
 
 app.use(express.static(__dirname + '/assets'));
 
