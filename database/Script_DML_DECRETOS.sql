@@ -1,4 +1,4 @@
--- Tipo Persona
+	-- Tipo Persona
 INSERT INTO
     tipo_persona (tipo_persona)
 VALUES

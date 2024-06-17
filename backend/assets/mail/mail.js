@@ -16,4 +16,8 @@ transporter.verify()
     console.error('🔴 Error al conectar con el correo:', error);
   });
 
+transporter.on('error', (error) => {
+  console.error('🔴 Error en el transporter:', error);
+});
+
 module.exports = { transporter };
