@@ -26,7 +26,10 @@ const AñadirDecretos = ({ nombre_decreto, click_agregar, click_eliminar }: Aña
   }
 
   return (
-    <article className='container_show_decreto'>
+    <article
+      className='container_show_decreto'
+    >
+
       <img
         src={handleImageSource()}
         alt="Icon"

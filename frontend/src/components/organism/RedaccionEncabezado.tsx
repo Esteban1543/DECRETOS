@@ -1,8 +1,9 @@
-import '../../assets/styles/RedaccionEncabezado.css'
+
 import React, { useEffect, useState } from 'react';
 import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
 import Button from '@mui/material/Button';
+import { Tooltip } from '@mui/material';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { DatosEncabezadoType } from '../../helpers/Types.js';
 import { origenes, procesos } from '../../helpers/constantes.js';
@@ -58,7 +59,7 @@ export default function RedaccionEncabezado({ handlePage, datosEncabezado, setDa
 
     const formulario_lleno = validarCamposLlenos();
     formulario_lleno ? setactivarBoton(true) : setactivarBoton(false);
-  }, [datosEncabezado])
+  }, [datosEncabezado]);
 
 
   return (
@@ -151,7 +152,7 @@ export default function RedaccionEncabezado({ handlePage, datosEncabezado, setDa
             // style={{ background: 'white' }}
             onChange={handleChange}
             value={datosEncabezado.cod_folio}
-            helperText="Ingrese el código alfanumerico"
+            helperText="Ingrese el código alfanumérico"
           />
 
         </article>
@@ -165,12 +166,18 @@ export default function RedaccionEncabezado({ handlePage, datosEncabezado, setDa
             onClick={() => handlePage(1)}
           >Cancelar</Button>
 
-          <Button
-            variant="contained"
-            size='large'
-            onClick={() => handlePage(2)}
-            disabled={!activarBoton}
-          >Continuar</Button>
+          <Tooltip
+            title={!activarBoton && "Diligencia todos los campos"}
+            placement="top"
+          >
+            <Button
+              variant="contained"
+              size='large'
+              onClick={activarBoton ? () => handlePage(2) : undefined}
+            // disabled={!activarBoton}
+            >Continuar</Button>
+          </Tooltip>
+
         </footer>
 
       </section>

@@ -1,7 +1,7 @@
 import PDF from "./PDF.tsx";
 import { PDFDownloadLink, PDFViewer } from "@react-pdf/renderer";
 
-function PDF1() {
+function PDFView() {
   return (
     <div>
       <PDFDownloadLink document={<PDF />} fileName="myfirstpdf.pdf">
@@ -21,4 +21,4 @@ function PDF1() {
   );
 }
 
-export default PDF1;
+export default PDFView;

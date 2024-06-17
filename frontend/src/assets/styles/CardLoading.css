@@ -10,10 +10,14 @@
 }
 
 .card__skeleton {
-  background-image: linear-gradient(90deg,
+  /* background-image: linear-gradient(90deg,
       #ccc 0px,
       rgb(229 229 229 / 90%) 40px,
-      #ccc 80px);
+      #ccc 80px); */
+  background-image: linear-gradient(90deg,
+      #84b2cc2e 0px,
+      rgba(141, 172, 205, 0.33) 40px,
+      #84b2cc2e 80px);
   background-size: 300%;
   background-position: 100% 0;
   border-radius: inherit;

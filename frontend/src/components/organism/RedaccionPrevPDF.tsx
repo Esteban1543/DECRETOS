@@ -2,9 +2,8 @@
 import HeaderRedaccion from "../atoms/HeaderRedaccion";
 import Button from '@mui/material/Button';
 import { DatosEncabezadoType, DecretoType } from "../../helpers/Types";
-// import Docx from "./Docx";
-// import PDF1 from "./PDF1";
 import WordTemplate from "./WordTemplate";
+import PrevisualizacionActa from "./PrevisualizacionActa";
 
 interface RedaccionPrevPDFProps {
   handlePage: (page: number) => void,
@@ -14,8 +13,6 @@ interface RedaccionPrevPDFProps {
 
 export default function RedaccionPrevPDF({ handlePage, datosEncabezado, decretosAnexados }: RedaccionPrevPDFProps) {
 
-  // console.log(datosEncabezado, decretosAnexados)
-
   return (
     <>
       <HeaderRedaccion titulo='Confirmar Acta' />
@@ -23,12 +20,13 @@ export default function RedaccionPrevPDF({ handlePage, datosEncabezado, decretos
       <section className='container_factura_pdf'>
 
         <article className='container_prev_pdf'>
-          <section style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'white' }}>
-            <h3>Pendiente...</h3>
-
-            {/* <Docx/> */}
-            {/* <PDF1/> */}
-          </section>
+          {/* <section style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'white' }}>
+            <h3>Pendiente...</h3>            
+          </section> */}
+          <PrevisualizacionActa
+            datosEncabezado={datosEncabezado}
+            decretosAnexados={decretosAnexados}
+          />
         </article>
 
         <aside className='aside_acciones_pdf'>
@@ -56,13 +54,13 @@ export default function RedaccionPrevPDF({ handlePage, datosEncabezado, decretos
           </section>
 
           <footer className='footer_redaccion_container'
-            style={{width: '92%'}}
+            style={{ width: '92%' }}
           >
             <Button
               variant="outlined"
               size='large'
               onClick={() => handlePage(2)}
-              style={{marginRight: '4.9%'}}
+              style={{ marginRight: '4.9%' }}
             >Volver</Button>
 
             <Button

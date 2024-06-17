@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import HeaderRedaccion from "../atoms/HeaderRedaccion";
 import AñadirDecretos from "../atoms/AñadirDecretos";
 import DecretosInputs from "../atoms/DecretosInputs";
 import Button from '@mui/material/Button';
+import { Tooltip } from "@mui/material";
 import CardLoading from "../atoms/CardLoading";
 import { DecretoType, InputDataDecretoType } from "../../helpers/Types";
 
@@ -17,6 +18,14 @@ interface RedaccionDecretosProps {
 
 export default function RedaccionDecretos({ nombre_demandado, handlePage, decretosAnexados, setDecretosAnexados, fn_submit }: RedaccionDecretosProps) {
 
+  //🔸 Manejo de Boton para seguir
+  const [activarBoton, setactivarBoton] = useState(false);
+  //🔸 Activar boton si hay decretos 
+  useEffect(() => {
+    decretosAnexados && decretosAnexados.length > 0 ? setactivarBoton(true) : setactivarBoton(false);
+  }, [decretosAnexados])
+
+
   //🔸 Función para anexar los Decretos al Acta
   const handleAgregarDecretos = (decreto: DecretoType, tipo_accion: string) => {
 
@@ -25,7 +34,6 @@ export default function RedaccionDecretos({ nombre_demandado, handlePage, decret
 
     // 🔸 Remover Decreto (Pendiente)
     let buscarCoincidencias = true;
-
     const decreto_remover = decretosAnexados.reverse().filter(decretoSelec => {
       if (decretoSelec.id_tipo_embargo === decreto.id_tipo_embargo && buscarCoincidencias) {
         buscarCoincidencias = false;
@@ -33,9 +41,9 @@ export default function RedaccionDecretos({ nombre_demandado, handlePage, decret
       }
       return true;
     });
+
     setDecretosAnexados(decreto_remover.reverse());
 
-    // setDecretosAnexados([...decretosAnexados, decreto]);
   };
 
   //🔸 Función para añadir los datps de los Inputs a cada Decreto Anexado 
@@ -56,12 +64,6 @@ export default function RedaccionDecretos({ nombre_demandado, handlePage, decret
     );
   };
 
-
-
-  const handleDatosDecretos = () => {
-    handlePage(3);
-    fn_submit()
-  }
 
   return (
     <>
@@ -116,11 +118,16 @@ export default function RedaccionDecretos({ nombre_demandado, handlePage, decret
             onClick={() => handlePage(1)}
           >Volver</Button>
 
-          <Button
-            variant="contained"
-            size='large'
-            onClick={handleDatosDecretos}
-          >Continuar</Button>
+          <Tooltip
+            title={!activarBoton && "Agrega algún decreto"}
+            placement="top"
+          >
+            <Button
+              variant="contained"
+              size='large'
+              onClick={activarBoton ? () => handlePage(3) : undefined}
+            >Continuar</Button>
+          </Tooltip>
         </footer>
 
       </section>

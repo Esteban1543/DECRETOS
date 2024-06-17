@@ -16,7 +16,7 @@ interface WordTemplateProps {
 
 const WordTemplate: React.FC<WordTemplateProps> = ({ datosEncabezado, decretosAnexados }) => {
 
-  console.log(datosEncabezado, decretosAnexados)
+  // console.log(datosEncabezado, decretosAnexados)
 
   // const setearDescripcionDecreto = (desc: string, dataInputs: InputDataDecretoType) => {
   const setearDescripcionDecreto = (desc: string, dataInputs: object) => {
@@ -46,8 +46,6 @@ const WordTemplate: React.FC<WordTemplateProps> = ({ datosEncabezado, decretosAn
         }),
 
         new TextRun(descripcion_con_datos.slice(33,)),
-
-
       ],
       spacing: {
         line: 1.5 * 12 * 20,
@@ -118,14 +116,10 @@ const WordTemplate: React.FC<WordTemplateProps> = ({ datosEncabezado, decretosAn
         {
           properties: {},
           children: [
-
             // Título Principal 📌
             new Paragraph({
+              text: "República de Colombia",
               children: [
-                new TextRun({
-                  text: "República de Colombia",
-                  break: 1
-                }),
                 new TextRun({
                   text: "Rama Judicial del Poder Público",
                   break: 1
@@ -161,7 +155,7 @@ const WordTemplate: React.FC<WordTemplateProps> = ({ datosEncabezado, decretosAn
 
             // Ciudad y Fecha 📌
             new Paragraph({
-              text: "Bogotá D.C., dieciseis (16) de junio de dos mil veinticuatro (2024).",
+              text: "Bogotá D.C., dieciséis (16) de junio de dos mil veinticuatro (2024).",
               heading: HeadingLevel.HEADING_1,
               alignment: AlignmentType.CENTER,
             }),
@@ -170,45 +164,28 @@ const WordTemplate: React.FC<WordTemplateProps> = ({ datosEncabezado, decretosAn
             new Paragraph({
               children: [
                 new TextRun({
-                  text: "Origen: \n\n",
+                  text: `Origen: \t\t ${datosEncabezado.origen}`,
                   break: 1
-                }),
-                new TextRun({
-                  text: `${datosEncabezado.origen} `,
-
-                  // break: 1
                 }),
 
                 new TextRun({
-                  text: "Radicación: \n\n",
+                  text: `Radicación: \t ${datosEncabezado.radicado}`,
                   break: 1
-                }),
-                new TextRun({
-                  text: `${datosEncabezado.radicado}`,
                 }),
 
                 new TextRun({
-                  text: "Demandante: \n\n",
+                  text: `Demandante: \t ${datosEncabezado.demandante}`,
                   break: 1
-                }),
-                new TextRun({
-                  text: `${datosEncabezado.demandante}`,
                 }),
 
                 new TextRun({
-                  text: "Demandado: \n\n",
+                  text: `Demandado: \t ${datosEncabezado.demandado}`,
                   break: 1
-                }),
-                new TextRun({
-                  text: `${datosEncabezado.demandado}`,
                 }),
 
                 new TextRun({
-                  text: "Proceso: \n\n",
+                  text: `Proceso: \t\t ${datosEncabezado.proceso}`,
                   break: 1
-                }),
-                new TextRun({
-                  text: `${datosEncabezado.proceso}`,
                 }),
               ],
 
@@ -220,7 +197,6 @@ const WordTemplate: React.FC<WordTemplateProps> = ({ datosEncabezado, decretosAn
               }
 
             }),
-
 
             //Texto Inicial 📌
             new Paragraph({
@@ -238,6 +214,10 @@ const WordTemplate: React.FC<WordTemplateProps> = ({ datosEncabezado, decretosAn
                   break: 1,
                   bold: true,
                 }),
+                new TextRun({
+                  text: " ",
+                  break: 1
+                }),
               ],
               alignment: AlignmentType.CENTER,
               spacing: {
@@ -252,7 +232,7 @@ const WordTemplate: React.FC<WordTemplateProps> = ({ datosEncabezado, decretosAn
             new Paragraph({
               children: [
                 new TextRun({
-                  text: "NOTIFÍQUESE",
+                  text: "-NOTIFÍQUESE-",
                   break: 1
                 }),
                 new TextRun({
