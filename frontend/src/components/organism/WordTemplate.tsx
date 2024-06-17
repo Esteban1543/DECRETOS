@@ -237,6 +237,14 @@ const WordTemplate: React.FC<WordTemplateProps> = ({ datosEncabezado, decretosAn
                   break: 1
                 }),
                 new TextRun({
+                  text: "",
+                  break: 1
+                }),
+                new TextRun({
+                  text: "________________________________",
+                  break: 1
+                }),
+                new TextRun({
                   text: "MANUELA GÓMEZ ÁNGEL RANGEL",
                   break: 1
                 }),
@@ -246,7 +254,10 @@ const WordTemplate: React.FC<WordTemplateProps> = ({ datosEncabezado, decretosAn
                 }),
               ],
               alignment: AlignmentType.CENTER,
-              heading: HeadingLevel.HEADING_1
+              heading: HeadingLevel.HEADING_1,
+              spacing: {
+                line: 1.5 * 12 * 20,
+              }
             }),
 
 
