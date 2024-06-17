@@ -16,7 +16,7 @@ interface RedaccionDecretosProps {
   setDecretosAnexados: React.Dispatch<React.SetStateAction<DecretoType[]>>,
 }
 
-export default function RedaccionDecretos({ nombre_demandado, handlePage, decretosAnexados, setDecretosAnexados, fn_submit }: RedaccionDecretosProps) {
+export default function RedaccionDecretos({ nombre_demandado, handlePage, decretosAnexados, setDecretosAnexados }: RedaccionDecretosProps) {
 
   //🔸 Manejo de Boton para seguir
   const [activarBoton, setactivarBoton] = useState(false);

@@ -26,7 +26,8 @@ export default function RedaccionEncabezado({ handlePage, datosEncabezado, setDa
 
     setDatosEncabezado((prevData) => ({
       ...prevData,
-      [name]: value,
+      // [name]: value ,
+      [name]: value.toString().toUpperCase(),
     }));
 
 

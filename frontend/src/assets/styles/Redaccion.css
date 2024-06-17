@@ -267,11 +267,11 @@
   outline: 1px solid #4881ea;
 }
 
-.word_button:active {
+.word_button_active:active {
   box-shadow: 0 0 4px #4881ea;
 }
 
-.word_button:hover {
+.word_button_active:hover {
   background-color: #4881ea25;
 }
 
@@ -279,6 +279,15 @@
   margin-block: .6rem;
 }
 
+.section_warning {
+  color: red;
+  font-size: .8rem;
+  padding: 2% 5%;
+  text-align: justify;
+  /* outline: 1px solid; */
+  /* width: 85%; */
+  margin-inline: auto;
+}
 /*
   Documento de previsualizacion📌
 */
@@ -289,7 +298,7 @@
 }
 
 .p_decretos {
-  width: 90%;
+  width: 95%;
   margin-inline: auto;
   margin-block: 5%;
   text-align: justify;

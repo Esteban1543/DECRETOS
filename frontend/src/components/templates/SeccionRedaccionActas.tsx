@@ -21,22 +21,22 @@ export default function SeccionRedaccionActas({ id_digitador }: SeccionRedaccion
   const handlePage = (page: number) => setPagina(page);
 
   //🔸 Estado para Datos de Encabezado (formulario)
-  const estado_inicial = {
-    origen: 'Juzgado Sexto de Pequeñas Causas Civiles y Competencia Múltiple de Bogotá DC',
-    radicado: '123131321',
-    demandante: 'NOMBRE DEMANDANTE',
-    demandado: 'NOMBRE DEMANDADO',
-    proceso: 'EJECUTIVO SINGULAR DE MÍNIMA CUANTÍA',
-    cod_folio: '123131'
-  }
   // const estado_inicial = {
-  //   origen: '',
-  //   radicado: '',
-  //   demandante: '',
-  //   demandado: '',
-  //   proceso: '',
-  //   cod_folio: ''
+  //   origen: 'Juzgado Sexto de Pequeñas Causas Civiles y Competencia Múltiple de Bogotá DC',
+  //   radicado: '123131321',
+  //   demandante: 'NOMBRE DEMANDANTE',
+  //   demandado: 'NOMBRE DEMANDADO',
+  //   proceso: 'EJECUTIVO SINGULAR DE MÍNIMA CUANTÍA',
+  //   cod_folio: '123131'
   // }
+  const estado_inicial = {
+    origen: '',
+    radicado: '',
+    demandante: '',
+    demandado: '',
+    proceso: '',
+    cod_folio: ''
+  }
   const [datosEncabezado, setDatosEncabezado] = useState(estado_inicial);
 
   //🔸 Estado para almacenar los decretos que se anexan
@@ -49,9 +49,9 @@ export default function SeccionRedaccionActas({ id_digitador }: SeccionRedaccion
   //   console.log('decretosAnexados ', decretosAnexados)
   // }, [datosEncabezado, id_digitador, decretosAnexados]);
 
-  const handleSubmit = () => {
-    console.log({ id_digitador, datosEncabezado, decretosAnexados });
-  }
+  // const handleSubmit = () => {
+  //   console.log({ id_digitador, datosEncabezado, decretosAnexados });
+  // }
 
   return (
     <article className="container_facturacion">
@@ -77,13 +77,13 @@ export default function SeccionRedaccionActas({ id_digitador }: SeccionRedaccion
                   handlePage={handlePage}
                   decretosAnexados={decretosAnexados}
                   setDecretosAnexados={setDecretosAnexados}
-                  fn_submit={handleSubmit}
                 />
                 : pagina === 3 &&
                 <RedaccionPrevPDF
                   handlePage={handlePage}
                   datosEncabezado={datosEncabezado}
                   decretosAnexados={decretosAnexados}
+                  // fn_submit={handleSubmit}
                 />
           }
 

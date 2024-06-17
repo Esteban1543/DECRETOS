@@ -4,6 +4,7 @@ import Button from '@mui/material/Button';
 import { DatosEncabezadoType, DecretoType } from "../../helpers/Types";
 import WordTemplate from "./WordTemplate";
 import PrevisualizacionActa from "./PrevisualizacionActa";
+import { useState } from "react";
 
 interface RedaccionPrevPDFProps {
   handlePage: (page: number) => void,
@@ -12,6 +13,15 @@ interface RedaccionPrevPDFProps {
 }
 
 export default function RedaccionPrevPDF({ handlePage, datosEncabezado, decretosAnexados }: RedaccionPrevPDFProps) {
+
+  const [salir, setSalir] = useState(false);
+
+  const handleSubmitData = () => {
+    setSalir(true)
+    setTimeout(() => {
+      // handlePage(1)
+    }, 1000);
+  }
 
   return (
     <>
@@ -36,21 +46,24 @@ export default function RedaccionPrevPDF({ handlePage, datosEncabezado, decretos
               <img src="/icons/icon-print.png" alt="Imprimir" height={'55px'} width={'61px'} />
             </button>
 
-            <h4>Imprimir</h4>
+            <h4>❌Imprimir</h4>
           </section>
 
           <section className="section_descargar_word">
             <WordTemplate
               datosEncabezado={datosEncabezado}
               decretosAnexados={decretosAnexados}
+              activarBoton={salir}
             />
 
             <h4>Descargar Word</h4>
 
           </section>
 
-          <section className='section_otro_correo'>
-
+          <section className='section_warning'>
+            <span>
+              <b>Aviso:</b> Una vez confirmada la información, no se podrán realizar más modificaciones.
+            </span>
           </section>
 
           <footer className='footer_redaccion_container'
@@ -61,14 +74,28 @@ export default function RedaccionPrevPDF({ handlePage, datosEncabezado, decretos
               size='large'
               onClick={() => handlePage(2)}
               style={{ marginRight: '4.9%' }}
+              disabled={salir}
             >Volver</Button>
 
-            <Button
-              variant="contained"
-              size='large'
-              onClick={() => handlePage(1)}
-              disabled
-            >Confirmar</Button>
+            {
+              !salir
+                ? (
+                  <Button
+                    variant="contained"
+                    size='large'
+                    onClick={handleSubmitData}
+
+                  // disabled
+                  >Confirmar</Button>
+                ) : (
+                  <Button
+                    variant="outlined"
+                    color="warning"
+                    size='large'
+                    onClick={() => window.location.reload()}
+                  >Salir</Button>
+                )
+            }
           </footer>
 
         </aside>

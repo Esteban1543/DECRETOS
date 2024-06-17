@@ -1,4 +1,4 @@
-
+import { Tooltip } from '@mui/material';
 import React from 'react';
 import { saveAs } from 'file-saver';
 import { Document, Packer, Paragraph, TextRun, AlignmentType, HeadingLevel, ImageRun } from 'docx';
@@ -10,11 +10,12 @@ const imageBuffer = await fetchImageAsArrayBuffer('/images/Logo-Republica.png');
 
 interface WordTemplateProps {
   datosEncabezado: DatosEncabezadoType,
-  decretosAnexados: DecretoType[]
+  decretosAnexados: DecretoType[],
+  activarBoton: boolean
 }
 
 
-const WordTemplate: React.FC<WordTemplateProps> = ({ datosEncabezado, decretosAnexados }) => {
+const WordTemplate: React.FC<WordTemplateProps> = ({ datosEncabezado, decretosAnexados, activarBoton }) => {
 
   // console.log(datosEncabezado, decretosAnexados)
 
@@ -267,15 +268,24 @@ const WordTemplate: React.FC<WordTemplateProps> = ({ datosEncabezado, decretosAn
 
 
   return (
-    // <div>
-    //   <button onClick={generateDocument}>Generar Documento</button>
-    // </div>
-    <button
-      className='word_button'
-      onClick={generateDocument}
+    <Tooltip
+      title={!activarBoton && "Para descargar, debe confirma el documento"}
+      placement="top"      
     >
-      <img src="/icons/word.svg" alt="Archivo Word" height={'55px'} width={'61px'} />
-    </button>
+      <button
+        className={activarBoton ? 'word_button word_button_active' : 'word_button'}
+        onClick={generateDocument}
+        disabled={!activarBoton}
+        style={!activarBoton ? { opacity: '.5' } : undefined}
+      >
+        <img
+          src="/icons/word.svg"
+          alt="Archivo Word"
+          height={'55px'}
+          width={'61px'}
+        />
+      </button>
+    </Tooltip>
   );
 };
 
