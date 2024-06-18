@@ -1,6 +1,8 @@
 import React from 'react';
 import { DatosEncabezadoType, DecretoType } from '../../helpers/Types';
-import { numeracionDecretos } from '../../helpers/formatNumeracion';
+import { formatNumeracionDecretos } from '../../helpers/formatNumeracion.ts';
+import { setearDescripcionDecreto } from '../../helpers/funcionesPlantillaWord.ts';
+import { formatFechaActa } from '../../helpers/formatFecha.ts';
 const logoSrc = "/images/Logo-Republica.png";
 
 interface PrevisualizacionActaProps {
@@ -9,27 +11,15 @@ interface PrevisualizacionActaProps {
 }
 
 const PrevisualizacionActa: React.FC<PrevisualizacionActaProps> = ({ datosEncabezado, decretosAnexados }) => {
-  console.log(datosEncabezado, decretosAnexados)
 
-  const setearDescripcionDecreto = (desc: string, dataInputs: object) => {
+  //🔸 Función para devolver los decretos con sus datos anexados
+  const parrafos_decretosAnexados = decretosAnexados.map((decreto) => {
+    if (!decreto.dataInputs) return
 
-    //🔸 Setear el nombre del DEMANDADO en los decretos
-    const desc_demandado = desc.replace("°##", datosEncabezado.demandado || '_____________');
-
-    //🔸 Setear los datos de los inputs en los decretos
-    let result = desc_demandado;
-    Object.values(dataInputs).forEach(value => {
-      result = result.replace('°', value);
-    });
-    return result;
-  }
-
-  const parrafos_decretosAnexados = decretosAnexados.map((decreto, index) => {
-
-    const descripcion_con_datos = setearDescripcionDecreto(decreto.descripcion, decreto?.dataInputs);
+    // const descripcion_con_datos = setearDescripcionDecreto(decreto.descripcion, decreto?.dataInputs);
+    const descripcion_con_datos = setearDescripcionDecreto(decreto.descripcion, decreto?.dataInputs, datosEncabezado.demandado);
     return descripcion_con_datos
   })
-
 
   return (
     <article
@@ -49,12 +39,12 @@ const PrevisualizacionActa: React.FC<PrevisualizacionActaProps> = ({ datosEncabe
 
       {/* Juzgado Emitente 📌 */}
       <section style={{ textAlign: 'center', marginBottom: '2%', width: '80%', marginInline: 'auto' }}>
-        <h4>Juzgado Ochenta y Tres (83) Municipal de Pequeñas Causas y Competencia Múltiple de Bogotá D.C.</h4>
+        <h4>{datosEncabezado.juzgado}</h4>
       </section>
 
       {/* Ciudad y Fecha 📌 */}
       <section style={{ textAlign: 'center', marginBottom: '4%', fontSize: '1.08rem' }}>
-        <h5>Bogotá D.C., dieciséis (16) de junio de dos mil veinticuatro (2024).</h5>
+        <h5>{datosEncabezado.ciudad}, {formatFechaActa()}</h5>
       </section>
 
       {/* Datos Encabezado 📌 */}
@@ -77,9 +67,12 @@ const PrevisualizacionActa: React.FC<PrevisualizacionActaProps> = ({ datosEncabe
       <section>
         {
           parrafos_decretosAnexados.map((m, i) => (
-            <p className='p_decretos'>
-              <b>{numeracionDecretos(i + 1)}: {m.slice(0, 33)}</b>
-              {m.slice(33,)}
+            <p
+              className='p_decretos'
+              key={i + '.decreto'}
+            >
+              <b>{formatNumeracionDecretos(i + 1)}: {m?.slice(0, 33)}</b>
+              {m?.slice(33,)}
             </p>
           ))
         }
@@ -88,7 +81,9 @@ const PrevisualizacionActa: React.FC<PrevisualizacionActaProps> = ({ datosEncabe
       {/* Conclusión 📌 */}
       <footer style={{ textAlign: 'center' }}>
         <h5>-NOTIFÍQUESE-</h5>
-        <h5>MANUELA GÓMEZ ÁNGEL RANGEL</h5>
+        <br /><br />
+        <h5>________________________________</h5>
+        <h5>{datosEncabezado.juez}</h5>
         <h5>Juez</h5>
       </footer>
 

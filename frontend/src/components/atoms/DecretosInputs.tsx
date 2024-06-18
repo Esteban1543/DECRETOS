@@ -2,7 +2,7 @@
 import FormDecreto1_2inputs from './FormDecreto1_2inputs';
 import { InputDataDecretoType } from '../../helpers/Types';
 import FormDecreto3inputs from './FormDecreto3inputs';
-import { numeracionDecretos } from '../../helpers/formatNumeracion';
+import { formatNumeracionDecretos } from '../../helpers/formatNumeracion';
 
 
 interface DecretosInputsProps {
@@ -20,7 +20,7 @@ const DecretosInputs: React.FC<DecretosInputsProps> = ({ nombre_demandado, descr
   // console.log(data_inputs)
 
   //🔸 Setear el nombre del DEMANDADO en los decretos
-  const desc_demandado = descripcion.replace("°##", nombre_demandado || '_____________');
+  const desc_demandado = descripcion.replace("°##", nombre_demandado || '-DATO PENDIENTE-');
 
   //🔸 Subdividir el decreto para añadir inputs
   const secciones_descripcion = desc_demandado.split('°');
@@ -32,7 +32,7 @@ const DecretosInputs: React.FC<DecretosInputsProps> = ({ nombre_demandado, descr
 
       <header className='titulo_card_decreto'>
         <h4>Decreto por {tipo_decreto}</h4>
-        <h4>{numeracionDecretos(positionList + 1)}</h4>
+        <h4>{formatNumeracionDecretos(positionList + 1)}</h4>
       </header>
 
       {
