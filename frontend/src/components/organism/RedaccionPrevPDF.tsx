@@ -30,9 +30,6 @@ export default function RedaccionPrevPDF({ handlePage, datosEncabezado, decretos
       <section className='container_factura_pdf'>
 
         <article className='container_prev_pdf'>
-          {/* <section style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'white' }}>
-            <h3>Pendiente...</h3>            
-          </section> */}
           <PrevisualizacionActa
             datosEncabezado={datosEncabezado}
             decretosAnexados={decretosAnexados}

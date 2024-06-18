@@ -1,5 +1,5 @@
 export type InputDataDecretoType = {
-  valor?: number,
+  valor?: string,
   porcentaje?: number,
   empresa?: string,
   fondoPensiones?: string,
@@ -19,10 +19,13 @@ export type DecretoType = {
 }
 
 export type DatosEncabezadoType = {
-  origen: string;
-  radicado: string;
-  demandante: string;
-  demandado: string;
-  proceso: string;
-  cod_folio: string;
+  juzgado: string,
+  juez: string,
+  ciudad: string,
+  origen: string,
+  radicado: string,
+  demandante: string,
+  demandado: string,
+  proceso: string,
+  cod_folio: string,
 }

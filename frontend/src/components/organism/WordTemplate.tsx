@@ -2,11 +2,11 @@ import { Tooltip } from '@mui/material';
 import React from 'react';
 import { saveAs } from 'file-saver';
 import { Document, Packer, Paragraph, TextRun, AlignmentType, HeadingLevel, ImageRun } from 'docx';
-import { DecretoType, DatosEncabezadoType, InputDataDecretoType } from '../../helpers/Types';
-import { fetchImageAsArrayBuffer } from '../../helpers/funcionesPlantillaWord';
-import { numeracionDecretos } from '../../helpers/formatNumeracion';
+import { DecretoType, DatosEncabezadoType } from '../../helpers/Types';
+import { fetchImageAsArrayBuffer, setearDescripcionDecreto } from '../../helpers/funcionesPlantillaWord.ts';
+import { formatNumeracionDecretos } from '../../helpers/formatNumeracion.ts';
+import { formatFechaActa } from '../../helpers/formatFecha.ts';
 const imageBuffer = await fetchImageAsArrayBuffer('/images/Logo-Republica.png');
-
 
 interface WordTemplateProps {
   datosEncabezado: DatosEncabezadoType,
@@ -17,31 +17,19 @@ interface WordTemplateProps {
 
 const WordTemplate: React.FC<WordTemplateProps> = ({ datosEncabezado, decretosAnexados, activarBoton }) => {
 
-  // console.log(datosEncabezado, decretosAnexados)
-
-  // const setearDescripcionDecreto = (desc: string, dataInputs: InputDataDecretoType) => {
-  const setearDescripcionDecreto = (desc: string, dataInputs: object) => {
-
-    //🔸 Setear el nombre del DEMANDADO en los decretos
-    const desc_demandado = desc.replace("°##", datosEncabezado.demandado || '_____________');
-
-    //🔸 Setear los datos de los inputs en los decretos
-    let result = desc_demandado;
-    Object.values(dataInputs).forEach(value => {
-      result = result.replace('°', value);
-    });
-    return result;
-  }
-
+  //🔸 Generar los parrafos necesarios según los decretos anexados
   const parrafos_decretosAnexados = decretosAnexados.map((decreto, index) => {
+    if (!decreto.dataInputs) return new Paragraph({
+      text: "No hay Decretos anexados",
+      alignment: AlignmentType.CENTER,
+    });
 
-    const descripcion_con_datos = setearDescripcionDecreto(decreto.descripcion, decreto?.dataInputs);
-    // const descripcion_con_datos = setearDescripcionDecreto(decretosAnexados, datosEncabezado.demandado); //Para modular funcion
+    const descripcion_con_datos = setearDescripcionDecreto(decreto.descripcion, decreto?.dataInputs, datosEncabezado.demandado);
 
     return new Paragraph({
       children: [
         new TextRun({
-          text: `${numeracionDecretos(index + 1)}: ${descripcion_con_datos.slice(0, 33)}`,
+          text: `${formatNumeracionDecretos(index + 1)}: ${descripcion_con_datos.slice(0, 33)}`,
           bold: true,
           // break: 1
         }),
@@ -56,6 +44,7 @@ const WordTemplate: React.FC<WordTemplateProps> = ({ datosEncabezado, decretosAn
   });
 
 
+  //🔸 Generar la estructura del dodumento Word
   const generateDocument = async () => {
 
     const doc = new Document({
@@ -146,7 +135,7 @@ const WordTemplate: React.FC<WordTemplateProps> = ({ datosEncabezado, decretosAn
 
             //Juzgado Emitente 📌
             new Paragraph({
-              text: "Juzgado Ochenta y Tres (83) Municipal de Pequeñas Causas y Competencia Múltiple de Bogotá D.C.",
+              text: datosEncabezado.juzgado,
               heading: HeadingLevel.TITLE,
               alignment: AlignmentType.CENTER,
               spacing: {
@@ -156,7 +145,7 @@ const WordTemplate: React.FC<WordTemplateProps> = ({ datosEncabezado, decretosAn
 
             // Ciudad y Fecha 📌
             new Paragraph({
-              text: "Bogotá D.C., dieciséis (16) de junio de dos mil veinticuatro (2024).",
+              text: `${datosEncabezado.ciudad}, ${formatFechaActa()}`,
               heading: HeadingLevel.HEADING_1,
               alignment: AlignmentType.CENTER,
             }),
@@ -245,7 +234,7 @@ const WordTemplate: React.FC<WordTemplateProps> = ({ datosEncabezado, decretosAn
                   break: 1
                 }),
                 new TextRun({
-                  text: "MANUELA GÓMEZ ÁNGEL RANGEL",
+                  text: datosEncabezado.juez,
                   break: 1
                 }),
                 new TextRun({
@@ -281,7 +270,7 @@ const WordTemplate: React.FC<WordTemplateProps> = ({ datosEncabezado, decretosAn
   return (
     <Tooltip
       title={!activarBoton && "Para descargar, debe confirma el documento"}
-      placement="top"      
+      placement="top"
     >
       <button
         className={activarBoton ? 'word_button word_button_active' : 'word_button'}

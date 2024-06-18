@@ -22,6 +22,9 @@ export default function SeccionRedaccionActas({ id_digitador }: SeccionRedaccion
 
   //🔸 Estado para Datos de Encabezado (formulario)
   const estado_inicial = {
+    juzgado: 'Juzgado Ochenta y Tres (83) Municipal de Pequeñas Causas y Competencia Múltiple de Bogotá D.C.',
+    juez: 'MANUELA GÓMEZ ÁNGEL RANGEL',
+    ciudad: 'Bogotá D.C.',
     origen: 'Juzgado Sexto de Pequeñas Causas Civiles y Competencia Múltiple de Bogotá DC',
     radicado: '123131321',
     demandante: 'NOMBRE DEMANDANTE',
@@ -30,6 +33,9 @@ export default function SeccionRedaccionActas({ id_digitador }: SeccionRedaccion
     cod_folio: '123131'
   }
   // const estado_inicial = {
+  //   juzgado: '',
+  //   juez: 'MANUELA GÓMEZ ÁNGEL RANGEL',
+  //   ciudad: '',
   //   origen: '',
   //   radicado: '',
   //   demandante: '',
@@ -83,7 +89,7 @@ export default function SeccionRedaccionActas({ id_digitador }: SeccionRedaccion
                   handlePage={handlePage}
                   datosEncabezado={datosEncabezado}
                   decretosAnexados={decretosAnexados}
-                  // fn_submit={handleSubmit}
+                // fn_submit={handleSubmit}
                 />
           }
 

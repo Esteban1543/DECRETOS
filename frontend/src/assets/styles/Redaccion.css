@@ -40,11 +40,12 @@
 
 .section_inputs_encabezados {
   display: grid;
-  grid-template-columns: 45% auto;
-  height: 90%;
-  gap: 10%;
+  /* grid-template-columns: 45% auto; */
+  grid-template-columns: repeat(2, 1fr);
+  height: 100%;
+  gap: 8% 6%;
   align-items: center;
-  width: 95%;
+  width: 99%;
   margin: auto;
   padding: 3% 4%;
   background: white;
@@ -80,6 +81,8 @@
   grid-template-columns: 30% auto;
   gap: 1%;
   height: 100%;
+  width: 99%;
+  margin: auto;
 
   & section {
     background-color: #ffffff;
