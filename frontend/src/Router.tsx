@@ -1,7 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 
 // Componentes de Vista 📚
-import HomeVendedor from "./views/HomeVendedor"
+import HomeDigitador from "./views/HomeDigitador"
+import Login from "./views/Login"
 
 
 export const Router = () => {
@@ -11,7 +12,12 @@ export const Router = () => {
 
         <Route
           path="/"
-          element={<HomeVendedor />}
+          element={<Login />}
+        />
+
+        <Route
+          path="/digitador"
+          element={<HomeDigitador />}
         />
 
       </Routes>

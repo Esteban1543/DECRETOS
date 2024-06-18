@@ -1,10 +1,10 @@
 
 // Styles ✨
-import "../assets/styles/HomeVendedor.css";
+import "../assets/styles/HomeDigitador.css";
 
 // Componentes TSX 📚
-import CircleUser from "../components/atoms/CircleUser";
-import Logout from "../components/atoms/Logout";
+import CircleUser from "../components/atoms/CircleUser.tsx";
+import Logout from "../components/atoms/Logout.tsx";
 import SeccionRedaccionActas from "../components/templates/SeccionRedaccionActas.tsx";
 
 // Funciones / helpers 📄
@@ -15,7 +15,7 @@ import { format_fecha } from '../helpers/formatFecha.ts'
 
 
 
-export default function HomeVendedor() {
+export default function HomeDigitador() {
 
   // const {loading, data} = useGetData(`${URI}/InformeVendedores/2024-01-01/2024-06-10`);
   // // console.log(data)
