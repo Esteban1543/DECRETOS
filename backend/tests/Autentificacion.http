@@ -1,5 +1,5 @@
 // SOLICITUD GET PRUEBA
-POST http://localhost:5002/Autentificiacion HTTP/1.1
+POST http://localhost:5002/autentificiacion
 Content-Type: application/json
 
 {
