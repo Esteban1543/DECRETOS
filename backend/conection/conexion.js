@@ -1,4 +1,4 @@
-var mysql = require('mysql2');
+import mysql from 'mysql2/promise';
 
 const database = {
     host: 'localhost',
@@ -7,20 +7,14 @@ const database = {
     password: ''
 }
 
-const conexion = mysql.createConnection(database)
+let conexion;
 
-conexion.connect(function(err) {
-    if (err){
-        throw err;
-    }else{
-        console.log(`🟢 Conexion con la base de datos ${database.database} fue exitosa`);
-    }
-})
+try {
+    conexion = await mysql.createConnection(database);
+    console.log(`🟢 Conexion con la base de datos ${database.database} fue exitosa`);
+} catch (error) {
+    console.log(error)
+}
 
-process.on('SIGINT', () => {
-    console.log(`🔴 Se cerro la conexion con la base de datos exitosamente`);
-    conexion.end();
-})
-
-module.exports = conexion;
+export default conexion;
 

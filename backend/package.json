@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Backend decretos",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "nodemon index.js",
     "dev": "nodemon index.js"

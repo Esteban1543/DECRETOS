@@ -1,4 +1,4 @@
-const AutentificacionModel = require('../models/AutentificacionModel')
+import AutentificacionModel from '../models/AutentificacionModel.js'
 
 class AutentificiacionController {
     static async Autentificiacion(req, res) {
@@ -9,15 +9,22 @@ class AutentificiacionController {
 
         const { user, password } = req.body;
 
-        if (validations.user.test(user) && validations.password.test(password)) {
-        return await AutentificacionModel.Autentificiacion(user, password, res);
-        }else{
-        return res.json({
-            status: false,
-            error: `⛔ Los datos no son validos`,
+        if (!validations.user.test(user)){
+            return res.json({
+                status: false,
+                error: `⛔ El usuario no es valido`,
             });
         }
+
+        if (!validations.password.test(password)){
+            return res.json({
+                status: false,
+                error: `⛔ La contraseña no es valido`,
+            });
+        }
+
+        return res.json(await AutentificacionModel.Autentificiacion(user, password))
     }
 }
 
-module.exports = AutentificiacionController
+export default AutentificiacionController;
