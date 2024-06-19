@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from 'react';
+import React, { FormEvent, useEffect, useState } from 'react';
 import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
 import Button from '@mui/material/Button';
@@ -11,17 +11,25 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { DatosEncabezadoType } from '../../helpers/Types.js';
 import { origenes, procesos, juzgados, ciudades } from '../../helpers/constantes.js';
 import HeaderRedaccion from "../atoms/HeaderRedaccion.js";
+import { toast } from 'sonner';
 
 
 interface RedaccionEncabezadoProps {
   handlePage: (page: number) => void,
   datosEncabezado: DatosEncabezadoType;
-  setDatosEncabezado: React.Dispatch<React.SetStateAction<DatosEncabezadoType>>;
+  setDatosEncabezado: React.Dispatch<React.SetStateAction<DatosEncabezadoType>>,
+  setContenido: React.Dispatch<React.SetStateAction<string>>
 }
 
-export default function RedaccionEncabezado({ handlePage, datosEncabezado, setDatosEncabezado }: RedaccionEncabezadoProps) {
+export default function RedaccionEncabezado({ handlePage, datosEncabezado, setDatosEncabezado, setContenido }: RedaccionEncabezadoProps) {
 
   const [activarBoton, setactivarBoton] = useState(false);
+  const handleNextPage = (e: FormEvent) => {
+    e.preventDefault();
+    activarBoton
+      ? handlePage(2)
+      : toast.info('Diligencia todos los campos para poder continuar')
+  }
 
   //🔸 Manejo de Datos en Formulario (inputs)
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -72,7 +80,7 @@ export default function RedaccionEncabezado({ handlePage, datosEncabezado, setDa
     <>
       <HeaderRedaccion titulo="Datos Encabezado" />
 
-      <section className="form_section_datosEncabezado">
+      <form className="form_section_datosEncabezado" onSubmit={handleNextPage}>
 
         <article className="section_inputs_encabezados" >
 
@@ -246,8 +254,7 @@ export default function RedaccionEncabezado({ handlePage, datosEncabezado, setDa
           <Button
             variant="outlined"
             size='large'
-            disabled
-            onClick={() => handlePage(1)}
+            onClick={() => setContenido('tabla')}
           >Cancelar</Button>
 
           <Tooltip
@@ -257,14 +264,14 @@ export default function RedaccionEncabezado({ handlePage, datosEncabezado, setDa
             <Button
               variant="contained"
               size='large'
-              onClick={activarBoton ? () => handlePage(2) : undefined}
-            // disabled={!activarBoton}
-            >Continuar</Button>
+              type='submit'
+            // onClick={activarBoton ? () => handlePage(2) : ()=> toast.info('Diligencia todos los campos para poder continuar')}
+            >Siguiente</Button>
           </Tooltip>
 
         </footer>
 
-      </section>
+      </form>
 
     </>
   );

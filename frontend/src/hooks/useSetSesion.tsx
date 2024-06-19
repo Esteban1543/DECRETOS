@@ -11,7 +11,7 @@ export const useSetSesion = () => {
 
     const sessionData = sessionStorage.getItem('user_sesion');
     const session = sessionData ? JSON.parse(sessionData) : null; //Verificar primero que no sea null antes de parseJson para evitar error.
-    console.log(session.datos_persona[0])
+    // console.log(session.datos_persona[0])
     setsessionUser(session.datos_persona[0] || null);
     // console.log(session);
   }, []);

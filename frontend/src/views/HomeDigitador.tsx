@@ -6,13 +6,14 @@ import "../assets/styles/HomeDigitador.css";
 // Componentes TSX 📚
 import CircleUser from "../components/atoms/CircleUser.tsx";
 import Logout from "../components/atoms/Logout.tsx";
-import SeccionRedaccionActas from "../components/templates/SeccionRedaccionActas.tsx";
+
 
 // Funciones / helpers 📄
 import { format_fecha } from '../helpers/formatFecha.ts'
 // import { useGetData } from "../hooks/useGetData.tsx";
 // import {URI} from '../config.ts';
 import { useSetSesion } from "../hooks/useSetSesion.tsx";
+import ContenidoHomeDigitador from "../components/templates/ContenidoHomeDigitador.tsx";
 
 
 
@@ -28,6 +29,8 @@ export default function HomeDigitador() {
   const nombres = `${sessionUser?.nombre_1} ${sessionUser?.apellido_1}`;
   const usuario = `${sessionUser?.alias}`;
   const num_actas = '###';
+
+
 
   return (
     <main className="main_vendedor">
@@ -53,9 +56,10 @@ export default function HomeDigitador() {
       </aside>
 
       {/* 🔸 Contenido */}
-      <SeccionRedaccionActas
+      <ContenidoHomeDigitador
         id_digitador={id_digitador}
       />
+
     </main>
   );
 }

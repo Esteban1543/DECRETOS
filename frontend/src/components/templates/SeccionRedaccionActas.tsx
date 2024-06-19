@@ -1,5 +1,7 @@
-import { useEffect, useState } from "react";
+/* eslint-disable react/react-in-jsx-scope */
+import { useState } from "react";
 import '../../assets/styles/Redaccion.css';
+import { Toaster } from "sonner";
 import { DecretoType } from "../../helpers/Types";
 
 // Componentes TSX 📚
@@ -10,11 +12,12 @@ import RedaccionPrevPDF from "../organism/RedaccionPrevPDF";
 
 
 interface SeccionRedaccionActasProps {
-  id_digitador?: number
+  id_digitador?: number,
+  setContenido: React.Dispatch<React.SetStateAction<string>>
 }
 
 
-export default function SeccionRedaccionActas({ id_digitador }: SeccionRedaccionActasProps) {
+export default function SeccionRedaccionActas({ id_digitador, setContenido }: SeccionRedaccionActasProps) {
 
   //🔸 Administrar la página que se necesita mostrar
   const [pagina, setPagina] = useState(1);
@@ -48,26 +51,24 @@ export default function SeccionRedaccionActas({ id_digitador }: SeccionRedaccion
   //🔸 Estado para almacenar los decretos que se anexan
   const [decretosAnexados, setDecretosAnexados] = useState<DecretoType[]>([]);
 
+  const handleSubmit = (accion: string) => {
 
-  // useEffect(() => {
-  //   // console.log(datosEncabezado);
-  //   // console.log(id_digitador)
-  //   console.log('decretosAnexados ', decretosAnexados)
-  // }, [datosEncabezado, id_digitador, decretosAnexados]);
-
-  // const handleSubmit = () => {
-  //   console.log({ id_digitador, datosEncabezado, decretosAnexados });
-  // }
+    console.log({ id_digitador, datosEncabezado, decretosAnexados });
+    if (accion === 'resetear') {
+      setDatosEncabezado(estado_inicial);
+      setDecretosAnexados([]);
+    }
+  }
 
   return (
-    <article className="container_facturacion">
+    <>
 
-      <header className="header_facturacion">
+      <header className="header_contenido_digitador">
         <span className="header_title">Redacción de Acta</span>
         <Steper pagina={pagina} />
       </header>
 
-      <section className="facturacion_card">
+      <section className="card_contenido_digitador">
         <article className="section_facturacion_container">
           {
             pagina === 1
@@ -75,6 +76,7 @@ export default function SeccionRedaccionActas({ id_digitador }: SeccionRedaccion
                 handlePage={handlePage}
                 datosEncabezado={datosEncabezado}
                 setDatosEncabezado={setDatosEncabezado}
+                setContenido={setContenido}
               />
               : pagina === 2
                 ?
@@ -89,13 +91,13 @@ export default function SeccionRedaccionActas({ id_digitador }: SeccionRedaccion
                   handlePage={handlePage}
                   datosEncabezado={datosEncabezado}
                   decretosAnexados={decretosAnexados}
-                // fn_submit={handleSubmit}
+                  fn_submit={handleSubmit}
                 />
           }
 
-          {/* <Toaster position="bottom-center" richColors /> */}
         </article>
+        <Toaster position="bottom-center" richColors closeButton />
       </section>
-    </article>
+    </>
   )
 }
