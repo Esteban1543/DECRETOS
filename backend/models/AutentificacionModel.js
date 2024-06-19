@@ -51,8 +51,7 @@ class AutentificiacionModel {
             if(datos_persona[0].estado_persona == '0'){
                 return {
                 status: false,
-                error: "⛔ El usuario esta desactivado",
-                type: err,
+                error: "⛔ El usuario esta desactivado"
                 }
             }
             
@@ -66,8 +65,8 @@ class AutentificiacionModel {
         }catch(error){
             return {
                 status: false,
-                error: "⛔ Existe un error interno en el servidor",
-                type: error,
+                error: `⛔ Se genero un error interno con la base de datos`,
+                type: String(error)
             }
         }
     }

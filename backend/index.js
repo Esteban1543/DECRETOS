@@ -13,6 +13,14 @@ import AutenticacionRouter from './routes/AutenticacionRouter.js'
 
 app.use('/', AutenticacionRouter)
 
+import PersonasRouter from './routes/PersonasRouter.js'
+
+app.use('/', PersonasRouter)
+
+import ProcesosRouter from './routes/ProcesosRouter.js'
+
+app.use('/', ProcesosRouter)
+
 app.use(express.static(new URL('./assets', import.meta.url).pathname));
 
 app.listen(port, () => {
