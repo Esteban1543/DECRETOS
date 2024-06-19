@@ -10,7 +10,7 @@ import RedaccionPrevPDF from "../organism/RedaccionPrevPDF";
 
 
 interface SeccionRedaccionActasProps {
-  id_digitador: number
+  id_digitador?: number
 }
 
 

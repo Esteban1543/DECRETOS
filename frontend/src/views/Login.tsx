@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 import "../assets/styles/Login.css";
 import InputAdornment from '@mui/material/InputAdornment';
 import Input from '@mui/material/Input';
@@ -10,19 +11,17 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import { FormEvent } from "react";
-import React, { useState, ChangeEvent } from "react";
+import { useState, ChangeEvent } from "react";
 import axios from "axios";
 // import UserSvg from "/icons/user.svg";
 import { URI } from "../config";
 import { toast, Toaster } from "sonner";
 
+
 function Login() {
 
   const [showPassword, setShowPassword] = useState(false);
   const handleClickShowPassword = () => setShowPassword((show) => !show);
-  // const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
-  //   event.preventDefault();
-  // };
 
   //🔸 Estado para inputs de Formulario
   const [formData, setFormData] = useState({
@@ -69,6 +68,7 @@ function Login() {
 
     } catch (error) {
       console.log("Error al enviar los datos", error);
+      toast.error('No se pudo completar la solicitud');
     }
   };
 

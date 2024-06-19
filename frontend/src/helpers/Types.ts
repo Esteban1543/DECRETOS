@@ -1,3 +1,24 @@
+
+export type DatosPersonaType = {
+  id_persona: number,
+  fk_tipo_identificacion: string,
+  n_identificacion: string,
+  nombre_1: string,
+  nombre_2?: null | string,
+  apellido_1: string,
+  apellido_2?: null | string,
+  telefono: string,
+  direccion: string,
+  correo: string,
+  alias: string,
+  estado_persona: 1
+}
+
+export type SessionUserType = {
+  rol: number,
+  datos_persona: DatosPersonaType[]
+}
+
 export type InputDataDecretoType = {
   valor?: string,
   porcentaje?: number,

@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 
 // Styles ✨
 import "../assets/styles/HomeDigitador.css";
@@ -11,7 +12,7 @@ import SeccionRedaccionActas from "../components/templates/SeccionRedaccionActas
 import { format_fecha } from '../helpers/formatFecha.ts'
 // import { useGetData } from "../hooks/useGetData.tsx";
 // import {URI} from '../config.ts';
-// import { useSetSesion } from "../hooks/useSetSesion.tsx";
+import { useSetSesion } from "../hooks/useSetSesion.tsx";
 
 
 
@@ -21,12 +22,12 @@ export default function HomeDigitador() {
   // // console.log(data)
 
   // //🔸 Setear información de la sesión del usuario activo
-  // const { sessionUser } = useSetSesion();
-  // const id_digitador:string = sessionUser?.id_persona;
-  const nombres = 'Digitador x'
-  // const nombres = `${sessionUser?.nombre_1} ${sessionUser?.apellido_1}`;
-  // const usuario = `${sessionUser?.alias}`;
+  const { sessionUser } = useSetSesion();
 
+  const id_digitador = sessionUser?.id_persona;
+  const nombres = `${sessionUser?.nombre_1} ${sessionUser?.apellido_1}`;
+  const usuario = `${sessionUser?.alias}`;
+  const num_actas = '###';
 
   return (
     <main className="main_vendedor">
@@ -40,9 +41,9 @@ export default function HomeDigitador() {
         </section>
 
         <section className="banner_datos_usuario">
-          {/* <p><b>Usuario: </b> {usuario} </p>
+          <p><b>Usuario: </b> {usuario} </p>
           <p><b>Actas digitadas: </b> {num_actas} </p>
-          <p><b>Listado de Actas: </b> {'????'} </p>*/}
+          <p><b>Listado de Actas: </b> {'????'} </p>
         </section>
 
         <section className="banner_logout">
@@ -53,7 +54,7 @@ export default function HomeDigitador() {
 
       {/* 🔸 Contenido */}
       <SeccionRedaccionActas
-        id_digitador={1}
+        id_digitador={id_digitador}
       />
     </main>
   );
