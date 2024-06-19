@@ -1,31 +1,35 @@
+/* eslint-disable react/react-in-jsx-scope */
 
 // Styles ✨
-import "../assets/styles/HomeVendedor.css";
+import "../assets/styles/HomeDigitador.css";
 
 // Componentes TSX 📚
-import CircleUser from "../components/atoms/CircleUser";
-import Logout from "../components/atoms/Logout";
-import SeccionRedaccionActas from "../components/templates/SeccionRedaccionActas.tsx";
+import CircleUser from "../components/atoms/CircleUser.tsx";
+import Logout from "../components/atoms/Logout.tsx";
+
 
 // Funciones / helpers 📄
 import { format_fecha } from '../helpers/formatFecha.ts'
 // import { useGetData } from "../hooks/useGetData.tsx";
 // import {URI} from '../config.ts';
-// import { useSetSesion } from "../hooks/useSetSesion.tsx";
+import { useSetSesion } from "../hooks/useSetSesion.tsx";
+import ContenidoHomeDigitador from "../components/templates/ContenidoHomeDigitador.tsx";
 
 
 
-export default function HomeVendedor() {
+export default function HomeDigitador() {
 
   // const {loading, data} = useGetData(`${URI}/InformeVendedores/2024-01-01/2024-06-10`);
   // // console.log(data)
 
   // //🔸 Setear información de la sesión del usuario activo
-  // const { sessionUser } = useSetSesion();
-  // const id_digitador:string = sessionUser?.id_persona;
-  const nombres = 'Digitador x'
-  // const nombres = `${sessionUser?.nombre_1} ${sessionUser?.apellido_1}`;
-  // const usuario = `${sessionUser?.alias}`;
+  const { sessionUser } = useSetSesion();
+
+  const id_digitador = sessionUser?.id_persona;
+  const nombres = `${sessionUser?.nombre_1} ${sessionUser?.apellido_1}`;
+  const usuario = `${sessionUser?.alias}`;
+  const num_actas = '###';
+
 
 
   return (
@@ -40,9 +44,9 @@ export default function HomeVendedor() {
         </section>
 
         <section className="banner_datos_usuario">
-          {/* <p><b>Usuario: </b> {usuario} </p>
+          <p><b>Usuario: </b> {usuario} </p>
           <p><b>Actas digitadas: </b> {num_actas} </p>
-          <p><b>Listado de Actas: </b> {'????'} </p>*/}
+          <p><b>Listado de Actas: </b> {'????'} </p>
         </section>
 
         <section className="banner_logout">
@@ -52,9 +56,10 @@ export default function HomeVendedor() {
       </aside>
 
       {/* 🔸 Contenido */}
-      <SeccionRedaccionActas
-        id_digitador={1}
+      <ContenidoHomeDigitador
+        id_digitador={id_digitador}
       />
+
     </main>
   );
 }

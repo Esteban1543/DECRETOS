@@ -5,7 +5,7 @@ interface HeaderRedaccionProps {
 function HeaderRedaccion({ titulo }: HeaderRedaccionProps) {
   return (
     <header
-      className="header_facturacion_container"
+      className="header_contenido_digitador_container"
     >
       <h2>
         {titulo}

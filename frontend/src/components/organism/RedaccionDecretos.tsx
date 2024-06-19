@@ -8,6 +8,7 @@ import CardLoading from "../atoms/CardLoading";
 import { DecretoType, InputDataDecretoType } from "../../helpers/Types";
 
 import { decretosDatos } from "../../helpers/datosPrueba"; //Pruebas
+import { toast } from "sonner";
 
 interface RedaccionDecretosProps {
   nombre_demandado: string,
@@ -92,6 +93,10 @@ export default function RedaccionDecretos({ nombre_demandado, handlePage, decret
                 ?
                 <>
                   <h4>No hay Decretos anexados</h4>
+                  {/* <p style={{textAlign: 'left', width: '100%'}}>
+                    Recomendaciones para el ingreso de Datos: <br/>
+                    Ingresar valores con puntos y descripción: 12.250.000 millones
+                  </p> */}
                   <CardLoading />
                   <CardLoading />
                 </>
@@ -116,7 +121,7 @@ export default function RedaccionDecretos({ nombre_demandado, handlePage, decret
             variant="outlined"
             size='large'
             onClick={() => handlePage(1)}
-          >Volver</Button>
+          >Atrás</Button>
 
           <Tooltip
             title={!activarBoton && "Agrega algún decreto"}
@@ -125,8 +130,8 @@ export default function RedaccionDecretos({ nombre_demandado, handlePage, decret
             <Button
               variant="contained"
               size='large'
-              onClick={activarBoton ? () => handlePage(3) : undefined}
-            >Continuar</Button>
+              onClick={activarBoton ? () => handlePage(3) : ()=> toast.info('Anexa al menos 1 Decreto al documento')}
+            >Siguiente</Button>
           </Tooltip>
         </footer>
 

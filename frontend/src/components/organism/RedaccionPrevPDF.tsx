@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 
 import HeaderRedaccion from "../atoms/HeaderRedaccion";
 import Button from '@mui/material/Button';
@@ -9,18 +10,19 @@ import { useState } from "react";
 interface RedaccionPrevPDFProps {
   handlePage: (page: number) => void,
   datosEncabezado: DatosEncabezadoType,
-  decretosAnexados: DecretoType[]
+  decretosAnexados: DecretoType[],
+  fn_submit: (accion: string) => void
 }
 
-export default function RedaccionPrevPDF({ handlePage, datosEncabezado, decretosAnexados }: RedaccionPrevPDFProps) {
+export default function RedaccionPrevPDF({ handlePage, datosEncabezado, decretosAnexados, fn_submit }: RedaccionPrevPDFProps) {
 
   const [salir, setSalir] = useState(false);
 
-  const handleSubmitData = () => {
+  const handleSubmitData = (accion:string) => {
     setSalir(true)
-    setTimeout(() => {
-      // handlePage(1)
-    }, 1000);
+    fn_submit(accion);
+    
+    accion === 'resetear' && handlePage(1)
   }
 
   return (
@@ -66,13 +68,16 @@ export default function RedaccionPrevPDF({ handlePage, datosEncabezado, decretos
           <footer className='footer_redaccion_container'
             style={{ width: '92%' }}
           >
-            <Button
-              variant="outlined"
-              size='large'
-              onClick={() => handlePage(2)}
-              style={{ marginRight: '4.9%' }}
-              disabled={salir}
-            >Volver</Button>
+            {
+              !salir &&
+              <Button
+                variant="outlined"
+                size='large'
+                onClick={() => handlePage(2)}
+                style={{ marginRight: '4.9%' }}
+                disabled={salir}
+              >Atrás</Button>
+            }
 
             {
               !salir
@@ -80,16 +85,17 @@ export default function RedaccionPrevPDF({ handlePage, datosEncabezado, decretos
                   <Button
                     variant="contained"
                     size='large'
-                    onClick={handleSubmitData}
-
-                  // disabled
+                    onClick={() => handleSubmitData('enviar')}
+                  // style={{width: '53%'}}
                   >Confirmar</Button>
                 ) : (
                   <Button
                     variant="outlined"
                     color="warning"
                     size='large'
-                    onClick={() => window.location.reload()}
+                    onClick={() => handleSubmitData('resetear')}
+                    // onClick={() => handlePage(1)}
+                    style={{ width: '96%', marginLeft: 'auto' }}
                   >Salir</Button>
                 )
             }

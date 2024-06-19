@@ -14,12 +14,13 @@ const CircleUser: React.FC<CircleUserProps> = ({ inicial, medida }) => {
     2: 'rgb(110, 199, 130)', // Verde pastel
     3: 'rgba(251, 172, 96, .8)', // Naranja pastel
     4: 'rgb(205, 178, 150)', // Beige pastel
-    5: 'rgb(186, 220, 237)', // Azul pastel claro
+    5: '#80C4E9', // Azul pastel claro
     6: 'rgb(246, 203, 220)', // Rosa pastel claro
     7: 'rgb(255, 240, 145)', // Amarillo pastel claro
     8: 'rgb(177, 186, 216)', // Azul grisáceo pastel
-    9: 'rgb(223, 236, 218)', // Verde menta pastel
-    10: 'rgb(255, 210, 183)' // Melocotón pastel claro
+    9: '#95D2B3', 
+    10: 'rgb(255, 210, 183)', // Melocotón pastel claro
+    11: '#FF6969'
   };
 
   const getRandomColor = () => {

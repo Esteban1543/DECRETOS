@@ -50,6 +50,7 @@ const WordTemplate: React.FC<WordTemplateProps> = ({ datosEncabezado, decretosAn
     const doc = new Document({
       creator: 'Digitador x',
       title: 'Acta de Embargo',
+
       background: {
         color: "FFFFFF",
       },
@@ -104,7 +105,14 @@ const WordTemplate: React.FC<WordTemplateProps> = ({ datosEncabezado, decretosAn
 
       sections: [
         {
-          properties: {},
+          properties: {
+            page: {
+              size: {
+                width: 12240, // 8.5 inches in twips
+                height: 20160 // 14 inches in twips
+              }
+            }
+          },
           children: [
             // Título Principal 📌
             new Paragraph({
