@@ -1,8 +1,7 @@
-// SOLICITUD GET PRUEBA
 POST http://localhost:5002/autentificiacion
 Content-Type: application/json
 
 {
     "user": "admin",
-    "password": "admin123"
+    "password": "addamin123"
 }

@@ -39,8 +39,7 @@ class AutentificiacionModel {
                     apellido_1, 
                     apellido_2, 
                     telefono, 
-                    direccion, 
-                    correo, 
+                    correo,
                     alias,
                     estado_persona
                 FROM datos_persona
