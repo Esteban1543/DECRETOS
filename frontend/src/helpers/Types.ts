@@ -48,5 +48,5 @@ export type DatosEncabezadoType = {
   demandante: string,
   demandado: string,
   proceso: string,
-  cod_folio: string,
+  provincia: string,
 }

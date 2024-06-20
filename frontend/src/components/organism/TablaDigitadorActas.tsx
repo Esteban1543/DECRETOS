@@ -9,7 +9,7 @@ import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 
 interface Column {
-  id: 'cod_folio' | 'fk_proceso' | 'demandado' | 'demandante' | 'fecha_registro';
+  id: 'provincia' | 'fk_proceso' | 'demandado' | 'demandante' | 'fecha_registro';
   label: string;
   minWidth?: number;
   align?: 'right';
@@ -17,7 +17,7 @@ interface Column {
 }
 
 const columns: readonly Column[] = [
-  { id: 'cod_folio', label: 'Cod. Folio', minWidth: 170 },
+  { id: 'provincia', label: 'Cod. Folio', minWidth: 170 },
   { id: 'fk_proceso', label: 'Radicado', minWidth: 100 },
   {
     id: 'demandado',
@@ -43,7 +43,7 @@ const columns: readonly Column[] = [
 ];
 
 interface Data {
-  cod_folio: string;
+  provincia: string;
   fk_proceso: string;
   demandado: string;
   demandante: string;
@@ -51,13 +51,13 @@ interface Data {
 }
 
 function createData(
-  cod_folio: string,
+  provincia: string,
   fk_proceso: string,
   demandado: string,
   demandante: string,
   fecha_registro: string
 ): Data {
-  return { cod_folio, fk_proceso, demandado, demandante, fecha_registro };
+  return { provincia, fk_proceso, demandado, demandante, fecha_registro };
 }
 
 const rows = [
@@ -113,7 +113,7 @@ export default function StickyHeadTable() {
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((row) => {
                 return (
-                  <TableRow hover role="checkbox" tabIndex={-1} key={row.cod_folio}>
+                  <TableRow hover role="checkbox" tabIndex={-1} key={row.provincia}>
                     {columns.map((column) => {
                       const value = row[column.id];
                       return (

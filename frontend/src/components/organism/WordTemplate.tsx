@@ -230,7 +230,11 @@ const WordTemplate: React.FC<WordTemplateProps> = ({ datosEncabezado, decretosAn
             new Paragraph({
               children: [
                 new TextRun({
-                  text: "-NOTIFÍQUESE-",
+                  text: "NOTIFÍQUESE y CÚMPLASE,",
+                  break: 1
+                }),
+                new TextRun({
+                  text: `-${datosEncabezado.provincia}-`,
                   break: 1
                 }),
                 new TextRun({
@@ -256,7 +260,6 @@ const WordTemplate: React.FC<WordTemplateProps> = ({ datosEncabezado, decretosAn
                 line: 1.5 * 12 * 20,
               }
             }),
-
 
           ],
         },

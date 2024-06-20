@@ -237,12 +237,12 @@ export default function RedaccionEncabezado({ handlePage, datosEncabezado, setDa
           </FormControl>
 
           <TextField
-            name='cod_folio'
-            label="Cod. Folio *"
+            name='provincia'
+            label="Provincia *"
             placeholder=""
             // style={{ background: 'white' }}
             onChange={handleChange}
-            value={datosEncabezado.cod_folio}
+            value={datosEncabezado.provincia}
             helperText="Ingrese el código alfanumérico"
             size="small"
           />

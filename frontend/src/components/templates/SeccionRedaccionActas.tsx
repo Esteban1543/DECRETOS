@@ -33,7 +33,7 @@ export default function SeccionRedaccionActas({ id_digitador, setContenido }: Se
     demandante: 'NOMBRE DEMANDANTE',
     demandado: 'NOMBRE DEMANDADO',
     proceso: 'EJECUTIVO DE MÍNIMA CUANTÍA',
-    cod_folio: '123131'
+    provincia: '123131'
   }
   // const estado_inicial = {
   //   juzgado: '',
@@ -44,7 +44,7 @@ export default function SeccionRedaccionActas({ id_digitador, setContenido }: Se
   //   demandante: '',
   //   demandado: '',
   //   proceso: '',
-  //   cod_folio: ''
+  //   provincia: ''
   // }
   const [datosEncabezado, setDatosEncabezado] = useState(estado_inicial);
 
