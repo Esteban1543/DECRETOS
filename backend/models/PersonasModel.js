@@ -76,6 +76,42 @@ class PersonaModel {
         }
     }
 
+    static async editUsuario(n_identificacion, nombre_1, nombre_2, apellido_1, apellido_2, telefono, correo, alias, contraseña) {
+        try{
+            const hash = bcrypt.hashSync(contraseña, 10)
+
+            const [datos_persona] = await conexion.query(`
+                UPDATE datos_persona
+                SET nombre_1 = ?,
+                    nombre_2 = ?,
+                    apellido_1 = ?,
+                    apellido_2 = ?,
+                    telefono = ?,
+                    correo = ?
+                WHERE n_identificacion = ?;
+            `, [nombre_1, nombre_2, apellido_1, apellido_2, telefono, correo, n_identificacion])
+
+            const [usuario] = await conexion.query(`
+                UPDATE usuarios
+                SET alias = ?,
+                    contraseña = ?
+                WHERE pfk_usuario = ?; 
+            `, [alias, hash, n_identificacion])
+            
+            return {
+                status: true,
+                message: `✅ Se edito el usuario correctamente`,
+            }
+
+        }catch(error){
+            return {
+                status: false,
+                error: `⛔ Se genero un error interno con la base de datos`,
+                type: String(error)
+            }
+        }
+    }
+
     static async deactivateUsuario(n_identificacion) {
         try {
             const [usuario] = await conexion.query(`
