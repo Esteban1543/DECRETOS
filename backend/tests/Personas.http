@@ -1,2 +1,25 @@
 GET http://localhost:5002/usuarios HTTP/1.1
 
+#####
+
+POST http://localhost:5002/newUsuario HTTP/1.1
+Content-Type: application/json
+
+{
+    "fk_tipo_identificacion": "CC",
+    "n_identificacion": "4646546465",
+    "nombres": "Jhoan Esteban",
+    "apellidos": "Vargas Peña",
+    "telefono": "5453535",
+    "correo": "example@example.com",
+    "alias": "Digitador 10",
+    "contraseña": "asd123"
+}
+
+###
+
+PATCH http://localhost:5002/deactivateUsuario/4646546465 HTTP/1.1
+
+###
+
+PATCH http://localhost:5002/activateUsuario/4646546465 HTTP/1.1
