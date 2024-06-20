@@ -31,7 +31,6 @@ class AutentificiacionModel {
 
             const [datos_persona] = await conexion.query(`
                 SELECT 
-                    id_persona, 
                     fk_tipo_identificacion, 
                     n_identificacion, 
                     nombre_1, 
@@ -43,8 +42,8 @@ class AutentificiacionModel {
                     alias,
                     estado_persona
                 FROM datos_persona
-                INNER JOIN usuarios ON id_persona = pfk_usuario
-                WHERE pfk_usuario = ?;
+                INNER JOIN usuarios ON pfk_usuario = n_identificacion
+                WHERE n_identificacion = ?;
             `, [usuario[0].pfk_usuario])
 
             if(datos_persona[0].estado_persona == '0'){

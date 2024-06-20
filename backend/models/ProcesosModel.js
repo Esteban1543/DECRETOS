@@ -27,8 +27,7 @@ class ProcesosModel {
         try {
             const [tipoEmbargo] = await conexion.query(`
                 SELECT * 
-                FROM tipo_embargo 
-                ORDER BY id_tipo_embargo DESC;
+                FROM tipo_embargo;
             `)
 
             return {
@@ -49,8 +48,7 @@ class ProcesosModel {
         try {
             const [origen] = await conexion.query(`
                 SELECT * 
-                FROM origen 
-                ORDER BY id_origen DESC;
+                FROM origen;
             `)
 
             return {
@@ -71,8 +69,7 @@ class ProcesosModel {
         try {
             const [proceso] = await conexion.query(`
                 SELECT * 
-                FROM proceso 
-                ORDER BY id_proceso DESC;    
+                FROM proceso;    
             `)
 
             return {
