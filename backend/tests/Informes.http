@@ -1,1 +1,5 @@
 GET http://localhost:5002/actasdigitador/4646546465 HTTP/1.1
+
+###
+
+GET http://localhost:5002/actasdigitadas HTTP/1.1
