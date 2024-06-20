@@ -1,0 +1,1 @@
+GET http://localhost:5002/actasvendedor/4646546465 HTTP/1.1
