@@ -4,6 +4,6 @@ const router = Router();
 
 import InformesController from "../controllers/InformesController.js"
 
-router.get('/actasvendedor/:n_identificacion', InformesController.getActasVendedor)
+router.get('/actasdigitador/:n_identificacion', InformesController.getActasVendedor)
 
 export default router
