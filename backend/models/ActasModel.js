@@ -31,7 +31,8 @@ class ActasModel {
                 demandado: demandado,
                 provincia: cod_folio,
                 fk_origen: origen,
-                fk_ciudad: ciudad
+                fk_ciudad: ciudad,
+                juez: juez
             })
     
             for (const decretos of decretosAnexados) {
