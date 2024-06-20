@@ -72,7 +72,7 @@ VALUES
 -- Ciudad
 INSERT INTO ciudad (ciudad)
 VALUES 
-    ('Bogotá D.C'),
+    ('Bogotá D.C.'),
     ('Tunja');
 
 -- Acta embargo
