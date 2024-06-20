@@ -6,9 +6,9 @@ Content-Type: application/json
   "datosEncabezado": {
     "juzgado": "Juzgado Ochenta y Tres (83) Civil Municipal de Bogotá D.C. Transitorio Sesenta y Cinco (65) de Pequeñas Causas Civiles y Competencia Múltiple de Bogotá D.C.",
     "juez": "MANUELA GÓMEZ ÁNGEL RANGEL",
-    "ciudad": "Bogotá D.C",
+    "ciudad": "Bogotá D.C.",
     "origen": "Juzgado Ochenta (80) Civil Municipal de Bogotá D.C.  Transitorio Sesenta y Dos (62) de Pequeñas Causas Civiles y Competencia Múltiple de Bogotá D.C.",
-    "radicado": "2133-00502-03",
+    "radicado": "2133-00502-04",
     "demandante": "ROSALBA MENDIETA",
     "demandado": "OSCAR PLAZAS",
     "proceso": "EJECUTIVO PARA LA EFECTIVIDAD DE LA GARANTÍA REAL",
