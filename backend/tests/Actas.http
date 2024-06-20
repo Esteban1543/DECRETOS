@@ -1,0 +1,72 @@
+POST http://localhost:5002/createActa
+Content-Type: application/json
+
+{
+  "id_digitador": 987654321,
+  "datosEncabezado": {
+    "juzgado": "Juzgado Ochenta y Tres (83) Civil Municipal de Bogotá D.C. Transitorio Sesenta y Cinco (65) de Pequeñas Causas Civiles y Competencia Múltiple de Bogotá D.C.",
+    "juez": "MANUELA GÓMEZ ÁNGEL RANGEL",
+    "ciudad": "Bogotá D.C",
+    "origen": "Juzgado Ochenta (80) Civil Municipal de Bogotá D.C.  Transitorio Sesenta y Dos (62) de Pequeñas Causas Civiles y Competencia Múltiple de Bogotá D.C.",
+    "radicado": "2133-00502-03",
+    "demandante": "ROSALBA MENDIETA",
+    "demandado": "OSCAR PLAZAS",
+    "proceso": "EJECUTIVO PARA LA EFECTIVIDAD DE LA GARANTÍA REAL",
+    "provincia": "1"
+  },
+  "decretosAnexados": [
+    {
+      "id_tipo_embargo": 1,
+      "tipo": "Establecimiento",
+      "descripcion": "DECRETAR EL EMBARGO Y RETENCIÓN, del establecimiento de comercio denominado “°”, identificado con Matrícula No. °, que se denuncia de propiedad del ejecutado °##. Verificada y acreditada la inscripción de dicha medida, se resolverá lo pertinente sobre su secuestro (Art. 601 CGP).",
+      "dataInputs": {
+        "nombreEstablecimiento": "SERVIELECTRICOS SAS",
+        "direccion": "123515 UBICADO EN TUNJA"
+      }
+    },
+    {
+      "id_tipo_embargo": 2,
+      "tipo": "Banco",
+      "descripcion": "DECRETAR EL EMBARGO Y RETENCIÓN, en la cuantía y proporción permitida por la ley, de los saldos bancarios que a cualquier título existan a favor del demandado °##, y los depósitos posteriores que se produzcan, hasta completar la suma de $° de pesos.",
+      "dataInputs": {
+        "valor": "20.560.00 millones"
+      }
+    },
+    {
+      "id_tipo_embargo": 3,
+      "tipo": "Salario",
+      "descripcion": "DECRETAR EL EMBARGO Y RETENCIÓN, hasta del °% del salario, y prestaciones sociales de los demandados °##, de conformidad con lo dispuesto por el artículo 156 y 344 del Código Sustantivo del Trabajo, y que le corresponde en calidad de empleado de °. Se limita la medida en la cantidad de $° de pesos.",
+      "dataInputs": {
+        "porcentaje": "40",
+        "empresa": "SENA",
+        "valor": "12.600.000"
+      }
+    },
+    {
+      "id_tipo_embargo": 4,
+      "tipo": "Automovil",
+      "descripcion": "DECRETAR EL EMBARGO Y RETENCIÓN, del vehículo automotor de placas °, de marca °, que se denuncia de propiedad del demandado °##. Verificada y acreditada la inscripción de dicha medida, se resolverá lo pertinente sobre su secuestro (Art. 601 CGP).",
+      "dataInputs": {
+        "placa": "PJD065",
+        "marca": "CHEVROLET"
+      }
+    },
+    {
+      "id_tipo_embargo": 5,
+      "tipo": "Fondo de Pensiones",
+      "descripcion": "DECRETAR EL EMBARGO Y RETENCIÓN, hasta del 40% de la pensión del demandado °##, como pensionado del Fondo de Pensiones °, de conformidad con lo dispuesto por el artículo 134 de la Ley 100 de 1993, y que le corresponde en calidad pensionada. Se limita la medida en la cantidad de $° de pesos.",
+      "dataInputs": {
+        "fondoPensiones": "COLPENSIONES",
+        "valor": "5.000.000 millones"
+      }
+    },
+    {
+      "id_tipo_embargo": 6,
+      "tipo": "Inmueble",
+      "descripcion": "DECRETAR EL EMBARGO Y RETENCIÓN, del derecho de dominio de que sea titular la demandada °##, respecto del bien distinguido con °. Verificada y acreditada la inscripción de dicha medida, se resolverá lo pertinente sobre su secuestro.",
+      "dataInputs": {
+        "direccion": "F.M.I 556541 UBICADO EN PLAZA ESPAÑA"
+      }
+    }
+  ]
+}

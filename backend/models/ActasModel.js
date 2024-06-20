@@ -2,8 +2,7 @@ import conexion from "../conection/conexion.js";
 
 class ActasModel {
     static async createActa(id_digitador, datosEncabezado, decretosAnexados, fechaFormato) {
-        const { 
-            juzgado,
+        const {
             juez,
             ciudad,
             origen,
@@ -13,13 +12,6 @@ class ActasModel {
             proceso,
             cod_folio
         } = datosEncabezado;
-
-        const { 
-            id_tipo_embargo,
-            tipo,
-            descripcion,
-            dataInputs
-        } = decretosAnexados
 
         try {
             const [acta_embargo] = await conexion.query(`
@@ -42,11 +34,11 @@ class ActasModel {
                 fk_ciudad: ciudad
             })
     
-            for (const decretos in dataInputs) {
+            for (const decretos of decretosAnexados) {
                 const [datos_decretos] = await conexion.query(`
                     INSERT INTO datos_decretos(fkp_id_datos_decreto, fk_embargo, datos_decretos) 
-                        VALUES (?, ?, JSON_OBJECT(?))   
-                `, [radicado, tipo, decretos])
+                        VALUES (?, ?, ?)   
+                `, [radicado, decretos.tipo, JSON.stringify(decretos.dataInputs)])
             }
 
             return {
