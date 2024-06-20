@@ -1,4 +1,4 @@
-GET http://localhost:5002/ley
+GET http://localhost:5002/ciudad
 
 ####
 

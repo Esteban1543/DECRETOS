@@ -1,17 +1,16 @@
 import conexion from "../conection/conexion.js";
 
 class ProcesosModel {
-    static async getLey(){
+    static async getCiudad(){
         try {
             const [ley] = await conexion.query(`
                 SELECT * 
-                FROM ley 
-                ORDER BY id_ley DESC;
+                FROM ciudad;
             `)
 
             return {
                 status: true,
-                message: '✅ Se genero con exito la consulta Ley',
+                message: '✅ Se genero con exito la consulta ciudad',
                 data: ley 
             }
         }catch(error){

@@ -4,7 +4,7 @@ const router = Router();
 
 import ProcesosControllers from "../controllers/ProcesosController.js";
 
-router.get('/ley', ProcesosControllers.getLey)
+router.get('/ciudad', ProcesosControllers.getCiudad)
 
 router.get('/tipo_embargo', ProcesosControllers.getTipoEmbargo)
 
