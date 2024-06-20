@@ -1,17 +1,16 @@
 import conexion from "../conection/conexion.js";
 
 class ProcesosModel {
-    static async getLey(){
+    static async getCiudad(){
         try {
             const [ley] = await conexion.query(`
                 SELECT * 
-                FROM ley 
-                ORDER BY id_ley DESC;
+                FROM ciudad;
             `)
 
             return {
                 status: true,
-                message: '✅ Se genero con exito la consulta Ley',
+                message: '✅ Se genero con exito la consulta ciudad',
                 data: ley 
             }
         }catch(error){
@@ -27,8 +26,7 @@ class ProcesosModel {
         try {
             const [tipoEmbargo] = await conexion.query(`
                 SELECT * 
-                FROM tipo_embargo 
-                ORDER BY id_tipo_embargo DESC;
+                FROM tipo_embargo;
             `)
 
             return {
@@ -49,8 +47,7 @@ class ProcesosModel {
         try {
             const [origen] = await conexion.query(`
                 SELECT * 
-                FROM origen 
-                ORDER BY id_origen DESC;
+                FROM origen;
             `)
 
             return {
@@ -71,8 +68,7 @@ class ProcesosModel {
         try {
             const [proceso] = await conexion.query(`
                 SELECT * 
-                FROM proceso 
-                ORDER BY id_proceso DESC;    
+                FROM proceso;    
             `)
 
             return {

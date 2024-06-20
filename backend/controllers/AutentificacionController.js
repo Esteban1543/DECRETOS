@@ -3,7 +3,7 @@ import AutentificacionModel from '../models/AutentificacionModel.js'
 class AutentificiacionController {
     static async Autentificiacion(req, res) {
         const validations = {
-            user: /^[a-zA-Z0-9 ]*$/,
+            user: /^[a-zA-Z0-9 ]+$/,
             password: /^(?!\s)(?=\S*[0-9])(?=\S*[a-zA-Z].*[a-zA-Z].*[a-zA-Z])\S{2,}$/,
         };
 

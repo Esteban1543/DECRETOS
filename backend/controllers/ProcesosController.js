@@ -1,9 +1,9 @@
 import ProcesosModel from '../models/ProcesosModel.js'
 
 class ProcesosControllers {
-    static async getLey(req, res){
+    static async getCiudad(req, res){
         try {
-            res.json(await ProcesosModel.getLey())
+            res.json(await ProcesosModel.getCiudad())
         }catch(error) {
             res.json({
                 status: false,
