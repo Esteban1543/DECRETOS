@@ -78,6 +78,7 @@ create table
         primary key(ciudad)
     );
 
+
 create table
     acta_embargo (
         id_acta  varchar(50) not null, -- Radicado
@@ -98,6 +99,7 @@ create table
         provincia varchar(30), 
         fk_origen varchar(255) not null,
         fk_ciudad varchar(30) not null,
+        juez varchar(50) not null,
 
         
         primary key (fkp_historial_decretos),
@@ -110,11 +112,12 @@ create table
 
 create table
     datos_decretos (
+		id_datos_decretos int auto_increment,
         fkp_id_datos_decreto  varchar(50) not null,
         fk_embargo varchar(30) not null,
         datos_decretos JSON not null,
 
-        primary key (fkp_id_datos_decreto),
+        primary key (id_datos_decretos),
         foreign key (fkp_id_datos_decreto) references acta_embargo(id_acta),
         foreign key (fk_embargo) references tipo_embargo (tipo)
     );

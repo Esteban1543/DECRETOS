@@ -40,21 +40,21 @@ VALUES
     -- Contienen la ley segun el embargo
 INSERT INTO tipo_embargo (tipo, descripcion, ley)
 VALUES
-    ('Establecimiento', 'ª, DECRETAR EL EMBARGO Y RETENCIÓN, del establecimiento de comercio denominado “REM_Comercio”, identificado con Matrícula No. REM_Matricula, que se denuncia de propiedad del ejecutado REM_Demandando. Verificada y acreditada la inscripción de dicha medida, se resolverá lo pertinente sobre su secuestro (Art. 601 CGP).', null),
+    ('Establecimiento', 'ª, DECRETAR EL EMBARGO Y RETENCIÓN, del establecimiento de comercio denominado “°”, identificado con Matrícula No. °, que se denuncia de propiedad del ejecutado °. Verificada y acreditada la inscripción de dicha medida, se resolverá lo pertinente sobre su secuestro (Art. 601 CGP).', null), -- Comercio, Matricula, Demandado
 
-    ('Banco', 'ª, DECRETAR EL EMBARGO Y RETENCIÓN, en la cuantía y proporción permitida por la ley, de los saldos bancarios que a cualquier título existan a favor del demandado REM_Demandado, y los depósitos posteriores que se produzcan, hasta completar la suma de REM_Valor de pesos.', null),
+    ('Banco', 'ª, DECRETAR EL EMBARGO Y RETENCIÓN, en la cuantía y proporción permitida por la ley, de los saldos bancarios que a cualquier título existan a favor del demandado °, y los depósitos posteriores que se produzcan, hasta completar la suma de ° de pesos.', null), -- Demandado, Valor
 
-    ('Salario', 'ª, DECRETAR EL EMBARGO Y RETENCIÓN, hasta del REM_Porciento% del salario, y prestaciones sociales de los demandados REM_Demandado, de conformidad con lo dispuesto por el artículo 156 y 344 del Código Sustantivo del Trabajo, y que le corresponde en calidad de empleado de REM_Empresa. Se limita la medida en la cantidad de $° de pesos.', null),
+    ('Salario', 'ª, DECRETAR EL EMBARGO Y RETENCIÓN, hasta del °% del salario, y prestaciones sociales de los demandados °, de conformidad con lo dispuesto por el artículo 156 y 344 del Código Sustantivo del Trabajo, y que le corresponde en calidad de empleado de °. Se limita la medida en la cantidad de $° de pesos.', null), -- Porciento, Demandado, Empresa
 
-    ('Automovil', 'ª, DECRETAR EL EMBARGO Y RETENCIÓN, del vehículo automotor de placas REM_Placas automóvil marca REM_Marca, que se denuncia de propiedad del demandado REM_Demandado. Verificada y acreditada la inscripción de dicha medida, se resolverá lo pertinente sobre su secuestro (Art. 601 CGP).', null),
+    ('Automovil', 'ª, DECRETAR EL EMBARGO Y RETENCIÓN, del vehículo automotor de placas ° automóvil marca °, que se denuncia de propiedad del demandado °. Verificada y acreditada la inscripción de dicha medida, se resolverá lo pertinente sobre su secuestro (Art. 601 CGP).', null), -- Placas, Marca, Demandado
 
-    ('Motocicleta', 'DECRETAR EL EMBARGO del vehículo automotor de placas REM_Placas motocicleta marca REM_Marca, que se denuncia de propiedad del demandado REM_Demandado. Verificada y acreditada la inscripción de dicha medida, se resolverá lo pertinente sobre su secuestro (Art. 601 CGP)', null),
+    ('Motocicleta', 'DECRETAR EL EMBARGO del vehículo automotor de placas ° motocicleta marca °, que se denuncia de propiedad del demandado °. Verificada y acreditada la inscripción de dicha medida, se resolverá lo pertinente sobre su secuestro (Art. 601 CGP)', null), -- Placas, Marca, Demandado
 
-    ('Fondo de Pensiones', 'ª, DECRETAR EL EMBARGO Y RETENCIÓN hasta del REM_Porciento de la pensión del demandado REM_Demandado, como pensionado del REM_FondoDePensiones, de conformidad con lo dispuesto por el artículo 134 de la Ley 100 de 1993, y que le corresponde en calidad pensionada. Se limita la medida en la cantidad de REM_Valor de pesos.', null),
+    ('Fondo de PeNsiones', 'ª, DECRETAR EL EMBARGO Y RETENCIÓN hasta del 40% de la pensión del demandado °, como pensionado del °, de conformidad con lo dispuesto por el artículo 134 de la Ley 100 de 1993, y que le corresponde en calidad pensionada. Se limita la medida en la cantidad de ° de pesos.', null), -- Demandado, Fondo de pensiones, Valor
 
-    ('Salario/Penciones', 'ª, OFICIAR al tesorero y/o pagador del REM_Demandado, para que del salario devengado por REM_Valor, retenga la proporción del dinero antes determinada y constituya certificado de depósito a órdenes del Juzgado, previniéndole que de lo contrario responderá por dichos valores.', null),
+    ('Salario/Penciones', 'ª, OFICIAR al tesorero y/o pagador del °, para que del salario devengado por °, retenga la proporción del dinero antes determinada y constituya certificado de depósito a órdenes del Juzgado, previniéndole que de lo contrario responderá por dichos valores.', null), -- Demandado, Valor
 
-    ('Inmueble', 'DECRETAR EL EMBARGO del derecho de dominio de que sea titular la demandada °, respecto del bien distinguido con el REM_Inmueble Verificada y acreditada la inscripción de dicha medida, se resolverá lo pertinente sobre su secuestro', null);
+    ('Inmueble', 'DECRETAR EL EMBARGO del derecho de dominio de que sea titular la demandada °, respecto del bien distinguido con el ° Verificada y acreditada la inscripción de dicha medida, se resolverá lo pertinente sobre su secuestro', null); -- Demandado, Inmueble
 
 -- Origen
 INSERT INTO origen (origen)
@@ -98,26 +98,26 @@ VALUES
     ('987456', '543216789', '2023-10-30 08:55:00');
     
 -- Historial decretos
-INSERT INTO historial_decretos (fkp_historial_decretos, fk_proceso, demandante, demandado, provincia, fk_origen, fk_ciudad)
+INSERT INTO historial_decretos (fkp_historial_decretos, fk_proceso, demandante, demandado, provincia, fk_origen, fk_ciudad, juez)
 VALUES
-    ('123123', 'EJECUTIVO PARA LA EFECTIVIDAD DE LA GARANTÍA REAL', 'Nutresa S.A.S.', 'Miguel Angel Bonilla Pelaez', '123132', 'Juzgado Sexto (6) de Pequeñas Causas Civiles y Competencia Múltiple de Bogotá D.C.', 'Bogotá D.C'),
-    ('321321', 'EJECUTIVO DE MÍNIMA CUANTÍA', 'Anguie Catalina Romero Pinton', 'Nestle S.A.S', '78965411', 'Juzgado Sexto (6) de Pequeñas Causas Civiles y Competencia Múltiple de Bogotá D.C.', 'Bogotá D.C'),
+    ('123123', 'EJECUTIVO PARA LA EFECTIVIDAD DE LA GARANTÍA REAL', 'Nutresa S.A.S.', 'Miguel Angel Bonilla Pelaez', '123132', 'Juzgado Sexto (6) de Pequeñas Causas Civiles y Competencia Múltiple de Bogotá D.C.', 'Bogotá D.C.' ,'MANUELA GÓMEZ ÁNGEL RANGEL'),
+    ('321321', 'EJECUTIVO DE MÍNIMA CUANTÍA', 'Anguie Catalina Romero Pinton', 'Nestle S.A.S', '78965411', 'Juzgado Sexto (6) de Pequeñas Causas Civiles y Competencia Múltiple de Bogotá D.C.', 'Bogotá D.C.' ,'MANUELA GÓMEZ ÁNGEL RANGEL'),
 
-    ('456789', 'EJECUTIVO DE MÍNIMA CUANTÍA', 'Laura Gómez Pérez', 'Tech Innovators Inc.', '7984654','Juzgado Sexto (6) de Pequeñas Causas Civiles y Competencia Múltiple de Bogotá D.C.', 'Bogotá D.C'),
-    ('987654', 'EJECUTIVO DE MÍNIMA CUANTÍA', 'Antonio Rivera Martínez', 'Green Earth Solutions', '7465789', 'Juzgado Sexto (6) de Pequeñas Causas Civiles y Competencia Múltiple de Bogotá D.C.', 'Bogotá D.C'),
-    ('456456', 'EJECUTIVO PARA LA EFECTIVIDAD DE LA GARANTÍA REAL', 'María Fernanda López Sánchez', 'Global Finance Corp.', '3484128', 'Juzgado Sexto (6) de Pequeñas Causas Civiles y Competencia Múltiple de Bogotá D.C.', 'Bogotá D.C'),
-    ('654654', 'EJECUTIVO PARA LA EFECTIVIDAD DE LA GARANTÍA REAL', 'Javier Hernández Torres', 'Stellar Marketing Group', '5648518', 'Juzgado Sexto (6) de Pequeñas Causas Civiles y Competencia Múltiple de Bogotá D.C.', 'Bogotá D.C'),
-    ('789789', 'EJECUTIVO PARA LA EFECTIVIDAD DE LA GARANTÍA REAL', 'Carmen Castillo García', 'Horizon Health Services', '987456168', 'Juzgado Ochenta y Tres (83) Civil Municipal de Bogotá D.C.  Transitorio Sesenta y Cinco (65) de Pequeñas Causas Civiles y Competencia Múltiple de Bogotá D.C.', 'Bogotá D.C'),
-    ('789123', 'EJECUTIVO PARA LA EFECTIVIDAD DE LA GARANTÍA REAL', 'Empresa A', 'Pedro Pérez', '124578', 'Juzgado Sexto (6) de Pequeñas Causas Civiles y Competencia Múltiple de Bogotá D.C.', 'Bogotá D.C'),
-    ('456321', 'EJECUTIVO DE MÍNIMA CUANTÍA', 'Empresa B', 'Juan Gómez', '785421', 'Juzgado Sexto (6) de Pequeñas Causas Civiles y Competencia Múltiple de Bogotá D.C.', 'Bogotá D.C'),
-    ('654987', 'EJECUTIVO DE MÍNIMA CUANTÍA', 'Empresa C', 'Laura Mendoza', '457896', 'Juzgado Sexto (6) de Pequeñas Causas Civiles y Competencia Múltiple de Bogotá D.C.', 'Bogotá D.C'),
-    ('321654', 'EJECUTIVO DE MÍNIMA CUANTÍA', 'Empresa D', 'Carlos Ramírez', '124578', 'Juzgado Sexto (6) de Pequeñas Causas Civiles y Competencia Múltiple de Bogotá D.C.', 'Bogotá D.C'),
-    ('789456', 'EJECUTIVO PARA LA EFECTIVIDAD DE LA GARANTÍA REAL', 'Empresa E', 'Ana Torres', '785421', 'Juzgado Sexto (6) de Pequeñas Causas Civiles y Competencia Múltiple de Bogotá D.C.', 'Bogotá D.C'),
-    ('123789', 'EJECUTIVO PARA LA EFECTIVIDAD DE LA GARANTÍA REAL', 'Empresa F', 'Luis Martínez', '457896', 'Juzgado Sexto (6) de Pequeñas Causas Civiles y Competencia Múltiple de Bogotá D.C.', 'Bogotá D.C'),
-    ('987321', 'EJECUTIVO DE MÍNIMA CUANTÍA', 'Empresa G', 'Elena García', '124578', 'Juzgado Sexto (6) de Pequeñas Causas Civiles y Competencia Múltiple de Bogotá D.C.', 'Bogotá D.C'),
-    ('654321', 'EJECUTIVO PARA LA EFECTIVIDAD DE LA GARANTÍA REAL', 'Empresa H', 'Marta Sánchez', '785421', 'Juzgado Sexto (6) de Pequeñas Causas Civiles y Competencia Múltiple de Bogotá D.C.', 'Bogotá D.C'),
-    ('321789', 'EJECUTIVO PARA LA EFECTIVIDAD DE LA GARANTÍA REAL', 'Empresa I', 'Carlos López', '457896', 'Juzgado Sexto (6) de Pequeñas Causas Civiles y Competencia Múltiple de Bogotá D.C.', 'Bogotá D.C'),
-    ('987456', 'EJECUTIVO DE MÍNIMA CUANTÍA', 'Empresa J', 'Patricia Fernández', '124578', 'Juzgado Sexto (6) de Pequeñas Causas Civiles y Competencia Múltiple de Bogotá D.C.', 'Bogotá D.C');
+    ('456789', 'EJECUTIVO DE MÍNIMA CUANTÍA', 'Laura Gómez Pérez', 'Tech Innovators Inc.', '7984654','Juzgado Sexto (6) de Pequeñas Causas Civiles y Competencia Múltiple de Bogotá D.C.', 'Bogotá D.C.' ,'MANUELA GÓMEZ ÁNGEL RANGEL'),
+    ('987654', 'EJECUTIVO DE MÍNIMA CUANTÍA', 'Antonio Rivera Martínez', 'Green Earth Solutions', '7465789', 'Juzgado Sexto (6) de Pequeñas Causas Civiles y Competencia Múltiple de Bogotá D.C.', 'Bogotá D.C.' ,'MANUELA GÓMEZ ÁNGEL RANGEL'),
+    ('456456', 'EJECUTIVO PARA LA EFECTIVIDAD DE LA GARANTÍA REAL', 'María Fernanda López Sánchez', 'Global Finance Corp.', '3484128', 'Juzgado Sexto (6) de Pequeñas Causas Civiles y Competencia Múltiple de Bogotá D.C.', 'Bogotá D.C.' ,'MANUELA GÓMEZ ÁNGEL RANGEL'),
+    ('654654', 'EJECUTIVO PARA LA EFECTIVIDAD DE LA GARANTÍA REAL', 'Javier Hernández Torres', 'Stellar Marketing Group', '5648518', 'Juzgado Sexto (6) de Pequeñas Causas Civiles y Competencia Múltiple de Bogotá D.C.', 'Bogotá D.C.' ,'MANUELA GÓMEZ ÁNGEL RANGEL'),
+    ('789789', 'EJECUTIVO PARA LA EFECTIVIDAD DE LA GARANTÍA REAL', 'Carmen Castillo García', 'Horizon Health Services', '987456168', 'Juzgado Ochenta y Tres (83) Civil Municipal de Bogotá D.C.  Transitorio Sesenta y Cinco (65) de Pequeñas Causas Civiles y Competencia Múltiple de Bogotá D.C.', 'Bogotá D.C.' ,'MANUELA GÓMEZ ÁNGEL RANGEL'),
+    ('789123', 'EJECUTIVO PARA LA EFECTIVIDAD DE LA GARANTÍA REAL', 'Empresa A', 'Pedro Pérez', '124578', 'Juzgado Sexto (6) de Pequeñas Causas Civiles y Competencia Múltiple de Bogotá D.C.', 'Bogotá D.C.' ,'MANUELA GÓMEZ ÁNGEL RANGEL'),
+    ('456321', 'EJECUTIVO DE MÍNIMA CUANTÍA', 'Empresa B', 'Juan Gómez', '785421', 'Juzgado Sexto (6) de Pequeñas Causas Civiles y Competencia Múltiple de Bogotá D.C.', 'Bogotá D.C.' ,'MANUELA GÓMEZ ÁNGEL RANGEL'),
+    ('654987', 'EJECUTIVO DE MÍNIMA CUANTÍA', 'Empresa C', 'Laura Mendoza', '457896', 'Juzgado Sexto (6) de Pequeñas Causas Civiles y Competencia Múltiple de Bogotá D.C.', 'Bogotá D.C.' ,'MANUELA GÓMEZ ÁNGEL RANGEL'),
+    ('321654', 'EJECUTIVO DE MÍNIMA CUANTÍA', 'Empresa D', 'Carlos Ramírez', '124578', 'Juzgado Sexto (6) de Pequeñas Causas Civiles y Competencia Múltiple de Bogotá D.C.', 'Bogotá D.C.' ,'MANUELA GÓMEZ ÁNGEL RANGEL'),
+    ('789456', 'EJECUTIVO PARA LA EFECTIVIDAD DE LA GARANTÍA REAL', 'Empresa E', 'Ana Torres', '785421', 'Juzgado Sexto (6) de Pequeñas Causas Civiles y Competencia Múltiple de Bogotá D.C.', 'Bogotá D.C.' ,'MANUELA GÓMEZ ÁNGEL RANGEL'),
+    ('123789', 'EJECUTIVO PARA LA EFECTIVIDAD DE LA GARANTÍA REAL', 'Empresa F', 'Luis Martínez', '457896', 'Juzgado Sexto (6) de Pequeñas Causas Civiles y Competencia Múltiple de Bogotá D.C.', 'Bogotá D.C.' ,'MANUELA GÓMEZ ÁNGEL RANGEL'),
+    ('987321', 'EJECUTIVO DE MÍNIMA CUANTÍA', 'Empresa G', 'Elena García', '124578', 'Juzgado Sexto (6) de Pequeñas Causas Civiles y Competencia Múltiple de Bogotá D.C.', 'Bogotá D.C.' ,'MANUELA GÓMEZ ÁNGEL RANGEL'),
+    ('654321', 'EJECUTIVO PARA LA EFECTIVIDAD DE LA GARANTÍA REAL', 'Empresa H', 'Marta Sánchez', '785421', 'Juzgado Sexto (6) de Pequeñas Causas Civiles y Competencia Múltiple de Bogotá D.C.', 'Bogotá D.C.' ,'MANUELA GÓMEZ ÁNGEL RANGEL'),
+    ('321789', 'EJECUTIVO PARA LA EFECTIVIDAD DE LA GARANTÍA REAL', 'Empresa I', 'Carlos López', '457896', 'Juzgado Sexto (6) de Pequeñas Causas Civiles y Competencia Múltiple de Bogotá D.C.', 'Bogotá D.C.' ,'MANUELA GÓMEZ ÁNGEL RANGEL'),
+    ('987456', 'EJECUTIVO DE MÍNIMA CUANTÍA', 'Empresa J', 'Patricia Fernández', '124578', 'Juzgado Sexto (6) de Pequeñas Causas Civiles y Competencia Múltiple de Bogotá D.C.', 'Bogotá D.C.' ,'MANUELA GÓMEZ ÁNGEL RANGEL');
 
 -- Datos decreto
 INSERT INTO datos_decretos (fkp_id_datos_decreto, fk_embargo, datos_decretos)
