@@ -24,28 +24,28 @@ export default function SeccionRedaccionActas({ id_digitador, setContenido }: Se
   const handlePage = (page: number) => setPagina(page);
 
   //🔸 Estado para Datos de Encabezado (formulario)
-  const estado_inicial = {
-    juzgado: 'Juzgado Ochenta y Tres (83) Civil Municipal de Bogotá D.C. Transitorio Sesenta y Cinco (65) de Pequeñas Causas Civiles y Competencia Múltiple de Bogotá D.C.',
-    juez: 'MANUELA GÓMEZ ÁNGEL RANGEL',
-    ciudad: 'Bogotá D.C.',
-    origen: 'Juzgado Primero Municipal de Pequeñas Causas Civiles y Competencia Múltiple de Tunja',
-    radicado: '123131321',
-    demandante: 'NOMBRE DEMANDANTE',
-    demandado: 'NOMBRE DEMANDADO',
-    proceso: 'EJECUTIVO DE MÍNIMA CUANTÍA',
-    provincia: '123131'
-  }
   // const estado_inicial = {
-  //   juzgado: '',
+  //   juzgado: 'Juzgado Ochenta y Tres (83) Civil Municipal de Bogotá D.C. Transitorio Sesenta y Cinco (65) de Pequeñas Causas Civiles y Competencia Múltiple de Bogotá D.C.',
   //   juez: 'MANUELA GÓMEZ ÁNGEL RANGEL',
-  //   ciudad: '',
-  //   origen: '',
-  //   radicado: '',
-  //   demandante: '',
-  //   demandado: '',
-  //   proceso: '',
-  //   provincia: ''
+  //   ciudad: 'Bogotá D.C.',
+  //   origen: 'Juzgado Primero Municipal de Pequeñas Causas Civiles y Competencia Múltiple de Tunja',
+  //   radicado: '123131321',
+  //   demandante: 'NOMBRE DEMANDANTE',
+  //   demandado: 'NOMBRE DEMANDADO',
+  //   proceso: 'EJECUTIVO DE MÍNIMA CUANTÍA',
+  //   provincia: '123131'
   // }
+  const estado_inicial = {
+    juzgado: '',
+    juez: 'MANUELA GÓMEZ ÁNGEL RANGEL',
+    ciudad: '',
+    origen: '',
+    radicado: '',
+    demandante: '',
+    demandado: '',
+    proceso: '',
+    provincia: ''
+  }
   const [datosEncabezado, setDatosEncabezado] = useState(estado_inicial);
 
   //🔸 Estado para almacenar los decretos que se anexan
