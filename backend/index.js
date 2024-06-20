@@ -25,6 +25,9 @@ import InformesRouter from './routes/InformesRouter.js'
 
 app.use('/', InformesRouter)
 
+import ActasRouter from './routes/ActasRouter.js'
+
+app.use('/', ActasRouter)
 
 app.use(express.static(new URL('./assets', import.meta.url).pathname));
 
