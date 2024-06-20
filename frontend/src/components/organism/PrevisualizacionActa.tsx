@@ -80,7 +80,8 @@ const PrevisualizacionActa: React.FC<PrevisualizacionActaProps> = ({ datosEncabe
 
       {/* Conclusión 📌 */}
       <footer style={{ textAlign: 'center' }}>
-        <h5>-NOTIFÍQUESE-</h5>
+        <h5>NOTIFÍQUESE y CÚMPLASE,</h5>
+        <h5>-{datosEncabezado.provincia}-</h5>
         <br /><br />
         <h5>________________________________</h5>
         <h5>{datosEncabezado.juez}</h5>
