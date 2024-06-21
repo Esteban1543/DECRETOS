@@ -4,13 +4,16 @@ const database = {
     host: 'localhost',
     database: 'decretos_db',
     user: 'root',
-    password: ''
+    password: '',
+    waitForConnections: true,
+    connectionLimit: 20,
+    queueLimit: 0
 }
 
 let conexion;
 
 try {
-    conexion = await mysql.createConnection(database);
+    conexion = await mysql.createPool(database);
     console.log(`🟢 Conexion con la base de datos ${database.database} fue exitosa`);
 } catch (error) {
     console.log(error)

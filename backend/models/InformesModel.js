@@ -16,7 +16,7 @@ class InformesModel {
                 FROM acta_embargo ae
                 INNER JOIN historial_decretos hd ON hd.fkp_historial_decretos = ae.id_acta
                 INNER JOIN datos_decretos dd ON dd.fkp_id_datos_decreto = ae.id_acta
-                WHERE ?
+                WHERE ae.fk_id_usuario = ?
                 GROUP BY ae.id_acta;    
             `, [n_identificacion])
 
