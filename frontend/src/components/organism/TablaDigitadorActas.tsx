@@ -7,12 +7,14 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
+import { useGetData } from '../../hooks/useGetData';
+import { URI } from '../../config';
 
 interface Column {
   id: 'provincia' | 'fk_proceso' | 'demandado' | 'demandante' | 'fecha_registro';
   label: string;
   minWidth?: number;
-  align?: 'right';
+  align?: 'right' | 'center';
   format?: (value: number) => string;
 }
 
@@ -31,14 +33,12 @@ const columns: readonly Column[] = [
     label: 'Demandante',
     minWidth: 170,
     align: 'right',
-    // format: (value: number) => value.toLocaleString('en-US'),
   },
   {
     id: 'fecha_registro',
     label: 'Fecha Digitado',
     minWidth: 170,
     align: 'right',
-    // format: (value: number) => value.toFixed(2),
   },
 ];
 
@@ -60,25 +60,47 @@ function createData(
   return { provincia, fk_proceso, demandado, demandante, fecha_registro };
 }
 
-const rows = [
-  createData('A2312', '2023-00501-00', 'Demandante', 'Demandado', '2024-08-16'),
-  createData('A2312', '2023-00501-01', 'Demandante', 'Demandado', '2024-08-16'),
-  createData('A2312', '2023-00601-00', 'Demandante', 'Demandado', '2024-08-16'),
-  createData('A2312', '2023-00001-00', 'Demandante', 'Demandado', '2024-08-16'),
-  createData('A2312', '2023-00202-00', 'Demandante', 'Demandado', '2024-08-16'),
-  createData('A2312', '2023-00520-00', 'Demandante', 'Demandado', '2024-08-16'),
-  createData('A2312', '2023-00507-00', 'Demandante', 'Demandado', '2024-08-16'),
-  createData('A2312', '2023-00501-00', 'Demandante', 'Demandado', '2024-08-16'),
-  createData('A2312', '2023-00501-00', 'Demandante', 'Demandado', '2024-08-16'),
-  createData('A2312', '2023-00501-00', 'Demandante', 'Demandado', '2024-08-16'),
-  createData('A2312', '2023-00501-00', 'Demandante', 'Demandado', '2024-08-16'),
-  createData('A2312', '2023-00501-00', 'Demandante', 'Demandado', '2024-08-16'),
-  createData('A2312', '2023-00501-00', 'Demandante', 'Demandado', '2024-08-16',),
-  createData('A2312', '2023-00501-00', 'Demandante', 'Demandado', '2024-08-16'),
-  createData('A2312', '2023-00501-00', 'Demandante', 'Demandado', '2024-08-16'),
-];
+// const rows = [
+//   createData('A2312', '2023-00501-00', 'Demandante', 'Demandado', '2024-08-16'),
+//   createData('A2312', '2023-00501-01', 'Demandante', 'Demandado', '2024-08-16'),
+//   createData('A2312', '2023-00601-00', 'Demandante', 'Demandado', '2024-08-16'),
+//   createData('A2312', '2023-00001-00', 'Demandante', 'Demandado', '2024-08-16'),
+//   createData('A2312', '2023-00202-00', 'Demandante', 'Demandado', '2024-08-16'),
+//   createData('A2312', '2023-00520-00', 'Demandante', 'Demandado', '2024-08-16'),
+//   createData('A2312', '2023-00507-00', 'Demandante', 'Demandado', '2024-08-16'),
+//   createData('A2312', '2023-00501-00', 'Demandante', 'Demandado', '2024-08-16'),
+//   createData('A2312', '2023-00501-00', 'Demandante', 'Demandado', '2024-08-16'),
+//   createData('A2312', '2023-00501-00', 'Demandante', 'Demandado', '2024-08-16'),
+//   createData('A2312', '2023-00501-00', 'Demandante', 'Demandado', '2024-08-16'),
+//   createData('A2312', '2023-00501-00', 'Demandante', 'Demandado', '2024-08-16'),
+//   createData('A2312', '2023-00501-00', 'Demandante', 'Demandado', '2024-08-16',),
+//   createData('A2312', '2023-00501-00', 'Demandante', 'Demandado', '2024-08-16'),
+//   createData('A2312', '2023-00501-00', 'Demandante', 'Demandado', '2024-08-16'),
+// ];
 
-export default function StickyHeadTable() {
+interface ActasType {
+  id_acta: string;
+  fecha_registro: string;
+  proceso: string;
+  demandante: string;
+  demandado: string;
+  provincia: string;
+  fk_ciudad: string;
+  decretos: string;
+}
+
+export default function TablaDigitadorActas({ id_digitador }: { id_digitador?: number }) {
+
+  //🔸Fetch de Datos Tabla
+  const { data, loading, error, refetch } = useGetData<ActasType>(`${URI}/actasdigitador/${id_digitador}`);
+  // console.log(data, loading, error, refetch);
+
+  const datosTabla = !loading && data?.status && data?.data?.map(m => {
+    return createData(m.provincia, m.id_acta, m.demandante, m.demandado, m.fecha_registro.split('T')[0])
+  })
+
+
+
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(6);
 
@@ -109,10 +131,10 @@ export default function StickyHeadTable() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows
-              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((row) => {
-                return (
+            {datosTabla && datosTabla.length > 0 ? (
+              datosTabla
+                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                .map((row) => (
                   <TableRow hover role="checkbox" tabIndex={-1} key={row.provincia}>
                     {columns.map((column) => {
                       const value = row[column.id];
@@ -125,15 +147,21 @@ export default function StickyHeadTable() {
                       );
                     })}
                   </TableRow>
-                );
-              })}
+                ))
+            ) : (
+              <TableRow>
+                <TableCell colSpan={columns.length} align="center">
+                  No aparecen actas registradas al usuario
+                </TableCell>
+              </TableRow>
+            )}
           </TableBody>
         </Table>
       </TableContainer>
       <TablePagination
         rowsPerPageOptions={[6, 10, 25, 100]}
         component="footer"
-        count={rows.length}
+        count={ datosTabla ? datosTabla?.length : 0}
         rowsPerPage={rowsPerPage}
         page={page}
         onPageChange={handleChangePage}
