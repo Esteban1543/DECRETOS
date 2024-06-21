@@ -4,8 +4,14 @@ import Button from '@mui/material/Button';
 import SeccionRedaccionActas from './SeccionRedaccionActas';
 import TablaDigitadorActas from '../organism/TablaDigitadorActas';
 import HeaderRedaccion from '../atoms/HeaderRedaccion';
+import { ActasType } from '../../helpers/Types';
 
-const ContenidoHomeDigitador = ({ id_digitador }: { id_digitador?: number }) => {
+interface ContenidoHomeDigitadorProps {
+  id_digitador: number,
+  datosTabla: Array<ActasType>
+}
+
+const ContenidoHomeDigitador = ({ id_digitador, datosTabla }: ContenidoHomeDigitadorProps) => {
   //🔸 Setear Contenido 
   const [contenido, setContenido] = useState('tabla');
 
@@ -41,7 +47,7 @@ const ContenidoHomeDigitador = ({ id_digitador }: { id_digitador?: number }) => 
 
                 <article className="section_tabla_ventas">
                   <TablaDigitadorActas
-                    id_digitador={1}
+                    datosTabla={datosTabla}
                   />
                 </article>
 

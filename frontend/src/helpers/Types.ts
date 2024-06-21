@@ -62,3 +62,14 @@ export type CiudadesType = {
 export type ProccesosType = {
   proceso: string
 }
+
+export type ActasType = {
+  id_acta: string;
+  fecha_registro: string;
+  proceso: string;
+  demandante: string;
+  demandado: string;
+  provincia: string;
+  fk_ciudad: string;
+  decretos: string;
+}

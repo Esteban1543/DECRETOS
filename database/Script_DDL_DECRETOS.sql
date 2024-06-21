@@ -96,7 +96,7 @@ create table
         fk_proceso varchar(255) not null,
         demandante varchar(50) not null,
         demandado varchar(50) not null,
-        provincia varchar(30), 
+        provincia varchar(30) not null, 
         fk_origen varchar(255) not null,
         fk_ciudad varchar(30) not null,
         juez varchar(50) not null,
