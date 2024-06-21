@@ -14,7 +14,7 @@ export const setearDescripcionDecreto = (desc: string, dataInputs: InputDataDecr
   let result = desc_demandado;
 
   Object.values(dataInputs).forEach(value => {
-    result = result.replace('°', value.toString() || '--DATO SIN DILIGENCIAR--');
+    result = result.replace('°', value?.toString() || '--DATO SIN DILIGENCIAR--');
   });
 
   return result;

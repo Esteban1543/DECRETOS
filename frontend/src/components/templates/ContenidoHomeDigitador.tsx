@@ -29,7 +29,7 @@ const ContenidoHomeDigitador = ({ id_digitador }: { id_digitador?: number }) => 
                     size='large'
                     endIcon={<FontDownloadOutlinedIcon />}
                     onClick={() => setContenido('redaccion')}
-                    style={{height: '70%'}}
+                    style={{ height: '70%' }}
                   >
                     Iniciar Redacción
                   </Button>
@@ -40,7 +40,9 @@ const ContenidoHomeDigitador = ({ id_digitador }: { id_digitador?: number }) => 
                 <HeaderRedaccion titulo="Actas Digitadas" />
 
                 <article className="section_tabla_ventas">
-                  <TablaDigitadorActas />
+                  <TablaDigitadorActas
+                    id_digitador={1}
+                  />
                 </article>
 
               </section>

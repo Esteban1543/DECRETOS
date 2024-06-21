@@ -50,3 +50,15 @@ export type DatosEncabezadoType = {
   proceso: string,
   provincia: string,
 }
+
+export type JuzgadosType = {
+  origen: string;
+}
+
+export type CiudadesType = {
+  ciudad: string
+}
+
+export type ProccesosType = {
+  proceso: string
+}

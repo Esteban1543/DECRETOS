@@ -1,34 +1,49 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-export function useGetData(url: string) {
-  // console.log(url)
-  const [newFetch, setNewFecth] = useState(false);
-  const [data, setData] = useState(null);
+interface DataType<T> {
+  status: boolean;
+  message: string | null;
+  data: Array<T> | null;
+  error: string | null;
+}
+
+interface UseGetDataReturn<T> {
+  data: DataType<T> | null;
+  loading: boolean;
+  error: string | null;
+  refetch: () => void;
+}
+
+export function useGetData<T>(url: string): UseGetDataReturn<T> {
+  
+  const [newFetch, setNewFetch] = useState(false);
+  const [data, setData] = useState<DataType<T> | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  //🔸 Realizar solicitud GET
   useEffect(() => {
     const getData = async () => {
       try {
-        const response = await axios.get(url);
+        const response = await axios.get<DataType<T>>(url);
         setData(response.data);
-        // console.log(response.data)
         setLoading(false);
-      }
-      catch (error) {
-        setError(error);
+      } catch (error) {
+        if (axios.isAxiosError(error)) {
+          setError(error.message);
+        } else {
+          setError('An unknown error occurred');
+        }
+        setLoading(false);
       }
     };
 
-    setTimeout(() => getData(), 500);
-  }, [url]);
+    getData();
+  }, [url, newFetch]);
 
-  //🔸 Solcitar una nueva solicitud
   const refetch = () => {
     setLoading(true);
-    setNewFecth(!newFetch);
+    setNewFetch(!newFetch);
   };
 
   return { data, loading, error, refetch };

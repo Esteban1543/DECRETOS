@@ -25,11 +25,10 @@ export default function HomeDigitador() {
   // //🔸 Setear información de la sesión del usuario activo
   const { sessionUser } = useSetSesion();
 
-  const id_digitador = sessionUser?.id_persona;
+  const id_digitador = sessionUser?.n_identificacion;
   const nombres = `${sessionUser?.nombre_1} ${sessionUser?.apellido_1}`;
   const usuario = `${sessionUser?.alias}`;
   const num_actas = '###';
-
 
 
   return (

@@ -5,7 +5,7 @@
 
 import axios from "axios"
 
-export const solicitudPost = async ({ url, formData }: { url: string, formData: object }) => {
+export const solicitudPost = async (url: string, formData: object) => {
   // console.log(formData)
   try {
     const response = await axios.post(url, formData, {
