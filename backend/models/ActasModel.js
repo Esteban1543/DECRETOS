@@ -10,7 +10,7 @@ class ActasModel {
             demandante,
             demandado,
             proceso,
-            cod_folio
+            provincia
         } = datosEncabezado;
 
         try {
@@ -29,7 +29,7 @@ class ActasModel {
                 fk_proceso: proceso,
                 demandante: demandante,
                 demandado: demandado,
-                provincia: cod_folio,
+                provincia: provincia,
                 fk_origen: origen,
                 fk_ciudad: ciudad,
                 juez: juez
