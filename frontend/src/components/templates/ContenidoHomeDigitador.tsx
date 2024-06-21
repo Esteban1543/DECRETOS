@@ -8,10 +8,11 @@ import { ActasType } from '../../helpers/Types';
 
 interface ContenidoHomeDigitadorProps {
   id_digitador: number,
-  datosTabla: Array<ActasType>
+  datosTabla: Array<ActasType>,
+  refetch: ()=> void
 }
 
-const ContenidoHomeDigitador = ({ id_digitador, datosTabla }: ContenidoHomeDigitadorProps) => {
+const ContenidoHomeDigitador = ({ id_digitador, datosTabla, refetch }: ContenidoHomeDigitadorProps) => {
   //🔸 Setear Contenido 
   const [contenido, setContenido] = useState('tabla');
 
@@ -23,6 +24,7 @@ const ContenidoHomeDigitador = ({ id_digitador, datosTabla }: ContenidoHomeDigit
             <SeccionRedaccionActas
               id_digitador={id_digitador}
               setContenido={setContenido}
+              refetch={refetch}
             />
           ) : (
             <>

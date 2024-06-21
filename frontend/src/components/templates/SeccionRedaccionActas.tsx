@@ -14,11 +14,12 @@ import RedaccionPrevPDF from "../organism/RedaccionPrevPDF";
 
 interface SeccionRedaccionActasProps {
   id_digitador?: number,
-  setContenido: React.Dispatch<React.SetStateAction<string>>
+  setContenido: React.Dispatch<React.SetStateAction<string>>,
+  refetch: ()=> void
 }
 
 
-export default function SeccionRedaccionActas({ id_digitador, setContenido }: SeccionRedaccionActasProps) {
+export default function SeccionRedaccionActas({ id_digitador, setContenido, refetch }: SeccionRedaccionActasProps) {
 
   //🔸 Administrar la página que se necesita mostrar
   const [pagina, setPagina] = useState(1);
@@ -59,6 +60,7 @@ export default function SeccionRedaccionActas({ id_digitador, setContenido }: Se
       setDatosEncabezado(estado_inicial);
       setDecretosAnexados([]);
       handlePage(1);
+      refetch();
       return
     }
 

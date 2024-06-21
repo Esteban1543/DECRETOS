@@ -32,7 +32,7 @@ export default function HomeDigitador() {
 
 
   //🔸Fetch de Datos Tabla
-  const { data, loading } = useGetData<ActasType>(`${URI}/actasdigitador/${id_digitador}`);
+  const { data, loading, refetch } = useGetData<ActasType>(`${URI}/actasdigitador/${id_digitador}`);
   const num_actas = !loading && data?.status ? data?.data?.length : '...';
   console.log(data?.data)
   return (
@@ -64,6 +64,7 @@ export default function HomeDigitador() {
       <ContenidoHomeDigitador
         id_digitador={id_digitador}
         datosTabla={data?.data || []}
+        refetch={refetch}
       />
 
     </main>
