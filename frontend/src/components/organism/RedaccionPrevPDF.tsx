@@ -20,9 +20,11 @@ export default function RedaccionPrevPDF({ handlePage, datosEncabezado, decretos
 
   const handleSubmitData = (accion:string) => {
     setSalir(true)
-    fn_submit(accion);
+    fn_submit(accion)
     
-    accion === 'resetear' && handlePage(1)
+    // accion === 'resetear'
+    // ? handlePage(1)
+    // : fn_submit(accion);
   }
 
   return (
@@ -94,7 +96,6 @@ export default function RedaccionPrevPDF({ handlePage, datosEncabezado, decretos
                     color="warning"
                     size='large'
                     onClick={() => handleSubmitData('resetear')}
-                    // onClick={() => handlePage(1)}
                     style={{ width: '96%', marginLeft: 'auto' }}
                   >Salir</Button>
                 )
