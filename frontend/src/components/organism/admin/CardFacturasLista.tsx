@@ -93,7 +93,7 @@ function CardFacturasLista({ endpoint, id_persona, fecha_inicio, fecha_fin, titu
                         ))
                       ) : (
                         <div style={{width: '80%', margin: 'auto'}}>
-                          <h3> El sistema no registra Actas digitadas por este usuario. 😔</h3>
+                          <h3> El sistema no registra Actas digitadas por eL usuario. 😔</h3>
                         </div>
                       )
                     ) : (

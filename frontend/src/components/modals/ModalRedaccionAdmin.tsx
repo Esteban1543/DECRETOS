@@ -1,76 +1,55 @@
+
 import * as React from 'react';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
-import ListItemText from '@mui/material/ListItemText';
-import ListItemButton from '@mui/material/ListItemButton';
-import List from '@mui/material/List';
-import Divider from '@mui/material/Divider';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import CloseIcon from '@mui/icons-material/Close';
-import Slide from '@mui/material/Slide';
-import { TransitionProps } from '@mui/material/transitions';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
 import Redirigir from '../atoms/Redirigir';
-import SeccionRedaccionActas from '../templates/SeccionRedaccionActas';
-import ContenidoHomeDigitador from '../templates/ContenidoHomeDigitador';
+import { useNavigate } from 'react-router-dom';
 
-const Transition = React.forwardRef(function Transition(
-  props: TransitionProps & {
-    children: React.ReactElement;
-  },
-  ref: React.Ref<unknown>,
-) {
-  return <Slide direction="up" ref={ref} {...props} />;
-});
-
-export default function ModalRedaccionAdmin() {
+export default function AlertDialog() {
+  
+//🔸 Manejo de apetura y cierre de modal
   const [open, setOpen] = React.useState(false);
+  const handleClickOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
+  const redirigir = useNavigate();
 
   return (
     <>
+     
       <Redirigir
         click={handleClickOpen}
       />
-
+      
       <Dialog
-        fullScreen
         open={open}
         onClose={handleClose}
-        TransitionComponent={Transition}
-        disableEnforceFocus
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
       >
-        <AppBar sx={{ position: 'relative' }}>
-          <Toolbar>
+        <DialogTitle id="alert-dialog-title">
+          Cambiar a modo Digitador!
+        </DialogTitle>
 
-            <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
-              Sección Redacción
-            </Typography>
-
-            <IconButton
-              edge="start"
-              color="inherit"
-              onClick={handleClose}
-              aria-label="close"
-            >
-              <CloseIcon />
-            </IconButton>
-
-          </Toolbar>
-        </AppBar>
-
-        {/* <SeccionRedaccionActas/>
-        <ContenidoHomeDigitador/> */}
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            <h4>Modo Digitador: Redacción de Actas</h4>            
+            Al aceptar, accederás a la sección de Redacción con vista de Digitador. 
+            Podrás crear Actas sin necesidad de iniciar sesión con otro usuario y regresar al modo Administrador en el momento que desees.
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>Cancelar</Button>
+          <Button onClick={()=> redirigir('/digitador')} autoFocus>
+            Redirigir
+          </Button>
+        </DialogActions>
       </Dialog>
     </>
   );
 }
+

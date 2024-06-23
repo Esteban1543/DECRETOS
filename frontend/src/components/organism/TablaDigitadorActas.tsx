@@ -122,7 +122,7 @@ export default function TablaDigitadorActas({ datosTabla }: TablaDigitadorActasP
             ) : (
               <TableRow>
                 <TableCell colSpan={columns.length} align="center">
-                  ❗No aparecen actas registradas al usuario 😔
+                  El sistema no registra Actas digitadas por el usuario 😔
                 </TableCell>
               </TableRow>
             )}

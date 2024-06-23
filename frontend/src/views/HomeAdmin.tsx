@@ -32,7 +32,10 @@ const HomeAdmin = () => {
 
   //🔸 Fecth de Datos Actas
   const { loading, data, error } = useGetData<ActasType>(`${URI}/actasdigitadas`);
-  if (error) return console.log(error);
+  if (error) {
+    console.log(error)
+    return null
+  }
   const num_actas = !loading && data?.status ? (data.data?.length || 0) : '...';
 
   // console.log(data)
@@ -53,10 +56,7 @@ const HomeAdmin = () => {
         color2='#27ab83'
         tag
       >
-        <ModalRedaccionAdmin 
-        // id_digitador={id_digitador}
-          // refetch={refetch}
-        />
+        <ModalRedaccionAdmin />
       </CardInformationDasbh>
 
       <section className='card_datosEncabezados'>
