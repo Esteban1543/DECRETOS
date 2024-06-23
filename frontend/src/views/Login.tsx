@@ -19,6 +19,7 @@ import { toast, Toaster } from "sonner";
 
 
 function Login() {
+  const navigate = useNavigate();
 
   const [showPassword, setShowPassword] = useState(false);
   const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -42,6 +43,16 @@ function Login() {
     else return true
   }
 
+  //🔸 Acciones de acuerdo al tipo de Rol del usuario
+  const redirigir = async (rol: number) => {
+    if (rol === 1) return navigate("/admin");
+    else if (rol === 2) return navigate("/digitador");
+    else {
+      navigate("/");
+      toast.info("El Rol asignado, no tiene acceso a ninguna sección del Aplicativo❌");
+    }
+  }
+
   //🔸 Envío de formulario API
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -61,90 +72,85 @@ function Login() {
       sessionStorage.setItem("user_sesion", JSON.stringify(dataUser));
       toast.success("Sesión iniciadad correctamente");
 
-      //🔸 Acciones de acuerdo al tipo de Rol del usuario
-      const redirigir = useNavigate();
-      if (dataUser.rol === 1) redirigir("/admin");
-      else if (dataUser.rol === 2) redirigir("/digitador");
-      else {
-        redirigir("/");
-        toast.info("El Rol asignado, no tiene acceso a ninguna sección del Aplicativo❌");
-      }
+      await redirigir(dataUser.rol)
+
     } catch (error) {
       console.log("Error al enviar los datos", error);
       toast.error('No se pudo completar la solicitud');
     }
   };
 
+
   return (
-    <>
-      <article className="contlog">
+    <article className="container_login">
 
-        <form className="contlogcard contlogin" onSubmit={handleSubmit}>
+      <section className="cont_login" >
+
+        <section className="cont_login_texto">
+          <img src="./favicon.svg" alt="icono" width={'20%'} />
+
           <h3>
-            Iniciar <br /> sesión
+            Iniciar Sesión
           </h3>
+          <h4>
+            Sistema de Digitación
+          </h4>
 
-          <section className="inputlog">
+        </section>
 
-            <TextField
-              label="Usuario"
-              name="user"
+        <form className="input_log" onSubmit={handleSubmit}>
+
+          <TextField
+            label="Usuario"
+            name="user"
+            onChange={handleChange}
+            style={{ width: '80%' }}
+            InputProps={{
+
+              endAdornment: (
+                <InputAdornment position="start">
+                  <AccountCircle />
+                </InputAdornment>
+              ),
+            }}
+            variant="standard"
+          />
+
+          <FormControl
+            variant="standard"
+            style={{ width: '80%' }}
+          >
+            <InputLabel>Contraseña</InputLabel>
+            <Input
+              name="password"
               onChange={handleChange}
-              InputProps={{
-
-                endAdornment: (
-                  <InputAdornment position="start">
-                    <AccountCircle />
-                  </InputAdornment>
-                ),
-              }}
-              variant="standard"
+              type={showPassword ? 'text' : 'password'}
+              endAdornment={
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                  // onMouseDown={handleMouseDownPassword}
+                  >
+                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+                </InputAdornment>
+              }
             />
-
-            <FormControl sx={{ m: 1, width: '25ch' }} variant="standard">
-              <InputLabel>Contraseña</InputLabel>
-              <Input
-                name="password"
-                onChange={handleChange}
-                type={showPassword ? 'text' : 'password'}
-                endAdornment={
-                  <InputAdornment position="end">
-                    <IconButton
-                      aria-label="toggle password visibility"
-                      onClick={handleClickShowPassword}
-                    // onMouseDown={handleMouseDownPassword}
-                    >
-                      {showPassword ? <VisibilityOff /> : <Visibility />}
-                    </IconButton>
-                  </InputAdornment>
-                }
-              />
-            </FormControl>
-
-          </section>
+          </FormControl>
 
           <Button
             variant="contained"
             size="large"
             type="submit"
-            style={{ backgroundColor: 'var(--color-azul-deep2)' }}
+            style={{ backgroundColor: 'var(--color-azul-deep2)', marginTop: '1rem', width: '50%' }}
           >Ingresar</Button>
-
         </form>
 
-        <section className="contlogcard contview">
-          <div>
-            {/* <img src={rubikLogo} alt="Logo.png" /> */}
-          </div>
+      </section>
 
-          <h1> Bienvenido </h1>
-          <h2>Sistema de Digitación</h2>
-
-        </section>
-
-      </article>
       <Toaster richColors position="bottom-right" />
-    </>
+    </article>
   );
 }
 

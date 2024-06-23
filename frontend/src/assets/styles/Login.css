@@ -1,160 +1,79 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-@import url("config.css");
-
-.contlog {
-  margin: 0;
-  padding: 0;
-  width: 100%;
+.container_login {
+  width: 100vw;
+  min-width: 250px;
   height: 100vh;
-  gap: 2.5%;
   display: flex;
-  flex-direction: row;
+  align-items: center;
   justify-content: center;
-  align-items: center;
 }
 
-.contlogcard {
-  width: 18%;
-  height: 50%;
-  /* border: 2px solid black; */
-  border-radius: 25px;
-}
-
-.contlogin {
-  display: flex;
-  padding: 0 25px;
-  align-items: center;
-  flex-direction: column;
+.cont_login {
   background-color: var(--color1-cards);
-  z-index: 2;
-  gap: 20px;
-  width: 23%;
-  height: 60vh;
+  border-radius: .8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2%;
+  width: 60%;
+  height: 55vh;
+  padding: 2%;
+}
 
-  h3 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.cont_login_texto {
+  width: 48%;
+  display: flex;
+  gap: 5%;
+  height: 80%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-right: 1px solid #ccc;
+  font-family: sans-serif;
+  color: #3e4f6e;
+  
+  & h3 {
     font-size: 2.2rem;
-    font-family: "Inter", sans-serif;
     font-optical-sizing: auto;
-    font-weight: 600;
+    text-align: center;
+    
     font-style: normal;
     font-variation-settings: "slnt" 0;
-    height: 30%;
-    width: 100%;
-    margin-top: 10px;
   }
-
-  /* & button {
-    width: 160px;
-    height: 50px;
-    background-color: var(--color-azul-deep2);
-    color: #fff;
-    font-weight: 600;
+  
+  & h4 {
+    color: #31363fea;
     font-size: 1.1rem;
-    border-radius: 10px;
-    cursor: pointer;
-  } */
-}
-
-.divinputlogin {
-  width: 250px;
-  height: 60px;
-  padding: 0 0 0 5%;
-  display: flex;
-  align-items: center;
-  background-color: #fff;
-  border-radius: 10px;
-
-  & img {
-    width: 13%;
-    height: 100%;
-  }
-
-  & input {
-    border-style: none;
-    outline: gray;
-    width: 87%;
-    height: 100%;
-    padding-left: 10px;
-    font-size: 1.2rem;
   }
 }
 
-.inputlog {
+.input_log {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: 22px;
-  width: 100%;
-  height: 30%;
-  margin-bottom: 10px;
-
-  & ::placeholder {
-    font-size: 1.2rem;
-    color: #000000;
-    font-weight: 300;
-  }
+  gap: 1.3rem;
+  width: 48%;
+  height: 80%;
 }
 
-.contview {
-  background-color: var(--color-azul-deep1);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 0 15px;
-  width: 23%;
-  height: 60vh;
+@media (max-width: 700px) {
+  .cont_login {
+    flex-direction: column;
+    width: 90%;
+    height: 60vh;
+    gap: 0;
+  }
 
-  & div {
-    margin-top: 55px;
-    padding: 12px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #fff;
-    border-radius: 50%;
-    border: 1px solid black;
+  .cont_login_texto {
+    border-right: none;
+    width: 90%;
 
-    & img {
-      height: 80px;
-      width: 80px;
-      /* border: 1px solid black; */
+    & h4 {
+      display: none;
     }
   }
 
-  & h1 {
-    color: #fff;
-    width: 100%;
-    height: 20%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 15px 0 0 0;
-    font-size: 2.5rem;
-    font-family: "Inter", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 600;
-    font-style: normal;
-    font-variation-settings: "slnt" 0;
-    /* border: 1px solid black; */
-
-  }
-
-  & h2 {
-    color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    font-size: 2rem;
-    font-family: "Inter", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 500;
-    font-style: normal;
-    font-variation-settings: "slnt" 0;
-    /* border: 1px solid black; */
+  .input_log {
+    width: 90%;
   }
 }
