@@ -23,8 +23,8 @@
 
 .cont_usuarios_lista {
   border-bottom: 1px solid #ccc;
-  display: grid;
-  grid-template-columns: 22% auto;
+  display: flex;
+  gap: 4%;
   align-items: center;
   height: 20%;
   min-height: 70px;

@@ -12,7 +12,7 @@ import { useGetData } from '../hooks/useGetData.tsx'
 // Componentes 🧩
 import HeaderDasbhoard from '../components/organism/HeaderDasbhoard.tsx'
 import CardInformationDasbh from '../components/organism/CardInformationDasbh.tsx'
-import ModalRedaccionAdmin from '../components/modals/ModalRedaccionAdmin.tsx'
+import ModalVistaDigitador from '../components/modals/ModalVistaDigitador.tsx'
 import CardDatosEncabezadosDashb from '../components/organism/admin/CardDatosEncabezadosDashb.tsx'
 import CardUsuariosDasb from '../components/organism/admin/CardUsuariosDasb.tsx'
 import CardInformesDasb from '../components/organism/admin/CardInformesDasb.tsx'
@@ -55,7 +55,7 @@ const HomeAdmin = () => {
         // color2='#27ab83'
         tag
       >
-        <ModalRedaccionAdmin />
+        <ModalVistaDigitador />
       </CardInformationDasbh>
 
       <section className='card_datosEncabezados'>

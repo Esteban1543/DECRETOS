@@ -34,10 +34,11 @@ const ContenidoHomeDigitador = ({ id_digitador, datosTabla, refetch }: Contenido
                 <div className='container_boton_contenido'>
                   <Button
                     variant="outlined"
+                    // color='primary'
                     size='large'
                     endIcon={<FontDownloadOutlinedIcon />}
                     onClick={() => setContenido('redaccion')}
-                    style={{ height: '70%', color: 'var(--color-azul-deep2)', borderColor: 'var(--color-azul-deep2)' }}
+                    style={{ height: '70%', color: 'var(--color-orange)', borderColor: 'var(--color-orange)' }}
                   >
                     Iniciar Redacción
                   </Button>

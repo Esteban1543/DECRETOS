@@ -260,13 +260,13 @@ export default function RedaccionEncabezado({ handlePage, datosEncabezado, setDa
         </article>
 
 
-        <footer className='footer_redaccion_container'>
+        <footer className='footer_redaccion_container' style={{justifyContent: 'space-between'}}>
           <Button
-            variant="outlined"
+            variant="text"
             size='large'
             onClick={() => setContenido('tabla')}
-            style={{borderColor: 'var(--color-azul-deep2)', color: 'var(--color-azul-deep2)'}}
-          >Cancelar</Button>
+            style={{borderColor: 'var(--color-orange1)', color: 'var(--color-orange)'}}
+          >Salir</Button>
 
           <Tooltip
             title={!activarBoton && "Diligencia todos los campos"}

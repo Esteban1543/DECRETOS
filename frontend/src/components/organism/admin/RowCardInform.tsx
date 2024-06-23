@@ -9,7 +9,7 @@ interface RowCardInformProps {
   header1: string,
   data1: string,
   selected: boolean,
-  identificacion: number,
+  identificacion: string,
   correo: string
 }
 

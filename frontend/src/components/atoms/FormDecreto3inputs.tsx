@@ -76,17 +76,19 @@ const FormDecreto3inputs: React.FC<FormDecreto3inputsProps> = ({ positionList, s
                 name='nombreEstablecimiento'
                 onChange={handleChange}
                 value={estado_establecimientos.nombreEstablecimiento}
+                style={{ width: '300px' }}
               />
 
               {secciones_descripcion[1]}
 
               < input
                 type="text"
-                placeholder='Matrícula, ubicado en ...'
+                placeholder='854648, Ubicado en ...'
                 className='input_decreto'
                 name='direccion'
                 onChange={handleChange}
                 value={estado_establecimientos.direccion}
+                style={{ width: '450px' }}
               />
 
               {secciones_descripcion[2]}
@@ -103,6 +105,7 @@ const FormDecreto3inputs: React.FC<FormDecreto3inputsProps> = ({ positionList, s
                 name='direccion'
                 onChange={handleChange}
                 value={estado_inmueble.direccion}
+                style={{ width: '450px' }}
               />
 
             </>
@@ -117,6 +120,7 @@ const FormDecreto3inputs: React.FC<FormDecreto3inputsProps> = ({ positionList, s
                 name='placa'
                 onChange={handleChange}
                 value={estado_vehiculos.placa}
+                style={{ width: '100px' }}
               />
 
               {secciones_descripcion[1]}

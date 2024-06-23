@@ -15,7 +15,7 @@ import RedaccionPrevPDF from "../organism/RedaccionPrevPDF";
 interface SeccionRedaccionActasProps {
   id_digitador?: number,
   setContenido: React.Dispatch<React.SetStateAction<string>>,
-  refetch: ()=> void
+  refetch: () => void
 }
 
 
@@ -61,17 +61,23 @@ export default function SeccionRedaccionActas({ id_digitador, setContenido, refe
       setDecretosAnexados([]);
       handlePage(1);
       refetch();
-      return
+      return true
     }
 
     const datosActa = { id_digitador, datosEncabezado, decretosAnexados }
     const response = await solicitudPost(`${URI}/createActa`, datosActa);
     console.log(response);
 
-    if (response && response.status) return toast.success(`La copia del acta con N° de Radicado: ${datosEncabezado.radicado}, se envío correctamente al correo.📨`);
+    if (response && response.status) {
+      toast.success(`La copia del acta con N° de Radicado: ${datosEncabezado.radicado}, se envío correctamente al correo.📨`);
+      return true
+    }
 
-    toast.error(`No se pudo realizar el envío de la copia del acta con N° de Radicado: ${datosEncabezado.radicado} al correo.`);
+    toast.error(`
+      El N° de Radicado: ${datosEncabezado.radicado} ya fue Registrado en la Base de Datos
+      `);
     console.log(response);
+    return false
   }
 
   return (

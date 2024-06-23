@@ -1,4 +1,9 @@
 /* eslint-disable react/react-in-jsx-scope */
+import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
+import ContactEmergencyOutlinedIcon from '@mui/icons-material/ContactEmergencyOutlined';
+import PermPhoneMsgOutlinedIcon from '@mui/icons-material/PermPhoneMsgOutlined';
+import MarkEmailReadOutlinedIcon from '@mui/icons-material/MarkEmailReadOutlined';
+import InventoryOutlinedIcon from '@mui/icons-material/InventoryOutlined';
 
 // Hojas de Estilos ✨
 import "../assets/styles/HomeDigitador.css";
@@ -27,14 +32,14 @@ export default function HomeDigitador() {
   const identificacion = sessionUser && `${sessionUser?.fk_tipo_identificacion} ${sessionUser?.n_identificacion}`;
   const nombres = sessionUser && `${sessionUser?.nombre_1} ${sessionUser?.apellido_1}`;
   const usuario = sessionUser && `${sessionUser?.alias}`;
-  const correo =  sessionUser && `${sessionUser?.correo}`;
+  const correo = sessionUser && `${sessionUser?.correo}`;
   const telefono = sessionUser && `${sessionUser?.telefono}`;
 
   //🔸Fetch de Datos Tabla
   const { data, loading, refetch } = useGetData<ActasType>(`${URI}/actasdigitador/${id_digitador}`);
   const num_actas = !loading && data?.status ? (data?.data?.length || 0) : '...';
   // console.log(data?.data)
-  
+
   return (
     <main className="main_vendedor">
 
@@ -47,11 +52,40 @@ export default function HomeDigitador() {
         </section>
 
         <section className="banner_datos_usuario">
-          <p><b>Usuario: </b> {usuario} </p>
-          <p><b>ID: </b> {identificacion} </p>
-          <p><b>Teléfono: </b> {telefono} </p>
-          <p><b>Correo: </b> {correo} </p>
-          <p><b>Actas digitadas: </b> {num_actas} </p>
+          <b>
+            <AccountCircleOutlinedIcon />
+            Usuario
+          </b>
+
+          <p>{usuario} </p>
+          <b>
+            <ContactEmergencyOutlinedIcon />
+            Identificación
+          </b>
+
+          <p>{identificacion} </p>
+          <b>
+            <PermPhoneMsgOutlinedIcon />
+            Teléfono
+          </b>
+
+          <p>{telefono} </p>
+          <b>
+            <MarkEmailReadOutlinedIcon />
+            Correo
+          </b>
+
+          <p style={{ fontSize: '.8rem' }}>
+            <a href={`mailto:${correo}`}>{correo}</a>
+          </p>
+
+          <hr style={{ width: '100%' }} />
+
+          <b className="b_actas_digitadas">
+            <InventoryOutlinedIcon />
+            Actas digitadas:
+            <span>{num_actas}</span>
+          </b>
         </section>
 
         <section className="banner_logout">

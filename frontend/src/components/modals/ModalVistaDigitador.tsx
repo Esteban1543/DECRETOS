@@ -9,9 +9,9 @@ import DialogTitle from '@mui/material/DialogTitle';
 import Redirigir from '../atoms/Redirigir';
 import { useNavigate } from 'react-router-dom';
 
-export default function AlertDialog() {
-  
-//🔸 Manejo de apetura y cierre de modal
+export default function ModalVistaDigitador() {
+
+  //🔸 Manejo de apetura y cierre de modal
   const [open, setOpen] = React.useState(false);
   const handleClickOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -20,11 +20,11 @@ export default function AlertDialog() {
 
   return (
     <>
-     
+
       <Redirigir
         click={handleClickOpen}
       />
-      
+
       <Dialog
         open={open}
         onClose={handleClose}
@@ -32,24 +32,37 @@ export default function AlertDialog() {
         aria-describedby="alert-dialog-description"
       >
         <DialogTitle id="alert-dialog-title">
-          Cambiar a modo Digitador!
+          <h3
+            style={{ margin: 0 }}
+          >
+            Cambiar a modo Digitador!
+          </h3>
         </DialogTitle>
 
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            <h4>Modo Digitador: Redacción de Actas</h4>            
-            Al aceptar, accederás a la sección de Redacción con vista de Digitador. 
+            <h4>Modo Digitador: Redacción de Actas</h4>
+            Al aceptar, accederás a la sección de Redacción con vista de Digitador.
             Podrás crear Actas sin necesidad de iniciar sesión con otro usuario y regresar al modo Administrador en el momento que desees.
           </DialogContentText>
         </DialogContent>
+
         <DialogActions>
-          <Button onClick={handleClose}>Cancelar</Button>
-          <Button onClick={()=> redirigir('/digitador')} autoFocus>
+          <Button
+            color='error'
+            onClick={handleClose}
+          >Cancelar</Button>
+
+          <Button
+            sx={{ color: 'var(--color-azul-deep2)' }}
+            onClick={() => redirigir('/digitador')}
+            autoFocus
+          >
             Redirigir
           </Button>
         </DialogActions>
+
       </Dialog>
     </>
   );
 }
-

@@ -37,6 +37,9 @@ body{
 
     --color-gris-light1: #696969;
     --color-gris-light2: #808080;
+
+    --color-orange: #c40c0ccd ;
+    --color-orange1: #E65C19 ;
 }
 
 /* Media Queries para ajustar REM al ancho de pantalla 📌*/

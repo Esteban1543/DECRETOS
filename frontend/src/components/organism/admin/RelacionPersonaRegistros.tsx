@@ -4,7 +4,7 @@ import RowCardInform from './RowCardInform.tsx';
 import { useState } from 'react'
 import { URI } from '../../../config.ts';
 import { useGetData } from '../../../hooks/useGetData.tsx';
-import CardFacturasLista from './CardFacturasLista.tsx';
+import CardDecretosLista from './CardDecretosLista.tsx';
 import { UsuariosType } from '../../../helpers/Types.ts';
 
 /*
@@ -64,7 +64,7 @@ export default function RelacionPersonaRegistros({ endpoint_card1, endpoint_card
 
       </section>
 
-      <CardFacturasLista
+      <CardDecretosLista
         endpoint={endpoint_card2}
         titulo_card={titulo_card2}
         id_persona={rowSelected || 0}

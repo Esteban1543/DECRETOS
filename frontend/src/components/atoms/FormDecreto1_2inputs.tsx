@@ -118,6 +118,7 @@ const FormDecreto1_2inputs: React.FC<FormDecreto1_2inputsProps> = ({ positionLis
                   name='porcentaje'
                   onChange={handleChange}
                   value={estado_salario.porcentaje}
+                  style={{ width: '35px' }}
                 />
 
                 {secciones_descripcion[1]}

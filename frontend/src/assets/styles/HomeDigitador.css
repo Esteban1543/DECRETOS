@@ -4,8 +4,10 @@
   grid-template-rows: 89vh;
   padding: 1rem;
   width: 90%;
-  margin: 3vh auto;
+  min-width: 1150px;
   height: 94vh;
+  min-height: 625px;
+  margin: 3vh auto;
   justify-items: center;
   align-items: center;
   border-bottom: 1.3px solid #2b4ea3;
@@ -13,6 +15,20 @@
   /* outline:1px solid rgba(220, 20, 60, 0.341); */
 }
 
+@media (max-width: 1250px) {
+  .main_vendedor {
+    width: 97%;
+  }
+}
+
+@media (max-height:700px) {
+  .main_vendedor {
+    height: 99vh;
+    margin-block: 1vh;
+    border-bottom: none;
+    grid-template-rows: none;
+  }
+}
 
 /* Estilos del Banner 📌*/
 .banner_informacion {
@@ -53,22 +69,37 @@
 .banner_datos_usuario {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  /* padding: 1.4rem 1rem; */
-  /* width: 75%; */
-  padding-left: 3.5rem;
+  /* justify-content: center; */
+  /* align-items: center; */
+  width: 80%;
+  padding: 2%;
+  gap: 2%;
   margin: auto;
 }
 
-.banner_datos_usuario p {
-  font-size: 1rem;
-  margin-top: 0px;
+.banner_datos_usuario b {
+  display: flex;
+  align-items: end;
+  gap: 2%;
+  padding-left: 5%;
+  color: rgba(0, 0, 0, 0.875);
 }
 
-.banner_datos_usuario p b {
-  width: 45%;
-  display: inline-block;
-  /* background-color: #12ABED; */
+.banner_datos_usuario p {
+  /* font-size: .9rem; */
+  margin-block: 0px 2%;
+  padding-left: 5%;
+  text-indent: 3%;
+}
+
+.b_actas_digitadas {
+  text-transform: capitalize;
+  color: #30405c;
+  font-family: 'Courier New', Courier, monospace;
+  & span {
+    color: red;
+    font-size: 1.1rem;
+  }
 }
 
 .banner_logout {
@@ -141,20 +172,20 @@
 }
 
 .inactive_step {
-  background-color: #4F709C;
+  background-color: var(--color-orange1);
   color: white;
 }
 
 .active_step {
   background-color: white;
-  color: #4F709C;
+  color: var(--color-orange);
   outline-color: currentColor;
   font-weight: 501;
   font-size: 1.1rem;
 }
 
 .section_steps span {
-  border-bottom: 2px solid #4F709C;
+  border-bottom: 2px solid var(--color-orange);
   width: 15vw;
 }
 

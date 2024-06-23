@@ -5,7 +5,7 @@ import { URI } from '../../../config';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 
-interface CardFacturasListaProps {
+interface CardDecretosListaProps {
   id_persona: number,
   fecha_inicio?: string,
   fecha_fin?: string,
@@ -13,7 +13,7 @@ interface CardFacturasListaProps {
   endpoint: string,
 }
 
-function CardFacturasLista({ endpoint, id_persona, fecha_inicio, fecha_fin, titulo_card }: CardFacturasListaProps) {
+function CardDecretosLista({ endpoint, id_persona, titulo_card }: CardDecretosListaProps) {
 
   //🔸 Traer datos de facturas por vendedor
   const { loading, data, error } = useGetData<ActasType>(`${URI}${endpoint}/${id_persona}`);
@@ -113,4 +113,4 @@ function CardFacturasLista({ endpoint, id_persona, fecha_inicio, fecha_fin, titu
   )
 }
 
-export default CardFacturasLista
+export default CardDecretosLista
