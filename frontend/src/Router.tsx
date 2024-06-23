@@ -1,4 +1,5 @@
 /* eslint-disable react/react-in-jsx-scope */
+import React from "react"
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
 
 // Componentes de Vista 📚
@@ -6,28 +7,41 @@ import HomeDigitador from "./views/HomeDigitador"
 import HomeAdmin from "./views/HomeAdmin"
 import Login from "./views/Login"
 
-// const PrivateRoute = ({ element, allowedRoles }) => {
-//   const user_sesion = sessionStorage.getItem("user_sesion");
-//   const isAuthenticated = !!user_sesion;
+interface RutasPrivadasProps {
+  element: React.ReactNode,
+  rolesPermitidos: Array<number>
+}
+const RutasPrivadas = ({ element, rolesPermitidos }: RutasPrivadasProps) => {
 
-//   if (!isAuthenticated) {
-//     return <Navigate to="/" />;
-//   }
+  //🔸 Verificar sesión activa
+  const sesion_activa = sessionStorage.getItem("user_sesion");
 
-//   const datauser = JSON.parse(user_sesion);
-//   const userRole = datauser.rol;
+  //🔸 Retornar a Login en caso de que no tenga sesión activa
+  if (!sesion_activa) return <Navigate to="/" />;
 
-//   if (allowedRoles.includes(userRole)) {
-//     return element;
-//   }
+  //🔸 Verificar numero de Rol
+  const datauser = JSON.parse(sesion_activa).rol;
 
-//   return <Navigate to="/" />;
-// };
+  //🔸 Redirigir a la ruta asignada del aplicativo
+  if (rolesPermitidos.includes(datauser)) return element;
 
-// const PrivateLogin = ({ element }) => {
-//   const isAuthenticated = !!sessionStorage.getItem("user_sesion");
-//   return !isAuthenticated ? element : <Navigate to="/admin/home" />;
-// };
+  return <Navigate to="/" />
+};
+
+interface LoginPrivadoProps {
+  element: React.ReactNode,
+}
+const LoginPrivado = ({ element }: LoginPrivadoProps) => {
+  //🔸 Verificar sesión activa
+  const sesion_activa = sessionStorage.getItem("user_sesion");
+
+  //🔸 Verificar numero de Rol
+  const rol_usuario = sesion_activa && JSON.parse(sesion_activa).rol;
+
+  //🔸 Definir ruta de acuerdo al numero de Rol
+  const ruta = rol_usuario == 1 ? "/admin" : "/digitador"
+  return sesion_activa ? <Navigate to={ruta} /> : element;
+};
 
 export const Router = () => {
   return (
@@ -36,19 +50,17 @@ export const Router = () => {
 
         <Route
           path="/"
-          element={<Login />}
+          element={<LoginPrivado element={<Login />} />}
         />
 
         <Route
           path="/digitador"
-          element={<HomeDigitador />}
-        // element={<PrivateRoute element={<HomeAdmin />} allowedRoles={[1]} />}
+          element={<RutasPrivadas element={<HomeDigitador />} rolesPermitidos={[1, 2]} />}
         />
 
         <Route
           path="/admin"
-          element={<HomeAdmin />}
-        // element={<PrivateRoute element={<HomeAdmin />} allowedRoles={[1]} />}
+          element={<RutasPrivadas element={<HomeAdmin />} rolesPermitidos={[1]} />}
         />
 
       </Routes>

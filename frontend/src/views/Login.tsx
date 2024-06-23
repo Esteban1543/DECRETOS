@@ -13,7 +13,7 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import { FormEvent } from "react";
 import { useState, ChangeEvent } from "react";
 import axios from "axios";
-// import UserSvg from "/icons/user.svg";
+import { useNavigate } from "react-router-dom";
 import { URI } from "../config";
 import { toast, Toaster } from "sonner";
 
@@ -46,7 +46,7 @@ function Login() {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    console.log(formData)
+    // console.log(formData)
     if (!verificacionInputs()) return toast.warning("Diligencie todos los campos.");
 
     try {
@@ -62,10 +62,13 @@ function Login() {
       toast.success("Sesión iniciadad correctamente");
 
       //🔸 Acciones de acuerdo al tipo de Rol del usuario
-      if (dataUser.rol === 1) window.location.href = "/admin";
-      else if (dataUser.rol === 2) window.location.href = "/digitador";
-      else toast.info("El Rol asignado, no tiene acceso a ninguna sección del Aplicativo❌");
-
+      const redirigir = useNavigate();
+      if (dataUser.rol === 1) redirigir("/admin");
+      else if (dataUser.rol === 2) redirigir("/digitador");
+      else {
+        redirigir("/");
+        toast.info("El Rol asignado, no tiene acceso a ninguna sección del Aplicativo❌");
+      }
     } catch (error) {
       console.log("Error al enviar los datos", error);
       toast.error('No se pudo completar la solicitud');
