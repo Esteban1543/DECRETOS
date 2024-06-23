@@ -265,6 +265,7 @@ export default function RedaccionEncabezado({ handlePage, datosEncabezado, setDa
             variant="outlined"
             size='large'
             onClick={() => setContenido('tabla')}
+            style={{borderColor: 'var(--color-azul-deep2)', color: 'var(--color-azul-deep2)'}}
           >Cancelar</Button>
 
           <Tooltip
@@ -275,6 +276,7 @@ export default function RedaccionEncabezado({ handlePage, datosEncabezado, setDa
               variant="contained"
               size='large'
               type='submit'
+              style={{background: 'var(--color-azul-deep2)'}}
             // onClick={activarBoton ? () => handlePage(2) : ()=> toast.info('Diligencia todos los campos para poder continuar')}
             >Siguiente</Button>
           </Tooltip>

@@ -1,15 +1,19 @@
 /* eslint-disable react/react-in-jsx-scope */
 import PropTypes from 'prop-types';
 import Logout from '../atoms/Logout.js';
-import { format_fecha } from '../../helpers/formatFecha.js'
+import { format_fecha } from '../../helpers/formatFecha.ts'
+import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 
 function HeaderDasbhoard({ nombres }: { nombres: string }) {
   return (
     <header className="header_dasbhoard">
 
-      <section className="header_section_1">        
+      <section className="header_section_1">
         <div className="header_container_img_user">
-          <img src="/images/user.png" alt="User" width="70%" />
+          {/* <img src="favicon.svg" alt="User" width="90%" /> */}
+          <AdminPanelSettingsIcon
+            sx={{ color: '#3e4f6e', height: '80%', width: '80%' }}
+          />
         </div>
 
         <div className="header_saludo_texto">

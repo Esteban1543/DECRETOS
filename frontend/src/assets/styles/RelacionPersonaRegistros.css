@@ -8,7 +8,7 @@
   overflow: hidden;
 
   & h2 {
-    color: var(--color-azul-deep1);
+    color: var(--color-azul-deep2);
   }
 
   & p {
@@ -73,7 +73,8 @@
 }
 
 .card_despliegue_facturas {
-  outline: 1px solid #1176D363;
+  outline: 1px solid #0e4d8863;
+  outline: 1px solid #ccc;
   border-radius: .3rem;
   padding: .5rem;
   margin: .5rem;

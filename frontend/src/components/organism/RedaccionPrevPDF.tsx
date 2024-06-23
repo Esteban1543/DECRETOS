@@ -18,10 +18,10 @@ export default function RedaccionPrevPDF({ handlePage, datosEncabezado, decretos
 
   const [salir, setSalir] = useState(false);
 
-  const handleSubmitData = (accion:string) => {
+  const handleSubmitData = (accion: string) => {
     setSalir(true)
     fn_submit(accion)
-    
+
     // accion === 'resetear'
     // ? handlePage(1)
     // : fn_submit(accion);
@@ -76,7 +76,7 @@ export default function RedaccionPrevPDF({ handlePage, datosEncabezado, decretos
                 variant="outlined"
                 size='large'
                 onClick={() => handlePage(2)}
-                style={{ marginRight: '4.9%' }}
+                style={{ marginRight: '4.9%', borderColor: 'var(--color-azul-deep2)', color: 'var(--color-azul-deep2)' }}
                 disabled={salir}
               >Atrás</Button>
             }
@@ -88,7 +88,7 @@ export default function RedaccionPrevPDF({ handlePage, datosEncabezado, decretos
                     variant="contained"
                     size='large'
                     onClick={() => handleSubmitData('enviar')}
-                  // style={{width: '53%'}}
+                    style={{ background: 'var(--color-azul-deep2)' }}
                   >Confirmar</Button>
                 ) : (
                   <Button

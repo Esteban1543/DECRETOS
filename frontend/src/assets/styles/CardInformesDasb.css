@@ -1,6 +1,6 @@
 .container_informes_dasb {
   display: grid;
-  grid-template-rows: 10% 88%;
+  grid-template-rows: 8% 90%;
   gap: 2%;
   height: 100%;
 }
@@ -31,11 +31,12 @@
 
 .tabla_informes_dasb {
   /* border: 1px solid ; */
-  width: 99%;
+  width: 100%;
   margin-right: auto;
   text-align: center;
   border-collapse: collapse;
   background: white;
+  scrollbar-width: none;
 }
 
 .tabla_informes_dasb td,
@@ -48,10 +49,11 @@
 .tabla_informes_dasb thead {
   position: sticky;
   top: 0;
-  background: rgba(0, 0, 0, 0.67);
+  /* background: #31363F; */
   color: white;
+  background: var(--color-azul-deep2);
   backdrop-filter: blur(10px);
-  border-bottom: 2px solid black;
+  /* border-bottom: 2px solid black; */
 }
 
 .tabla_informes_dasb th {

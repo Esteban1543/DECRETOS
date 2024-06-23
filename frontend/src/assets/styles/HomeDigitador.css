@@ -8,7 +8,7 @@
   height: 94vh;
   justify-items: center;
   align-items: center;
-  border-bottom: 1.3px solid #12ABED;
+  border-bottom: 1.3px solid #2b4ea3;
   gap: 1.5rem;
   /* outline:1px solid rgba(220, 20, 60, 0.341); */
 }
@@ -141,27 +141,27 @@
 }
 
 .inactive_step {
-  background-color: var(--color-barras-deep);
+  background-color: #4F709C;
   color: white;
 }
 
 .active_step {
   background-color: white;
-  color: var(--color-barras-deep);
+  color: #4F709C;
   outline-color: currentColor;
   font-weight: 501;
   font-size: 1.1rem;
 }
 
 .section_steps span {
-  border-bottom: 2px solid var(--color-barras-deep);
+  border-bottom: 2px solid #4F709C;
   width: 15vw;
 }
 
 
 .card_contenido_digitador {
   /* outline:1px solid rgba(220, 20, 60, 0.341); */
-  background: var(--color2-cards);
+  background: var(--color1-cards);
   border-radius: .8rem;
   padding: .5rem;
   height: 100%;

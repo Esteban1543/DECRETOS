@@ -19,8 +19,8 @@
 }
 
 .header_contenido_digitador_container h2 {
-  color: var(--color-azul-deep1);
-  font-weight: lighter;
+  color: #3e4f6e;
+  /* font-weight: lighter; */
   font-size: 1.4rem;
 }
 

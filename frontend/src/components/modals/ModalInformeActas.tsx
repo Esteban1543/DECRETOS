@@ -5,7 +5,6 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
-import IconButton from '@mui/material/IconButton';
 
 import Redirigir from '../atoms/Redirigir.tsx';
 import RelacionPersonaRegistros from '../organism/admin/RelacionPersonaRegistros.tsx';
@@ -34,7 +33,7 @@ export default function ModalInformeActas() {
       >
         <DialogTitle>
           <h2
-            style={{ margin: 0, color: 'var(--color-azul-deep1)' }}
+            style={{ margin: 0, color: '#31363F', textAlign: 'center' }}
           >Informe Digitadores</h2>
         </DialogTitle>
 

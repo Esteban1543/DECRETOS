@@ -9,20 +9,21 @@ interface CardInformesDasbProps {
 }
 
 const CardInformesDasb: React.FC<CardInformesDasbProps> = ({ datosTabla }) => {
-  console.log(datosTabla)
+  // console.log(datosTabla)
 
   return (
     <article className='container_informes_dasb'>
 
       <header className='header_informes_dasb'>
         <h2>
-          Actas Digitadas
+          Informe Actas
           <AssessmentSharpIcon
-            sx={{ color: '#27ab83' }}
+          // sx={{ color: '#615EFC' }}
+          sx={{ color: 'var(--color-azul-deep2)' }}
           />
         </h2>
 
-        <ModalInformeActas/>
+        <ModalInformeActas />
       </header>
 
       <section className='contenido_informes_dasb'>

@@ -1,6 +1,5 @@
 /* eslint-disable react/react-in-jsx-scope */
 
-
 // Hojas de Estilos ✨
 import '../assets/styles/HeaderDasbh.css'
 import '../assets/styles/DasbhAdmin.css'
@@ -50,10 +49,10 @@ const HomeAdmin = () => {
       <CardInformationDasbh
         titulo_card='Actas'
         cifra={num_actas}
-        // color='#fef1c3'
-        // color2='#f9c404'
-        color='#cbebe1'
-        color2='#27ab83'
+        color='#fef1c3'
+        color2='#f9c404'
+        // color='#cbebe1'
+        // color2='#27ab83'
         tag
       >
         <ModalRedaccionAdmin />

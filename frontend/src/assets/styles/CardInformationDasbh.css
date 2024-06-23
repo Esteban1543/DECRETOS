@@ -24,7 +24,8 @@
 .tag_card_information {
     width: 37px;
     height: 18px;
-    background-color: yellow;
+    background-color: #cbebe1;
+    color:#27ab83 ;
     border-radius: .3rem;
     margin-left: auto;
     font-size: 0.6rem;

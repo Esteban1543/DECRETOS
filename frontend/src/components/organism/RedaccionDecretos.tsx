@@ -121,7 +121,8 @@ export default function RedaccionDecretos({ nombre_demandado, handlePage, decret
             variant="outlined"
             size='large'
             onClick={() => handlePage(1)}
-          >Atrás</Button>
+            style={{borderColor: 'var(--color-azul-deep2)', color: 'var(--color-azul-deep2)'}}
+            >Atrás</Button>
 
           <Tooltip
             title={!activarBoton && "Agrega algún decreto"}
@@ -131,7 +132,8 @@ export default function RedaccionDecretos({ nombre_demandado, handlePage, decret
               variant="contained"
               size='large'
               onClick={activarBoton ? () => handlePage(3) : ()=> toast.info('Anexa al menos 1 Decreto al documento')}
-            >Siguiente</Button>
+              style={{background: 'var(--color-azul-deep2)'}}
+              >Siguiente</Button>
           </Tooltip>
         </footer>
 
