@@ -73,3 +73,14 @@ export type ActasType = {
   fk_ciudad: string;
   decretos: string;
 }
+
+export type UsuariosType = {
+  fk_tipo_identificacion: string,
+  n_identificacion: number,
+  alias: string,
+  rol: number,
+  nombres: string,
+  telefono: string,
+  correo: string,
+  estado_persona: number
+}

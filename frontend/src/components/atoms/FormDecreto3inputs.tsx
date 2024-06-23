@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { InputDataDecretoType } from '../../helpers/Types'
+import { InputDataDecretoType } from '../../helpers/Types.ts'
 
 /*
   Componente para extraer los datos necesarios para

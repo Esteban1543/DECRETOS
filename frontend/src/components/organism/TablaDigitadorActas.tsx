@@ -7,7 +7,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
-import { ActasType } from '../../helpers/Types';
+import { ActasType } from '../../helpers/Types.ts';
 
 interface Column {
   id: 'provincia' | 'id_acta' | 'demandado' | 'demandante' | 'fecha_registro';

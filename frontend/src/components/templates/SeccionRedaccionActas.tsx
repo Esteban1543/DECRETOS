@@ -6,7 +6,7 @@ import { DecretoType } from "../../helpers/Types";
 import { URI } from '../../config.ts';
 import { solicitudPost } from '../../helpers/solicitudPost.ts';
 
-// Componentes TSX 📚
+// Componentes 🧩
 import Steper from "../organism/Steper";
 import RedaccionEncabezado from "../organism/RedaccionEncabezado";
 import RedaccionDecretos from "../organism/RedaccionDecretos";

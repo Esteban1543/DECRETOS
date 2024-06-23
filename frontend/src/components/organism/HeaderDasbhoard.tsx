@@ -9,7 +9,7 @@ function HeaderDasbhoard({ nombres }: { nombres: string }) {
 
       <section className="header_section_1">        
         <div className="header_container_img_user">
-          <img src="/images/icons/icon-user.png" alt="User" width="70%" />
+          <img src="/images/user.png" alt="User" width="70%" />
         </div>
 
         <div className="header_saludo_texto">

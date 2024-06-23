@@ -1,6 +1,6 @@
 // import React, { useEffect, useState } from 'react'
 import FormDecreto1_2inputs from './FormDecreto1_2inputs';
-import { InputDataDecretoType } from '../../helpers/Types';
+import { InputDataDecretoType } from '../../helpers/Types.ts';
 import FormDecreto3inputs from './FormDecreto3inputs';
 import { formatNumeracionDecretos } from '../../helpers/formatNumeracion';
 

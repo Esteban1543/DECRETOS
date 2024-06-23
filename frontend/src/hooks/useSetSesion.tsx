@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { DatosPersonaType } from '../helpers/Types';
+import { DatosPersonaType } from '../helpers/Types.ts';
 
 
 export const useSetSesion = () => {

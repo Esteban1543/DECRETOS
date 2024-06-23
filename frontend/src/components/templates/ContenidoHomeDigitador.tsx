@@ -4,7 +4,7 @@ import Button from '@mui/material/Button';
 import SeccionRedaccionActas from './SeccionRedaccionActas';
 import TablaDigitadorActas from '../organism/TablaDigitadorActas';
 import HeaderRedaccion from '../atoms/HeaderRedaccion';
-import { ActasType } from '../../helpers/Types';
+import { ActasType } from '../../helpers/Types.ts';
 
 interface ContenidoHomeDigitadorProps {
   id_digitador: number,

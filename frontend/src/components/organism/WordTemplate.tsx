@@ -2,7 +2,7 @@ import { Tooltip } from '@mui/material';
 import React from 'react';
 import { saveAs } from 'file-saver';
 import { Document, Packer, Paragraph, TextRun, AlignmentType, HeadingLevel, ImageRun } from 'docx';
-import { DecretoType, DatosEncabezadoType } from '../../helpers/Types';
+import { DecretoType, DatosEncabezadoType } from '../../helpers/Types.ts';
 import { fetchImageAsArrayBuffer, setearDescripcionDecreto } from '../../helpers/funcionesPlantillaWord.ts';
 import { formatNumeracionDecretos } from '../../helpers/formatNumeracion.ts';
 import { formatFechaActa } from '../../helpers/formatFecha.ts';

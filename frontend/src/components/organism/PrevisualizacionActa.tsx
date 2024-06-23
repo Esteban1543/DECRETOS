@@ -1,5 +1,5 @@
 import React from 'react';
-import { DatosEncabezadoType, DecretoType } from '../../helpers/Types';
+import { DatosEncabezadoType, DecretoType } from '../../helpers/Types.ts';
 import { formatNumeracionDecretos } from '../../helpers/formatNumeracion.ts';
 import { setearDescripcionDecreto } from '../../helpers/funcionesPlantillaWord.ts';
 import { formatFechaActa } from '../../helpers/formatFecha.ts';

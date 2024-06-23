@@ -1,28 +1,28 @@
 /* eslint-disable react/react-in-jsx-scope */
 
-// Styles ✨
+// Hojas de Estilos ✨
 import "../assets/styles/HomeDigitador.css";
 
-// Componentes TSX 📚
+// Componentes 🧩
 import CircleUser from "../components/atoms/CircleUser.tsx";
 import Logout from "../components/atoms/Logout.tsx";
-
-
-// Funciones / helpers 📄
-import { format_fecha } from '../helpers/formatFecha.ts'
-import { useGetData } from "../hooks/useGetData.tsx";
-import { URI } from "../config.ts";
-import { ActasType } from "../helpers/Types.ts";
-import { useSetSesion } from "../hooks/useSetSesion.tsx";
 import ContenidoHomeDigitador from "../components/templates/ContenidoHomeDigitador.tsx";
 
+// Hooks 🔗
+import { useGetData } from "../hooks/useGetData.tsx";
+import { useSetSesion } from "../hooks/useSetSesion.tsx";
+
+// Funciones helpers 📄
+import { format_fecha } from '../helpers/formatFecha.ts'
+import { URI } from "../config.ts";
+import { ActasType } from "../helpers/Types.ts";
 
 
 export default function HomeDigitador() {
 
   // //🔸 Setear información de la sesión del usuario activo
   const { sessionUser } = useSetSesion();
-  // if(!sessionUser) return console.log('No se generaron los datos para la sesión');
+
   const id_digitador = sessionUser ? parseInt(sessionUser.n_identificacion) : 0;
   const identificacion = sessionUser && `${sessionUser?.fk_tipo_identificacion} ${sessionUser?.n_identificacion}`;
   const nombres = sessionUser && `${sessionUser?.nombre_1} ${sessionUser?.apellido_1}`;
@@ -30,11 +30,11 @@ export default function HomeDigitador() {
   const correo =  sessionUser && `${sessionUser?.correo}`;
   const telefono = sessionUser && `${sessionUser?.telefono}`;
 
-
   //🔸Fetch de Datos Tabla
   const { data, loading, refetch } = useGetData<ActasType>(`${URI}/actasdigitador/${id_digitador}`);
-  const num_actas = !loading && data?.status ? data?.data?.length : '...';
-  console.log(data?.data)
+  const num_actas = !loading && data?.status ? (data?.data?.length || 0) : '...';
+  // console.log(data?.data)
+  
   return (
     <main className="main_vendedor">
 
