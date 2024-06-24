@@ -70,6 +70,36 @@ class InformesModel {
             }
         }
     }
+
+    static async getContadorActasDigitador() {
+        try {
+            const [ContadorActasDigitador] = await conexion.query(`
+                SELECT 
+                    u.alias,
+                    CONCAT(dp.nombre_1, ' ', dp.apellido_1) AS digitador,
+                    dp.fk_tipo_identificacion,
+                    dp.n_identificacion,
+                    dp.correo,
+                    COUNT(ae.id_acta) AS actas_digitadas
+                FROM usuarios u
+                INNER JOIN datos_persona dp ON dp.n_identificacion = u.pfk_usuario
+                INNER JOIN acta_embargo ae ON ae.fk_id_usuario = u.pfk_usuario
+                GROUP BY u.pfk_usuario;
+            `)
+
+            return {
+                status: true,
+                message: `✅ Se genero la consulta Contador Actas Digitador correctamente`,
+                data: ContadorActasDigitador
+            }
+        }catch(error){
+            return {
+                status: false,
+                error: `⛔ Se genero un error interno con la base de datos`,
+                type: String(error)
+            }
+        }
+    }
 }
 
 export default InformesModel
