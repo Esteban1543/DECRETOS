@@ -21,3 +21,8 @@
 .section_datos_personales p{
   font-size: .9rem;
 }
+
+.section_datos_personales span {
+  display: block;
+  margin-block: 1%;
+}

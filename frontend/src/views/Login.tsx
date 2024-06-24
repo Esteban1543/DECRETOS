@@ -62,11 +62,14 @@ function Login() {
 
     try {
       const response = await axios.post(`${URI}/Autentificiacion`, formData);
-      console.log(response)
 
-      //🔸 Devolver mensaje de Error en Login 
-      if (!response.data.status) return toast.error('Credenciales Incorrectas'); //response.data?.error
-
+      //🔸 Devolver mensaje de Error en Login
+      if (!response.data.status) {
+        response.data?.error == '⛔ El usuario esta desactivado' 
+        ? toast.info('Usuario Inhabilitado')
+        : toast.error('Credenciales Incorrectas');
+        return
+      }
       //🔸 Almacenar información de la sesión iniciada
       const dataUser = response.data.data;
       sessionStorage.setItem("user_sesion", JSON.stringify(dataUser));
@@ -149,7 +152,7 @@ function Login() {
 
       </section>
 
-      <Toaster richColors position="bottom-right" />
+      <Toaster richColors position="top-center" />
     </article>
   );
 }

@@ -33,8 +33,8 @@ Content-Type: application/json
 
 ###
 
-PATCH http://localhost:5002/deactivateUsuario/4646546465 HTTP/1.1
+PATCH http://localhost:5002/deactivateUsuario/222333444 HTTP/1.1
 
 ###
 
-PATCH http://localhost:5002/activateUsuario/4646546465 HTTP/1.1
+PATCH http://localhost:5002/activateUsuario/222333444 HTTP/1.1

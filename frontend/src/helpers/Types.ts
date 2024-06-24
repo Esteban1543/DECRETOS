@@ -84,3 +84,8 @@ export type UsuariosType = {
   correo: string,
   estado_persona: number
 }
+
+export type ResponsePatch = {
+  status: boolean,
+  message: string
+}

@@ -1,15 +1,16 @@
 /* eslint-disable react/react-in-jsx-scope */
 import '../../../assets/styles/CardUsuariosDasb.css'
-import Button from '@mui/material/Button';
-import EastIcon from '@mui/icons-material/East';
+import TaskAltIcon from '@mui/icons-material/TaskAlt';
+import UnpublishedIcon from '@mui/icons-material/Unpublished';
 import { useGetData } from "../../../hooks/useGetData.tsx"
 import { URI } from "../../../config.ts"
 import { UsuariosType } from "../../../helpers/Types";
 import CircleUser from '../../atoms/CircleUser';
+import ModalUsuarios from '../../modals/ModalUsuarios.tsx';
 
 const CardUsuariosDasb = () => {
 
-  const { loading, data, error } = useGetData<UsuariosType>(`${URI}/usuarios`);
+  const { loading, data, error, refetch } = useGetData<UsuariosType>(`${URI}/usuarios`);
   if (error) {
     console.log(error)
     return null
@@ -37,24 +38,32 @@ const CardUsuariosDasb = () => {
                   medida='55px'
                 />
 
-                <div className='div_texto_usuario'>
+                <section className='div_texto_usuario'>
                   <h4>{m.nombres}</h4>
                   <p>{m.alias}</p>
                   {/* <p>{m.n_identificacion}</p> */}
                   <p style={{ fontSize: '.7rem' }}>
                     <a href={`mailto:${m.correo}`}>{m.correo}</a>
                   </p>
-                </div>
+                </section>
+
+                <section>
+                  {
+                    m.estado_persona === 1
+                      ? <TaskAltIcon sx={{ color: '#06D001' }} />
+                      : <UnpublishedIcon color='action' />
+                  }
+                </section>
+
               </article>
             ))
         }
       </section>
 
-      <Button
-        variant="contained"
-        style={{ width: '100%', margin: 'auto', backgroundColor: 'var(--color-azul-deep2)' }}
-        endIcon={<EastIcon />}
-      >Ver todo</Button>
+      <ModalUsuarios
+        datosUsuarios={data?.data || []}
+        refetch={refetch}
+      />
     </article>
   )
 }
