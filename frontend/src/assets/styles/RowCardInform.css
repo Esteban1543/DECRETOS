@@ -25,4 +25,5 @@
 .section_datos_personales span {
   display: block;
   margin-block: 1%;
+  font-size: .9rem;
 }

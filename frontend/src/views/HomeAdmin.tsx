@@ -62,7 +62,6 @@ const HomeAdmin = () => {
         <CardDatosEncabezadosDashb />
       </section>
 
-
       <article className='card_usuarios'>
         <CardUsuariosDasb />
       </article>

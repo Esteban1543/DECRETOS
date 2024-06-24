@@ -1,0 +1,41 @@
+.container_datosEncabezados_dasb {
+  display: grid;
+  grid-template-rows: 15% auto;
+  gap: 2%;
+  height: 100%;
+  /* overflow: hidden; */
+}
+
+.header_card_datosEncabezados {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cont_lista_datosEncabezados {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 0 1%;
+  height: 100%;
+  /* outline: 1px solid coral; */
+  overflow: scroll;
+}
+
+.row_datos_encabezados {
+  border-radius: .8rem;
+  display: grid;
+  grid-template-columns: 15% auto 20%;
+  align-items: center;
+  height: 30%;
+  width: 100%;
+  padding: 2% 4%;
+
+  & h3 {
+    color: var(--color-gris-light1);
+  }
+}
+
+.row_datos_encabezados:hover {
+  outline: 1px solid #ccc;
+}
