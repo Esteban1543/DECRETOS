@@ -10,7 +10,10 @@ class PersonaModel {
                     dp.n_identificacion, 
                     u.alias,
                     u.rol,
-                    CONCAT(dp.nombre_1,' ',dp.apellido_1) AS nombres,
+                    dp.nombre_1,
+                    dp.nombre_2,
+                    dp.apellido_1,
+                    dp.apellido_2,
                     dp.telefono,
                     dp.correo, 
                     dp.estado_persona
