@@ -57,23 +57,23 @@ VALUES
     ('Inmueble', 'DECRETAR EL EMBARGO del derecho de dominio de que sea titular la demandada °, respecto del bien distinguido con el ° Verificada y acreditada la inscripción de dicha medida, se resolverá lo pertinente sobre su secuestro', null); -- Demandado, Inmueble
 
 -- Origen
-INSERT INTO origen (origen)
+INSERT INTO origen (origen, estado)
 VALUES 
-    ('Juzgado Ochenta (80) Civil Municipal de Bogotá D.C.  Transitorio Sesenta y Dos (62) de Pequeñas Causas Civiles y Competencia Múltiple de Bogotá D.C.'),
-    ('Juzgado Sexto (6) de Pequeñas Causas Civiles y Competencia Múltiple de Bogotá D.C.'),
-    ('Juzgado Ochenta y Tres (83) Civil Municipal de Bogotá D.C.  Transitorio Sesenta y Cinco (65) de Pequeñas Causas Civiles y Competencia Múltiple de Bogotá D.C.');
+    ('Juzgado Ochenta (80) Civil Municipal de Bogotá D.C.  Transitorio Sesenta y Dos (62) de Pequeñas Causas Civiles y Competencia Múltiple de Bogotá D.C.', 1),
+    ('Juzgado Sexto (6) de Pequeñas Causas Civiles y Competencia Múltiple de Bogotá D.C.', 1),
+    ('Juzgado Ochenta y Tres (83) Civil Municipal de Bogotá D.C.  Transitorio Sesenta y Cinco (65) de Pequeñas Causas Civiles y Competencia Múltiple de Bogotá D.C.', 1);
 
 -- Proceso
-INSERT INTO proceso (proceso)
+INSERT INTO proceso (proceso, estado)
 VALUES
-    ('EJECUTIVO DE MÍNIMA CUANTÍA'),
-    ('EJECUTIVO PARA LA EFECTIVIDAD DE LA GARANTÍA REAL');
+    ('EJECUTIVO DE MÍNIMA CUANTÍA', 1),
+    ('EJECUTIVO PARA LA EFECTIVIDAD DE LA GARANTÍA REAL', 1);
 
 -- Ciudad
-INSERT INTO ciudad (ciudad)
+INSERT INTO ciudad (ciudad, estado)
 VALUES 
-    ('Bogotá D.C.'),
-    ('Tunja');
+    ('Bogotá D.C.', 1),
+    ('Tunja', 1);
 
 -- Acta embargo
 INSERT INTO acta_embargo (id_acta, fk_id_usuario, fecha_registro)

@@ -3,9 +3,9 @@ import ProcesosModel from '../models/ProcesosModel.js'
 class ProcesosControllers {
     static async getCiudad(req, res){
         try {
-            res.json(await ProcesosModel.getCiudad())
+            return res.json(await ProcesosModel.getCiudad())
         }catch(error) {
-            res.json({
+            return res.json({
                 status: false,
                 error: '⛔ Se genero un error interno en el servidor',
                 type: String(error)
@@ -15,9 +15,9 @@ class ProcesosControllers {
 
     static async getTipoEmbargo(req, res){
         try {
-            res.json(await ProcesosModel.getTipoEmbargo())
+            return res.json(await ProcesosModel.getTipoEmbargo())
         }catch(error) {
-            res.json({
+            return res.json({
                 status: false,
                 error: '⛔ Se genero un error interno en el servidor',
                 type: String(error)
@@ -27,9 +27,9 @@ class ProcesosControllers {
 
     static async getOrigen(req, res){
         try {
-            res.json(await ProcesosModel.getOrigen())
+            return res.json(await ProcesosModel.getOrigen())
         }catch(error) {
-            res.json({
+            return res.json({
                 status: false,
                 error: '⛔ Se genero un error interno en el servidor',
                 type: String(error)
@@ -39,9 +39,9 @@ class ProcesosControllers {
 
     static async getProceso(req, res){
         try {
-            res.json(await ProcesosModel.getProceso())   
+            return res.json(await ProcesosModel.getProceso())   
         }catch(error){
-            res.json({
+            return res.json({
                 status: false,
                 error: '⛔ Se genero un error interno en el servidor',
                 type: String(error)
@@ -49,6 +49,75 @@ class ProcesosControllers {
         }
     }
 
+    static async addProcesos(req, res) {
+        const validation = {
+            noVacio: /\S/
+        }
+        
+        const {
+            tipo,
+            dato
+        } = req.body;
+
+        if(!validation.noVacio.test(tipo) && !validation.noVacio.test(dato)) {
+            return res.json({
+                status: false,
+                error: '⛔ Llegaron datos vacios',
+            })
+        }
+
+        if(tipo != 'origen' && tipo != 'ciudad' && tipo != 'proceso'){
+            return res.json({
+                status: false,
+                error: '⛔ No cumple con la categorias requeridas (origen, ciudad, proceso)',
+            })
+        }
+
+        try {
+            return res.json(await ProcesosModel.addProcesos(tipo, dato))
+        }catch(error){
+            return res.json({
+                status: false,
+                error: '⛔ Se genero un error interno en el servidor',
+                type: String(error)
+            })
+        }
+    }
+
+    static async desactivateProcesos(req, res) {
+        const validation = {
+            noVacio: /\S/
+        }
+        
+        const {
+            tipo,
+            dato
+        } = req.body;
+
+        if(!validation.noVacio.test(tipo) && !validation.noVacio.test(dato)) {
+            return res.json({
+                status: false,
+                error: '⛔ Llegaron datos vacios',
+            })
+        }
+
+        if(tipo != 'origen' && tipo != 'ciudad' && tipo != 'proceso'){
+            return res.json({
+                status: false,
+                error: '⛔ No cumple con la categorias requeridas (origen, ciudad, proceso)',
+            })
+        }
+
+        try {
+            return res.json(await ProcesosModel.desactivateProcesos(tipo, dato))
+        }catch(error){
+            return res.json({
+                status: false,
+                error: '⛔ Se genero un error interno en el servidor',
+                type: String(error)
+            })
+        }
+    }
     
 }
 

@@ -84,6 +84,46 @@ class ProcesosModel {
             }
         }
     }
+
+    static async addProcesos(tipo, dato) {
+        try {
+            const [addProceso] = await conexion.query(`
+                INSERT INTO ${tipo} SET ?    
+            `, tipo == 'origen' ? { origen: dato, estado: 1} : tipo == 'ciudad' ? {ciudad: dato, estado: 1} : tipo == 'proceso   ' ? {proceso: dato, estado: 1} : null )
+
+            return {
+                status: true,
+                message: '✅ Se agrego correctamente el proceso',
+            }
+        }catch(error){
+            return {
+                status: false,
+                error: '⛔ Se genero un error interno con la base de datos',
+                type: String(error)
+            }
+        }
+    }
+
+    static async desactivateProcesos(tipo, dato) {
+        try {
+            const [desactivateProcesos] = await conexion.query(`
+                UPDATE ${tipo}
+                SET estado = 0
+                WHERE ${tipo} = ?
+            `, [dato])
+
+            return {
+                status: true,
+                message: '✅ Se desactivo correctamente el proceso',
+            }
+        }catch(error){
+            return {
+                status: false,
+                error: '⛔ Se genero un error interno con la base de datos',
+                type: String(error)
+            }
+        }
+    }
 }
 
 export default ProcesosModel
