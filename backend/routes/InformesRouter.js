@@ -8,4 +8,6 @@ router.get('/actasdigitador/:n_identificacion', InformesController.getActasVende
 
 router.get('/actasdigitadas', InformesController.getActasDigitadas)
 
+router.get('/ContadorActasDigitador', InformesController.getContadorActasDigitador)
+
 export default router

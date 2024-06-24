@@ -11,3 +11,23 @@ GET http://localhost:5002/origen
 ###
 
 GET http://localhost:5002/proceso
+
+###
+
+POST http://localhost:5002/addProcesos
+Content-Type: application/json
+
+{
+    "tipo": "ciudad",
+    "dato": "1"
+}
+
+###
+
+POST http://localhost:5002/desactivateProcesos
+Content-Type: application/json
+
+{
+    "tipo": "ciudad",
+    "dato": "test"
+}

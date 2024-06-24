@@ -60,6 +60,7 @@ create table
 create table
     origen (
         origen varchar(255) not null,
+        estado tinyint not null,
 
         primary key (origen)
     );
@@ -67,6 +68,7 @@ create table
 create table   
     proceso (
         proceso varchar(255) not null,
+        estado tinyint not null,
 
         primary key (proceso) 
     );
@@ -74,6 +76,7 @@ create table
 create table 
     ciudad (
         ciudad varchar(30) not null,
+        estado tinyint not null,
 
         primary key(ciudad)
     );
