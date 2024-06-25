@@ -1,13 +1,23 @@
-const PDFDocument = require("pdfkit-table");
-const fs = require("fs");
-const path = require("path");
+import PDFDocument from 'pdfkit-table'
+import fs from 'fs'
+import path from 'path'
 
-const contruirWORD = (dataCallBack, endCallback) => {
-  const doc = new PDFDocument({ size: "A4" });
+import { juzgado, moverAbajo, fechaTexto } from './help.js'
 
-  doc.on("data", dataCallBack);
-  doc.on("end", endCallback);
+export const contruirPDF = (datosEncabezado, datosDecreto) => {
 
+  const {origen, juez, ciudad, radicado, demandante, demandado, proceso, provincia} = datosEncabezado;
+
+  //Guardar documento
+  const doc = new PDFDocument({ size: "LEGAL" });
+  const dirPath = path.join(__dirname, './docs');
+  const filePath = path.join(dirPath, `AutoDecretaMedida_${radicado}.pdf`);
+  const streamm = fs.createWriteStream(filePath);
+
+  doc.pipe(streamm);
+
+
+  // Inicio de creacion PDF
   doc
     .font("Helvetica-Bold")
     .fontSize(13.5)
@@ -23,11 +33,8 @@ const contruirWORD = (dataCallBack, endCallback) => {
   const pageWidth = doc.page.width;
   const x = (pageWidth - imageWidth) / 2;
 
-  doc.image("assets/images/escudo.jpg", x, 113, { width: imageWidth });
+  doc.image("assets/images/Escudo.png", x, 113, { width: imageWidth });
   doc.moveDown(4);
-
-  const origen =
-    "Juzgado Primero Municipal de Pequeñas Causas Civiles y Competencia Múltiple de Tunja";
 
   doc.text(origen, 100, 190, {
     align: "center",
@@ -37,29 +44,34 @@ const contruirWORD = (dataCallBack, endCallback) => {
   let alto = doc.y;
   const fecha = new Date();
 
-  // Remplazar ciudad segun tipo
   doc.fontSize(11);
-  doc.text(`Tunja, ${fechaTexto(fecha)}`, 150, alto + 12);
-
+  doc.text(`${ciudad}, ${fechaTexto(fecha)}`, 150, alto + 12);
 
   doc.fontSize(12)
-    .text("RADICACIÓN: ", 110, alto + 55)
-    .text("DEMANDANTE: ")
-    .text("DEMANDADO: ")
-    .text("PROCESO: ");
+    
+    doc.text("ORIGEN: ", 110, alto + 55)
+    moverAbajo(doc, origen)
 
-    const nombre_demandado = "OSCAR GARCIA PLAZAS";
+    doc.text("RADICACIÓN: ")
+    moverAbajo(doc, radicado)
+
+    doc.text("DEMANDANTE: ")
+    moverAbajo(doc, demandante)
+
+    doc.text("DEMANDADO: ")
+    moverAbajo(doc, demandado)
+
+    doc.text("PROCESO: ")
+    moverAbajo(doc, proceso)
 
   doc
-    .text("2023-00501-00", 220, alto + 55)
-    .text("ROSALBA SANDOVAL JIMENEZ", 220, )
-    .text(nombre_demandado, 220,)
-    .text("EJECUTIVO SINGULAR", 220,)
+    .text(origen, 220, alto + 55)
+    .text(radicado, 220,)
+    .text(demandante, 220,)
+    .text(demandado, 220,)
+    .text(proceso, 220,)
 
   alto = doc.y;
-
-  // Texto antes de los decretos
-  const juzgado = 'El juzgado, atendiendo la solicitud de cautela realizada por la parte actora, y por estimarla procedente,';
 
   doc.font("Helvetica")
     .text(juzgado, 100, alto + 20, {
@@ -74,137 +86,31 @@ const contruirWORD = (dataCallBack, endCallback) => {
     })
     .moveDown(1)
 
-    //Datos simulados
-    const descripcion_decreto = " °. DECRETAR EL EMBARGO Y RETENCIÓN, en la cuantía y proporción permitida por la ley, de los saldos bancarios que a cualquier título existan a favor del demandado ° y los depósitos posteriores que se produzcan, hasta completar la suma de ° de pesos.";
-    
-    const datos = [
-      {nombre: nombre_demandado, valor: '10.000.000'}
-    ]
+    // Funcion para generar los decretos
+      seteoIdentificador(doc, datosDecreto, demandado, 0);
 
-    const datoss = generarMensajes(datos, descripcion_decreto);
+      doc.moveDown(1);
 
-        // Extraer las primeras 8 letras del primer mensaje
-        const primerasOchoLetras = datoss[0].slice(0, 8);
-        const restoDelMensaje = datoss[0].slice(8);
-    
-        doc.font("Helvetica")
-          .font("Helvetica-Bold")
-          .text(primerasOchoLetras, {
-            align: "justify",
-            continued: true,
-          })
-          .font("Helvetica")
-          .text(restoDelMensaje, {
-            align: "justify"
-          });
-    // doc.font("Helvetica")
-    //   .font("Helvetica-Bold")
-    //   .text(datoss.slice(0, 8),{
-    //     align: "justify",
-    //     continued: true,
-    //   })
-    //   .font("Helvetica")
-    //   .text(datoss.slice(9, 264),{
-    //     align: "justify"
-    //   });
+      doc
+      .font("Helvetica-Bold")
+      .fontSize(10)
+      .text('NOTIFIQUESE Y CUMPLASE,', {
+        align: "center",
+      })
+      .text(`-${provincia}-`, {
+        align: "center"
+      })
+
+      doc.moveDown(3)
+
+      doc.text("______________________________", {
+        align: "center",
+      })
+      .moveDown(1)
+
+      doc.text(juez, {align: "center"},)
+      .moveDown(1)
+      .text("Juez", {align: "center"},)
 
   doc.end();
 };
-
-function fechaTexto(fecha) {
-  const dias = [
-    "uno",
-    "dos",
-    "tres",
-    "cuatro",
-    "cinco",
-    "seis",
-    "siete",
-    "ocho",
-    "nueve",
-    "diez",
-    "once",
-    "doce",
-    "trece",
-    "catorce",
-    "quince",
-    "dieciséis",
-    "diecisiete",
-    "dieciocho",
-    "diecinueve",
-    "veinte",
-    "veintiuno",
-    "veintidós",
-    "veintitrés",
-    "veinticuatro",
-    "veinticinco",
-    "veintiséis",
-    "veintisiete",
-    "veintiocho",
-    "veintinueve",
-    "treinta",
-    "treinta y uno",
-  ];
-
-  const meses = [
-    "enero",
-    "febrero",
-    "marzo",
-    "abril",
-    "mayo",
-    "junio",
-    "julio",
-    "agosto",
-    "septiembre",
-    "octubre",
-    "noviembre",
-    "diciembre",
-  ];
-
-  const numerosEnTexto = {
-    0: "cero",
-    1: "uno",
-    2: "dos",
-    3: "tres",
-    4: "cuatro",
-    5: "cinco",
-    6: "seis",
-    7: "siete",
-    8: "ocho",
-    9: "nueve",
-  };
-
-  function convertirAnoEnTexto(ano) {
-    return ano
-      .toString()
-      .split("")
-      .map((digito) => numerosEnTexto[digito])
-      .join(" ");
-  }
-
-  const dia = fecha.getDate();
-  const mes = fecha.getMonth();
-  const ano = fecha.getFullYear();
-
-  const diaEnTexto = dias[dia - 1];
-  const mesEnTexto = meses[mes];
-  const anoEnTexto = convertirAnoEnTexto(ano);
-
-  return `${diaEnTexto} (${dia}) de ${mesEnTexto} de ${anoEnTexto} (${ano})`;
-}
-
-function generarMensajes(datos, plantilla) {
-  const posiciones = ["PRIMERO", "SEGUNDO", "TERCERO", "CUARTO", "QUINTO", "SEXTO"];
-
-  return datos.map((dato, index) => {
-    if (index >= posiciones.length) {
-      throw new Error("Más de seis elementos no están soportados.");
-    }
-    
-    const texto = plantilla.replace("°", posiciones[index])
-                           .replace("°", dato.nombre)
-                           .replace("°", dato.valor);
-    return texto;
-  });
-}
-module.exports = contruirWORD;
