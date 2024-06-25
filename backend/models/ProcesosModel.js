@@ -89,7 +89,7 @@ class ProcesosModel {
         try {
             const [addProceso] = await conexion.query(`
                 INSERT INTO ${tipo} SET ?    
-            `, tipo == 'origen' ? { origen: dato, estado: 1} : tipo == 'ciudad' ? {ciudad: dato, estado: 1} : tipo == 'proceso   ' ? {proceso: dato, estado: 1} : null )
+            `, tipo == 'origen' ? { origen: dato, estado: 1} : tipo == 'ciudad' ? {ciudad: dato, estado: 1} : tipo == 'proceso' ? {proceso: dato, estado: 1} : null )
 
             return {
                 status: true,
