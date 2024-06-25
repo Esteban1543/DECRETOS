@@ -18,16 +18,17 @@ POST http://localhost:5002/addProcesos
 Content-Type: application/json
 
 {
-    "tipo": "ciudad",
+    "tipo": "proceso",
     "dato": "1"
 }
 
 ###
 
-POST http://localhost:5002/desactivateProcesos
+POST http://localhost:5002/ativateORdesactivateProcesos
 Content-Type: application/json
 
 {
     "tipo": "ciudad",
-    "dato": "test"
+    "dato": "test",
+    "estado": 1
 }

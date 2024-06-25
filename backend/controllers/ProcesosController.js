@@ -56,7 +56,8 @@ class ProcesosControllers {
         
         const {
             tipo,
-            dato
+            dato,
+            estado
         } = req.body;
 
         if(!validation.noVacio.test(tipo) && !validation.noVacio.test(dato)) {
@@ -84,14 +85,15 @@ class ProcesosControllers {
         }
     }
 
-    static async desactivateProcesos(req, res) {
+    static async ativateORdesactivateProcesos(req, res) {
         const validation = {
             noVacio: /\S/
         }
         
         const {
             tipo,
-            dato
+            dato,
+            estado
         } = req.body;
 
         if(!validation.noVacio.test(tipo) && !validation.noVacio.test(dato)) {
@@ -108,8 +110,15 @@ class ProcesosControllers {
             })
         }
 
+        if(estado != 0 && estado != 1) {
+            return res.json({
+                status: false,
+                error: '⛔ El estado no es valido (Desactivar = 0, Activar = 1)',
+            })
+        }
+
         try {
-            return res.json(await ProcesosModel.desactivateProcesos(tipo, dato))
+            return res.json(await ProcesosModel.ativateORdesactivateProcesos(tipo, dato, estado))
         }catch(error){
             return res.json({
                 status: false,

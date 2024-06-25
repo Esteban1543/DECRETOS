@@ -104,17 +104,26 @@ class ProcesosModel {
         }
     }
 
-    static async desactivateProcesos(tipo, dato) {
+    static async ativateORdesactivateProcesos(tipo, dato, estado) {
         try {
             const [desactivateProcesos] = await conexion.query(`
                 UPDATE ${tipo}
-                SET estado = 0
+                SET estado = ${estado}
                 WHERE ${tipo} = ?
             `, [dato])
 
-            return {
-                status: true,
-                message: '✅ Se desactivo correctamente el proceso',
+            switch(estado){
+                case 0:
+                    return {
+                        status: true,
+                        message: '✅ Se desactivo correctamente el proceso',
+                    };
+                
+                case 1:
+                    return {
+                        status: true,
+                        message: '✅ Se activo correctamente el proceso',
+                    }
             }
         }catch(error){
             return {

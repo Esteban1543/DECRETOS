@@ -14,6 +14,6 @@ router.get('/proceso', ProcesosControllers.getProceso)
 
 router.post('/addProcesos', ProcesosControllers.addProcesos)
 
-router.post('/desactivateProcesos', ProcesosControllers.desactivateProcesos)
+router.post('/ativateORdesactivateProcesos', ProcesosControllers.ativateORdesactivateProcesos)
 
 export default router
