@@ -108,7 +108,7 @@ export default function RedaccionEncabezado({ handlePage, datosEncabezado, setDa
                 <em style={{ opacity: '.6' }}>Juzgado *</em>
               </MenuItem>
               {
-                (!juzgadosApi.loading && juzgadosApi.data?.data?.map((name, index) => (
+                (!juzgadosApi.loading && juzgadosApi.data?.data?.filter(f => f.estado !== 0).map((name, index) => (
                   <MenuItem
                     key={'juzgado-' + index}
                     value={name.origen}
@@ -147,7 +147,7 @@ export default function RedaccionEncabezado({ handlePage, datosEncabezado, setDa
                   <em style={{ opacity: '.6' }}>Ciudad *</em>
                 </MenuItem>
                 {
-                  (!ciudadesApi.loading && ciudadesApi.data?.data?.map((name) => (
+                  (!ciudadesApi.loading && ciudadesApi.data?.data?.filter(f => f.estado !== 0).map((name) => (
                     <MenuItem
                       key={name.ciudad}
                       value={name.ciudad}
@@ -176,7 +176,7 @@ export default function RedaccionEncabezado({ handlePage, datosEncabezado, setDa
                 <em style={{ opacity: '.6' }}>Origen *</em>
               </MenuItem>
               {
-                (!juzgadosApi.loading && juzgadosApi.data?.data?.map((name, index) => (
+                (!juzgadosApi.loading && juzgadosApi.data?.data?.filter(f => f.estado !== 0).map((name, index) => (
                   <MenuItem
                     key={'origen-' + index}
                     value={name.origen}
@@ -233,7 +233,7 @@ export default function RedaccionEncabezado({ handlePage, datosEncabezado, setDa
                 <em style={{ opacity: '.6' }}>Proceso *</em>
               </MenuItem>
               {
-                (!procesosApi.loading && procesosApi.data?.data?.map((name) => (
+                (!procesosApi.loading && procesosApi.data?.data?.filter(f => f.estado !== 0).map((name) => (
                   <MenuItem
                     key={name.proceso}
                     value={name.proceso}

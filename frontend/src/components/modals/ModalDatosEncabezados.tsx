@@ -41,6 +41,7 @@ export default function ModalDatosEncabezados() {
     <>
       <Redirigir
         click={handleClickOpen}
+        disableBorder
       />
 
       <Dialog

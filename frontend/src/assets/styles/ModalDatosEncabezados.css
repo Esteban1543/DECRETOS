@@ -1,4 +1,3 @@
-
 .cont_rows_datosEncabezados {
   display: flex;
   flex-direction: column;
@@ -10,13 +9,20 @@
   overflow: scroll;
 }
 
+& details[open] summary {
+  /* border-bottom: 1px solid #aaa; */
+  /* margin-bottom: 0.5em; */
+  background: #cccccc9c;
+  border-radius: .8rem;
+}
+
 .card_despliegue_datosEncabezados {
   outline: 1px solid #ccc;
   border-radius: .3rem;
   list-style: none;
   background: #ffffff94;
   padding: 1%;
-  
+
   & summary {
     /* outline: 1px solid #0e4d8863; */
     display: grid;
@@ -34,6 +40,7 @@
       align-items: center;
       gap: .5rem;
     }
+
   }
 }
 
@@ -48,16 +55,17 @@
   color: white;
 }
 
-.ul_listado_datosEncabezados {
-  border-top: 1px solid #ccc;
+.li_datosEncabezados {
+  list-style: square;
+}
+
+.cont_listado_datosEncabezados {
+  /* border-top: 1px solid #ccc; */
   display: grid;
   grid-template-columns: auto 20%;
   align-items: center;
   gap: 4%;
   padding-top: 3%;
-
-  & li {
-    margin-block: 2%;
-    text-align: justify;
-  }
+  text-align: justify;
+  margin-block: 2%;
 }

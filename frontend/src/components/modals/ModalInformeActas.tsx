@@ -22,6 +22,7 @@ export default function ModalInformeActas() {
 
       <Redirigir
         click={handleClickOpen}
+        disableBorder
       />
 
       <Dialog
