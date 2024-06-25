@@ -52,15 +52,18 @@ export type DatosEncabezadoType = {
 }
 
 export type JuzgadosType = {
-  origen: string;
+  origen: string,
+  estado: number
 }
 
 export type CiudadesType = {
-  ciudad: string
+  ciudad: string,
+  estado: number
 }
 
 export type ProccesosType = {
-  proceso: string
+  proceso: string,
+  estado: number
 }
 
 export type ActasType = {

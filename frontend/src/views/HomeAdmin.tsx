@@ -20,6 +20,7 @@ import CardInformesDasb from '../components/organism/admin/CardInformesDasb.tsx'
 // Tipado 📄
 import { ActasType } from '../helpers/Types.ts'
 import { URI } from '../config.ts'
+import { Toaster } from 'sonner'
 
 
 const HomeAdmin = () => {
@@ -40,38 +41,41 @@ const HomeAdmin = () => {
   // console.log(data)
 
   return (
-    <main className='container-dasbhoard'>
+    <>
+      <main className='container-dasbhoard'>
 
-      <HeaderDasbhoard
-        nombres={nombres || 'P'}
-      />
-
-      <CardInformationDasbh
-        titulo_card='Actas'
-        cifra={num_actas}
-        color='#fef1c3'
-        color2='#f9c404'
-        // color='#cbebe1'
-        // color2='#27ab83'
-        tag
-      >
-        <ModalVistaDigitador />
-      </CardInformationDasbh>
-
-      <section className='card_datosEncabezados'>
-        <CardDatosEncabezadosDashb />
-      </section>
-
-      <article className='card_usuarios'>
-        <CardUsuariosDasb />
-      </article>
-
-      <article className='card_informes'>
-        <CardInformesDasb
-          datosTabla={data?.data || []}
+        <HeaderDasbhoard
+          nombres={nombres || 'P'}
         />
-      </article>
-    </main>
+
+        <CardInformationDasbh
+          titulo_card='Actas'
+          cifra={num_actas}
+          color='#fef1c3'
+          color2='#f9c404'
+          // color='#cbebe1'
+          // color2='#27ab83'
+          tag
+        >
+          <ModalVistaDigitador />
+        </CardInformationDasbh>
+
+        <section className='card_datosEncabezados'>
+          <CardDatosEncabezadosDashb />
+        </section>
+
+        <article className='card_usuarios'>
+          <CardUsuariosDasb />
+        </article>
+
+        <article className='card_informes'>
+          <CardInformesDasb
+            datosTabla={data?.data || []}
+          />
+        </article>
+      </main>
+      <Toaster richColors position='top-center' />
+    </>
   )
 }
 

@@ -20,13 +20,22 @@ export default function ModalDatosEncabezados() {
 
   //🔸 Manejo de apertura y cierre para Modal
   const [open, setOpen] = React.useState(false);
-  const handleClickOpen = () => setOpen(true);
+  const handleClickOpen = () => {
+    setOpen(true)
+    handleRefetch()
+  };
   const handleClose = () => setOpen(false);
 
   //🔸 Fecth de Datos para Selects
   const juzgadosApi = useGetData<JuzgadosType>(`${URI}/origen`);
   const procesosApi = useGetData<ProccesosType>(`${URI}/proceso`);
   const ciudadesApi = useGetData<CiudadesType>(`${URI}/ciudad`);
+
+  const handleRefetch = () => {
+    juzgadosApi.refetch()
+    procesosApi.refetch()
+    ciudadesApi.refetch()
+  }
 
   return (
     <>

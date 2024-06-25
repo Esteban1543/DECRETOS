@@ -4,6 +4,7 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import DialogTitle from '@mui/material/DialogTitle';
 import { solicitudPost } from '../../helpers/solicitudPost';
 import { URI } from '../../config';
@@ -38,8 +39,9 @@ export default function ModalEliminarDatosEncabezados({ tipo, dato, refetch }: M
         variant="text"
         color='inherit'
         onClick={handleClickOpen}
+        disabled
       >
-        -
+        <VisibilityOffIcon />
       </Button>
 
       <Dialog

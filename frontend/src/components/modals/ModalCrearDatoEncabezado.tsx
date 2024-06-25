@@ -6,9 +6,10 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import { solicitudPatch } from '../../helpers/solicitudPatch';
+import { solicitudPost } from '../../helpers/solicitudPost';
 import { URI } from '../../config';
-
+import { toast } from 'sonner';
+import { ResponsePatch } from '../../helpers/Types';
 
 interface ModalCrearDatoEncabezadoProps {
   tipo: string
@@ -24,13 +25,18 @@ export default function ModalCrearDatoEncabezado({ tipo }: ModalCrearDatoEncabez
   const [dato, setDato] = React.useState('');
 
   const handleSubmit = async () => {
-    console.log(dato);
-    //🔸 Seleccionar endpoint de acuerdo al estado del usuario
-    // const endpoint = estado_usuario == 1 ? '/deactivateUsuario' : '/activateUsuario';
+    console.log({ tipo, dato });
 
     //🔸 Envío de datos
-    // const response = await solicitudPatch(`${URI}${endpoint}/${id_usuario}`);
-    // console.log(response);
+    const response: ResponsePatch = await solicitudPost(`${URI}/addProcesos`, {
+      tipo: tipo === 'juzgado' ? 'origen' : tipo,
+      dato
+    });
+    console.log(response);
+    response.status
+      ? toast.success('Dato agregado correctamente')
+      : toast.error('No se pudo ingresar el nuevo Dato')
+
     // refetch();
     setOpen(false);
   }
