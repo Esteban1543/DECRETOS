@@ -96,7 +96,7 @@ class ProcesosControllers {
             estado
         } = req.body;
 
-        if(!validation.noVacio.test(tipo) && !validation.noVacio.test(dato)) {
+        if(!validation.noVacio.test(tipo) && !validation.noVacio.test(dato) && !validation.noVacio.test(estado)) {
             return res.json({
                 status: false,
                 error: '⛔ Llegaron datos vacios',
