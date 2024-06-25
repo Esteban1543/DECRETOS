@@ -6,6 +6,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import { solicitudPost } from '../../helpers/solicitudPost';
 import { URI } from '../../config';
 import { toast } from 'sonner';
@@ -25,26 +26,27 @@ export default function ModalCrearDatoEncabezado({ tipo }: ModalCrearDatoEncabez
   const [dato, setDato] = React.useState('');
 
   const handleSubmit = async () => {
-    console.log({ tipo, dato });
+
+    //🔸 Verificar que no haya campo vacío
+    if (dato == ''.trim() || dato.length < 4) return toast.warning('El campo debe estar diligenciado.');
 
     //🔸 Envío de datos
     const response: ResponsePatch = await solicitudPost(`${URI}/addProcesos`, {
       tipo: tipo === 'juzgado' ? 'origen' : tipo,
       dato
     });
-    console.log(response);
+    // console.log(response);
     response.status
       ? toast.success('Dato agregado correctamente')
       : toast.error('No se pudo ingresar el nuevo Dato')
-
-    // refetch();
+      ;
     setOpen(false);
   }
 
   return (
     <>
-      <Button variant="outlined" onClick={handleClickOpen}>
-        +
+      <Button variant="text" onClick={handleClickOpen}>
+        <AddCircleOutlineIcon fontSize='large'/>
       </Button>
 
       <Dialog

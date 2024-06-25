@@ -5,18 +5,21 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import VisibilityIcon from '@mui/icons-material/Visibility';
 import DialogTitle from '@mui/material/DialogTitle';
 import { solicitudPost } from '../../helpers/solicitudPost';
 import { URI } from '../../config';
+import { toast } from 'sonner';
 
 
 interface ModalEliminarDatosEncabezadosProps {
   tipo: string,
   dato: string,
   refetch: () => void,
+  estado: number
 }
 
-export default function ModalEliminarDatosEncabezados({ tipo, dato, refetch }: ModalEliminarDatosEncabezadosProps) {
+export default function ModalEliminarDatosEncabezados({ tipo, dato, estado, refetch }: ModalEliminarDatosEncabezadosProps) {
   // console.log(tipo, dato)
   //🔸 Manejo de apertura y cierre para Modal
   const [open, setOpen] = React.useState(false);
@@ -26,8 +29,15 @@ export default function ModalEliminarDatosEncabezados({ tipo, dato, refetch }: M
   //🔸 Envío de datos
   const handleSubmit = async () => {
 
-    const response = await solicitudPost(`${URI}/desactivateProcesos`, { tipo, dato });
-    console.log(response);
+    const response = await solicitudPost(`${URI}/desactivateProcesos`, {
+      tipo: tipo === 'juzgado' ? 'origen' : tipo,
+      dato
+    });
+    // console.log(response);
+    response.status
+      ? toast.success('Dato inhabilitado correctamente')
+      : toast.error('No se pudo inhabilitar el Dato')
+    ;
     refetch();
     setOpen(false);
   }
@@ -39,9 +49,13 @@ export default function ModalEliminarDatosEncabezados({ tipo, dato, refetch }: M
         variant="text"
         color='inherit'
         onClick={handleClickOpen}
-        disabled
+        disabled={estado === 1 ? false : true}
       >
-        <VisibilityOffIcon />
+        {
+          estado === 1
+            ? <VisibilityIcon color='success' />
+            : <VisibilityOffIcon color='disabled' />
+        }
       </Button>
 
       <Dialog
@@ -49,6 +63,8 @@ export default function ModalEliminarDatosEncabezados({ tipo, dato, refetch }: M
         onClose={handleClose}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
+        maxWidth='xs'
+        fullWidth={false}
       >
         <DialogTitle id="alert-dialog-title">
           ¿Está seguro de inactivar el dato?

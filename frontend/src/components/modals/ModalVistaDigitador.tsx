@@ -7,7 +7,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Redirigir from '../atoms/Redirigir';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
 export default function ModalVistaDigitador() {
 
@@ -16,11 +16,14 @@ export default function ModalVistaDigitador() {
   const handleClickOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const redirigir = useNavigate();
+  // const redirigir = useNavigate();
   const handleClick = () => {
-    redirigir('/digitador');
-    // window.open('/digitador', '_blank');
+    // redirigir('/digitador');
+    window.open('/digitador', '_blank');
+    setOpen(false);
   }
+
+  
   return (
     <>
 
