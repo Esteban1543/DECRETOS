@@ -47,7 +47,7 @@ export default function ModalUsuarios({ datosUsuarios, refetch }: ModalUsuariosP
         <DialogTitle>
           <h2
             style={{ margin: 0, color: '#31363F', textAlign: 'center' }}
-          >Informe Digitadores</h2>
+          >Usuarios</h2>
         </DialogTitle>
 
         <DialogContent>
@@ -66,14 +66,14 @@ export default function ModalUsuarios({ datosUsuarios, refetch }: ModalUsuariosP
                       key={m.n_identificacion}
                     >
                       <CircleUser
-                        inicial={m.nombres.charAt(0)}
+                        inicial={m.nombre_1.charAt(0)}
                         medida='100px'
                       />
 
                       <section className='section_datos_personales'
                         style={{ cursor: 'auto' }}
                       >
-                        <h3>{m.nombres}</h3>
+                        <h3>{`${m.nombre_1} ${m.nombre_2 || ''} ${m.apellido_1} ${m.apellido_2 || ''}`}</h3>
                         <span>{`${m.fk_tipo_identificacion} ${m.n_identificacion}`}</span>
                         <span>{m.alias}</span>
                         <span>{m.telefono}</span>

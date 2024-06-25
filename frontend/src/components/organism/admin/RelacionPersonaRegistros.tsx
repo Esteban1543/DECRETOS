@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { URI } from '../../../config.ts';
 import { useGetData } from '../../../hooks/useGetData.tsx';
 import CardDecretosLista from './CardDecretosLista.tsx';
-import { UsuariosType } from '../../../helpers/Types.ts';
+import { ActasDigitadasType } from '../../../helpers/Types.ts';
 
 /*
  📌 Componente para listar Facturas asociadas a Vendedor o Cliente
@@ -27,7 +27,7 @@ export default function RelacionPersonaRegistros({ endpoint_card1, endpoint_card
   // const maxDate = new Date('2024-06-07');
 
   //🔸 Traer datos de usuarios digitadores
-  const { data, loading, error } = useGetData<UsuariosType>(`${URI}${endpoint_card1}`);
+  const { data, loading, error } = useGetData<ActasDigitadasType>(`${URI}${endpoint_card1}`);
   if (!loading && error) {
     console.log(error);
     return null;
@@ -48,15 +48,15 @@ export default function RelacionPersonaRegistros({ endpoint_card1, endpoint_card
               ? <h3>Cargando..</h3>
               : !loading && data?.data && data.data.map(m => (
                 <RowCardInform
-                  click={() => setRowSelected(m.n_identificacion)}
+                  click={() => setRowSelected(Number(m.n_identificacion))}
                   key={m.n_identificacion}
-                  nombre={m.nombres}
+                  nombre={m.digitador}
                   alias={m.alias}
                   identificacion={`${m.fk_tipo_identificacion}  ${m.n_identificacion}`}
                   correo={m.correo}
                   header1={'Actas'}
-                  data1={'Pendiente'}
-                  selected={rowSelected == m.n_identificacion}
+                  data1={m.actas_digitadas}
+                  selected={rowSelected == Number(m.n_identificacion)}
                 />
               ))
           }

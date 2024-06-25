@@ -72,6 +72,7 @@ export type ActasType = {
   provincia: string;
   fk_ciudad: string;
   decretos: string;
+  alias?: string;
 }
 
 export type UsuariosType = {
@@ -79,7 +80,10 @@ export type UsuariosType = {
   n_identificacion: number,
   alias: string,
   rol: number,
-  nombres: string,
+  nombre_1: string,
+  nombre_2: string,
+  apellido_1: string,
+  apellido_2: string,
   telefono: string,
   correo: string,
   estado_persona: number
@@ -88,4 +92,13 @@ export type UsuariosType = {
 export type ResponsePatch = {
   status: boolean,
   message: string
+}
+
+export type ActasDigitadasType = {
+  alias: string,
+  digitador: string,
+  fk_tipo_identificacion: string,
+  n_identificacion: string,
+  correo: string,
+  actas_digitadas: number
 }

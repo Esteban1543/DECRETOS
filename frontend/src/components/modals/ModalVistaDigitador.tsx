@@ -17,7 +17,10 @@ export default function ModalVistaDigitador() {
   const handleClose = () => setOpen(false);
 
   const redirigir = useNavigate();
-
+  const handleClick = () => {
+    redirigir('/digitador');
+    // window.open('/digitador', '_blank');
+  }
   return (
     <>
 
@@ -55,7 +58,7 @@ export default function ModalVistaDigitador() {
 
           <Button
             sx={{ color: 'var(--color-azul-deep2)' }}
-            onClick={() => redirigir('/digitador')}
+            onClick={handleClick}
             autoFocus
           >
             Redirigir

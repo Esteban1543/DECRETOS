@@ -11,6 +11,7 @@ import ModalUsuarios from '../../modals/ModalUsuarios.tsx';
 const CardUsuariosDasb = () => {
 
   const { loading, data, error, refetch } = useGetData<UsuariosType>(`${URI}/usuarios`);
+  console.log(data)
   if (error) {
     console.log(error)
     return null
@@ -34,12 +35,12 @@ const CardUsuariosDasb = () => {
                 key={m.n_identificacion}
               >
                 <CircleUser
-                  inicial={m.nombres.charAt(0)}
+                  inicial={m.nombre_1.charAt(0)}
                   medida='55px'
                 />
 
                 <section className='div_texto_usuario'>
-                  <h4>{m.nombres}</h4>
+                  <h4>{`${m.nombre_1} ${m.apellido_1}`}</h4>
                   <p>{m.alias}</p>
                   {/* <p>{m.n_identificacion}</p> */}
                   <p style={{ fontSize: '.7rem' }}>
