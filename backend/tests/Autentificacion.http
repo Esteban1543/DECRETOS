@@ -2,6 +2,6 @@ POST http://localhost:5002/autentificiacion
 Content-Type: application/json
 
 {
-    "user": "Digitador 1",
+    "user": "Digitador 3",
     "password": "digic123"
 }

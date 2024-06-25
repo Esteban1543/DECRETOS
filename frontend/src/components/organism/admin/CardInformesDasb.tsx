@@ -9,7 +9,7 @@ interface CardInformesDasbProps {
 }
 
 const CardInformesDasb: React.FC<CardInformesDasbProps> = ({ datosTabla }) => {
-  // console.log(datosTabla)
+  console.log(datosTabla)
 
   return (
     <article className='container_informes_dasb'>
@@ -30,8 +30,8 @@ const CardInformesDasb: React.FC<CardInformesDasbProps> = ({ datosTabla }) => {
         <table className='tabla_informes_dasb'>
           <thead>
             <th>N° Radicado</th>
-            <th>Fecha Redacción</th>
             <th>Usuario</th>
+            <th>Fecha Redacción</th>
           </thead>
 
           <tbody>
@@ -41,8 +41,8 @@ const CardInformesDasb: React.FC<CardInformesDasbProps> = ({ datosTabla }) => {
                   key={i + 'filasActas'}
                 >
                   <td>{m.id_acta}</td>
+                  <td>{m.alias}</td>
                   <td>{m.fecha_registro.split('T')[0]}</td>
-                  <td>{m.fk_ciudad}</td>
                 </tr>
               ))
             }

@@ -1,0 +1,63 @@
+
+.cont_rows_datosEncabezados {
+  display: flex;
+  flex-direction: column;
+  /* outline: 1px solid; */
+  gap: 4%;
+  height: 50vh;
+  /* justify-content: space-evenly; */
+  padding: 1%;
+  overflow: scroll;
+}
+
+.card_despliegue_datosEncabezados {
+  outline: 1px solid #ccc;
+  border-radius: .3rem;
+  list-style: none;
+  background: #ffffff94;
+  padding: 1%;
+  
+  & summary {
+    /* outline: 1px solid #0e4d8863; */
+    display: grid;
+    grid-template-columns: 10% auto 10% 10%;
+    /* justify-content: space-between; */
+    align-items: center;
+    font-weight: 501;
+    user-select: none;
+    padding: 2%;
+    cursor: pointer;
+
+    & section {
+      width: 28%;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+  }
+}
+
+.bagde_datosEncabezados {
+  background: var(--color-azul-deep1);
+  border-radius: 50%;
+  width: 70%;
+  margin: auto;
+  display: grid;
+  place-content: center;
+  height: 100%;
+  color: white;
+}
+
+.ul_listado_datosEncabezados {
+  border-top: 1px solid #ccc;
+  display: grid;
+  grid-template-columns: auto 20%;
+  align-items: center;
+  gap: 4%;
+  padding-top: 3%;
+
+  & li {
+    margin-block: 2%;
+    text-align: justify;
+  }
+}

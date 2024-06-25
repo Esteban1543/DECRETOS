@@ -39,7 +39,7 @@ export default function ModalInformeActas() {
 
         <DialogContent>
           <RelacionPersonaRegistros
-            endpoint_card1='/usuarios'
+            endpoint_card1='/contadoractasdigitador'
             endpoint_card2='/actasdigitador'
             titulo_card1='Digitadores'
             titulo_card2='Actas'

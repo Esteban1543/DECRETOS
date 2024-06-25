@@ -1,32 +1,48 @@
-
 import * as React from 'react';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import DialogTitle from '@mui/material/DialogTitle';
-import Redirigir from '../atoms/Redirigir';
-import { useNavigate } from 'react-router-dom';
+import { solicitudPost } from '../../helpers/solicitudPost';
+import { URI } from '../../config';
 
-export default function ModalVistaDigitador() {
 
-  //🔸 Manejo de apetura y cierre de modal
+interface ModalEliminarDatosEncabezadosProps {
+  tipo: string,
+  dato: string,
+  refetch: () => void,
+}
+
+export default function ModalEliminarDatosEncabezados({ tipo, dato, refetch }: ModalEliminarDatosEncabezadosProps) {
+  // console.log(tipo, dato)
+  //🔸 Manejo de apertura y cierre para Modal
   const [open, setOpen] = React.useState(false);
   const handleClickOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const redirigir = useNavigate();
-  const handleClick = () => {
-    redirigir('/digitador');
-    // window.open('/digitador', '_blank');
+  //🔸 Envío de datos
+  const handleSubmit = async () => {
+
+    const response = await solicitudPost(`${URI}/desactivateProcesos`, { tipo, dato });
+    console.log(response);
+    refetch();
+    setOpen(false);
   }
+
+
   return (
     <>
-
-      <Redirigir
-        click={handleClickOpen}
-      />
+      <Button
+        variant="text"
+        color='inherit'
+        onClick={handleClickOpen}
+        disabled
+      >
+        <VisibilityOffIcon />
+      </Button>
 
       <Dialog
         open={open}
@@ -35,34 +51,27 @@ export default function ModalVistaDigitador() {
         aria-describedby="alert-dialog-description"
       >
         <DialogTitle id="alert-dialog-title">
-          <h3
-            style={{ margin: 0 }}
-          >
-            Cambiar a modo Digitador!
-          </h3>
+          ¿Está seguro de inactivar el dato?
         </DialogTitle>
 
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            <h4>Modo Digitador: Redacción de Actas</h4>
-            Al aceptar, accederás a la sección de Redacción con vista de Digitador.
-            Podrás crear Actas sin necesidad de iniciar sesión con otro usuario y regresar al modo Administrador en el momento que desees.
+            El dato no aparecerá disponible en las opciones del formulario de Redacción.
           </DialogContentText>
         </DialogContent>
 
         <DialogActions>
+
           <Button
             color='error'
             onClick={handleClose}
           >Cancelar</Button>
 
           <Button
-            sx={{ color: 'var(--color-azul-deep2)' }}
-            onClick={handleClick}
+            onClick={handleSubmit}
             autoFocus
-          >
-            Redirigir
-          </Button>
+          >Aceptar</Button>
+
         </DialogActions>
 
       </Dialog>

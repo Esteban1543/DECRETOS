@@ -24,7 +24,7 @@
 .cont_usuarios_lista {
   border-bottom: 1px solid #ccc;
   display: flex;
-  gap: 4%;
+  justify-content: space-around;
   align-items: center;
   height: 20%;
   min-height: 70px;

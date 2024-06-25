@@ -7,7 +7,7 @@ interface RowCardInformProps {
   nombre: string,
   alias: string,
   header1: string,
-  data1: string,
+  data1: number,
   selected: boolean,
   identificacion: string,
   correo: string
@@ -35,7 +35,7 @@ export default function RowCardInform({ selected, click, nombre, alias, identifi
 
       <section>
         <h4>{header1}</h4>
-        <p>{data1}</p>
+        <p>{data1 < 10 ? `0${data1}` : data1 }</p>
       </section>
 
     </article >
