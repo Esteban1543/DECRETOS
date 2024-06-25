@@ -7,6 +7,12 @@
   max-height: 100%;
   overflow: hidden;
   scrollbar-width: none;
+
+  & header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 }
 
 .cont_listado_usuarios {
@@ -19,12 +25,13 @@
   gap: 1%;
   width: 95%;
   margin: auto;
+  scrollbar-width: none;
 }
 
 .cont_usuarios_lista {
   border-bottom: 1px solid #ccc;
-  display: flex;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: 25% auto 10%;
   align-items: center;
   height: 20%;
   min-height: 70px;

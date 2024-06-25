@@ -25,7 +25,7 @@
 .row_datos_encabezados {
   border-radius: .8rem;
   display: grid;
-  grid-template-columns: 15% auto 20%;
+  grid-template-columns: 15% auto 16%;
   align-items: center;
   height: 30%;
   width: 100%;
@@ -37,5 +37,6 @@
 }
 
 .row_datos_encabezados:hover {
-  outline: 1px solid #ccc;
+  color: var(--color-orange1);
+  /* border-bottom: 1px solid #ccc; */
 }

@@ -9,10 +9,10 @@
   overflow: scroll;
 }
 
-& details[open] summary {
+.card_despliegue_datosEncabezados[open] summary {
   /* border-bottom: 1px solid #aaa; */
   /* margin-bottom: 0.5em; */
-  background: #cccccc9c;
+  background: #cccccc65;
   border-radius: .8rem;
 }
 
@@ -33,6 +33,7 @@
     user-select: none;
     padding: 2%;
     cursor: pointer;
+    color: var(--color-azul-deep2);
 
     & section {
       width: 28%;
@@ -45,7 +46,7 @@
 }
 
 .bagde_datosEncabezados {
-  background: var(--color-azul-deep1);
+  background: var(--color-orange1);
   border-radius: 50%;
   width: 70%;
   margin: auto;

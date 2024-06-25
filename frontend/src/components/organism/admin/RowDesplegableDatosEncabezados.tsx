@@ -1,7 +1,7 @@
 import React from 'react'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { JuzgadosType, CiudadesType, ProccesosType } from '../../../helpers/Types.ts';
-import ModalEliminarDatosEncabezados from '../../modals/ModalEliminarDatoEncabezado.tsx';
+import ModalEstadoDatosEncabezados from '../../modals/ModalEstadoDatosEncabezados.tsx';
 
 interface RowDesplegableDatosEncabezadosProps {
   children: React.ReactNode,
@@ -41,7 +41,7 @@ const RowDesplegableDatosEncabezados = ({ children, titulo, listado, tipo, refet
                       className='cont_listado_datosEncabezados'
                     >
                       {m.origen || m.ciudad || m.proceso}
-                      <ModalEliminarDatosEncabezados
+                      <ModalEstadoDatosEncabezados
                         tipo={tipo}
                         dato={m.origen || m.ciudad || m.proceso}
                         refetch={refetch}

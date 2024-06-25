@@ -12,14 +12,14 @@ import { URI } from '../../config';
 import { toast } from 'sonner';
 
 
-interface ModalEliminarDatosEncabezadosProps {
+interface ModalEstadoDatosEncabezadosProps {
   tipo: string,
   dato: string,
   refetch: () => void,
   estado: number
 }
 
-export default function ModalEliminarDatosEncabezados({ tipo, dato, estado, refetch }: ModalEliminarDatosEncabezadosProps) {
+export default function ModalEstadoDatosEncabezados({ tipo, dato, estado, refetch }: ModalEstadoDatosEncabezadosProps) {
   // console.log(tipo, dato)
   //🔸 Manejo de apertura y cierre para Modal
   const [open, setOpen] = React.useState(false);
@@ -29,15 +29,16 @@ export default function ModalEliminarDatosEncabezados({ tipo, dato, estado, refe
   //🔸 Envío de datos
   const handleSubmit = async () => {
 
-    const response = await solicitudPost(`${URI}/desactivateProcesos`, {
+    const response = await solicitudPost(`${URI}/ativateORdesactivateProcesos`, {
       tipo: tipo === 'juzgado' ? 'origen' : tipo,
-      dato
+      dato,
+      estado: !estado
     });
-    // console.log(response);
-    response.status
-      ? toast.success('Dato inhabilitado correctamente')
-      : toast.error('No se pudo inhabilitar el Dato')
-    ;
+    console.log(response);
+    // response.status
+    //   ? toast.success(`Dato ${estado === 1 ? 'inhabilitado' : 'habilitado'} correctamente`)
+    //   : toast.error(`No se pudo Dato ${estado === 1 ? 'inhabilitar' : 'habilitar'} correctamente el Dato`)
+    //   ;
     refetch();
     setOpen(false);
   }
@@ -49,12 +50,11 @@ export default function ModalEliminarDatosEncabezados({ tipo, dato, estado, refe
         variant="text"
         color='inherit'
         onClick={handleClickOpen}
-        disabled={estado === 1 ? false : true}
       >
         {
           estado === 1
             ? <VisibilityIcon color='success' />
-            : <VisibilityOffIcon color='disabled' />
+            : <VisibilityOffIcon color='action' />
         }
       </Button>
 
@@ -66,13 +66,13 @@ export default function ModalEliminarDatosEncabezados({ tipo, dato, estado, refe
         maxWidth='xs'
         fullWidth={false}
       >
-        <DialogTitle id="alert-dialog-title">
-          ¿Está seguro de inactivar el dato?
+        <DialogTitle>
+          <strong className='titulo_modal'>¿Está seguro de {estado === 1 ? 'inactivar' : 'activar'} el dato?</strong>
         </DialogTitle>
 
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            El dato no aparecerá disponible en las opciones del formulario de Redacción.
+            El dato {estado === 1 ? 'no aparecerá' : 'aparecerá'} disponible en las opciones del formulario de Redacción.
           </DialogContentText>
         </DialogContent>
 

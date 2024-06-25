@@ -23,7 +23,7 @@ export default function ModalVistaDigitador() {
     setOpen(false);
   }
 
-  
+
   return (
     <>
 
@@ -38,11 +38,9 @@ export default function ModalVistaDigitador() {
         aria-describedby="alert-dialog-description"
       >
         <DialogTitle id="alert-dialog-title">
-          <h3
-            style={{ margin: 0 }}
-          >
-            Cambiar a modo Digitador!
-          </h3>
+          <strong className='titulo_modal'>
+            Abrir modo Digitador!
+          </strong>
         </DialogTitle>
 
         <DialogContent>
@@ -64,7 +62,7 @@ export default function ModalVistaDigitador() {
             onClick={handleClick}
             autoFocus
           >
-            Redirigir
+            Abrir
           </Button>
         </DialogActions>
 

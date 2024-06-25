@@ -52,8 +52,8 @@ export default function ModalDesactivar({ id_usuario, estado_usuario, refetch }:
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogTitle id="alert-dialog-title">
-          ¿Está seguro de cambiar el estado del Usuario?
+        <DialogTitle>
+          <strong className='titulo_modal'>¿Está seguro de cambiar el estado del Usuario?</strong>
         </DialogTitle>
 
         <DialogContent>

@@ -45,9 +45,7 @@ export default function ModalUsuarios({ datosUsuarios, refetch }: ModalUsuariosP
         onClose={handleClose}
       >
         <DialogTitle>
-          <h2
-            style={{ margin: 0, color: '#31363F', textAlign: 'center' }}
-          >Usuarios</h2>
+          <strong className='titulo_modal'>Usuarios</strong>
         </DialogTitle>
 
         <DialogContent>
