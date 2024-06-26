@@ -7,11 +7,12 @@ import { URI } from "../../../config.ts"
 import { UsuariosType } from "../../../helpers/Types";
 import CircleUser from '../../atoms/CircleUser';
 import ModalUsuarios from '../../modals/ModalUsuarios.tsx';
+import ModalCrearUsuario from '../../modals/ModalCrearUsuario.tsx';
 
 const CardUsuariosDasb = () => {
 
   const { loading, data, error, refetch } = useGetData<UsuariosType>(`${URI}/usuarios`);
-  console.log(data)
+  // console.log(data)
   if (error) {
     console.log(error)
     return null
@@ -20,9 +21,10 @@ const CardUsuariosDasb = () => {
   return (
     <article className='container_card_usuarios'>
       <header>
-        <h2>
-          Usuarios
-        </h2>
+        <h2>Usuarios</h2>
+        <ModalCrearUsuario
+        refetch={refetch}
+        />
       </header>
 
       <section className='cont_listado_usuarios'>

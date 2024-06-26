@@ -33,9 +33,7 @@ export default function ModalInformeActas() {
 
       >
         <DialogTitle>
-          <h2
-            style={{ margin: 0, color: '#31363F', textAlign: 'center' }}
-          >Informe Digitadores</h2>
+          <strong className='titulo_modal'>Informe Digitadores</strong>
         </DialogTitle>
 
         <DialogContent>

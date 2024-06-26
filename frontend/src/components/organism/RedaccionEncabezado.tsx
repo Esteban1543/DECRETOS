@@ -24,8 +24,6 @@ interface RedaccionEncabezadoProps {
 }
 
 
-
-
 export default function RedaccionEncabezado({ handlePage, datosEncabezado, setDatosEncabezado, setContenido }: RedaccionEncabezadoProps) {
 
   //🔸 Fecth de Datos para Selects

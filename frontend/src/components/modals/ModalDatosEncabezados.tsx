@@ -51,9 +51,7 @@ export default function ModalDatosEncabezados() {
         onClose={handleClose}
       >
         <DialogTitle>
-          <h2
-            style={{ margin: 0, color: '#31363F', textAlign: 'center' }}
-          >Datos Encabezados</h2>
+          <strong className='titulo_modal'>Datos Encabezados</strong>
         </DialogTitle>
 
         <DialogContent>

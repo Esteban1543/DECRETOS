@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
 import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -45,16 +46,23 @@ export default function ModalCrearDatoEncabezado({ tipo }: ModalCrearDatoEncabez
 
   return (
     <>
-      <Button variant="text" onClick={handleClickOpen}>
-        <AddCircleOutlineIcon fontSize='large'/>
-      </Button>
+      <IconButton
+        onClick={handleClickOpen}
+        // size="large"
+        aria-label="agregar"
+      >
+        <AddCircleOutlineIcon
+          fontSize='large'
+          sx={{ color: 'var(--color-azul-deep2)' }}
+        />
+      </IconButton>
 
       <Dialog
         open={open}
         onClose={handleClose}
       >
         <DialogTitle>
-          <h3>Agregar {tipo}</h3>
+          <strong className='titulo_modal'>Agregar {tipo}</strong>
         </DialogTitle>
 
         <DialogContent>
