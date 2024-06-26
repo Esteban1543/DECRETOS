@@ -1,5 +1,5 @@
 /* eslint-disable react/react-in-jsx-scope */
-import '../../assets/styles/RowCardInform.css'
+import '../../../assets/styles/RowCardInform.css'
 import React from "react";
 import GradingIcon from '@mui/icons-material/Grading';
 

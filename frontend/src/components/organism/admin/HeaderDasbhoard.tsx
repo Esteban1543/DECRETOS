@@ -1,7 +1,7 @@
 /* eslint-disable react/react-in-jsx-scope */
 import PropTypes from 'prop-types';
-import Logout from '../atoms/Logout.js';
-import { format_fecha } from '../../helpers/formatFecha.ts'
+import Logout from '../../atoms/Logout.js';
+import { format_fecha } from '../../../helpers/formatFecha.ts'
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 
 function HeaderDasbhoard({ nombres }: { nombres: string }) {

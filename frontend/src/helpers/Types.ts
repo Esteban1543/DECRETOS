@@ -36,6 +36,8 @@ export type DecretoType = {
   id_tipo_embargo?: number,
   tipo: string,
   descripcion: string,
+  ley?: string,
+  leyes?: Array<string>,
   dataInputs?: InputDataDecretoType
 }
 

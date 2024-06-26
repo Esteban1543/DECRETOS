@@ -10,8 +10,8 @@ import { useSetSesion } from '../hooks/useSetSesion.tsx'
 import { useGetData } from '../hooks/useGetData.tsx'
 
 // Componentes 🧩
-import HeaderDasbhoard from '../components/organism/HeaderDasbhoard.tsx'
-import CardInformationDasbh from '../components/organism/CardInformationDasbh.tsx'
+import HeaderDasbhoard from '../components/organism/admin/HeaderDasbhoard.tsx'
+import CardInformationDasbh from '../components/organism/admin/CardInformationDasbh.tsx'
 import ModalVistaDigitador from '../components/modals/ModalVistaDigitador.tsx'
 import CardDatosEncabezadosDashb from '../components/organism/admin/CardDatosEncabezadosDashb.tsx'
 import CardUsuariosDasb from '../components/organism/admin/CardUsuariosDasb.tsx'

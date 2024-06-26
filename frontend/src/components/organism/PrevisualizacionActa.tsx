@@ -16,11 +16,11 @@ const PrevisualizacionActa: React.FC<PrevisualizacionActaProps> = ({ datosEncabe
   const parrafos_decretosAnexados = decretosAnexados.map((decreto) => {
     if (!decreto.dataInputs) return
 
-    // const descripcion_con_datos = setearDescripcionDecreto(decreto.descripcion, decreto?.dataInputs);
     const descripcion_con_datos = setearDescripcionDecreto(decreto.descripcion, decreto?.dataInputs, datosEncabezado.demandado);
-    return descripcion_con_datos
+    // return descripcion_con_datos
+    return { descripcion_con_datos, leyes: decreto.leyes }
   })
-
+  // console.log(parrafos_decretosAnexados)
   return (
     <article
       className='container_prev_acta'
@@ -67,13 +67,26 @@ const PrevisualizacionActa: React.FC<PrevisualizacionActaProps> = ({ datosEncabe
       <section>
         {
           parrafos_decretosAnexados.map((m, i) => (
-            <p
-              className='p_decretos'
-              key={i + '.decreto'}
-            >
-              <b>{formatNumeracionDecretos(i + 1)}: {m?.slice(0, 33)}</b>
-              {m?.slice(33,)}
-            </p>
+            <>
+              <p
+                className='p_decretos'
+                key={i + '.decreto'}
+              >
+                {/* <b>{formatNumeracionDecretos(i + 1)}: {m?.slice(0, 33)}</b>
+              {m?.slice(33,)} */}
+                <b>{formatNumeracionDecretos(i + 1)}: {m?.descripcion_con_datos.slice(0, 33)}</b>
+                {m?.descripcion_con_datos.slice(33,)}
+              </p>
+
+              {
+                m?.leyes?.map((ley, index) => (
+                  <p
+                    key={index + 'ley'}
+                    className='p_decretos'
+                  >{ley.replace(/°##/g, datosEncabezado.demandado)}</p>
+                ))
+              }
+            </>
           ))
         }
       </section>

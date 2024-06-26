@@ -18,29 +18,55 @@ interface WordTemplateProps {
 const WordTemplate: React.FC<WordTemplateProps> = ({ datosEncabezado, decretosAnexados, activarBoton }) => {
 
   //🔸 Generar los parrafos necesarios según los decretos anexados
-  const parrafos_decretosAnexados = decretosAnexados.map((decreto, index) => {
-    if (!decreto.dataInputs) return new Paragraph({
-      text: "No hay Decretos anexados",
-      alignment: AlignmentType.CENTER,
-    });
+  const parrafos_decretosAnexados = decretosAnexados.flatMap((decreto, index) => {
 
+    //🔸Verificacion en caso de que no llegasen los decretos
+    if (!decreto.dataInputs) {
+      return new Paragraph({
+        text: "No hay Decretos anexados",
+        alignment: AlignmentType.CENTER,
+      });
+    }
+
+    //🔸 Unificar los datos de los inputs con el resto del decreto
     const descripcion_con_datos = setearDescripcionDecreto(decreto.descripcion, decreto?.dataInputs, datosEncabezado.demandado);
 
-    return new Paragraph({
-      children: [
-        new TextRun({
-          text: `${formatNumeracionDecretos(index + 1)}: ${descripcion_con_datos.slice(0, 33)}`,
-          bold: true,
-          // break: 1
-        }),
+    //🔸 Formatear en parrafos las secciones de la ley que conlleva cada decreto
+    const parrafos_leyes = decreto.leyes ? decreto.leyes.map((ley) =>
+      new Paragraph({
+        children: [
+          new TextRun({
+            text: ley.replace(/°##/g, datosEncabezado.demandado),
+            // text: ley,
+          }),
+        ],
+        spacing: {
+          line: 1.5 * 12 * 20,
+          after: 300,
+        },
+        alignment: AlignmentType.JUSTIFIED,
+      })
+    ) : [];
 
-        new TextRun(descripcion_con_datos.slice(33,)),
-      ],
-      spacing: {
-        line: 1.5 * 12 * 20,
-        after: 300
-      }
-    });
+    return [
+      new Paragraph({
+        children: [
+          new TextRun({
+            text: `${formatNumeracionDecretos(index + 1)}: ${descripcion_con_datos.slice(0, 33)}`,
+            bold: true,
+          }),
+          new TextRun({
+            text: descripcion_con_datos.slice(33),
+          }),
+        ],
+        spacing: {
+          line: 1.5 * 12 * 20,
+          after: 300,
+        },
+        alignment: AlignmentType.JUSTIFIED,
+      }),
+      ...parrafos_leyes
+    ];
   });
 
 
@@ -108,8 +134,8 @@ const WordTemplate: React.FC<WordTemplateProps> = ({ datosEncabezado, decretosAn
           properties: {
             page: {
               size: {
-                width: 12240, // 8.5 inches in twips
-                height: 20160 // 14 inches in twips
+                width: 12240, // 8.5 pulgadas en twips
+                height: 20160 // 14 pulgadas en twips
               }
             }
           },

@@ -78,7 +78,7 @@ export default function RedaccionDecretos({ nombre_demandado, handlePage, decret
             {
               decretosDatos.map(m => (
                 <AñadirDecretos
-                  key={m.id_tipo_embargo}
+                  key={m.tipo}
                   nombre_decreto={m.tipo}
                   click_agregar={() => handleAgregarDecretos(m, 'agregar')}
                   click_eliminar={() => handleAgregarDecretos(m, 'eliminar')}
