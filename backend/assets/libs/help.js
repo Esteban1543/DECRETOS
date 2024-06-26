@@ -15,53 +15,43 @@ export function moverAbajo(doc, dato) {
 
 // Funcion para llenar la descipcion con los datos
 export const seteoDatosDecretos = (descripcion, dataInputs, demandado) => {
-    const desc_demandado = descripcion.replace("°##", demandado || "-Demandado-");
-    
-    let decreto = desc_demandado;
-    
-    Object.values(dataInputs).forEach(value => {
-      decreto = decreto.replace('°', value.toString() || '-DATO SIN DILIGENCIAR-');
-    });
-  
-    return decreto;
-  };
+  const desc_demandado = descripcion.replace('°##', demandado || '-Demandado-');
+
+  let decreto = desc_demandado;
+
+  Object.values(dataInputs).forEach((value) => {
+    decreto = decreto.replace('°', value.toString() || '-DATO SIN DILIGENCIAR-');
+  });
+
+  return decreto;
+};
 
 // Funcion para generar el parrafo en el PDF
 export const seteoIdentificador = (doc, datosDecreto, demandado) => {
-    const ubicaciones = ["PRIMERO: ", "SEGUNDO: ", "TERCERO: ", "CUARTO: ", "QUINTO: ", "SEXTO: ", "SEPTIMO: ", "OCTAVO: ", "NOVENO: ", "DECIMO: "];
-  
-    datosDecreto.forEach((decreto, index) => {
-      const { descripcion, dataInputs, leyes } = decreto;
-      let parrafo = seteoDatosDecretos(descripcion, dataInputs, demandado);
-  
-      doc
-        .font("Helvetica-Bold")
-        .text(ubicaciones[index], {
-          continued: true,
-          lineGap: 8,
-        });
-      
-      doc
-        .text(parrafo.slice(0, 33), {
-          continued: true,
-          lineGap: 8,
-        });
-      
-      doc
-        .font("Helvetica")
-        .text(parrafo.slice(33), {
-          lineGap: 8,
-        });
-  
-        doc.moveDown(1)
-  
-      doc.text(leyes, {
-        lineGap: 8,
-      })
-  
-      doc.moveDown(1); 
-    });
-  };
+  const ubicaciones = ['PRIMERO: ', 'SEGUNDO: ', 'TERCERO: ', 'CUARTO: ', 'QUINTO: ', 'SEXTO: ', 'SEPTIMO: ', 'OCTAVO: ', 'NOVENO: ', 'DÉCIMO: '];
+
+  datosDecreto.forEach((decreto, index) => {
+    const { descripcion, dataInputs, leyes } = decreto;
+    let parrafo = seteoDatosDecretos(descripcion, dataInputs, demandado);
+
+    doc
+      .font('Helvetica-Bold')
+      .text(ubicaciones[index], { continued: true, lineGap: 8 });
+
+    doc
+      .text(parrafo.slice(0, 33), { continued: true, lineGap: 8 });
+
+    doc
+      .font('Helvetica')
+      .text(parrafo.slice(33), { lineGap: 8 });
+
+    doc.moveDown(1);
+
+    doc.text(leyes, { lineGap: 8 });
+
+    doc.moveDown(1);
+  });
+};
 
 // Funcion para generar el formateo de fecha (Disponible solo hasta el año 2030)
 const monthNames = [
