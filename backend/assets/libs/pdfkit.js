@@ -2,16 +2,23 @@ import PDFDocument from 'pdfkit-table'
 import fs from 'fs'
 import path from 'path'
 
-import { juzgado, moverAbajo, fechaTexto } from './help.js'
+import { texto, moverAbajo, fechaTexto } from './help.js'
 
-export const contruirPDF = (datosEncabezado, datosDecreto) => {
+export const contruirPDF = (datosEncabezado, decretosAnexados) => {
 
-  const {origen, juez, ciudad, radicado, demandante, demandado, proceso, provincia} = datosEncabezado;
+  const {juzgado, juez, ciudad, origen, radicado, demandante, demandado, proceso, provincia} = datosEncabezado;
 
   //Guardar documento
   const doc = new PDFDocument({ size: "LEGAL" });
+
   const dirPath = path.join(__dirname, './docs');
   const filePath = path.join(dirPath, `AutoDecretaMedida_${radicado}.pdf`);
+
+  // Verificar que este creada, si no, la crea
+  if (!fs.existsSync(dirPath)) {
+    fs.mkdirSync(dirPath, { recursive: true });
+  }
+
   const streamm = fs.createWriteStream(filePath);
 
   doc.pipe(streamm);
@@ -36,7 +43,7 @@ export const contruirPDF = (datosEncabezado, datosDecreto) => {
   doc.image("assets/images/Escudo.png", x, 113, { width: imageWidth });
   doc.moveDown(4);
 
-  doc.text(origen, 100, 190, {
+  doc.text(juzgado, 100, 190, {
     align: "center",
     width: 400,
   });
@@ -74,7 +81,7 @@ export const contruirPDF = (datosEncabezado, datosDecreto) => {
   alto = doc.y;
 
   doc.font("Helvetica")
-    .text(juzgado, 100, alto + 20, {
+    .text(texto, 100, alto + 20, {
       align: "left",
       width: 400,
     })
@@ -87,7 +94,7 @@ export const contruirPDF = (datosEncabezado, datosDecreto) => {
     .moveDown(1)
 
     // Funcion para generar los decretos
-      seteoIdentificador(doc, datosDecreto, demandado, 0);
+      seteoIdentificador(doc, decretosAnexados, demandado, 0);
 
       doc.moveDown(1);
 

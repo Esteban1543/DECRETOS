@@ -1,5 +1,5 @@
 // Texto antes de los Decretos
-export const juzgado = 'El juzgado, atendiendo la solicitud de cautela realizada por la parte actora, y por estimarla procedente,';
+export const texto = 'El juzgado, atendiendo la solicitud de cautela realizada por la parte actora, y por estimarla procedente,';
 
 // Funcion para bajar renglones en los datos de Encabezado
 export function moverAbajo(doc, dato) {
@@ -31,7 +31,7 @@ export const seteoIdentificador = (doc, datosDecreto, demandado) => {
     const ubicaciones = ["PRIMERO: ", "SEGUNDO: ", "TERCERO: ", "CUARTO: ", "QUINTO: ", "SEXTO: ", "SEPTIMO: ", "OCTAVO: ", "NOVENO: ", "DECIMO: "];
   
     datosDecreto.forEach((decreto, index) => {
-      const { descripcion, dataInputs, ley } = decreto;
+      const { descripcion, dataInputs, leyes } = decreto;
       let parrafo = seteoDatosDecretos(descripcion, dataInputs, demandado);
   
       doc
@@ -55,7 +55,7 @@ export const seteoIdentificador = (doc, datosDecreto, demandado) => {
   
         doc.moveDown(1)
   
-      doc.text(ley, {
+      doc.text(leyes, {
         lineGap: 8,
       })
   
