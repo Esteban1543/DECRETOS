@@ -1,4 +1,5 @@
 import ActaModel from "../models/ActasModel.js"
+import DigitalModel from "../models/DigitalModel.js";
 
 class ActasController {
     static async createActa(req, res) {
@@ -8,6 +9,7 @@ class ActasController {
         
         const {
             id_digitador,
+            correo_digitador,
             datosEncabezado,
             decretosAnexados
         } = req.body;
@@ -37,6 +39,8 @@ class ActasController {
         }
 
         try {
+            await DigitalModel.sendMail(datosEncabezado, decretosAnexados, correo_digitador, fechaFormato)
+
             return res.json(await ActaModel.createActa(id_digitador, datosEncabezado, decretosAnexados, fechaFormato))
         }catch(error){
             return {
