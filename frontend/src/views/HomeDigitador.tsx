@@ -97,6 +97,7 @@ export default function HomeDigitador() {
       {/* 🔸 Contenido */}
       <ContenidoHomeDigitador
         id_digitador={id_digitador}
+        correo_digitador={correo || 'null'}
         datosTabla={data?.data || []}
         refetch={refetch}
       />

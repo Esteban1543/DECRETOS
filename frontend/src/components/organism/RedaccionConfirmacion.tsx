@@ -11,12 +11,12 @@ interface RedaccionPrevPDFProps {
   handlePage: (page: number) => void,
   datosEncabezado: DatosEncabezadoType,
   decretosAnexados: DecretoType[],
-  fn_submit: (accion: string) => boolean
+  fn_submit: (accion: string) => Promise<boolean>
 }
 
 export default function RedaccionPrevPDF({ handlePage, datosEncabezado, decretosAnexados, fn_submit }: RedaccionPrevPDFProps) {
 
-  const [salir, setSalir] = useState(true);
+  const [salir, setSalir] = useState(false);
 
   const handleSubmitData = async (accion: string) => {
     const respuesta = await fn_submit(accion)
@@ -91,8 +91,8 @@ export default function RedaccionPrevPDF({ handlePage, datosEncabezado, decretos
                     variant="outlined"
                     color="warning"
                     size='large'
-                    onClick={() => handlePage(2)}
-                    // onClick={() => handleSubmitData('resetear')}
+                    // onClick={() => handlePage(2)}
+                    onClick={() => handleSubmitData('resetear')}
                     style={{ width: '96%', marginLeft: 'auto' }}
                   >Salir</Button>
                 )

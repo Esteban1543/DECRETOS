@@ -10,44 +10,45 @@ import { solicitudPost } from '../../helpers/solicitudPost.ts';
 import Steper from "../organism/Steper";
 import RedaccionEncabezado from "../organism/RedaccionEncabezado";
 import RedaccionDecretos from "../organism/RedaccionDecretos";
-import RedaccionPrevPDF from "../organism/RedaccionPrevPDF";
+import RedaccionConfirmacion from "../organism/RedaccionConfirmacion.tsx";
 
 interface SeccionRedaccionActasProps {
   id_digitador?: number,
+  correo_digitador: string,
   setContenido: React.Dispatch<React.SetStateAction<string>>,
   refetch: () => void
 }
 
 
-export default function SeccionRedaccionActas({ id_digitador, setContenido, refetch }: SeccionRedaccionActasProps) {
+export default function SeccionRedaccionActas({ id_digitador, correo_digitador, setContenido, refetch }: SeccionRedaccionActasProps) {
 
   //🔸 Administrar la página que se necesita mostrar
   const [pagina, setPagina] = useState(1);
   const handlePage = (page: number) => setPagina(page);
 
   //🔸 Estado para Datos de Encabezado (formulario)
-  const estado_inicial = {
-    juzgado: 'Juzgado Ochenta (80) Civil Municipal de Bogotá D.C.  Transitorio Sesenta y Dos (62) de Pequeñas Causas Civiles y Competencia Múltiple de Bogotá D.C.',
-    juez: 'MANUELA GÓMEZ ÁNGEL RANGEL',
-    ciudad: 'Bogotá D.C.',
-    origen: 'Juzgado Ochenta (80) Civil Municipal de Bogotá D.C.  Transitorio Sesenta y Dos (62) de Pequeñas Causas Civiles y Competencia Múltiple de Bogotá D.C.',
-    radicado: '2022-00602-00',
-    demandante: 'NOMBRE DEMANDANTE',
-    demandado: 'NOMBRE DEMANDADO',
-    proceso: 'EJECUTIVO DE MÍNIMA CUANTÍA',
-    provincia: '1'
-  }
   // const estado_inicial = {
-  //   juzgado: '',
+  //   juzgado: 'Juzgado Ochenta (80) Civil Municipal de Bogotá D.C.  Transitorio Sesenta y Dos (62) de Pequeñas Causas Civiles y Competencia Múltiple de Bogotá D.C.',
   //   juez: 'MANUELA GÓMEZ ÁNGEL RANGEL',
-  //   ciudad: '',
-  //   origen: '',
-  //   radicado: '',
-  //   demandante: '',
-  //   demandado: '',
-  //   proceso: '',
-  //   provincia: ''
+  //   ciudad: 'Bogotá D.C.',
+  //   origen: 'Juzgado Ochenta (80) Civil Municipal de Bogotá D.C.  Transitorio Sesenta y Dos (62) de Pequeñas Causas Civiles y Competencia Múltiple de Bogotá D.C.',
+  //   radicado: '2022-00602-00',
+  //   demandante: 'NOMBRE DEMANDANTE',
+  //   demandado: 'NOMBRE DEMANDADO',
+  //   proceso: 'EJECUTIVO DE MÍNIMA CUANTÍA',
+  //   provincia: '1'
   // }
+  const estado_inicial = {
+    juzgado: '',
+    juez: 'MANUELA GÓMEZ ÁNGEL RANGEL',
+    ciudad: '',
+    origen: '',
+    radicado: '',
+    demandante: '',
+    demandado: '',
+    proceso: '',
+    provincia: ''
+  }
   const [datosEncabezado, setDatosEncabezado] = useState(estado_inicial);
 
   //🔸 Estado para almacenar los decretos que se anexan
@@ -64,7 +65,7 @@ export default function SeccionRedaccionActas({ id_digitador, setContenido, refe
       return true
     }
 
-    const datosActa = { id_digitador, datosEncabezado, decretosAnexados }
+    const datosActa = { id_digitador, correo_digitador, datosEncabezado, decretosAnexados }
     const response = await solicitudPost(`${URI}/createActa`, datosActa);
     console.log(response);
 
@@ -107,14 +108,13 @@ export default function SeccionRedaccionActas({ id_digitador, setContenido, refe
                   setDecretosAnexados={setDecretosAnexados}
                 />
                 : pagina === 3 &&
-                <RedaccionPrevPDF
+                <RedaccionConfirmacion
                   handlePage={handlePage}
                   datosEncabezado={datosEncabezado}
                   decretosAnexados={decretosAnexados}
                   fn_submit={handleSubmit}
                 />
           }
-
         </article>
         <Toaster position="bottom-center" richColors closeButton />
       </section>

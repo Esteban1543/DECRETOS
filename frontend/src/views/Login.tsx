@@ -26,8 +26,8 @@ function Login() {
 
   //🔸 Estado para inputs de Formulario
   const [formData, setFormData] = useState({
-    user: "",
-    password: "",
+    user: "Admin",
+    password: "admin123",
   });
 
   //🔸 Manejo de entradas/cambios en Inputs
@@ -106,6 +106,7 @@ function Login() {
           <TextField
             label="Usuario"
             name="user"
+            value={formData.user}
             onChange={handleChange}
             style={{ width: '80%' }}
             InputProps={{
@@ -126,6 +127,7 @@ function Login() {
             <InputLabel>Contraseña</InputLabel>
             <Input
               name="password"
+              value={formData.password}
               onChange={handleChange}
               type={showPassword ? 'text' : 'password'}
               endAdornment={

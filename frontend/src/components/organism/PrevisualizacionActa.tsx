@@ -48,17 +48,24 @@ const PrevisualizacionActa: React.FC<PrevisualizacionActaProps> = ({ datosEncabe
       </section>
 
       {/* Datos Encabezado 📌 */}
-      <section style={{ marginLeft: '60px', marginRight: '60px' }}>
-        <h4>Origen: {datosEncabezado.origen}</h4>
-        <h4>Radicación: {datosEncabezado.radicado}</h4>
-        <h4>Demandante: {datosEncabezado.demandante}</h4>
-        <h4>Demandado: {datosEncabezado.demandado}</h4>
-        <h4>Proceso: {datosEncabezado.proceso}</h4>
+      <section
+        style={{ marginLeft: '60px', marginRight: '60px', display: 'grid', gridTemplateColumns: '25% 75%' }}
+      >
+        <h4>Origen: </h4>
+        <h4>{datosEncabezado.origen}</h4>
+        <h4>Radicación: </h4>
+        <h4>{datosEncabezado.radicado}</h4>
+        <h4>Demandante: </h4>
+        <h4>{datosEncabezado.demandante}</h4>
+        <h4>Demandado: </h4>
+        <h4>{datosEncabezado.demandado}</h4>
+        <h4>Proceso: </h4>
+        <h4>{datosEncabezado.proceso}</h4>
       </section>
 
       {/* Texto Inicial 📌 */}
       <section style={{ textAlign: 'center', lineHeight: '1.5' }}>
-        <p>El juzgado, atendiendo la solicitud cautelar que precede, por estimarlas procedentes</p>
+        <p style={{ textWrap: 'nowrap' }}>El juzgado, atendiendo la solicitud cautelar que precede, por estimarlas procedentes</p>
         {/* <p>&nbsp;</p> */}
         <p><strong>DISPONE:</strong></p>
         {/* <p>&nbsp;</p> */}
@@ -72,8 +79,6 @@ const PrevisualizacionActa: React.FC<PrevisualizacionActaProps> = ({ datosEncabe
                 className='p_decretos'
                 key={i + '.decreto'}
               >
-                {/* <b>{formatNumeracionDecretos(i + 1)}: {m?.slice(0, 33)}</b>
-              {m?.slice(33,)} */}
                 <b>{formatNumeracionDecretos(i + 1)}: {m?.descripcion_con_datos.slice(0, 33)}</b>
                 {m?.descripcion_con_datos.slice(33,)}
               </p>
