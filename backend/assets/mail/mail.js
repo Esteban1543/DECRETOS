@@ -1,10 +1,10 @@
-const nodemailer = require("nodemailer");
+import nodemailer from 'nodemailer'
 
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: "facturacionddne@gmail.com",
-    pass: "jhxfdmgezbogxrkc",
+    user: "sistemadigitacionddne@gmail.com",
+    pass: "yteidrhnqzzoydsv",
   },
 });
 
@@ -20,4 +20,4 @@ transporter.on('error', (error) => {
   console.error('🔴 Error en el transporter:', error);
 });
 
-module.exports = { transporter };
+export default transporter

@@ -18,7 +18,7 @@ class PersonasController {
         const validations = {
             fk_tipo_identificacion: /^[a-zA-Z]{2,4}$/,
             n_identificacion: /^[0-9]{0,14}$/,
-            nombres: /^[A-Za-zÁÉÍÓÚáéíóúÑñ]+ [A-Za-zÁÉÍÓÚáéíóúÑñ]+$/,
+            nombres: /^[A-Za-zÁÉÍÓÚáéíóúÑñ]+( [A-Za-zÁÉÍÓÚáéíóúÑñ]+)?$/,
             telefono: /^[0-9]{1,14}$/,
             correo: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
             alias: /^[a-zA-Z0-9 ]*$/,
@@ -95,6 +95,7 @@ class PersonasController {
         const [nombre_1, nombre_2] = nombres.split(" ");
         const [apellido_1, apellido_2] = apellidos.split(" ");
 
+        console.log(nombre_1, nombre_2, apellido_1, apellido_2)
         try {
             return res.json(await PersonasModel.newUsuario( fk_tipo_identificacion,
                                                             n_identificacion,
@@ -119,7 +120,7 @@ class PersonasController {
         const validations = {
             fk_tipo_identificacion: /^[a-zA-Z]{2,4}$/,
             n_identificacion: /^[0-9]{0,14}$/,
-            nombres: /^[A-Za-zÁÉÍÓÚáéíóúÑñ]+ [A-Za-zÁÉÍÓÚáéíóúÑñ]+$/,
+            nombres: /^[A-Za-zÁÉÍÓÚáéíóúÑñ]+( [A-Za-zÁÉÍÓÚáéíóúÑñ]+)?$/,
             telefono: /^[0-9]{1,14}$/,
             correo: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
             alias: /^[a-zA-Z0-9 ]*$/,
