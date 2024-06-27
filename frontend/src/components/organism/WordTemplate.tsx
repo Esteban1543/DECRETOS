@@ -345,7 +345,7 @@ const WordTemplate: React.FC<WordTemplateProps> = ({ datosEncabezado, decretosAn
 
     try {
       const blob = await Packer.toBlob(doc);
-      saveAs(blob, 'documento.docx');
+      saveAs(blob, `AutoDecretaMedida_${datosEncabezado.radicado}.docx`);
     } catch (error) {
       console.error("Error al generar el documento:", error);
       alert('Error al generar el documento ❌');

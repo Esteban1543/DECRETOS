@@ -5,7 +5,7 @@ import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
 import Button from '@mui/material/Button';
 import InputLabel from '@mui/material/InputLabel';
-import FormHelperText from '@mui/material/FormHelperText';
+// import FormHelperText from '@mui/material/FormHelperText';
 import FormControl from '@mui/material/FormControl';
 import { Tooltip } from '@mui/material';
 import { DatosEncabezadoType } from '../../helpers/Types.js';
@@ -100,7 +100,7 @@ export default function RedaccionEncabezado({ handlePage, datosEncabezado, setDa
               name="juzgado"
               onChange={handleChangeValueSelects}
               label='Juzgado'
-              size="small"
+              // size="small"
             >
               <MenuItem disabled value='' >
                 <em style={{ opacity: '.6' }}>Juzgado *</em>
@@ -118,7 +118,7 @@ export default function RedaccionEncabezado({ handlePage, datosEncabezado, setDa
               }
             </Select>
 
-            <FormHelperText>Seleccione el Juzgado remitente</FormHelperText>
+            {/* <FormHelperText>Seleccione el Juzgado remitente</FormHelperText> */}
           </FormControl>
 
           <div style={{ display: 'grid', gap: '5%', gridTemplateColumns: '55% auto' }}>
@@ -128,8 +128,8 @@ export default function RedaccionEncabezado({ handlePage, datosEncabezado, setDa
               placeholder="MANUELA GÓMEZ ÁNGEL RANGEL"
               onChange={handleChange}
               value={datosEncabezado.juez}
-              helperText="Ingrese solo Letras"
-              size="small"
+              // helperText="Ingrese solo Letras"
+              // size="small"
             />
 
             <FormControl>
@@ -139,7 +139,7 @@ export default function RedaccionEncabezado({ handlePage, datosEncabezado, setDa
                 name="ciudad"
                 onChange={handleChangeValueSelects}
                 label='Ciudad'
-                size="small"
+                // size="small"
               >
                 <MenuItem disabled value='' >
                   <em style={{ opacity: '.6' }}>Ciudad *</em>
@@ -157,14 +157,14 @@ export default function RedaccionEncabezado({ handlePage, datosEncabezado, setDa
                 }
               </Select>
 
-              <FormHelperText>Seleccione la Ciudad</FormHelperText>
+              {/* <FormHelperText>Seleccione la Ciudad</FormHelperText> */}
             </FormControl>
           </div>
 
           <FormControl>
             <InputLabel>Origen</InputLabel>
             <Select
-              size="small"
+              // size="small"
               value={origin}
               name="origen"
               label='Origen'
@@ -185,7 +185,7 @@ export default function RedaccionEncabezado({ handlePage, datosEncabezado, setDa
                 ?? <MenuItem value="">No hay Juzgados disponibles</MenuItem>
               }
             </Select>
-            <FormHelperText>Seleccione el Origen</FormHelperText>
+            {/* <FormHelperText>Seleccione el Origen</FormHelperText> */}
           </FormControl>
 
           <TextField
@@ -194,8 +194,8 @@ export default function RedaccionEncabezado({ handlePage, datosEncabezado, setDa
             placeholder="2023-00501-00"
             onChange={handleChange}
             value={datosEncabezado.radicado}
-            helperText="Ingrese numero de radicado con lineas ( - )"
-            size="small"
+            helperText="Ingrese numero de radicado con las lineas necesarias ( - )"
+            // size="small"
           />
 
           <TextField
@@ -205,7 +205,7 @@ export default function RedaccionEncabezado({ handlePage, datosEncabezado, setDa
             onChange={handleChange}
             value={datosEncabezado.demandante}
             helperText="Ingrese solo Letras"
-            size="small"
+            // size="small"
           />
 
           <TextField
@@ -215,13 +215,13 @@ export default function RedaccionEncabezado({ handlePage, datosEncabezado, setDa
             onChange={handleChange}
             value={datosEncabezado.demandado}
             helperText="Ingrese solo Letras"
-            size="small"
+            // size="small"
           />
 
           <FormControl>
             <InputLabel>Proceso</InputLabel>
             <Select
-              size="small"
+              // size="small"
               name="proceso"
               value={process}
               onChange={handleChangeValueSelects}
@@ -242,7 +242,7 @@ export default function RedaccionEncabezado({ handlePage, datosEncabezado, setDa
                 ?? <MenuItem value="">No hay Procesos disponibles</MenuItem>
               }
             </Select>
-            <FormHelperText>Seleccione el Tipo de Proceso</FormHelperText>
+            {/* <FormHelperText>Seleccione el Tipo de Proceso</FormHelperText> */}
           </FormControl>
 
           <TextField
@@ -251,8 +251,8 @@ export default function RedaccionEncabezado({ handlePage, datosEncabezado, setDa
             placeholder="1"
             onChange={handleChange}
             value={datosEncabezado.provincia}
-            helperText="Ingrese el código alfanumérico"
-            size="small"
+            // helperText="Ingrese el número"
+            // size="small"
           />
 
         </article>

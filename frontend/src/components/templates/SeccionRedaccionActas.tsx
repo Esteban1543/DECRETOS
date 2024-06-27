@@ -64,7 +64,7 @@ export default function SeccionRedaccionActas({ id_digitador, correo_digitador, 
       refetch();
       return true
     }
-
+    // const correo_digitador = 'galatas96@gmail.com'
     const datosActa = { id_digitador, correo_digitador, datosEncabezado, decretosAnexados }
     const response = await solicitudPost(`${URI}/createActa`, datosActa);
     console.log(response);

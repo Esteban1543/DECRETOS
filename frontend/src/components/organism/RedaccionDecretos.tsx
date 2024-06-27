@@ -91,15 +91,25 @@ export default function RedaccionDecretos({ nombre_demandado, handlePage, decret
             {
               !decretosAnexados || decretosAnexados.length === 0
                 ?
-                <>
-                  <h4>No hay Decretos anexados</h4>
-                  {/* <p style={{textAlign: 'left', width: '100%'}}>
-                    Recomendaciones para el ingreso de Datos: <br/>
-                    Ingresar valores con puntos y descripción: 12.250.000 millones
-                  </p> */}
+                <article className="cont_info_digitar_decreto">
+                  <h4>Recomendaciones para el diligenciamiento de datos. 📌</h4>
+                  <ul>
+                    <li>Diligencie todos los campos antes de continuar.</li>
+                    <p></p>
+
+                    <li>Use la capitaliazación segun la necesidad del decreto.</li>
+                    <p>
+                      Ejemplo: Ubicado / millones / FONDO DE PENSIONES
+                    </p>
+
+                    <li>Ingresar valores con puntos y descripción según la necesidad del campo </li>
+                    <p>
+                      Ejemplo: 12.250.000 millones
+                    </p>
+                  </ul>
+
                   <CardLoading />
-                  <CardLoading />
-                </>
+                </article>
                 : decretosAnexados.map((m, index) => (
                   <DecretosInputs
                     key={index}
@@ -121,8 +131,8 @@ export default function RedaccionDecretos({ nombre_demandado, handlePage, decret
             variant="outlined"
             size='large'
             onClick={() => handlePage(1)}
-            style={{borderColor: 'var(--color-azul-deep2)', color: 'var(--color-azul-deep2)'}}
-            >Atrás</Button>
+            style={{ borderColor: 'var(--color-azul-deep2)', color: 'var(--color-azul-deep2)' }}
+          >Atrás</Button>
 
           <Tooltip
             title={!activarBoton && "Agrega algún decreto"}
@@ -131,9 +141,9 @@ export default function RedaccionDecretos({ nombre_demandado, handlePage, decret
             <Button
               variant="contained"
               size='large'
-              onClick={activarBoton ? () => handlePage(3) : ()=> toast.info('Anexa al menos 1 Decreto al documento')}
-              style={{background: 'var(--color-azul-deep2)'}}
-              >Siguiente</Button>
+              onClick={activarBoton ? () => handlePage(3) : () => toast.info('Anexa al menos 1 Decreto al documento')}
+              style={{ background: 'var(--color-azul-deep2)' }}
+            >Siguiente</Button>
           </Tooltip>
         </footer>
 
