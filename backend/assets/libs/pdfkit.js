@@ -1,106 +1,114 @@
 import PDFDocument from 'pdfkit-table'
 import fs from 'fs'
 import path from 'path'
+import { fileURLToPath } from 'url'
 
-import { texto, moverAbajo, fechaTexto } from './help.js'
+import { texto, moverAbajo, fechaTexto, seteoIdentificador } from './help.js';
 
-import { texto, moverAbajo, fechaTexto } from './help.js';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-// Función principal para construir el PDF
-export const contruirPDF = (data) => {
-  const { datosEncabezado, decretosAnexados } = data;
+export const contruirPDF = (datosEncabezado, decretosAnexados) => {
   const { juzgado, juez, ciudad, origen, radicado, demandante, demandado, proceso, provincia } = datosEncabezado;
 
-  // Guardar documento
-  const doc = new PDFDocument({ size: 'LEGAL' });
-  const dirPath = path.join(__dirname, './docs');
-  const filePath = path.join(dirPath, `AutoDecretaMedida_${radicado}.pdf`);
 
-  // Verificar que el directorio esté creado, si no, lo crea
+  const doc = new PDFDocument({ size: "LEGAL" });
+
+  const dirPath = path.join(__dirname, './docs');
   if (!fs.existsSync(dirPath)) {
-    fs.mkdirSync(dirPath, { recursive: true });
+    fs.mkdirSync(dirPath);
   }
 
-  const stream = fs.createWriteStream(filePath);
-  doc.pipe(stream);
+  const filePath = path.join(dirPath, `AutoDecretaMedida_${radicado}.pdf`);
 
-  // Inicio de creación del PDF
-  doc
-    .font('Helvetica-Bold')
-    .fontSize(13.5)
-    .text('República de Colombia', { align: 'center' })
-    .text('Rama Judicial del Poder Público', { align: 'center' });
+  try {
+    const streamm = fs.createWriteStream(filePath);
+    doc.pipe(streamm);
 
-  // Cálculo para centrar la imagen
-  const imageWidth = 60;
-  const pageWidth = doc.page.width;
-  const x = (pageWidth - imageWidth) / 2;
+    // Inicio de creacion PDF
+    doc
+      .font("Helvetica-Bold")
+      .fontSize(13.5)
+      .text("Republica de colombia", { align: "center" })
+      .text("Rama Judicial del Poder Publico", { align: "center" });
 
-  doc.image('assets/images/Escudo.png', x, 113, { width: imageWidth });
-  doc.moveDown(4);
+    // Calculo para centrar la imagen
+    const imageWidth = 60;
+    const pageWidth = doc.page.width;
+    const x = (pageWidth - imageWidth) / 2;
 
-  doc.text(juzgado, 100, 190, { align: 'center', width: 400 });
+    doc.image("assets/images/Escudo.png", x, 113, { width: imageWidth });
+    doc.moveDown(4);
 
-  let alto = doc.y;
-  const fecha = new Date();
+    doc.text(juzgado, 100, 190, {
+      align: "center",
+      width: 400,
+    });
 
-  doc.fontSize(11);
-  doc.text(`${ciudad}, ${fechaTexto(fecha)}`, 150, alto + 12);
+    let alto = doc.y;
+    const fecha = new Date();
 
-  doc.fontSize(12);
-  doc.text('ORIGEN: ', 110, alto + 55);
-  moverAbajo(doc, origen);
+    doc.fontSize(11);
+    doc.text(`${ciudad}, ${fechaTexto(fecha)}`, 150, alto + 12);
 
-  doc.text('RADICACIÓN: ');
-  moverAbajo(doc, radicado);
+    doc.fontSize(12)
+      .text("ORIGEN: ", 110, alto + 55);
+    moverAbajo(doc, origen);
 
-  doc.text('DEMANDANTE: ');
-  moverAbajo(doc, demandante);
+    doc.text("RADICACIÓN: ");
+    moverAbajo(doc, radicado);
 
-  doc.text('DEMANDADO: ');
-  moverAbajo(doc, demandado);
+    doc.text("DEMANDANTE: ");
+    moverAbajo(doc, demandante);
 
-  doc.text('PROCESO: ');
-  moverAbajo(doc, proceso);
+    doc.text("DEMANDADO: ");
+    moverAbajo(doc, demandado);
 
-  doc
-    .text(origen, 220, alto + 55)
-    .text(radicado, 220)
-    .text(demandante, 220)
-    .text(demandado, 220)
-    .text(proceso, 220);
+    doc.text("PROCESO: ");
+    moverAbajo(doc, proceso);
 
-  alto = doc.y;
+    doc
+      .text(origen, 220, alto + 55)
+      .text(radicado, 220)
+      .text(demandante, 220)
+      .text(demandado, 220)
+      .text(proceso, 220);
 
-  doc
-    .font('Helvetica')
-    .text(texto, 100, alto + 20, { align: 'left', width: 400 })
-    .moveDown(2);
+    alto = doc.y;
 
-  doc
-    .font('Helvetica-Bold')
-    .text('DISPONE: ', { align: 'center' })
-    .moveDown(1);
+    doc.font("Helvetica")
+      .text(texto, 100, alto + 20, {
+        align: "left",
+        width: 400,
+      })
+      .moveDown(2);
 
-  // Función para generar los decretos
-  seteoIdentificador(doc, decretosAnexados, demandado);
+    doc.font("Helvetica-Bold")
+      .text("DISPONE: ", { align: "center" })
+      .moveDown(1);
 
-  doc.moveDown(1);
+    // Funcion para generar decretos / ley
+    seteoIdentificador(doc, decretosAnexados, demandado);
 
-  doc
-    .font('Helvetica-Bold')
-    .fontSize(10)
-    .text('NOTIFIQUESE Y CUMPLASE,', { align: 'center' })
-    .text(`-${provincia}-`, { align: 'center' });
+    doc.moveDown(1);
 
-  doc.moveDown(3);
+    doc
+      .font("Helvetica-Bold")
+      .fontSize(10)
+      .text('NOTIFIQUESE Y CUMPLASE,', { align: "center" })
+      .text(`-${provincia}-`, { align: "center" });
 
-  doc.text('______________________________', { align: 'center' })
-    .moveDown(1);
+    doc.moveDown(3);
 
-  doc.text(juez, { align: 'center' })
-    .moveDown(1)
-    .text('Juez', { align: 'center' });
+    doc.text("______________________________", { align: "center" })
+      .moveDown(1);
 
-  doc.end();
+    doc.text(juez, { align: "center" })
+      .moveDown(1)
+      .text("Juez", { align: "center" });
+
+    doc.end();
+  } catch (error) {
+    console.error('Error creando el archivo:', error);
+  }
 };

@@ -6,7 +6,7 @@ export function moverAbajo(doc, dato) {
     const largo = dato.length;
     let down = 0;
   
-    for (let i = 100; i <= largo; i += 50) {
+    for (let i = 40; i <= largo; i += 50) {
       down++;
     }
   
@@ -47,7 +47,10 @@ export const seteoIdentificador = (doc, datosDecreto, demandado) => {
 
     doc.moveDown(1);
 
-    doc.text(leyes, { lineGap: 8 });
+    leyes.forEach((ley) => {
+      doc.text(ley, { lineGap: 8 });
+      doc.moveDown(1);
+    });
 
     doc.moveDown(1);
   });
