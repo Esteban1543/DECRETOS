@@ -16,7 +16,7 @@ interface FormDecreto1_2inputsProps {
 }
 
 
-const FormDecreto1_2inputs: React.FC<FormDecreto1_2inputsProps> = ({ positionList, secciones_descripcion, tipo_decreto, id_tipo_embargo, fn_agregarInputData, data_inputs }) => {
+const FormDecreto1_2inputs: React.FC<FormDecreto1_2inputsProps> = ({ positionList, secciones_descripcion, tipo_decreto, fn_agregarInputData, data_inputs }) => {
   // console.log('formDecreto 1 2inputs >> ', data_inputs)
   //🔸 Estructuras para cada tipo de Decreto
   const estado_banco = {
@@ -118,7 +118,7 @@ const FormDecreto1_2inputs: React.FC<FormDecreto1_2inputsProps> = ({ positionLis
                   name='porcentaje'
                   onChange={handleChange}
                   value={estado_salario.porcentaje}
-                  style={{ width: '35px' }}
+                  style={{ width: '90px' }}
                 />
 
                 {secciones_descripcion[1]}

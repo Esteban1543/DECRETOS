@@ -1,9 +1,9 @@
 import { Tooltip } from '@mui/material';
 import React from 'react';
 import { saveAs } from 'file-saver';
-import { Document, Packer, Paragraph, TextRun, AlignmentType, HeadingLevel, ImageRun, Table, TableRow, TableCell, WidthType, BorderStyle } from 'docx';
+import { Document, Packer, Paragraph, TextRun, AlignmentType, HeadingLevel, ImageRun, Table, WidthType, BorderStyle } from 'docx';
 import { DecretoType, DatosEncabezadoType } from '../../helpers/Types.ts';
-import { fetchImageAsArrayBuffer, setearDescripcionDecreto } from '../../helpers/funcionesPlantillaWord.ts';
+import { fetchImageAsArrayBuffer, unificarParrafoDecreto, crearFila } from '../../helpers/funcionesPlantillaWord.ts';
 import { formatNumeracionDecretos } from '../../helpers/formatNumeracion.ts';
 import { formatFechaActa } from '../../helpers/formatFecha.ts';
 const imageBuffer = await fetchImageAsArrayBuffer('/images/Logo-Republica.png');
@@ -17,19 +17,178 @@ interface WordTemplateProps {
 
 const WordTemplate: React.FC<WordTemplateProps> = ({ datosEncabezado, decretosAnexados, activarBoton }) => {
 
-  //🔸 Generar los parrafos necesarios según los decretos anexados
-  const parrafos_decretosAnexados = decretosAnexados.flatMap((decreto, index) => {
+  /*
+  🔸 Generar los parrafos necesarios según los decretos anexados
+  */
+  // const parrafos_decretosAnexados = decretosAnexados.flatMap((decreto, index) => {
 
+  //   //🔸Verificacion en caso de que no llegasen los decretos
+  //   if (!decreto.dataInputs) {
+  //     return new Paragraph({
+  //       text: "No hay Decretos anexados",
+  //       alignment: AlignmentType.CENTER,
+  //     });
+  //   }
+
+  //   //🔸 Unificar los datos de los inputs con el resto del decreto
+  //   const descripcion_con_datos = unificarParrafoDecreto(decreto.descripcion, decreto?.dataInputs, datosEncabezado.demandado);
+
+  //   //🔸 Formatear en parrafos las secciones de la ley que conlleva cada decreto
+  //   const parrafos_leyes = decreto.leyes ? decreto.leyes.map((ley) =>
+  //     new Paragraph({
+  //       children: [
+  //         new TextRun({
+  //           text: ley.replace(/°##/g, datosEncabezado.demandado),
+  //           // text: ley,
+  //         }),
+  //       ],
+  //       spacing: {
+  //         line: 1.5 * 12 * 20,
+  //         after: 300,
+  //       },
+  //       alignment: AlignmentType.JUSTIFIED,
+  //     })
+  //   ) : [];
+
+  //   return [
+  //     new Paragraph({
+  //       children: [
+  //         new TextRun({
+  //           text: `${formatNumeracionDecretos(index + 1)}: ${descripcion_con_datos.slice(0, 33)}`,
+  //           bold: true,
+  //         }),
+  //         new TextRun({
+  //           text: descripcion_con_datos.slice(33),
+  //         }),
+  //       ],
+  //       spacing: {
+  //         line: 1.5 * 12 * 20,
+  //         after: 300,
+  //       },
+  //       alignment: AlignmentType.JUSTIFIED,
+  //     }),
+  //     ...parrafos_leyes
+  //   ];
+  // });
+
+  // const parrafos_decretosAnexados = decretosAnexados.flatMap((decreto, index) => {
+
+  //   //🔸Verificacion en caso de que no llegasen los decretos
+  //   if (!decreto.dataInputs) {
+  //     return new Paragraph({
+  //       text: "No hay Datos para anexar",
+  //       alignment: AlignmentType.CENTER,
+  //     });
+  //   }
+
+  //   // console.log(decreto)
+  //   const desc_demandado = decreto.descripcion.replace(/°##/g, datosEncabezado.demandado || '--DATO SIN DILIGENCIAR--');
+  //   const separar_decreto = desc_demandado.split('°');
+  //   console.log(separar_decreto)
+
+  //   const datos_ingresados: Array<string> = []
+  //   Object.values(decreto.dataInputs).forEach(input => {
+  //     datos_ingresados.push(input.toString())
+  //   })
+
+  //   console.log(datos_ingresados)
+
+  //   //🔸 Unificar los datos de los inputs con el resto del decreto
+  //   const descripcion_con_datos = unificarParrafoDecreto(decreto.descripcion, decreto?.dataInputs, datosEncabezado.demandado);
+
+  //   //🔸 Formatear en parrafos las secciones de la ley que conlleva cada decreto
+  //   const parrafos_leyes = decreto.leyes ? decreto.leyes.map((ley) =>
+  //     new Paragraph({
+  //       children: [
+  //         new TextRun({
+  //           text: ley.replace(/°##/g, datosEncabezado.demandado),
+  //           // text: ley,
+  //         }),
+  //       ],
+  //       spacing: {
+  //         line: 1.5 * 12 * 20,
+  //         after: 300,
+  //       },
+  //       alignment: AlignmentType.JUSTIFIED,
+  //     })
+  //   ) : [];
+
+  //   return [
+  //     separar_decreto.flatMap( (m, i) => [
+  //       new Paragraph({
+  //         children: [
+  //           new TextRun({
+  //             text: `${formatNumeracionDecretos(index + 1)}: ${m.slice(0, 33)}`,
+  //             bold: true,
+  //           }),
+  //           new TextRun({
+  //             text: m,
+  //           }),
+  //           new TextRun({
+  //             text: datos_ingresados[i],
+  //             bold: true
+  //           }),
+  //         ],
+  //         spacing: {
+  //           line: 1.5 * 12 * 20,
+  //           after: 300,
+  //         },
+  //         alignment: AlignmentType.JUSTIFIED,
+  //       }),
+  //     ])
+  //     // new Paragraph({
+  //     //   children: [
+  //     //     new TextRun({
+  //     //       text: `${formatNumeracionDecretos(index + 1)}: ${descripcion_con_datos.slice(0, 33)}`,
+  //     //       bold: true,
+  //     //     }),
+  //     //     new TextRun({
+  //     //       text: descripcion_con_datos.slice(33),
+  //     //     }),
+  //     //   ],
+  //     //   spacing: {
+  //     //     line: 1.5 * 12 * 20,
+  //     //     after: 300,
+  //     //   },
+  //     //   alignment: AlignmentType.JUSTIFIED,
+  //     // }),
+  //     // ...parrafos_leyes
+  //   ];
+  // });
+
+  const parrafos_decretosAnexados = decretosAnexados.flatMap((decreto, index) => {
     //🔸Verificacion en caso de que no llegasen los decretos
     if (!decreto.dataInputs) {
       return new Paragraph({
-        text: "No hay Decretos anexados",
+        text: `No hay Datos para anexar al Decreto ${decreto}`,
         alignment: AlignmentType.CENTER,
       });
     }
 
-    //🔸 Unificar los datos de los inputs con el resto del decreto
-    const descripcion_con_datos = setearDescripcionDecreto(decreto.descripcion, decreto?.dataInputs, datosEncabezado.demandado);
+    //🔸 Preparar la descripción y los datos en arrays
+    const desc_demandado = decreto.descripcion.slice(33,).replace(/°##/g, datosEncabezado.demandado || '--DATO SIN DILIGENCIAR--');
+    const separar_decreto = desc_demandado.split('°');
+    const datos_ingresados = Object.values(decreto.dataInputs).map(input => input.toString());
+    // console.log(separar_decreto)
+    // console.log(decreto.dataInputs)
+    // console.log(datos_ingresados)
+    //🔸 Unificar los datos de los inputs con el resto del decreto generando la negrilla correspondiente
+    const combinedTextRuns = separar_decreto.map((m, i) => {
+      const textRunParts = [
+        new TextRun({
+          text: m,
+        })
+      ];
+
+      if (datos_ingresados[i]) {
+        textRunParts.push(new TextRun({
+          text: datos_ingresados[i],
+          bold: true,
+        }));
+      }
+
+      return textRunParts;
+    }).flat(); // flat es para aplanar el array de arrays en un solo nivel de profundidad
 
     //🔸 Formatear en parrafos las secciones de la ley que conlleva cada decreto
     const parrafos_leyes = decreto.leyes ? decreto.leyes.map((ley) =>
@@ -52,12 +211,10 @@ const WordTemplate: React.FC<WordTemplateProps> = ({ datosEncabezado, decretosAn
       new Paragraph({
         children: [
           new TextRun({
-            text: `${formatNumeracionDecretos(index + 1)}: ${descripcion_con_datos.slice(0, 33)}`,
+            text: `${formatNumeracionDecretos(index + 1)}: ${decreto.descripcion.slice(0, 33)}`,
             bold: true,
           }),
-          new TextRun({
-            text: descripcion_con_datos.slice(33),
-          }),
+          ...combinedTextRuns,
         ],
         spacing: {
           line: 1.5 * 12 * 20,
@@ -66,71 +223,20 @@ const WordTemplate: React.FC<WordTemplateProps> = ({ datosEncabezado, decretosAn
         alignment: AlignmentType.JUSTIFIED,
       }),
       ...parrafos_leyes
-    ];
+    ]
   });
 
-  // Crear una tabla con dos columnas
-  function createRow(label: string, value: string) {
-    return new TableRow({
-      children: [
 
-        // Columna 1 📌
-        new TableCell({
-          width: {
-            size: 25,
-            type: WidthType.PERCENTAGE,
-          },
-          borders: {
-            top: { style: BorderStyle.NONE, color: "ffffff" },
-            bottom: { style: BorderStyle.NONE, color: "ffffff" },
-            right: { style: BorderStyle.NONE, color: "ffffff" },
-          },
-          children: [
-            new Paragraph({
-              children: [new TextRun({ text: label + ':', bold: true })],
-              spacing: {
-                before: 50,
-                after: 50,
-                // line: 240, // Interlineado de 1
-              },
-            }),
-          ],
-        }),
-
-        // Columna 2 📌
-        new TableCell({
-          width: {
-            size: 75,
-            type: WidthType.PERCENTAGE,
-          },
-          borders: {
-            top: { style: BorderStyle.NONE, color: "ffffff" },
-            bottom: { style: BorderStyle.NONE, color: "ffffff" },
-            left: { style: BorderStyle.NONE, color: "ffffff" },
-          },
-          children: [
-            new Paragraph({
-              children: [new TextRun({ text: value, bold: true })],
-              spacing: {
-                // line: 240, // Interlineado de 1
-                before: 50,
-                after: 50,
-              },
-            }),
-          ],
-        }),
-      ],
-    });
-  }
-
-  // Crear una tabla con dos columnas
+  /*
+  🔸 Crear tabla para alinear Datos Encabezado
+  */
   const tabla_datosEncabezado = new Table({
     rows: [
-      createRow('Origen', datosEncabezado.origen),
-      createRow('Radicación', datosEncabezado.radicado),
-      createRow('Demandante', datosEncabezado.demandante),
-      createRow('Demandado', datosEncabezado.demandado),
-      createRow('Proceso', datosEncabezado.proceso),
+      crearFila('Origen', datosEncabezado.origen),
+      crearFila('Radicación', datosEncabezado.radicado),
+      crearFila('Demandante', datosEncabezado.demandante),
+      crearFila('Demandado', datosEncabezado.demandado),
+      crearFila('Proceso', datosEncabezado.proceso),
     ],
     width: {
       size: 82,
@@ -146,7 +252,9 @@ const WordTemplate: React.FC<WordTemplateProps> = ({ datosEncabezado, decretosAn
   });
 
 
-  //🔸 Generar la estructura del dodumento Word
+  /*
+  🔸 Generar la estructura del dodumento Word
+  */
   const generateDocument = async () => {
 
     const doc = new Document({

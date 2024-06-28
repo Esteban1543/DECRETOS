@@ -1,7 +1,7 @@
 import React from 'react';
 import { DatosEncabezadoType, DecretoType } from '../../helpers/Types.ts';
 import { formatNumeracionDecretos } from '../../helpers/formatNumeracion.ts';
-import { setearDescripcionDecreto } from '../../helpers/funcionesPlantillaWord.ts';
+import { unificarParrafoDecreto } from '../../helpers/funcionesPlantillaWord.ts';
 import { formatFechaActa } from '../../helpers/formatFecha.ts';
 const logoSrc = "/images/Logo-Republica.png";
 
@@ -16,7 +16,7 @@ const PrevisualizacionActa: React.FC<PrevisualizacionActaProps> = ({ datosEncabe
   const parrafos_decretosAnexados = decretosAnexados.map((decreto) => {
     if (!decreto.dataInputs) return
 
-    const descripcion_con_datos = setearDescripcionDecreto(decreto.descripcion, decreto?.dataInputs, datosEncabezado.demandado);
+    const descripcion_con_datos = unificarParrafoDecreto(decreto.descripcion, decreto?.dataInputs, datosEncabezado.demandado);
     // return descripcion_con_datos
     return { descripcion_con_datos, leyes: decreto.leyes }
   })

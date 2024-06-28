@@ -94,10 +94,10 @@ export default function RedaccionDecretos({ nombre_demandado, handlePage, decret
                 <article className="cont_info_digitar_decreto">
                   <h4>Recomendaciones para el diligenciamiento de datos. 📌</h4>
                   <ul>
-                    <li>Diligencie todos los campos antes de continuar.</li>
+                    <li>Verifique cuidadosamente el texto que viene predefinido para evitar incoherencias en la redacción del Decreto.</li>
                     <p></p>
 
-                    <li>Use la capitaliazación segun la necesidad del decreto.</li>
+                    <li>Use la capitalización segun la necesidad del decreto.</li>
                     <p>
                       Ejemplo: Ubicado / millones / FONDO DE PENSIONES
                     </p>

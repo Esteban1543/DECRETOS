@@ -1,4 +1,4 @@
-export const decretosDatos = [
+export const decretosDatos1 = [
     {
         "id_tipo_embargo": 1,
         "tipo": "Establecimiento",
@@ -37,7 +37,7 @@ export const decretosDatos = [
     }
 ]
 
-export const decretosDatos1 = [
+export const decretosDatos = [
     {
         "id_tipo_embargo": 1,
         "tipo": "Establecimiento",
