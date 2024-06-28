@@ -1,15 +1,13 @@
-import transporter from '../assets/mail/mail.js'
-import { contruirPDF } from '../assets/libs/pdfkit.js'
-import conexion from '../conection/conexion.js'
+import transporter from '../assets/mail/mail.js';
+import { contruirPDF } from '../assets/libs/pdfkit.js';
+import conexion from '../conection/conexion.js';
 
-import fs from 'fs'
-import path from 'path'
+import fs from 'fs';
+import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-
-
 
 class DigitalModel {
     static async sendMail(datosEncabezado, decretosAnexados, correo_digitador, fechaFormato) {
@@ -20,15 +18,10 @@ class DigitalModel {
                 FROM usuarios u
                 INNER JOIN datos_persona dp ON dp.n_identificacion = u.pfk_usuario
                 WHERE alias = 'admin';
-            `)
-            // console.log(datosEncabezado.radicado)
-            await contruirPDF(datosEncabezado, decretosAnexados);
+            `);
 
-            if (!fs.existsSync(filePath)) {
-                throw new Error(`File not found: ${filePath}`);
-            }
+            const filePath = await contruirPDF(datosEncabezado, decretosAnexados);
 
-            
             const info = await transporter.sendMail({
                 from: `<sistemadigitacionddne@gmail.com>`,
                 to: `${adminitrador[0].correo}, ${correo_digitador}`,
@@ -39,7 +32,6 @@ class DigitalModel {
                         filename: `AutoDecretaMedida_${datosEncabezado.radicado}.pdf`,
                         path: filePath 
                     },
-                    
                 ],
             });
 
@@ -50,14 +42,19 @@ class DigitalModel {
                     console.log('Archivo eliminado:', filePath);
                 }
             });
-        }catch(error){
+
+            return {
+                status: true,
+                info: info
+            };
+        } catch (error) {
             return {
                 status: false,
-                error: `⛔ Se genero un error interno al intentar enviar el correo`,
+                error: `⛔ Se generó un error interno al intentar enviar el correo`,
                 type: String(error)
-            }
+            };
         }
     }
 }
 
-export default DigitalModel
+export default DigitalModel;
