@@ -14,7 +14,7 @@ const PrevisualizacionActa: React.FC<PrevisualizacionActaProps> = ({ datosEncabe
 
   //🔸 Función para devolver los decretos con sus datos anexados
   const parrafos_decretosAnexados = decretosAnexados.map((decreto) => {
-    if (!decreto.dataInputs) return
+    if (!decreto.dataInputs) return null
 
     const descripcion_con_datos = unificarParrafoDecreto(decreto.descripcion, decreto?.dataInputs, datosEncabezado.demandado);
     // return descripcion_con_datos

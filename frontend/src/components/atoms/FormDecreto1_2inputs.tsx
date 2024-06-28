@@ -7,27 +7,30 @@ import { InputDataDecretoType } from '../../helpers/Types.ts'
 */
 
 interface FormDecreto1_2inputsProps {
+  nombre_demandado: string,
   secciones_descripcion: Array<string>,
   tipo_decreto: string,
-  id_tipo_embargo?: number,
   positionList: number,
   fn_agregarInputData: (positionObject: number, dataInputs: InputDataDecretoType) => void,
   data_inputs?: InputDataDecretoType
 }
 
 
-const FormDecreto1_2inputs: React.FC<FormDecreto1_2inputsProps> = ({ positionList, secciones_descripcion, tipo_decreto, fn_agregarInputData, data_inputs }) => {
+const FormDecreto1_2inputs: React.FC<FormDecreto1_2inputsProps> = ({ nombre_demandado, positionList, secciones_descripcion, tipo_decreto, fn_agregarInputData, data_inputs }) => {
   // console.log('formDecreto 1 2inputs >> ', data_inputs)
   //🔸 Estructuras para cada tipo de Decreto
   const estado_banco = {
+    demandado: nombre_demandado,
     valor: data_inputs?.valor,
   }
   const estado_pensiones = {
+    demandado: nombre_demandado,
     fondoPensiones: data_inputs?.fondoPensiones,
     valor: data_inputs?.valor,
   }
   const estado_salario = {
     porcentaje: data_inputs?.porcentaje,
+    demandado: nombre_demandado,
     empresa: data_inputs?.empresa,
     valor: data_inputs?.valor,
   }
@@ -106,8 +109,7 @@ const FormDecreto1_2inputs: React.FC<FormDecreto1_2inputsProps> = ({ positionLis
                 {secciones_descripcion[2]}
 
               </>
-            )
-            : (
+            ) : (
               <>
                 {secciones_descripcion[0]}
 

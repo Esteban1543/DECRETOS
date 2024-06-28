@@ -8,10 +8,10 @@ import { InputDataDecretoType } from "./Types.ts";
 export const unificarParrafoDecreto = (desc: string, dataInputs: InputDataDecretoType, demandado: string) => {
 
   //🔸 Setear el nombre del DEMANDADO en los decretos
-  const desc_demandado = desc.replace(/°##/g, demandado || '--DATO SIN DILIGENCIAR--');
+  const remover_signos_desc = desc.replace(/##/g, '');
 
   //🔸 Setear los datos de los inputs en los decretos
-  let result = desc_demandado;
+  let result = remover_signos_desc;
 
   Object.values(dataInputs).forEach(value => {
     result = result.replace('°', value?.toString() || '--DATO SIN DILIGENCIAR--');

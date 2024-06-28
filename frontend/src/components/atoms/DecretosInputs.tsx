@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable react/react-in-jsx-scope */
 // import React, { useEffect, useState } from 'react'
 import FormDecreto1_2inputs from './FormDecreto1_2inputs';
 import { InputDataDecretoType } from '../../helpers/Types.ts';
@@ -9,14 +11,13 @@ interface DecretosInputsProps {
   descripcion: string,
   nombre_demandado: string,
   tipo_decreto: string,
-  id_tipo_embargo?: number,
   positionList: number,
   fn_agregarInputData: (positionObject: number, dataInputs: InputDataDecretoType) => void,
   data_inputs?: InputDataDecretoType
 }
 
 
-const DecretosInputs: React.FC<DecretosInputsProps> = ({ nombre_demandado, descripcion, tipo_decreto, id_tipo_embargo, positionList, fn_agregarInputData, data_inputs }) => {
+const DecretosInputs: React.FC<DecretosInputsProps> = ({ nombre_demandado, descripcion, tipo_decreto, positionList, fn_agregarInputData, data_inputs }) => {
   // console.log(data_inputs)
 
   //🔸 Setear el nombre del DEMANDADO en los decretos
@@ -38,18 +39,18 @@ const DecretosInputs: React.FC<DecretosInputsProps> = ({ nombre_demandado, descr
       {
         tipo_decreto == 'Salario' || tipo_decreto == 'Banco' || tipo_decreto == 'Fondo de Pensiones'
           ? <FormDecreto1_2inputs
+            nombre_demandado={nombre_demandado}
             tipo_decreto={tipo_decreto}
             secciones_descripcion={secciones_descripcion}
-            id_tipo_embargo={id_tipo_embargo}
             positionList={positionList}
             fn_agregarInputData={fn_agregarInputData}
             data_inputs={data_inputs}
           />
           : tipo_decreto == 'Inmueble' || tipo_decreto == 'Establecimiento' || tipo_decreto == 'Automovil'
             ? <FormDecreto3inputs
+              nombre_demandado={nombre_demandado}
               tipo_decreto={tipo_decreto}
               secciones_descripcion={secciones_descripcion}
-              id_tipo_embargo={id_tipo_embargo}
               positionList={positionList}
               fn_agregarInputData={fn_agregarInputData}
               data_inputs={data_inputs}

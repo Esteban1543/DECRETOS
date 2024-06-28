@@ -7,31 +7,32 @@ import { InputDataDecretoType } from '../../helpers/Types.ts'
 */
 
 interface FormDecreto3inputsProps {
+  nombre_demandado: string,
   secciones_descripcion: Array<string>,
   tipo_decreto: string,
-  id_tipo_embargo?: number,
   positionList: number,
   fn_agregarInputData: (positionObject: number, dataInputs: InputDataDecretoType) => void,
   data_inputs?: InputDataDecretoType
 }
 
 
-const FormDecreto3inputs: React.FC<FormDecreto3inputsProps> = ({ positionList, secciones_descripcion, tipo_decreto, id_tipo_embargo, fn_agregarInputData, data_inputs }) => {
+const FormDecreto3inputs: React.FC<FormDecreto3inputsProps> = ({ nombre_demandado, positionList, secciones_descripcion, tipo_decreto, fn_agregarInputData, data_inputs }) => {
   // console.log('formDecreto3inputs >> ', data_inputs)
 
   //🔸 Estructuras para cada tipo de Decreto
   const estado_inmueble = {
-    // id_tipo_embargo,
-    direccion: data_inputs?.direccion
+    demandado: nombre_demandado,
+    direccion: data_inputs?.direccion || ''
   }
   const estado_establecimientos = {
     nombreEstablecimiento: data_inputs?.nombreEstablecimiento,
-    direccion: data_inputs?.direccion
+    direccion: data_inputs?.direccion,
+    demandado: nombre_demandado,
   }
   const estado_vehiculos = {
-    // id_tipo_embargo,
     placa: data_inputs?.placa,
-    marca: data_inputs?.marca
+    marca: data_inputs?.marca,
+    demandado: nombre_demandado,
   }
 
   const estado_inicial = tipo_decreto == 'Establecimiento' ? estado_establecimientos : tipo_decreto == 'Inmueble' ? estado_inmueble : estado_vehiculos;

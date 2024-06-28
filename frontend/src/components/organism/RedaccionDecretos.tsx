@@ -117,7 +117,6 @@ export default function RedaccionDecretos({ nombre_demandado, handlePage, decret
                     nombre_demandado={nombre_demandado}
                     tipo_decreto={m.tipo}
                     descripcion={m.descripcion}
-                    id_tipo_embargo={m.id_tipo_embargo}
                     data_inputs={m?.dataInputs}
                     fn_agregarInputData={agregarInputDataDecretosAnexados}
                   />

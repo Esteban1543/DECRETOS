@@ -21,7 +21,7 @@ export type SessionUserType = {
 
 export type InputDataDecretoType = {
   valor?: string,
-  porcentaje?: number,
+  porcentaje?: string,
   empresa?: string,
   fondoPensiones?: string,
   marca?: string,

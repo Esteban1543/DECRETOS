@@ -3,7 +3,7 @@ import React from 'react';
 import { saveAs } from 'file-saver';
 import { Document, Packer, Paragraph, TextRun, AlignmentType, HeadingLevel, ImageRun, Table, WidthType, BorderStyle } from 'docx';
 import { DecretoType, DatosEncabezadoType } from '../../helpers/Types.ts';
-import { fetchImageAsArrayBuffer, unificarParrafoDecreto, crearFila } from '../../helpers/funcionesPlantillaWord.ts';
+import { fetchImageAsArrayBuffer, crearFila } from '../../helpers/funcionesPlantillaWord.ts';
 import { formatNumeracionDecretos } from '../../helpers/formatNumeracion.ts';
 import { formatFechaActa } from '../../helpers/formatFecha.ts';
 const imageBuffer = await fetchImageAsArrayBuffer('/images/Logo-Republica.png');
@@ -20,144 +20,9 @@ const WordTemplate: React.FC<WordTemplateProps> = ({ datosEncabezado, decretosAn
   /*
   🔸 Generar los parrafos necesarios según los decretos anexados
   */
-  // const parrafos_decretosAnexados = decretosAnexados.flatMap((decreto, index) => {
-
-  //   //🔸Verificacion en caso de que no llegasen los decretos
-  //   if (!decreto.dataInputs) {
-  //     return new Paragraph({
-  //       text: "No hay Decretos anexados",
-  //       alignment: AlignmentType.CENTER,
-  //     });
-  //   }
-
-  //   //🔸 Unificar los datos de los inputs con el resto del decreto
-  //   const descripcion_con_datos = unificarParrafoDecreto(decreto.descripcion, decreto?.dataInputs, datosEncabezado.demandado);
-
-  //   //🔸 Formatear en parrafos las secciones de la ley que conlleva cada decreto
-  //   const parrafos_leyes = decreto.leyes ? decreto.leyes.map((ley) =>
-  //     new Paragraph({
-  //       children: [
-  //         new TextRun({
-  //           text: ley.replace(/°##/g, datosEncabezado.demandado),
-  //           // text: ley,
-  //         }),
-  //       ],
-  //       spacing: {
-  //         line: 1.5 * 12 * 20,
-  //         after: 300,
-  //       },
-  //       alignment: AlignmentType.JUSTIFIED,
-  //     })
-  //   ) : [];
-
-  //   return [
-  //     new Paragraph({
-  //       children: [
-  //         new TextRun({
-  //           text: `${formatNumeracionDecretos(index + 1)}: ${descripcion_con_datos.slice(0, 33)}`,
-  //           bold: true,
-  //         }),
-  //         new TextRun({
-  //           text: descripcion_con_datos.slice(33),
-  //         }),
-  //       ],
-  //       spacing: {
-  //         line: 1.5 * 12 * 20,
-  //         after: 300,
-  //       },
-  //       alignment: AlignmentType.JUSTIFIED,
-  //     }),
-  //     ...parrafos_leyes
-  //   ];
-  // });
-
-  // const parrafos_decretosAnexados = decretosAnexados.flatMap((decreto, index) => {
-
-  //   //🔸Verificacion en caso de que no llegasen los decretos
-  //   if (!decreto.dataInputs) {
-  //     return new Paragraph({
-  //       text: "No hay Datos para anexar",
-  //       alignment: AlignmentType.CENTER,
-  //     });
-  //   }
-
-  //   // console.log(decreto)
-  //   const desc_demandado = decreto.descripcion.replace(/°##/g, datosEncabezado.demandado || '--DATO SIN DILIGENCIAR--');
-  //   const separar_decreto = desc_demandado.split('°');
-  //   console.log(separar_decreto)
-
-  //   const datos_ingresados: Array<string> = []
-  //   Object.values(decreto.dataInputs).forEach(input => {
-  //     datos_ingresados.push(input.toString())
-  //   })
-
-  //   console.log(datos_ingresados)
-
-  //   //🔸 Unificar los datos de los inputs con el resto del decreto
-  //   const descripcion_con_datos = unificarParrafoDecreto(decreto.descripcion, decreto?.dataInputs, datosEncabezado.demandado);
-
-  //   //🔸 Formatear en parrafos las secciones de la ley que conlleva cada decreto
-  //   const parrafos_leyes = decreto.leyes ? decreto.leyes.map((ley) =>
-  //     new Paragraph({
-  //       children: [
-  //         new TextRun({
-  //           text: ley.replace(/°##/g, datosEncabezado.demandado),
-  //           // text: ley,
-  //         }),
-  //       ],
-  //       spacing: {
-  //         line: 1.5 * 12 * 20,
-  //         after: 300,
-  //       },
-  //       alignment: AlignmentType.JUSTIFIED,
-  //     })
-  //   ) : [];
-
-  //   return [
-  //     separar_decreto.flatMap( (m, i) => [
-  //       new Paragraph({
-  //         children: [
-  //           new TextRun({
-  //             text: `${formatNumeracionDecretos(index + 1)}: ${m.slice(0, 33)}`,
-  //             bold: true,
-  //           }),
-  //           new TextRun({
-  //             text: m,
-  //           }),
-  //           new TextRun({
-  //             text: datos_ingresados[i],
-  //             bold: true
-  //           }),
-  //         ],
-  //         spacing: {
-  //           line: 1.5 * 12 * 20,
-  //           after: 300,
-  //         },
-  //         alignment: AlignmentType.JUSTIFIED,
-  //       }),
-  //     ])
-  //     // new Paragraph({
-  //     //   children: [
-  //     //     new TextRun({
-  //     //       text: `${formatNumeracionDecretos(index + 1)}: ${descripcion_con_datos.slice(0, 33)}`,
-  //     //       bold: true,
-  //     //     }),
-  //     //     new TextRun({
-  //     //       text: descripcion_con_datos.slice(33),
-  //     //     }),
-  //     //   ],
-  //     //   spacing: {
-  //     //     line: 1.5 * 12 * 20,
-  //     //     after: 300,
-  //     //   },
-  //     //   alignment: AlignmentType.JUSTIFIED,
-  //     // }),
-  //     // ...parrafos_leyes
-  //   ];
-  // });
-
   const parrafos_decretosAnexados = decretosAnexados.flatMap((decreto, index) => {
     //🔸Verificacion en caso de que no llegasen los decretos
+    console.log(decreto.dataInputs)
     if (!decreto.dataInputs) {
       return new Paragraph({
         text: `No hay Datos para anexar al Decreto ${decreto}`,
@@ -166,13 +31,12 @@ const WordTemplate: React.FC<WordTemplateProps> = ({ datosEncabezado, decretosAn
     }
 
     //🔸 Preparar la descripción y los datos en arrays
-    const desc_demandado = decreto.descripcion.slice(33,).replace(/°##/g, datosEncabezado.demandado || '--DATO SIN DILIGENCIAR--');
-    const separar_decreto = desc_demandado.split('°');
+    const remover_signos_decreto = decreto.descripcion.slice(33,).replace(/##/g, '');
+    const separar_decreto = remover_signos_decreto.split('°');
     const datos_ingresados = Object.values(decreto.dataInputs).map(input => input.toString());
-    // console.log(separar_decreto)
-    // console.log(decreto.dataInputs)
-    // console.log(datos_ingresados)
+
     //🔸 Unificar los datos de los inputs con el resto del decreto generando la negrilla correspondiente
+    // const descripcion_con_datos = unificarParrafoDecreto(decreto.descripcion, decreto?.dataInputs, datosEncabezado.demandado);
     const combinedTextRuns = separar_decreto.map((m, i) => {
       const textRunParts = [
         new TextRun({
