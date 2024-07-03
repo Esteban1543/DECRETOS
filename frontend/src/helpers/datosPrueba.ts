@@ -1,4 +1,4 @@
-export const decretosDatos1 = [
+export const decretosDatos = [
     {
         "tipo": "Establecimiento",
         "descripcion": "DECRETAR EL EMBARGO Y RETENCIÓN, del establecimiento de comercio denominado “°”, identificado con °, que se denuncia de propiedad del ejecutado °##. Verificada y acreditada la inscripción de dicha medida, se resolverá lo pertinente sobre su secuestro (Art. 601 CGP).",
@@ -12,7 +12,7 @@ export const decretosDatos1 = [
     {
         "tipo": "Salario",
         "descripcion": "DECRETAR EL EMBARGO Y RETENCIÓN, hasta del ° del salario, y prestaciones sociales del demandado °##, de conformidad con lo dispuesto por el artículo 156 y 344 del Código Sustantivo del Trabajo, y que le corresponde en calidad de empleado de °. Se limita la medida en la cantidad de ° de pesos.",
-        "leyes": ["Para el cumplimiento de la anterior determinación se ordena OFICIAR al tesorero y/o pagador de °#°, para que del salario devengado, o de los contratos vigentes de °##, retenga la proporción del dinero antes determinada y constituya certificado de depósito a órdenes del Juzgado, previniéndole que de lo contrario responderá por dichos valores", "Por Secretaría, líbrense los oficios correspondientes."],
+        "leyes": ["OFICIAR al tesorero y/o pagador de °#°, para que del salario devengado, o de los contratos vigentes de °##, retenga la proporción del dinero antes determinada y constituya certificado de depósito a órdenes del Juzgado, previniéndole que de lo contrario responderá por dichos valores", "Por Secretaría, líbrense los oficios correspondientes."],
     },
     {
         "tipo": "Automovil",
@@ -31,7 +31,7 @@ export const decretosDatos1 = [
     }
 ]
 
-export const decretosDatos = [
+export const decretosDatos1 = [
     {
         "tipo": "Establecimiento",
         "descripcion": "DECRETAR EL EMBARGO Y RETENCIÓN, del establecimiento de comercio denominado “°”, identificado con °, que se denuncia de propiedad del ejecutado °##. Verificada y acreditada la inscripción de dicha medida, se resolverá lo pertinente sobre su secuestro (Art. 601 CGP).",
@@ -54,7 +54,7 @@ export const decretosDatos = [
     {
         "tipo": "Salario",
         "descripcion": "DECRETAR EL EMBARGO Y RETENCIÓN, hasta del ° del salario, y prestaciones sociales del demandado °##, de conformidad con lo dispuesto por el artículo 156 y 344 del Código Sustantivo del Trabajo, y que le corresponde en calidad de empleado de °. Se limita la medida en la cantidad de ° de pesos.",
-        "leyes": ["Para el cumplimiento de la anterior determinación se ordena OFICIAR al tesorero y/o pagador de °#°, para que del salario devengado, o de los contratos vigentes de °##, retenga la proporción del dinero antes determinada y constituya certificado de depósito a órdenes del Juzgado, previniéndole que de lo contrario responderá por dichos valores", "Por Secretaría, líbrense los oficios correspondientes."],
+        "leyes": ["OFICIAR al tesorero y/o pagador de °#°, para que del salario devengado, o de los contratos vigentes de °##, retenga la proporción del dinero antes determinada y constituya certificado de depósito a órdenes del Juzgado, previniéndole que de lo contrario responderá por dichos valores", "Por Secretaría, líbrense los oficios correspondientes."],
         "dataInputs": {
             "porcentaje": '35%',
             "demandado": "NOMBRE DEMANDADO",

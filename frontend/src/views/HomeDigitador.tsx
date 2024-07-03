@@ -38,7 +38,7 @@ export default function HomeDigitador() {
   //🔸Fetch de Datos Tabla
   const { data, loading, refetch } = useGetData<ActasType>(`${URI}/actasdigitador/${id_digitador}`);
   const num_actas = !loading && data?.status ? (data?.data?.length || 0) : '...';
-  // console.log(data?.data)
+  console.log(data?.data?.length)
 
   return (
     <main className="main_vendedor">

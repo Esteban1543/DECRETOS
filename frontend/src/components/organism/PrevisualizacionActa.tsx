@@ -1,7 +1,7 @@
 import React from 'react';
 import { DatosEncabezadoType, DecretoType } from '../../helpers/Types.ts';
 import { formatNumeracionDecretos } from '../../helpers/formatNumeracion.ts';
-import { unificarParrafoDecreto } from '../../helpers/funcionesPlantillaWord.ts';
+import { generarArraysDeDatos } from '../../helpers/funcionesPlantillaWord.ts';
 import { formatFechaActa } from '../../helpers/formatFecha.ts';
 const logoSrc = "/images/Logo-Republica.png";
 
@@ -16,11 +16,15 @@ const PrevisualizacionActa: React.FC<PrevisualizacionActaProps> = ({ datosEncabe
   const parrafos_decretosAnexados = decretosAnexados.map((decreto) => {
     if (!decreto.dataInputs) return null
 
-    const descripcion_con_datos = unificarParrafoDecreto(decreto.descripcion, decreto?.dataInputs, datosEncabezado.demandado);
-    // return descripcion_con_datos
+    // const descripcion_con_datos = unificarParrafoDecreto(decreto.descripcion, decreto?.dataInputs, datosEncabezado.demandado);
+    const descripcion_con_datos = generarArraysDeDatos(decreto.descripcion, decreto?.dataInputs);
     return { descripcion_con_datos, leyes: decreto.leyes }
   })
-  // console.log(parrafos_decretosAnexados)
+
+  //🔸 Extraer nombre de Empresa para la segunda sección de Decreto Salario
+  const nombre_empresa = decretosAnexados.find(f => f.tipo === 'Salario')?.dataInputs?.empresa;
+  // console.log(nombre_empresa)
+
   return (
     <article
       className='container_prev_acta'
@@ -79,8 +83,17 @@ const PrevisualizacionActa: React.FC<PrevisualizacionActaProps> = ({ datosEncabe
                 className='p_decretos'
                 key={i + '.decreto'}
               >
-                <b>{formatNumeracionDecretos(i + 1)}: {m?.descripcion_con_datos.slice(0, 33)}</b>
-                {m?.descripcion_con_datos.slice(33,)}
+                <b>{formatNumeracionDecretos(i + 1)}: {m?.descripcion_con_datos.separar_decreto[0].slice(0, 33)}</b>
+                {
+                  m?.descripcion_con_datos.separar_decreto.map((dato, ii) => (
+                    <>
+                      {ii === 0 ? dato.slice(33,) : dato}
+                      <b>
+                        {m.descripcion_con_datos.datos_ingresados[ii]}
+                      </b>
+                    </>
+                  ))
+                }
               </p>
 
               {
@@ -88,7 +101,7 @@ const PrevisualizacionActa: React.FC<PrevisualizacionActaProps> = ({ datosEncabe
                   <p
                     key={index + 'ley'}
                     className='p_decretos'
-                  >{ley.replace(/°##/g, datosEncabezado.demandado)}</p>
+                  >{ley.replace(/°##/g, datosEncabezado.demandado).replace('°#°', nombre_empresa || '_________________')}</p>
                 ))
               }
             </>

@@ -3,7 +3,7 @@ import React from 'react';
 import { saveAs } from 'file-saver';
 import { Document, Packer, Paragraph, TextRun, AlignmentType, HeadingLevel, ImageRun, Table, WidthType, BorderStyle } from 'docx';
 import { DecretoType, DatosEncabezadoType } from '../../helpers/Types.ts';
-import { fetchImageAsArrayBuffer, crearFila } from '../../helpers/funcionesPlantillaWord.ts';
+import { fetchImageAsArrayBuffer, crearFila, generarArraysDeDatos } from '../../helpers/funcionesPlantillaWord.ts';
 import { formatNumeracionDecretos } from '../../helpers/formatNumeracion.ts';
 import { formatFechaActa } from '../../helpers/formatFecha.ts';
 const imageBuffer = await fetchImageAsArrayBuffer('/images/Logo-Republica.png');
@@ -17,12 +17,17 @@ interface WordTemplateProps {
 
 const WordTemplate: React.FC<WordTemplateProps> = ({ datosEncabezado, decretosAnexados, activarBoton }) => {
 
+  //🔸 Extraer nombre de Empresa para la segunda sección de Decreto Salario
+  const nombre_empresa = decretosAnexados.find(f => f.tipo === 'Salario')?.dataInputs?.empresa;
+  // console.log(nombre_empresa)
+
   /*
   🔸 Generar los parrafos necesarios según los decretos anexados
   */
   const parrafos_decretosAnexados = decretosAnexados.flatMap((decreto, index) => {
-    //🔸Verificacion en caso de que no llegasen los decretos
-    console.log(decreto.dataInputs)
+    // console.log(decreto)
+
+    //🔸Verificación en caso de que no llegasen dataInputs en los decretos
     if (!decreto.dataInputs) {
       return new Paragraph({
         text: `No hay Datos para anexar al Decreto ${decreto}`,
@@ -31,12 +36,9 @@ const WordTemplate: React.FC<WordTemplateProps> = ({ datosEncabezado, decretosAn
     }
 
     //🔸 Preparar la descripción y los datos en arrays
-    const remover_signos_decreto = decreto.descripcion.slice(33,).replace(/##/g, '');
-    const separar_decreto = remover_signos_decreto.split('°');
-    const datos_ingresados = Object.values(decreto.dataInputs).map(input => input.toString());
+    const { datos_ingresados, separar_decreto } = generarArraysDeDatos(decreto.descripcion.slice(33,), decreto.dataInputs);
 
     //🔸 Unificar los datos de los inputs con el resto del decreto generando la negrilla correspondiente
-    // const descripcion_con_datos = unificarParrafoDecreto(decreto.descripcion, decreto?.dataInputs, datosEncabezado.demandado);
     const combinedTextRuns = separar_decreto.map((m, i) => {
       const textRunParts = [
         new TextRun({
@@ -52,24 +54,58 @@ const WordTemplate: React.FC<WordTemplateProps> = ({ datosEncabezado, decretosAn
       }
 
       return textRunParts;
-    }).flat(); // flat es para aplanar el array de arrays en un solo nivel de profundidad
+    }).flat();
 
     //🔸 Formatear en parrafos las secciones de la ley que conlleva cada decreto
-    const parrafos_leyes = decreto.leyes ? decreto.leyes.map((ley) =>
-      new Paragraph({
-        children: [
+    // OPCIÓN SIN NEGRILLAS📌
+    // const parrafos_leyes = decreto.leyes ? decreto.leyes.map((ley) =>
+    //   new Paragraph({
+    //     children: [
+    //       new TextRun({
+    //         text: ley.replace(/°##/g, datosEncabezado.demandado).replace('°#°', nombre_empresa || '_________________'),
+    //         // text: ley,
+    //       }),
+    //     ],
+    //     spacing: {
+    //       line: 1.5 * 12 * 20,
+    //       after: 300,
+    //     },
+    //     alignment: AlignmentType.JUSTIFIED,
+    //   })
+    // ) : [];
+
+    const parrafos_leyes = decreto.leyes ? decreto.leyes.map((ley, index) => {
+
+      //🔸 Generar Negrilla a las secciones que tienen OFICIAR
+      let children;
+      if (decreto.tipo === 'Salario' || decreto.tipo === 'Fondo de Pensiones') {
+        children = [
           new TextRun({
-            text: ley.replace(/°##/g, datosEncabezado.demandado),
-            // text: ley,
+            text: ley.slice(0, 8),
+            bold: index === 0 ? true : false,
           }),
-        ],
+          new TextRun({
+            text: ley.slice(8).replace(/°##/g, datosEncabezado.demandado).replace('°#°', nombre_empresa || '_________________'),
+          }),
+        ];
+      } else {
+        children = [
+          new TextRun({
+            text: ley,
+          }),
+        ];
+      }
+
+      return new Paragraph({
+        children,
         spacing: {
           line: 1.5 * 12 * 20,
           after: 300,
         },
         alignment: AlignmentType.JUSTIFIED,
-      })
-    ) : [];
+      });
+    }) : [];
+
 
     return [
       new Paragraph({

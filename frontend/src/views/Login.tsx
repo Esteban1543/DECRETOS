@@ -54,32 +54,36 @@ function Login() {
   }
 
   //🔸 Envío de formulario API
+  const [loading, setLoading] = useState(false);
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     // console.log(formData)
     if (!verificacionInputs()) return toast.warning("Diligencie todos los campos.");
 
+    setLoading(true);
     try {
       const response = await axios.post(`${URI}/Autentificiacion`, formData);
 
       //🔸 Devolver mensaje de Error en Login
       if (!response.data.status) {
-        response.data?.error == '⛔ El usuario esta desactivado' 
-        ? toast.info('Usuario Inhabilitado')
-        : toast.error('Credenciales Incorrectas');
+        response.data?.error == '⛔ El usuario esta desactivado'
+          ? toast.info('Usuario Inhabilitado')
+          : toast.error('Credenciales Incorrectas');
+        setLoading(false);
         return
       }
+
       //🔸 Almacenar información de la sesión iniciada
       const dataUser = response.data.data;
       sessionStorage.setItem("user_sesion", JSON.stringify(dataUser));
       toast.success("Sesión iniciadad correctamente");
 
       await redirigir(dataUser.rol)
-
+      setLoading(false);
     } catch (error) {
       console.log("Error al enviar los datos", error);
       toast.error('No se pudo completar la solicitud');
+      setLoading(false);
     }
   };
 
@@ -149,6 +153,7 @@ function Login() {
             size="large"
             type="submit"
             style={{ backgroundColor: 'var(--color-azul-deep2)', marginTop: '1rem', width: '50%' }}
+            disabled={loading}
           >Ingresar</Button>
         </form>
 

@@ -8,7 +8,7 @@ import { InputDataDecretoType } from "./Types.ts";
 export const unificarParrafoDecreto = (desc: string, dataInputs: InputDataDecretoType, demandado: string) => {
 
   //🔸 Setear el nombre del DEMANDADO en los decretos
-  const remover_signos_desc = desc.replace(/##/g, '');
+  const remover_signos_desc = desc.replace(/°##/g, demandado);
 
   //🔸 Setear los datos de los inputs en los decretos
   let result = remover_signos_desc;
@@ -20,6 +20,17 @@ export const unificarParrafoDecreto = (desc: string, dataInputs: InputDataDecret
   return result;
 }
 
+export const generarArraysDeDatos = (desc: string, dataInputs: InputDataDecretoType) => {
+
+  //🔸 Remover los signos que se usan para insertar el Demandado
+  const remover_signos_decreto = desc.replace(/##/g, '');
+
+  //🔸 Separar en Arrays los secciones del Decreto y los datos
+  const separar_decreto = remover_signos_decreto.split('°');
+  const datos_ingresados = Object.values(dataInputs).map(input => input?.toString() || '--DATO SIN DILIGENCIAR--');
+
+  return { separar_decreto, datos_ingresados };
+}
 
 /*
   Función para insertar la imagen 
