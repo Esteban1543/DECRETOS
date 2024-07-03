@@ -14,16 +14,10 @@ export function moverAbajo(doc, dato) {
 }
 
 // Funcion para llenar la descipcion con los datos
-export const seteoDatosDecretos = (descripcion, dataInputs, demandado) => {
-  const desc_demandado = descripcion.replace('°##', demandado || '-Demandado-');
-
-  let decreto = desc_demandado;
-
-  Object.values(dataInputs).forEach((value) => {
-    decreto = decreto.replace('°', value.toString() || '-DATO SIN DILIGENCIAR-');
-  });
-
-  return decreto;
+export const seteoDatosDecretos = (descripcion) => {
+  const desc_demandado = descripcion.replace('°##', '°' || '-Demandado-');
+  const decretos_separados = desc_demandado.split('°');
+  return decretos_separados;
 };
 
 // Funcion para generar el parrafo en el PDF
@@ -32,18 +26,45 @@ export const seteoIdentificador = (doc, datosDecreto, demandado) => {
 
   datosDecreto.forEach((decreto, index) => {
     const { descripcion, dataInputs, leyes } = decreto;
-    let parrafo = seteoDatosDecretos(descripcion, dataInputs, demandado);
+    let parrafo = seteoDatosDecretos(descripcion);
 
+    let primeraParte = parrafo[0];
+    
     doc
       .font('Helvetica-Bold')
       .text(ubicaciones[index], { continued: true, lineGap: 8 });
-
+      
     doc
-      .text(parrafo.slice(0, 33), { continued: true, lineGap: 8 });
+      .text(primeraParte.slice(0, 33), { continued: true, lineGap: 8 });
 
     doc
       .font('Helvetica')
-      .text(parrafo.slice(33), { lineGap: 8 });
+      .text(primeraParte.slice(33), { continued: true, lineGap: 8 });
+
+    const inputKeyFirst = Object.keys(dataInputs)[0];
+    if (inputKeyFirst) {
+      doc
+        .font('Helvetica-Bold')
+        .text(dataInputs[inputKeyFirst], { continued: true, lineGap: 8 });
+    }
+
+    for (let i = 1; i < parrafo.length; i++) {
+
+      // Para verificar que si es la uttima iteracion,
+      // quite el continued
+      const isLast = (i === parrafo.length - 1);
+
+      doc
+        .font('Helvetica')
+        .text(parrafo[i], { continued: !isLast, lineGap: 8 });
+
+      const inputKey = Object.keys(dataInputs)[i];
+      if (inputKey) {
+        doc
+          .font('Helvetica-Bold')
+          .text(dataInputs[inputKey], { continued: !isLast, lineGap: 8 });
+      }
+    }
 
     doc.moveDown(1);
 
@@ -55,6 +76,7 @@ export const seteoIdentificador = (doc, datosDecreto, demandado) => {
     doc.moveDown(1);
   });
 };
+
 
 // Funcion para generar el formateo de fecha (Disponible solo hasta el año 2030)
 const monthNames = [
