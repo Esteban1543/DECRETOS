@@ -50,7 +50,7 @@ export const contruirPDF = (datosEncabezado, decretosAnexados) => {
 
       doc.text(juzgado, 100, 190, {
         align: "center",
-        width: 400,
+        // width: 400,
       });
 
       let alto = doc.y;

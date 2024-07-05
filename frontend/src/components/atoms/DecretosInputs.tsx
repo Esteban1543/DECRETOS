@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/react-in-jsx-scope */
 // import React, { useEffect, useState } from 'react'
-import FormDecreto1_2inputs from './FormDecreto1_2inputs';
+import FormDecreto2inputs from './FormDecreto2inputs.tsx';
 import { InputDataDecretoType } from '../../helpers/Types.ts';
 import FormDecreto3inputs from './FormDecreto3inputs';
 import { formatNumeracionDecretos } from '../../helpers/formatNumeracion';
@@ -38,7 +38,7 @@ const DecretosInputs: React.FC<DecretosInputsProps> = ({ nombre_demandado, descr
 
       {
         tipo_decreto == 'Salario' || tipo_decreto == 'Banco' || tipo_decreto == 'Fondo de Pensiones'
-          ? <FormDecreto1_2inputs
+          ? <FormDecreto2inputs
             nombre_demandado={nombre_demandado}
             tipo_decreto={tipo_decreto}
             secciones_descripcion={secciones_descripcion}

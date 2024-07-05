@@ -86,12 +86,14 @@ const PrevisualizacionActa: React.FC<PrevisualizacionActaProps> = ({ datosEncabe
                 <b>{formatNumeracionDecretos(i + 1)}: {m?.descripcion_con_datos.separar_decreto[0].slice(0, 33)}</b>
                 {
                   m?.descripcion_con_datos.separar_decreto.map((dato, ii) => (
-                    <>
+                    <React.Fragment
+                    key={ii+'ley'+m}
+                    >
                       {ii === 0 ? dato.slice(33,) : dato}
                       <b>
                         {m.descripcion_con_datos.datos_ingresados[ii]}
                       </b>
-                    </>
+                    </React.Fragment>
                   ))
                 }
               </p>

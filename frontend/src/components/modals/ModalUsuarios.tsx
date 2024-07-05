@@ -8,10 +8,10 @@ import DialogTitle from '@mui/material/DialogTitle';
 import EastIcon from '@mui/icons-material/East';
 import TaskAltIcon from '@mui/icons-material/TaskAlt';
 import UnpublishedIcon from '@mui/icons-material/Unpublished';
-
 import CircleUser from '../atoms/CircleUser';
 import { UsuariosType } from '../../helpers/Types';
 import ModalDesactivar from './ModalDesactivar';
+import ModalEditarUsuario from './ModalEditarUsuario';
 
 
 interface ModalUsuariosProps {
@@ -60,7 +60,7 @@ export default function ModalUsuarios({ datosUsuarios, refetch }: ModalUsuariosP
                   datosUsuarios.map(m => (
                     <article
                       className='container_row_card'
-                      style={{ gridTemplateColumns: '18% auto 22%', cursor: 'auto' }}
+                      style={{ gridTemplateColumns: '18% auto 22%', cursor: 'auto', position: 'relative' }}
                       key={m.n_identificacion}
                     >
                       <CircleUser
@@ -80,7 +80,12 @@ export default function ModalUsuarios({ datosUsuarios, refetch }: ModalUsuariosP
                         </span>
                       </section>
 
-                      <section style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-around', alignItems: 'center', height: '70%' }}>
+                      <ModalEditarUsuario
+                        datos_usuario={m}
+                        refetch={refetch}
+                      />
+
+                      <section style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-around', alignItems: 'center', height: '50%' }}>
                         {
                           m.estado_persona === 1
                             ? <TaskAltIcon sx={{ color: '#06D001' }} />

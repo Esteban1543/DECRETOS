@@ -27,17 +27,6 @@ export default function SeccionRedaccionActas({ id_digitador, correo_digitador, 
   const handlePage = (page: number) => setPagina(page);
 
   //🔸 Estado para Datos de Encabezado (formulario)
-  // const estado_inicial = {
-  //   juzgado: 'Juzgado Ochenta (80) Civil Municipal de Bogotá D.C.  Transitorio Sesenta y Dos (62) de Pequeñas Causas Civiles y Competencia Múltiple de Bogotá D.C.',
-  //   juez: 'MANUELA GÓMEZ ÁNGEL RANGEL',
-  //   ciudad: 'Bogotá D.C.',
-  //   origen: 'Juzgado Ochenta (80) Civil Municipal de Bogotá D.C.  Transitorio Sesenta y Dos (62) de Pequeñas Causas Civiles y Competencia Múltiple de Bogotá D.C.',
-  //   radicado: '2022-00602-00',
-  //   demandante: 'NOMBRE DEMANDANTE',
-  //   demandado: 'NOMBRE DEMANDADO',
-  //   proceso: 'EJECUTIVO DE MÍNIMA CUANTÍA',
-  //   provincia: '1'
-  // }
   const estado_inicial = {
     juzgado: '',
     juez: 'MANUELA GÓMEZ ÁNGEL RANGEL',
@@ -70,7 +59,7 @@ export default function SeccionRedaccionActas({ id_digitador, correo_digitador, 
     // console.log(response);
 
     if (response && response.status) {
-      toast.success(`La copia del acta con N° de Radicado: ${datosEncabezado.radicado}, se envío correctamente al correo.📨`);
+      toast.success(`La copia del acta con N° de Radicado: ${datosEncabezado.radicado}, se envío correctamente al correo.`);
       return true
     }
 

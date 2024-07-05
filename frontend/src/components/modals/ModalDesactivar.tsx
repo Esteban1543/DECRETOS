@@ -7,6 +7,7 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { solicitudPatch } from '../../helpers/solicitudPatch';
 import { URI } from '../../config';
+import { toast } from 'sonner';
 
 
 interface ModalDesactivarProps {
@@ -29,7 +30,11 @@ export default function ModalDesactivar({ id_usuario, estado_usuario, refetch }:
 
     //🔸 Envío de datos
     const response = await solicitudPatch(`${URI}${endpoint}/${id_usuario}`);
-    console.log(response);
+    // console.log(response);
+    response.status
+      ? toast.success(`Usuario ${estado_usuario === 1 ? 'inhabilitado' : 'habilitado'} correctamente`)
+      : toast.error(`No se pudo ${estado_usuario === 1 ? 'inhabilitar' : 'habilitar'} correctamente el Usuario`)
+    ;
     refetch();
     setOpen(false);
   }
@@ -42,8 +47,9 @@ export default function ModalDesactivar({ id_usuario, estado_usuario, refetch }:
         variant="text"
         color='inherit'
         onClick={handleClickOpen}
+        size='small'
       >
-        Cambiar Estado
+        {estado_usuario == 1 ? 'Desactivar' : 'Activar'}
       </Button>
 
       <Dialog

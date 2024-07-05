@@ -5,13 +5,13 @@
 import { ResponsePatch } from "./Types"
 import axios from "axios"
 
-export const solicitudPatch = async (url: string, formData?: ResponsePatch) => {
+export const solicitudPatch = async (url: string, formData?: unknown): Promise<ResponsePatch> => {
   // console.log(formData)
   try {
     const response = await axios.patch(url, formData, {
       validateStatus: (status) => { return status < 500 }
     })
-    console.log(response)
+    // console.log(response)
     return response.data
   }
   catch (error) {

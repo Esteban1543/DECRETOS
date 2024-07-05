@@ -9,7 +9,7 @@ interface CardInformesDasbProps {
 }
 
 const CardInformesDasb: React.FC<CardInformesDasbProps> = ({ datosTabla }) => {
-  console.log(datosTabla)
+  // console.log(datosTabla)
 
   return (
     <article className='container_informes_dasb'>
@@ -18,8 +18,8 @@ const CardInformesDasb: React.FC<CardInformesDasbProps> = ({ datosTabla }) => {
         <h2>
           Informe Actas
           <AssessmentSharpIcon
-          // sx={{ color: '#615EFC' }}
-          sx={{ color: 'var(--color-azul-deep2)' }}
+            // sx={{ color: '#615EFC' }}
+            sx={{ color: 'var(--color-azul-deep2)' }}
           />
         </h2>
 
@@ -29,9 +29,11 @@ const CardInformesDasb: React.FC<CardInformesDasbProps> = ({ datosTabla }) => {
       <section className='contenido_informes_dasb'>
         <table className='tabla_informes_dasb'>
           <thead>
-            <th>N° Radicado</th>
-            <th>Usuario</th>
-            <th>Fecha Redacción</th>
+            <tr>
+              <th>N° Radicado</th>
+              <th>Usuario</th>
+              <th>Fecha Redacción</th>
+            </tr>
           </thead>
 
           <tbody>

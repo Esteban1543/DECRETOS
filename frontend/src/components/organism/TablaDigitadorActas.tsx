@@ -23,22 +23,27 @@ const columns: readonly Column[] = [
     id: 'demandado',
     label: 'Demandado',
     minWidth: 170,
-    align: 'right',
+    align: 'center',
     // format: (value: number) => value.toLocaleString('en-US'),
   },
   {
     id: 'demandante',
     label: 'Demandante',
     minWidth: 170,
-    align: 'right',
+    align: 'center',
   },
   {
     id: 'fecha_registro',
     label: 'Fecha Digitado',
     minWidth: 170,
-    align: 'right',
+    align: 'center',
   },
-  { id: 'provincia', label: 'Provincia', minWidth: 170 },
+  {
+    id: 'provincia',
+    label: 'Provincia',
+    minWidth: 100,
+    align: 'center'
+  },
 ];
 
 interface Data {
@@ -93,7 +98,7 @@ export default function TablaDigitadorActas({ datosTabla }: TablaDigitadorActasP
                 <TableCell
                   key={column.id}
                   align={column.align}
-                  style={{ minWidth: column.minWidth }}
+                  style={{ minWidth: column.minWidth, background: 'var(--color-azul-deep2)', color: 'white' }}
                 >
                   {column.label}
                 </TableCell>

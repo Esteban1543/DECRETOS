@@ -34,11 +34,12 @@ export default function ModalEstadoDatosEncabezados({ tipo, dato, estado, refetc
       dato,
       estado: !estado
     });
-    console.log(response);
+    // console.log(response);
+    if(response == '') toast.success(`Dato ${estado === 1 ? 'inhabilitado' : 'habilitado'} correctamente`)
     // response.status
     //   ? toast.success(`Dato ${estado === 1 ? 'inhabilitado' : 'habilitado'} correctamente`)
     //   : toast.error(`No se pudo Dato ${estado === 1 ? 'inhabilitar' : 'habilitar'} correctamente el Dato`)
-    //   ;
+    // ;
     refetch();
     setOpen(false);
   }

@@ -1,28 +1,31 @@
 import * as React from 'react';
 
-import Select, { SelectChangeEvent } from '@mui/material/Select';
+import Select from '@mui/material/Select';
 import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
 import Button from '@mui/material/Button';
 import InputLabel from '@mui/material/InputLabel';
 // import FormHelperText from '@mui/material/FormHelperText';
-import PersonAddIcon from '@mui/icons-material/PersonAdd';
+import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import IconButton from '@mui/material/IconButton';
 import FormControl from '@mui/material/FormControl';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
+import Tooltip from '@mui/material/Tooltip';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import '../../assets/styles/ModalDatosEncabezados.css';
+import { UsuariosType } from '../../helpers/Types.ts';
 import { URI } from '../../config.ts';
-import { solicitudPost } from '../../helpers/solicitudPost.ts';
+import { solicitudPatch } from '../../helpers/solicitudPatch.ts';
 import { toast } from 'sonner';
 
-interface ModalCrearUsuarioProps {
-  refetch: () => void
+interface ModalEditarUsuarioProps {
+  refetch: () => void,
+  datos_usuario: UsuariosType
 }
 
-export default function ModalCrearUsuario({ refetch }: ModalCrearUsuarioProps) {
+export default function ModalEditarUsuario({ refetch, datos_usuario }: ModalEditarUsuarioProps) {
 
   //🔸 Manejo de apertura y cierre para Modal
   const [open, setOpen] = React.useState(false);
@@ -30,15 +33,15 @@ export default function ModalCrearUsuario({ refetch }: ModalCrearUsuarioProps) {
   const handleClose = () => setOpen(false);
 
   //🔸 Estado para los inputs del formulario
+  // console.log(datos_usuario)
   const estado_inicial = {
-    fk_tipo_identificacion: "",
-    n_identificacion: "",
-    nombres: "",
-    apellidos: "",
-    telefono: "",
-    correo: "",
-    alias: "",
-    contraseña: "digic123"
+    n_identificacion: datos_usuario.n_identificacion,
+    nombres: !datos_usuario.nombre_2 ? datos_usuario.nombre_1 : `${datos_usuario.nombre_1} ${datos_usuario.nombre_2}`,
+    apellidos: !datos_usuario.apellido_2 ? datos_usuario.apellido_1 : `${datos_usuario.apellido_1} ${datos_usuario.apellido_2}`,
+    telefono: datos_usuario.telefono,
+    correo: datos_usuario.correo,
+    alias: datos_usuario.alias,
+    contraseña: ""
   }
   const [datosForm, setDatosForm] = React.useState(estado_inicial);
 
@@ -51,21 +54,12 @@ export default function ModalCrearUsuario({ refetch }: ModalCrearUsuarioProps) {
       [name]: value.toString() //.toLowerCase(),
     }));
   };
-  const handleChangeSelect = (event: SelectChangeEvent) => {
-    const value = event.target.value as string;
-    setDatosForm((prev) => ({
-      ...prev,
-      fk_tipo_identificacion: value
-    })
-
-    );
-  };
 
   //🔸 Verificar diligenciamiento de campos/inputs
   const [activarBoton, setactivarBoton] = React.useState(false);
   React.useEffect(() => {
     const validarCamposLlenos = () => {
-      return Object.values(datosForm).every(valor => valor.trim() !== '');
+      return Object.values(datosForm).every(valor => valor.toString().trim() !== '');
     };
 
     const formulario_lleno = validarCamposLlenos();
@@ -75,31 +69,33 @@ export default function ModalCrearUsuario({ refetch }: ModalCrearUsuarioProps) {
   //🔸 Envío de Datos API
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(datosForm);
+    // console.log(datosForm);
 
-    const response = await solicitudPost(`${URI}/newUsuario`, datosForm);
+    const response = await solicitudPatch(`${URI}/editUsuario`, datosForm);
     if (response.status) {
-      toast.success('Usuario creado correctamente');
-      refetch()
-      setDatosForm(estado_inicial)
+      toast.success('Usuario editado correctamente');
+      refetch();
+      // setDatosForm(estado_inicial);
       return
     }
 
-    toast.error('No se pudo crear el nuevo Usuario')
-    console.log(response)
+    toast.error('No se pudo editar el Usuario');
+    console.log(response);
   }
 
   return (
     <>
-      <IconButton
-        onClick={handleClickOpen}
-        aria-label="agregar"
-      >
-        <PersonAddIcon 
-        fontSize="inherit" 
-        sx={{ color: 'var(--color-azul-deep2)' }}
-        />
-      </IconButton>
+      <Tooltip title="Editar Usuario" placement="left">
+        <IconButton
+          onClick={handleClickOpen}
+          aria-label="agregar"
+          style={{ position: 'absolute', top: 0, right: 0 }}
+        >
+          <ManageAccountsIcon
+            sx={{ color: 'var(--color-azul-deep2)' }}
+          />
+        </IconButton>
+      </Tooltip >
 
       <Dialog
         fullWidth
@@ -109,7 +105,7 @@ export default function ModalCrearUsuario({ refetch }: ModalCrearUsuarioProps) {
       >
         <form onSubmit={handleSubmit}>
           <DialogTitle>
-            <strong className='titulo_modal'>Crear Usuario</strong>
+            <strong className='titulo_modal'>Editar Usuario</strong>
           </DialogTitle>
 
           <DialogContent>
@@ -121,9 +117,10 @@ export default function ModalCrearUsuario({ refetch }: ModalCrearUsuarioProps) {
                 <Select
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
-                  value={datosForm.fk_tipo_identificacion}
+                  value={datos_usuario.fk_tipo_identificacion}
                   label="Tipo Doc"
-                  onChange={handleChangeSelect}
+                  // onChange={handleChangeSelect}
+                  disabled
                 >
                   <MenuItem value={'CC'}>Cédula de Ciudadanía</MenuItem>
                   <MenuItem value={'CE'}>Cédula de Extranjería</MenuItem>
@@ -212,7 +209,7 @@ export default function ModalCrearUsuario({ refetch }: ModalCrearUsuarioProps) {
               color='info'
               onClick={handleClose}
               disabled={!activarBoton}
-            >Crear</Button>
+            >Editar</Button>
           </DialogActions>
         </form>
       </Dialog>

@@ -25,13 +25,13 @@ const FormDecreto3inputs: React.FC<FormDecreto3inputsProps> = ({ nombre_demandad
     direccion: data_inputs?.direccion || ''
   }
   const estado_establecimientos = {
-    nombreEstablecimiento: data_inputs?.nombreEstablecimiento,
-    direccion: data_inputs?.direccion,
+    nombreEstablecimiento: data_inputs?.nombreEstablecimiento || '',
+    direccion: data_inputs?.direccion || '',
     demandado: nombre_demandado,
   }
   const estado_vehiculos = {
-    placa: data_inputs?.placa,
-    marca: data_inputs?.marca,
+    placa: data_inputs?.placa || '',
+    marca: data_inputs?.marca || '',
     demandado: nombre_demandado,
   }
 

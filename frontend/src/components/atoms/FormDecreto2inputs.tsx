@@ -6,7 +6,7 @@ import { InputDataDecretoType } from '../../helpers/Types.ts'
   Decretos de Banco, pensiones y salarios 📌
 */
 
-interface FormDecreto1_2inputsProps {
+interface FormDecreto2inputsProps {
   nombre_demandado: string,
   secciones_descripcion: Array<string>,
   tipo_decreto: string,
@@ -16,23 +16,23 @@ interface FormDecreto1_2inputsProps {
 }
 
 
-const FormDecreto1_2inputs: React.FC<FormDecreto1_2inputsProps> = ({ nombre_demandado, positionList, secciones_descripcion, tipo_decreto, fn_agregarInputData, data_inputs }) => {
+const FormDecreto2inputs: React.FC<FormDecreto2inputsProps> = ({ nombre_demandado, positionList, secciones_descripcion, tipo_decreto, fn_agregarInputData, data_inputs }) => {
   // console.log('formDecreto 1 2inputs >> ', data_inputs)
   //🔸 Estructuras para cada tipo de Decreto
   const estado_banco = {
     demandado: nombre_demandado,
-    valor: data_inputs?.valor,
+    valor: data_inputs?.valor || '',
   }
   const estado_pensiones = {
     demandado: nombre_demandado,
-    fondoPensiones: data_inputs?.fondoPensiones,
-    valor: data_inputs?.valor,
+    fondoPensiones: data_inputs?.fondoPensiones || '',
+    valor: data_inputs?.valor || '',
   }
   const estado_salario = {
-    porcentaje: data_inputs?.porcentaje,
+    porcentaje: data_inputs?.porcentaje || '',
     demandado: nombre_demandado,
-    empresa: data_inputs?.empresa,
-    valor: data_inputs?.valor,
+    empresa: data_inputs?.empresa || '',
+    valor: data_inputs?.valor || '',
   }
 
   const estado_inicial = tipo_decreto === 'Fondo de Pensiones' ? estado_pensiones : tipo_decreto === 'Banco' ? estado_banco : estado_salario
@@ -155,4 +155,4 @@ const FormDecreto1_2inputs: React.FC<FormDecreto1_2inputsProps> = ({ nombre_dema
   )
 }
 
-export default FormDecreto1_2inputs
+export default FormDecreto2inputs

@@ -45,7 +45,7 @@ export default function ModalVistaDigitador() {
 
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            <h4>Modo Digitador: Redacción de Actas</h4>
+            <strong>Modo Digitador: Redacción de Actas</strong><br />
             Al aceptar, accederás a la sección de Redacción con vista de Digitador.
             Podrás crear Actas sin necesidad de iniciar sesión con otro usuario y regresar al modo Administrador en el momento que desees.
           </DialogContentText>
