@@ -1,12 +1,12 @@
 // Texto antes de los Decretos
-export const texto = 'El juzgado, atendiendo la solicitud de cautela realizada por la parte actora, y por estimarla procedente,';
+export const texto = 'El juzgado, atendiendo la solicitud cautelar que precede, por estimarlas procedentes';
 
 // Funcion para bajar renglones en los datos de Encabezado
 export function moverAbajo(doc, dato) {
     const largo = dato.length;
     let down = 0;
   
-    for (let i = 40; i <= largo; i += 50) {
+    for (let i = 55; i <= largo; i += 55) {
       down++;
     }
   
@@ -32,20 +32,20 @@ export const seteoIdentificador = (doc, datosDecreto, demandado) => {
     
     doc
       .font('Helvetica-Bold')
-      .text(ubicaciones[index], { continued: true, lineGap: 8 });
+      .text(ubicaciones[index], { continued: true, lineGap: 8, align: "justify" });
       
     doc
-      .text(primeraParte.slice(0, 33), { continued: true, lineGap: 8 });
+      .text(primeraParte.slice(0, 33), { continued: true, lineGap: 8, align: "justify" });
 
     doc
       .font('Helvetica')
-      .text(primeraParte.slice(33), { continued: true, lineGap: 8 });
+      .text(primeraParte.slice(33), { continued: true, lineGap: 8, align: "justify" });
 
     const inputKeyFirst = Object.keys(dataInputs)[0];
     if (inputKeyFirst) {
       doc
         .font('Helvetica-Bold')
-        .text(dataInputs[inputKeyFirst], { continued: true, lineGap: 8 });
+        .text(dataInputs[inputKeyFirst], { continued: true, lineGap: 8, align: "justify" });
     }
 
     for (let i = 1; i < parrafo.length; i++) {
@@ -56,20 +56,20 @@ export const seteoIdentificador = (doc, datosDecreto, demandado) => {
 
       doc
         .font('Helvetica')
-        .text(parrafo[i], { continued: !isLast, lineGap: 8 });
+        .text(parrafo[i], { continued: !isLast, lineGap: 8, align: "justify" });
 
       const inputKey = Object.keys(dataInputs)[i];
       if (inputKey) {
         doc
           .font('Helvetica-Bold')
-          .text(dataInputs[inputKey], { continued: !isLast, lineGap: 8 });
+          .text(dataInputs[inputKey], { continued: !isLast, lineGap: 8, align: "justify" });
       }
     }
 
     doc.moveDown(1);
 
     leyes.forEach((ley) => {
-      doc.text(ley.replace(/°##/, demandado).replace('°#°', nombre_empresa || '_____________'), { lineGap: 8 });
+      doc.text(ley.replace(/°##/, demandado).replace('°#°', nombre_empresa || '_____________'), { lineGap: 8, align: "justify" });
       doc.moveDown(1);
     });
 

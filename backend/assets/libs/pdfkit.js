@@ -85,15 +85,14 @@ export const contruirPDF = (datosEncabezado, decretosAnexados) => {
       alto = doc.y;
 
       doc.font("Helvetica")
-        .text(texto, 100, alto + 20, {
-          align: "left",
-          width: 400,
+        .text(texto, 90, alto + 20, {
+          align: "center",
         })
         .moveDown(2);
 
       doc.font("Helvetica-Bold")
         .text("DISPONE: ", { align: "center" })
-        .moveDown(1);
+        .moveDown(2);
 
       // Funcion para generar decretos / ley
       seteoIdentificador(doc, decretosAnexados, demandado);
