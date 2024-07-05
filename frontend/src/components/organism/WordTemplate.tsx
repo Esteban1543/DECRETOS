@@ -173,11 +173,6 @@ const WordTemplate: React.FC<WordTemplateProps> = ({ datosEncabezado, decretosAn
               bold: true,
               color: "000000",
             },
-            // paragraph: {
-            //   spacing: {
-            //     before: 10
-            //   }
-            // }
           },
           heading1: {
             run: {

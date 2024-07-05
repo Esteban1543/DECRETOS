@@ -39,9 +39,10 @@ class ActasController {
         }
 
         try {
-            await DigitalModel.sendMail(datosEncabezado, decretosAnexados, correo_digitador, fechaFormato)
+            const respuesta = await ActaModel.createActa(id_digitador, datosEncabezado, decretosAnexados, fechaFormato);
 
-            return res.json(await ActaModel.createActa(id_digitador, datosEncabezado, decretosAnexados, fechaFormato))
+            if(respuesta.status) await DigitalModel.sendMail(datosEncabezado, decretosAnexados, correo_digitador, fechaFormato);
+            return res.json(respuesta)
         }catch(error){
             return {
                 status: false,

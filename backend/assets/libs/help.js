@@ -27,7 +27,7 @@ export const seteoIdentificador = (doc, datosDecreto, demandado) => {
   datosDecreto.forEach((decreto, index) => {
     const { descripcion, dataInputs, leyes } = decreto;
     let parrafo = seteoDatosDecretos(descripcion);
-
+    let nombre_empresa = dataInputs?.empresa;
     let primeraParte = parrafo[0];
     
     doc
@@ -69,7 +69,7 @@ export const seteoIdentificador = (doc, datosDecreto, demandado) => {
     doc.moveDown(1);
 
     leyes.forEach((ley) => {
-      doc.text(ley, { lineGap: 8 });
+      doc.text(ley.replace(/°##/, demandado).replace('°#°', nombre_empresa || '_____________'), { lineGap: 8 });
       doc.moveDown(1);
     });
 

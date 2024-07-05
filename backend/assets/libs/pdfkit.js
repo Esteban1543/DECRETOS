@@ -37,8 +37,8 @@ export const contruirPDF = (datosEncabezado, decretosAnexados) => {
       doc
         .font("Helvetica-Bold")
         .fontSize(13.5)
-        .text("Republica de colombia", { align: "center" })
-        .text("Rama Judicial del Poder Publico", { align: "center" });
+        .text("República de Colombia", { align: "center" })
+        .text("Rama Judicial del Poder Público", { align: "center" });
 
       // Calculo para centrar la imagen
       const imageWidth = 60;
@@ -103,12 +103,12 @@ export const contruirPDF = (datosEncabezado, decretosAnexados) => {
       doc
         .font("Helvetica-Bold")
         .fontSize(10)
-        .text('NOTIFIQUESE Y CUMPLASE,', { align: "center" })
+        .text('NOTIFÍQUESE y CÚMPLASE,', { align: "center" })
         .text(`-${provincia}-`, { align: "center" });
 
       doc.moveDown(3);
 
-      doc.text("______________________________", { align: "center" })
+      doc.text("________________________________", { align: "center" })
         .moveDown(1);
 
       doc.text(juez, { align: "center" })
