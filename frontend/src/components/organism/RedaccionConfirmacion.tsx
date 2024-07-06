@@ -6,6 +6,7 @@ import { DatosEncabezadoType, DecretoType } from "../../helpers/Types";
 import WordTemplate from "./WordTemplate";
 import PrevisualizacionActa from "./PrevisualizacionActa";
 import { useState } from "react";
+import DescargaPDF from "../atoms/DescargaPDF";
 
 interface RedaccionPrevPDFProps {
   handlePage: (page: number) => void,
@@ -41,26 +42,21 @@ export default function RedaccionPrevPDF({ handlePage, datosEncabezado, decretos
         <aside className='aside_acciones_pdf'>
 
           <section className='section_imprimir'>
-            {/* <button className='print_button' disabled>
-              <img src="/icons/icon-print.png" alt="Imprimir" height={'55px'} width={'61px'} />
-            </button>
+            <DescargaPDF
+              datosEncabezado={datosEncabezado}
+              decretosAnexados={decretosAnexados}
+              activarBoton={salir}
+            />
+            <h4>Descargar PDF</h4>
+          </section>
 
-            <h4>❌Imprimir</h4> */}
+          <section className="section_descargar_word">
             <WordTemplate
               datosEncabezado={datosEncabezado}
               decretosAnexados={decretosAnexados}
               activarBoton={salir}
             />
             <h4>Descargar Word</h4>
-          </section>
-
-          <section className="section_descargar_word">
-            {/* <WordTemplate
-              datosEncabezado={datosEncabezado}
-              decretosAnexados={decretosAnexados}
-              activarBoton={salir}
-            />
-            <h4>Descargar Word</h4> */}
           </section>
 
           <section className='section_warning'>

@@ -364,8 +364,8 @@ const WordTemplate: React.FC<WordTemplateProps> = ({ datosEncabezado, decretosAn
     >
       <button
         className={activarBoton ? 'word_button word_button_active' : 'word_button'}
-        onClick={generateDocument}
-        disabled={!activarBoton}
+        onClick={activarBoton ? generateDocument : undefined}
+        // disabled={!activarBoton}
         style={!activarBoton ? { opacity: '.5' } : undefined}
       >
         <img

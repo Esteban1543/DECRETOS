@@ -272,7 +272,7 @@
   align-self: end;
 }
 
-.print_button,
+.pdf_button,
 .word_button {
   background: transparent;
   border: none;
@@ -281,14 +281,20 @@
   cursor: pointer;
 }
 
-.print_button {
-  outline: 1px solid #74da9a;
-  background-color: #cccccc62;
-  cursor: not-allowed;
+.pdf_button {
+  outline: 1px solid #FA5252;
+  /* background-color: #cccccc62; */
+  /* cursor: not-allowed; */
+  min-width: 86.6px;
+  min-height: 83px;
 }
 
-.print_button:active {
-  box-shadow: 0 0 4px #74da9a;
+.pdf_button_active:active {
+  box-shadow: 0 0 4px #FA5252;
+}
+
+.pdf_button_active:hover {
+  background-color: #FA52521F;
 }
 
 .word_button {

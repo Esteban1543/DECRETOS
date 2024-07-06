@@ -30,13 +30,13 @@ export default function SeccionRedaccionActas({ id_digitador, correo_digitador, 
   const estado_inicial = {
     juzgado: '',
     juez: 'MANUELA GÓMEZ ÁNGEL RANGEL',
-    ciudad: '',
+    ciudad: 'Tunja',
     origen: '',
-    radicado: '',
-    demandante: '',
-    demandado: '',
+    radicado: '2021-03',
+    demandante: 'ROSALBA MENDOZA',
+    demandado: 'OSCAR PLAZAS',
     proceso: '',
-    provincia: ''
+    provincia: '1'
   }
   const [datosEncabezado, setDatosEncabezado] = useState(estado_inicial);
 
