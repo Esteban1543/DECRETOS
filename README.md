@@ -14,23 +14,24 @@ Asegúrate de tener instalados los siguientes componentes en tu sistema:
 
 ### 1. Clonar el Repositorio
 Clona este repositorio en tu máquina local:
-```bash
+<!-- ```bash -->
 git clone https://github.com/Esteban1543/DECRETOS
 cd repo
 
-### **2. Inicializa el proyecto**
+### 2. Inicializa el proyecto
 Ejecuta el comando:
   docker-compose up --build
 
-### **3. Accede al aplicativo**
+### 3. Accede al aplicativo
 Da click en el link que aparece en la terminal
 ➜ Local: http://localhost:4002/
 
-### **4. Finaliza la ejecución**
+### 4. Finaliza la ejecución
 Ejecuta el comando:
   docker-compose down
 
-### Estructura del proyecto
+## Estructura del proyecto
+```bash
 ├── apps/backend          # Código fuente del Backend.
 ├── apps/frontend         # Código fuente del Frontend.
 ├── services/database     # Código fuente necesario de la Base de Datos (DDL - DML).
