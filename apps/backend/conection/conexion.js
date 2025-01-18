@@ -1,10 +1,10 @@
 import mysql from 'mysql2/promise';
 
 const database = {
-    host: 'ddnepruebas.online',
-    database: 'decretos_db',
-    user: 'user',
-    password: 'user123',
+    host: 'localhost',
+    database: 'BDC_DECRETOS',
+    user: 'root',
+    password: '',
     waitForConnections: true,
     connectionLimit: 20,
     queueLimit: 0
@@ -20,4 +20,3 @@ try {
 }
 
 export default conexion;
-

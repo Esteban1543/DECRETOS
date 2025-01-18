@@ -16,7 +16,6 @@ VALUES
 -- Datos Persona
 INSERT INTO datos_persona (fk_tipo_identificacion, n_identificacion, nombre_1, nombre_2, apellido_1, apellido_2, telefono, correo, fk_tipo_persona, estado_persona) 
 VALUES
-
     -- Tipo persona administrador
     ('CC', '444555666', 'Edwin', null, 'Marín', null, '3114445660', 'edwin.marin@example.com', 1, 1),
     
@@ -33,7 +32,6 @@ VALUES
     ('987654321', 'Digitador 1', '$2b$10$tirOiLz9DaVpKch.cisrde9AJCewvtlksRe.Sem5g7pc5ikPrLJNS', 2), -- (digic123)
     ('543216789', 'Digitador 2', '$2b$10$tirOiLz9DaVpKch.cisrde9AJCewvtlksRe.Sem5g7pc5ikPrLJNS', 2), 
     ('222333444', 'Digitador 3', '$2b$10$tirOiLz9DaVpKch.cisrde9AJCewvtlksRe.Sem5g7pc5ikPrLJNS', 2);
-
 
 
 -- Tipo Embargo
