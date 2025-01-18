@@ -19,7 +19,7 @@ class AutentificiacionModel {
     
             const passCompare = bcrypt.compareSync(
                 password,
-                usuario[0].contraseña
+                usuario[0].contrasena
             );
     
             if (!passCompare) {

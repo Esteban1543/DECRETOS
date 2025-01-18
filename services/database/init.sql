@@ -42,7 +42,7 @@ create table
     usuarios (
         pfk_usuario varchar(15) not null,
         alias varchar(15) not null,
-        contraseña TEXT (80) not null,
+        contrasena varchar(80) not null,
         rol tinyint not null,
 
         primary key (pfk_usuario),
@@ -194,7 +194,7 @@ VALUES
     ('Bogotá D.C.', 1),
     ('Tunja', 1);
 
-INSERT IGNORE INTO usuarios (pfk_usuario, alias, contraseña, rol)
+INSERT IGNORE INTO usuarios (pfk_usuario, alias, contrasena, rol)
 VALUES
     ('444555666', 'Admin', '$2b$10$2cRofAbM9Szb62v9FzbA/eZPRhZffVaxSs.j0kCsTkvtEM029GfGi', 1), -- (admin123)
     ('987654321', 'Digitador 1', '$2b$10$tirOiLz9DaVpKch.cisrde9AJCewvtlksRe.Sem5g7pc5ikPrLJNS', 2), -- (digic123)
