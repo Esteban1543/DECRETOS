@@ -1,2 +1,6 @@
 .vscode/*
 desktop.ini
+
+# Ignorar los archivos de base de datos y otros generados
+services/database/data/
+*.sock
