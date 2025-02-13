@@ -1,8 +1,8 @@
 import mysql from 'mysql2/promise';
 
 const database = {
-    host: 'localhost',
-    port: 3307,
+    host: 'database-dc',
+    port: 3306,
     database: 'BDC_DECRETOS',
     user: 'root',
     password: '',
