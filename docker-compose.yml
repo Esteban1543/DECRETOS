@@ -9,8 +9,6 @@ services:
     volumes:
       - ./apps/frontend:/app
       - /app/node_modules
-    depends_on:
-      - backend
     networks:
       - network-juzgado
 
@@ -44,7 +42,7 @@ services:
     networks:
       - network-juzgado
     healthcheck:
-      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+      test: ["CMD", "sh", "-c", "mysql -uroot -e 'USE BDC_DECRETOS; SHOW TABLES;'"]
       interval: 10s
       timeout: 5s
       retries: 5
