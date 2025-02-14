@@ -46,6 +46,7 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+    command: --wait_timeout=63072000 --interactive_timeout=63072000
 
 networks:
   network-juzgado:
