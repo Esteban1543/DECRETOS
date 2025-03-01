@@ -31,6 +31,7 @@ services:
   mysql:
     container_name: database-dc
     image: mysql:9.1.0
+    user: "1000:1000"
     environment:
       MYSQL_DATABASE: "BDC_DECRETOS"
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
