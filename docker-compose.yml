@@ -31,13 +31,13 @@ services:
   mysql:
     container_name: database-dc
     image: mysql:9.1.0
-    user: "1000:1000"
     environment:
       MYSQL_DATABASE: "BDC_DECRETOS"
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
     volumes:
       - ./services/database/data:/var/lib/mysql
       - ./services/database/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./services/mysql/config/my.cnf:/etc/mysql/conf.d/my.cnf
     ports:
       - "3308:3306"
     networks:
@@ -47,7 +47,6 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
-    command: --wait_timeout=63072000 --interactive_timeout=63072000
 
 networks:
   network-juzgado:
